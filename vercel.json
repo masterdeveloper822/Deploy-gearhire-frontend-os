@@ -1,4 +1,7 @@
 {
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ],
   "outputDirectory": "dist",
   "framework": "vite",
   "installCommand": "npm install",
