@@ -5,8 +5,8 @@ import MerchantNextStepsBody from "@/src/components/MerchantNextSteps/MerchantNe
 
 export default function MerchantNextSteps() {
   return (
-    <div className="main-container flex w-[1440px] flex-col items-start flex-nowrap bg-[#fff] rounded-[8px] border-solid border-2 border-[#ced4da] relative overflow-hidden mx-auto my-0">
-      <div className="w-[1440px] h-[1074px] shrink-0 bg-[#f9fafb] relative">
+    <div className="main-container flex flex-col items-start flex-nowrap bg-white rounded-lg border-2 border-solid border-[#ced4da] relative overflow-hidden mx-auto my-0 w-full max-w-[1440px] min-h-screen">
+      <div className="w-full min-h-screen bg-[#f9fafb] relative">
         <EmailVerifyHeader />
         <MerchantNextStepsBody />
       </div>

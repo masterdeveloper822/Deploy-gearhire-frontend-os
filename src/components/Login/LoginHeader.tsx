@@ -27,15 +27,15 @@ export default function LoginHeader() {
                 FilmGearHub
               </span>
             </div>
-            <div className="flex items-center gap-6">
-              <span className="text-gray-500 text-base font-normal leading-6 pr-2.5">
+            <div className="flex flex-col sm:flex-row items-end sm:items-center gap-1 sm:gap-6 mt-0 sm:mt-0 w-full sm:w-auto text-center sm:text-left">
+              <span className="text-gray-500 text-base font-normal leading-6 pr-0 sm:pr-2.5">
                 New to FilmGearHub?
               </span>
               <a
                 href="/create-account"
-                className="text-sky-600 font-medium text-base leading-6 hover:text-sky-800 transition-colors no-underline pr-4"
+                className="text-sky-600 font-medium text-base leading-6 hover:text-sky-800 transition-colors no-underline pr-0 sm:pr-4"
               >
-               Sign Up
+                Sign Up
               </a>
             </div>
           </div>

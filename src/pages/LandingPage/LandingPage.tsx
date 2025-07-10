@@ -24,8 +24,8 @@ import Footer from "@/src/components/LandingPage/Footer";
 
 export default function LandingPage() {
   return (
-    <div className="main-container flex w-[1440px] flex-col items-start flex-nowrap bg-[#fff] rounded-[8px] border-solid border-2 border-[#ced4da] relative overflow-hidden mx-auto my-0">
-      <div className="w-[1440px] h-[4390px] shrink-0 bg-[rgba(0,0,0,0)] relative">
+    <div className="main-container flex flex-col items-start flex-nowrap bg-gray-50 rounded-lg border-2 border-solid border-[#ced4da] relative overflow-hidden mx-auto w-full max-w-[1440px]">
+      <div className="w-full min-h-screen bg-transparent relative">
         <Header />
         <HeroSection />
         <HowItWorks />

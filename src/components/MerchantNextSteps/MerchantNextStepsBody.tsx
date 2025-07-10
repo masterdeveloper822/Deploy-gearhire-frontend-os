@@ -59,16 +59,16 @@ export default function MerchantNextStepsBody() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 flex justify-center items-start pt-16 px-4 relative">
+    <div className="min-h-screen bg-gray-50 flex justify-center items-start pt-8 sm:pt-16 px-2 sm:px-4 relative w-full">
       {/* Success Message - Positioned in top-right of this component */}
       {showSuccessMessage && (
         <div 
-          className={`absolute top-4 right-4 w-[343px] h-12 shrink-0 bg-green-500 rounded-lg shadow-lg z-50 transition-opacity duration-500 ease-in-out ${
+          className={`absolute top-4 right-4 w-[95vw] max-w-xs sm:max-w-sm md:max-w-md h-12 shrink-0 bg-green-500 rounded-lg shadow-lg z-50 transition-opacity duration-500 ease-in-out ${
             isFading ? 'opacity-0' : isVisible ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          <div className="w-[295px] h-6 bg-transparent relative z-50 mt-3 ml-6">
-            <span className="flex h-6 justify-start items-start text-base font-normal leading-6 text-white absolute -top-0.5 left-6 text-left whitespace-nowrap z-[62]">
+          <div className="w-full h-6 bg-transparent relative z-50 mt-3 ml-6 pr-4 flex items-center">
+            <span className="flex h-6 justify-start items-center text-sm sm:text-base font-normal leading-6 text-white pl-3 sm:pl-6 text-left whitespace-normal sm:whitespace-nowrap z-[62]">
               Verification email sent successfully!
             </span>
             <div className="flex w-4 h-4 justify-center items-center absolute top-1 left-0 overflow-hidden z-[60]">
@@ -82,25 +82,25 @@ export default function MerchantNextStepsBody() {
         </div>
       )}
 
-      <div className="max-w-2xl w-full">
+      <div className="w-full max-w-2xl mx-auto">
         {/* Header Section */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-8 px-2 sm:px-0">
           <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-2.5">
             <img src={vanguardIcon} alt="Vanguard Icon" className="w-8 h-8" />
           </div>
-          <h1 className="font-bold text-gray-900 mb-6 text-[36px] leading-tight">
+          <h1 className="font-bold text-gray-900 mb-6 text-2xl sm:text-3xl md:text-4xl leading-tight">
             Your Merchant Account is Almost Ready
           </h1>
-          <p className="text-lg text-gray-600 mx-12">
+          <p className="text-base sm:text-lg text-gray-600 mx-auto max-w-md">
             Thanks for signing up as a Merchant on FilmGearHub. Before
             your profile goes live, our team will verify your information.
           </p>
         </div>
 
         {/* Steps Card */}
-        <Card className="shadow-lg p-8">
+        <Card className="shadow-lg p-4 sm:p-8">
           <CardHeader className="p-0 pb-6">
-            <h2 className="text-xl font-semibold text-gray-900">Next Steps:</h2>
+            <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Next Steps:</h2>
           </CardHeader>
           <CardContent className="space-y-6 p-0">
             {/* Steps List */}
@@ -111,10 +111,10 @@ export default function MerchantNextStepsBody() {
                     {step.number}
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-medium text-gray-900 mb-1">
+                    <h3 className="font-medium text-gray-900 mb-1 text-base sm:text-lg">
                       {step.title}
                     </h3>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm sm:text-base text-gray-600">
                       {step.description}
                     </p>
                   </div>
@@ -123,10 +123,10 @@ export default function MerchantNextStepsBody() {
             </div>
 
             {/* Help Section */}
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 sm:p-4">
               <div className="flex items-start space-x-3">
                 <img src={infoIcon} alt="Info" className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
-                <div className="text-sm text-blue-800">
+                <div className="text-sm sm:text-base text-blue-800">
                   <span className="font-semibold">Need help?</span>
                   {" "}
                   If you have questions or need assistance, reach out to{" "}

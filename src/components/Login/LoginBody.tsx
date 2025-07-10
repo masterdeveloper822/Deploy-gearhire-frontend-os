@@ -79,7 +79,7 @@ export default function LoginBody() {
   };
 
   return (
-    <div className="w-full max-w-screen-2xl min-h-screen bg-transparent mx-auto flex flex-col items-center py-8 sm:py-12 lg:py-16 px-4">
+    <div className="w-full max-w-screen-2xl bg-transparent mx-auto flex flex-col items-center py-8 sm:py-12 lg:py-16 px-4">
       <div className="w-full max-w-md flex flex-col items-center">
         <h1 className="font-bold text-2xl sm:text-3xl lg:text-4xl text-gray-800 text-center mb-4">
           Log In to FilmGearHub
