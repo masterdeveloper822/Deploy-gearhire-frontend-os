@@ -6,6 +6,7 @@ import CreateAccount from './pages/CreateAccount/CreateAccout';
 import EmailVerify from './pages/EmailVerify/EmailVerify';
 import Login from './pages/Login/Login';
 import ResetPassword from './pages/ResetPassword/ResetPassword';
+import MerchantNextSteps from './pages/MerchantNextSteps/MerchantNextSteps';
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/email-verify" element={<EmailVerify />} />
         <Route path="/login" element={<Login />} />
         <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/merchant-next-steps" element={<MerchantNextSteps />} />
       </Routes>
       <Toaster />
     </BrowserRouter>

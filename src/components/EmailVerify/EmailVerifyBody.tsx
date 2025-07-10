@@ -104,14 +104,9 @@ export default function EmailVerifyBody() {
     setTimeout(() => {
       // For demo purposes, accept any 6-digit code
       if (code.length === 6 && /^\d{6}$/.test(code)) {
-        toast({
-          title: "Email Verified!",
-          description: "Your email has been successfully verified.",
-        });
-        
         // Navigate to success page or dashboard
         setTimeout(() => {
-          navigate("/login");
+          navigate("/merchant-next-steps");
         }, 1500);
       } else {
         toast({

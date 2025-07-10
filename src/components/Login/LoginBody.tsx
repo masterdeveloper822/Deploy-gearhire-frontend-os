@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 import { Button } from "@/src/components/ui/button";
 import { useToast } from "@/src/hooks/use-toast";
@@ -7,6 +7,7 @@ import { Eye, EyeOff } from "lucide-react";
 
 export default function LoginBody() {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
@@ -52,6 +53,7 @@ export default function LoginBody() {
       });
       // Simulate submission
       console.log("Login submitted:", formData);
+      navigate("/");
     } else {
       // Show first error as toast
       if (errors.email) {
