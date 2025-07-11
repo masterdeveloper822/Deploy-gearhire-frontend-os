@@ -1,8 +1,8 @@
 import React from "react";
 import "../index.css";
 
-import CreateAccountHeader from "@/src/components/CreateAccount/CreateAccountHeader";
-import CreateAccountBody from "@/src/components/CreateAccount/CreateAccountBody";
+import CreateAccountHeader from "./components/CreateAccountHeader";
+import CreateAccountBody from "./components/CreateAccountBody";
 
 export default function CreateAccount() {
   return (

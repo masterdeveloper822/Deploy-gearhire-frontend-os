@@ -1,7 +1,7 @@
 import React from "react";
 import "../index.css";
-import EmailVerifyHeader from "@/src/components/EmailVerify/EmailVerifyHeader";
-import EmailVerifyBody from "@/src/components/EmailVerify/EmailVerifyBody";
+import EmailVerifyHeader from "./components/EmailVerifyHeader";
+import EmailVerifyBody from "./components/EmailVerifyBody";
 
 export default function EmailVerify() {
   return (

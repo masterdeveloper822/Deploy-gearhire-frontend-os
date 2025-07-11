@@ -1,7 +1,7 @@
 import React from "react";
 import "../index.css";
-import LoginHeader from "@/src/components/Login/LoginHeader";
-import LoginBody from "@/src/components/Login/LoginBody";
+import LoginHeader from "./components/LoginHeader";
+import LoginBody from "./components/LoginBody";
 
 export default function Login() {
   return (

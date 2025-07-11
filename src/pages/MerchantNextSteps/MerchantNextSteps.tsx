@@ -1,7 +1,7 @@
 import React from "react";
 import "../index.css";
-import EmailVerifyHeader from "@/src/components/EmailVerify/EmailVerifyHeader";
-import MerchantNextStepsBody from "@/src/components/MerchantNextSteps/MerchantNextStepsBody";
+import EmailVerifyHeader from "@/src/pages/EmailVerify/components/EmailVerifyHeader";
+import MerchantNextStepsBody from "./components/MerchantNextStepsBody";
 
 export default function MerchantNextSteps() {
   return (

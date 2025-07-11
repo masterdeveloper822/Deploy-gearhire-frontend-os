@@ -1,7 +1,7 @@
 import React from "react";
 import "../index.css";
-import LoginHeader from "@/src/components/Login/LoginHeader";
-import ResetPassBody from "@/src/components/ResetPassword/ResetPassBody";
+import LoginHeader from "@/src/pages/Login/components/LoginHeader";
+import ResetPassBody from "./components/ResetPassBody";
 
 export default function ResetPassword() {
   return (

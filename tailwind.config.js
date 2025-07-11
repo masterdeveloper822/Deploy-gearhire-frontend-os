@@ -54,10 +54,33 @@ module.exports = {
 		fontFamily: {
 			sans: ['Inter', 'sans-serif'],
 		},
+		fontSize: {
+			sm: ['14px', '20px'],
+			base: ['16px', '24px'],
+			lg: ['18px', '28px'],
+			xl: ['20px', '28px'],
+			'2xl': ['24px', '32px'],
+			'3xl': ['30px', '36px'],
+			'4xl': ['36px', '40px'],
+			'5xl': ['48px', '56px'],
+			'6xl': ['60px', '64px'],
+			'7xl': ['72px', '76px'],
+			'8xl': ['96px', '96px'],
+			'9xl': ['128px', '128px'],
+		},
   	}
   },
   variants: {
     extend: {},
   },
-  plugins: [require('@tailwindcss/typography'), require("tailwindcss-animate")],
+  plugins: [require('@tailwindcss/typography'), require("tailwindcss-animate"), function({ addComponents }) {
+    addComponents({
+      '.logo-text': {
+        '@apply text-xl lg:text-2xl font-bold text-sky-700 leading-6': {},
+      },
+      '.nav-link': {
+        '@apply text-base font-normal leading-6 text-gray-700 hover:text-sky-700 transition-colors px-2': {},
+      },
+    })
+  }],
 };
