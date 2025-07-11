@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader } from "@/src/components/ui/card/card";
+import { Button } from "@/src/components/ui/buttons/button";
 
 import vanguardIcon from "@/public/assets/icons/vanguard.svg";
 import infoIcon from "@/public/assets/icons/info.svg";

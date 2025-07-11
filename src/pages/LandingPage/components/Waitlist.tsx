@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/src/components/ui/buttons/button";
 
 import boxesIcon from '@/public/assets/icons/boxes.svg';
 import comingSoonImg from '@/public/assets/images/comingsoon_img.png';

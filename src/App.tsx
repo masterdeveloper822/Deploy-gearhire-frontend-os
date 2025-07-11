@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Toaster } from '@/components/ui/toaster';
+import { Toaster } from '@/src/components/ui/toast/toaster';
 import LandingPage from './pages/LandingPage/LandingPage';
 import CreateAccount from './pages/CreateAccount/CreateAccout';
 import EmailVerify from './pages/EmailVerify/EmailVerify';

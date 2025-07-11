@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/src/components/ui/buttons/button";
 import { useToast } from "@/src/hooks/use-toast";
 import messageIcon from "@/public/assets/icons/message.svg";
 import lockIcon from "@/public/assets/icons/Lock.svg";

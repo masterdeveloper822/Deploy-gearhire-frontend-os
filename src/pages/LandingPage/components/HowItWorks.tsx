@@ -1,10 +1,11 @@
 import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/src/components/ui/card/card";
 
 import searchIcon from "@/public/assets/icons/search.svg";
 import homeIcon from "@/public/assets/icons/home.svg";
 import peopleIcon from "@/public/assets/icons/people.svg";
 import checkIcon from "@/public/assets/icons/check.svg";
+import { Typography } from "@/src/components/ui/typography/typography";
 
 export default function HowItWorks() {
   return (
@@ -12,18 +13,11 @@ export default function HowItWorks() {
       id="how-it-works"
       className="w-full relative bg-gray-50 z-10 flex flex-col items-center p-24"
     >
-      <h1
-        className="flex justify-center items-center text-3xl sm:text-4xl font-bold leading-tight text-gray-800 text-center mb-5"
-        tabIndex={-1}
-      >
-        How FilmGearHub Works
-      </h1>
+      <Typography variant="h1" className="mb-5">How FilmGearHub Works</Typography>
       <div className="w-full flex flex-col items-center">
         <div className="w-full flex justify-center mb-16">
-          <div className="flex justify-center items-center text-lg sm:text-xl font-normal leading-7 text-gray-600 text-center max-w-2xl">
-            A streamlined platform connecting filmmakers with the equipment they
-            need
-          </div>
+          <Typography variant="heroSub" className="max-w-2xl text-center">A streamlined platform connecting filmmakers with the equipment they
+          need</Typography>
         </div>
         <div className="w-full flex flex-col md:flex-row gap-8 justify-center items-stretch">
           {/* For Renters */}

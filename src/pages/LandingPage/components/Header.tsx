@@ -1,15 +1,16 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-import { Button } from "@/components/ui/button";
-import { NavLink } from "@/components/ui/nav-link";
-import HeaderFrame from "@/components/ui/headerFrame";
+import { NavLink } from "@/src/components/ui/nav-link";
+import HeaderFrame from "@/src/components/ui/header/headerFrame";
+import { SkyPrimaryButton } from "@/src/components/ui/buttons/sky-primary-button";
+import { SkyBorderButton } from "@/src/components/ui/buttons/sky-border-button";
 
 export default function Header() {
   return (
     <HeaderFrame>
       <div className="flex items-center gap-4">
-        <div className="flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-4">
           <NavLink href="#how-it-works">
             How It Works
           </NavLink>
@@ -21,19 +22,26 @@ export default function Header() {
           </NavLink>
         </div>
         <div className="flex items-center">
-          <Link to="/login" className="no-underline">
-            <Button variant="outline-sky">
-              Log In
-            </Button>
-          </Link>
-          <Link to="/create-account" className="no-underline">
-            <Button variant="primary-sky" className="ml-3">
-              Sign Up
-            </Button>
-          </Link>
+        <div className="flex items-center">
+                <SkyBorderButton
+                    className="h-[35px] md:h-[42px]"
+                >
+                  <Link to="/login">
+                    Log In
+                  </Link>
+                </SkyBorderButton>
+                <SkyPrimaryButton
+                    className="h-[35px] md:h-[42px] ml-1 md:ml-3"
+                  >
+                  <Link to="/create-account">
+                    Sign Up
+                  </Link>
+                </SkyPrimaryButton>
+              </div>
         </div>
       </div>
     </HeaderFrame>
+    
   );
 }
 

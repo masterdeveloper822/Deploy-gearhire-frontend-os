@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/src/components/ui/buttons/button";
 
 import gearFooterIcon from "@/public/assets/icons/gear_icon_footer.svg";
 import instagramIcon from '@/public/assets/icons/instagram.svg';

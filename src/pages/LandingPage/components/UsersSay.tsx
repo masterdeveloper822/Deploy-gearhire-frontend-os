@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from "@/src/components/ui/card/card";
 import { Link } from "react-router-dom";
 
 import reviewIcon from '@/public/assets/icons/review.svg';
