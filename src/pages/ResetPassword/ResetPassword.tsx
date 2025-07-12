@@ -1,5 +1,5 @@
 import React from "react";
-import "../index.css";
+import "../global.css";
 import LoginHeader from "@/src/pages/Login/components/LoginHeader";
 import ResetPassBody from "./components/ResetPassBody";
 

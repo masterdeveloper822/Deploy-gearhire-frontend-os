@@ -4,6 +4,7 @@
       "paths": {
         "@/*": ["./*"]
       },
-      "jsx": "react-jsx"
+      "jsx": "react-jsx",
+      "lib": ["dom", "esnext"]
     }
   }

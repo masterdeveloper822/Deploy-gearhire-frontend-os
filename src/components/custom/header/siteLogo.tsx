@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 import gearIcon from "@/public/assets/icons/gear_icon.svg";
-import { Typography } from "@/src/components/ui/typography/typography"
+import { Typography } from "@/src/components/ui/typography"
 
 export function SiteLogo() {
     return (

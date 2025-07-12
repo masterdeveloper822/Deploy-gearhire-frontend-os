@@ -1,5 +1,5 @@
 import React from "react";
-import "../index.css";
+import "../global.css";
 import EmailVerifyHeader from "./components/EmailVerifyHeader";
 import EmailVerifyBody from "./components/EmailVerifyBody";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import "../index.css";
+import "../global.css";
 
 import CreateAccountHeader from "./components/CreateAccountHeader";
 import CreateAccountBody from "./components/CreateAccountBody";

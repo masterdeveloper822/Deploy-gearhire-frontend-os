@@ -2,9 +2,8 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 import { NavLink } from "@/src/components/ui/nav-link";
-import HeaderFrame from "@/src/components/ui/header/headerFrame";
-import { SkyPrimaryButton } from "@/src/components/ui/buttons/sky-primary-button";
-import { SkyBorderButton } from "@/src/components/ui/buttons/sky-border-button";
+import HeaderFrame from "@/src/components/custom/header/headerFrame";
+import { Button } from "@/src/components/ui/button";
 
 export default function Header() {
   return (
@@ -23,20 +22,22 @@ export default function Header() {
         </div>
         <div className="flex items-center">
         <div className="flex items-center">
-                <SkyBorderButton
+                <Button
+                    variant="skyBorder"
                     className="h-[35px] md:h-[42px]"
                 >
                   <Link to="/login">
                     Log In
                   </Link>
-                </SkyBorderButton>
-                <SkyPrimaryButton
+                </Button>
+                <Button
+                    variant="skyPrimary"
                     className="h-[35px] md:h-[42px] ml-1 md:ml-3"
                   >
                   <Link to="/create-account">
                     Sign Up
                   </Link>
-                </SkyPrimaryButton>
+                </Button>
               </div>
         </div>
       </div>

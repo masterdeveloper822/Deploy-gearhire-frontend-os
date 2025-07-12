@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button } from "@/src/components/ui/buttons/button";
+import { Button } from "@/src/components/ui/button";
 import gearIcon from "@/public/assets/icons/gear_icon.svg";
 
 export default function CreateAccountHeader() {

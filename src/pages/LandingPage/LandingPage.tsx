@@ -1,5 +1,5 @@
 import React from "react";
-import "../index.css";
+import "../global.css";
 
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";

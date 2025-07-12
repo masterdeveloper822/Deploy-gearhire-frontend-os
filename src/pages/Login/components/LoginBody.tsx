@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {Link, useNavigate} from "react-router-dom";
 
-import { Button } from "@/src/components/ui/buttons/button";
+import { Button } from "@/src/components/ui/button";
 import { useToast } from "@/src/hooks/use-toast";
 import { Eye, EyeOff } from "lucide-react";
 

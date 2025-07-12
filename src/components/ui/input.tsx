@@ -19,4 +19,21 @@ const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
 )
 Input.displayName = "Input"
 
+interface EmailInputProps extends React.ComponentProps<typeof Input> {}
+
+export const EmailInput = React.forwardRef<HTMLInputElement, EmailInputProps>(
+  ({ className, ...props }, ref) => (
+    <Input
+      ref={ref}
+      type="email"
+      placeholder="Enter your email address"
+      className={cn("h-12 bg-white placeholder:text-base text-gray-900 pl-4 py-3",
+        className
+      )}
+      {...props}
+    />
+  )
+);
+EmailInput.displayName = "EmailInput";
+
 export { Input }

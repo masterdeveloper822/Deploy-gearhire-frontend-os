@@ -1,5 +1,5 @@
 import React from "react";
-import "../index.css";
+import "../global.css";
 import EmailVerifyHeader from "@/src/pages/EmailVerify/components/EmailVerifyHeader";
 import MerchantNextStepsBody from "./components/MerchantNextStepsBody";
 

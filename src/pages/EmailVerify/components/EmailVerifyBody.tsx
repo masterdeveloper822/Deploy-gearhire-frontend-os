@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Button } from "@/src/components/ui/buttons/button";
-import { Input } from "@/src/components/ui/form/input";
+import { Button } from "@/src/components/ui/button";
+import { Input } from "@/src/components/ui/input";
 
 import verifyMessageIcon from "@/public/assets/icons/verifyMessage.svg";
 import backArrowIcon from "@/public/assets/icons/backArrow.svg";

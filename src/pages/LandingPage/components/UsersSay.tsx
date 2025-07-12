@@ -1,6 +1,5 @@
 import React from "react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/src/components/ui/card/card";
-import { Link } from "react-router-dom";
+import { Card, CardHeader, CardTitle, CardContent } from "@/src/components/ui/card";
 
 import reviewIcon from '@/public/assets/icons/review.svg';
 import half_reviewIcon from '@/public/assets/icons/half_review.svg';
@@ -8,18 +7,19 @@ import half_reviewIcon from '@/public/assets/icons/half_review.svg';
 import woman1Img from '@/public/assets/images/woman1.png';
 import man1Img from '@/public/assets/images/man1.png';
 import man2Img from '@/public/assets/images/man2.png';
+import { Typography } from "@/src/components/ui/typography";
 
 export default function UsersSay() {
     return (
-        <div className="bg-gray-50 w-full p-24 flex flex-col items-center">
-            <Link className="text-3xl sm:text-4xl font-bold leading-tight text-gray-900 text-center mb-4">
+        <div className="bg-gray-50 w-full p-6 md:p-24 flex flex-col items-center">
+            <Typography variant="h1" className="text-center mb-4">
                 What Our Users Say
-            </Link>
+            </Typography>
             <div className="w-full flex flex-col items-center">
-                <div className="w-full flex flex-col items-center mb-16">
-                    <Link className="text-lg sm:text-xl font-normal leading-7 text-gray-600 text-center">
+                <div className="w-full flex flex-col items-center mb-4 md:mb-16">
+                    <Typography variant="heroSub" className="text-center">
                         Join these industry professionals already using FilmGearHub
-                    </Link>
+                    </Typography>
                 </div>
                 <div className="w-full flex flex-col md:flex-row gap-8 justify-center items-stretch">
                     {/* Card 1 */}
@@ -31,28 +31,28 @@ export default function UsersSay() {
                                 className="w-12 h-12 object-cover rounded-full"
                             />
                             <div className="ml-4">
-                                <CardTitle className="text-base font-bold leading-6 text-gray-900 mb-0">
+                                <Typography variant="reviewUserName">
                                     Michael Rodriguez
-                                </CardTitle>
-                                <span className="block text-sm font-normal leading-5 text-gray-600">
+                                </Typography>
+                                <Typography variant="reviewUserInfo">
                                     Cinematographer, Los Angeles
-                                </span>
+                                </Typography>
                             </div>
                         </CardHeader>
                         <CardContent className="flex flex-col flex-1 p-0">
                             <div className="mb-4">
-                                <span className="block text-base font-normal leading-tight text-gray-600 text-left">
+                                <Typography variant="reviewText">
                                     "FilmGearHub has transformed how I source
-                                </span>
-                                <span className="block text-base font-normal leading-tight text-gray-600 text-left">
+                                </Typography>
+                                <Typography variant="reviewText">
                                     equipment for my projects. I've connected
-                                </span>
-                                <span className="block text-base font-normal leading-tight text-gray-600 text-left">
+                                </Typography>
+                                <Typography variant="reviewText">
                                     with several great rental houses I wouldn't
-                                </span>
-                                <span className="block text-base font-normal leading-tight text-gray-600 text-left">
+                                </Typography>
+                                <Typography variant="reviewText">
                                     have found otherwise."
-                                </span>
+                                </Typography>
                             </div>
                             <div className="flex items-center gap-1 mt-auto">
                                 <img src={reviewIcon} alt="Review" className="w-5 h-4" />
@@ -72,28 +72,28 @@ export default function UsersSay() {
                                 className="w-12 h-12 object-cover rounded-full"
                             />
                             <div className="ml-4">
-                                <CardTitle className="text-base font-bold leading-6 text-gray-900 mb-0">
+                                <Typography variant="reviewUserName">
                                     Sarah Johnson
-                                </CardTitle>
-                                <span className="block text-sm font-normal leading-5 text-gray-600">
+                                </Typography>
+                                <Typography variant="reviewUserInfo">
                                     Production Manager, New York
-                                </span>
+                                </Typography>
                             </div>
                         </CardHeader>
                         <CardContent className="flex flex-col flex-1 p-0">
                             <div className="mb-4">
-                                <span className="block text-base font-normal leading-tight text-gray-600 text-left">
+                                <Typography variant="reviewText">
                                     "The RFQ feature saves me hours of calling
-                                </span>
-                                <span className="block text-base font-normal leading-tight text-gray-600 text-left">
+                                </Typography>
+                                <Typography variant="reviewText">
                                     around for quotes. I can quickly compare
-                                </span>
-                                <span className="block text-base font-normal leading-tight text-gray-600 text-left">
+                                </Typography>
+                                <Typography variant="reviewText">
                                     options and find exactly what my production
-                                </span>
-                                <span className="block text-base font-normal leading-tight text-gray-600 text-left">
+                                </Typography>
+                                <Typography variant="reviewText">
                                     needs."
-                                </span>
+                                </Typography>
                             </div>
                             <div className="flex items-center gap-1 mt-auto">
                                 <img src={reviewIcon} alt="Review" className="w-5 h-4" />
@@ -113,28 +113,28 @@ export default function UsersSay() {
                                 className="w-12 h-12 object-cover rounded-full"
                             />
                             <div className="ml-4">
-                                <CardTitle className="text-base font-bold leading-6 text-gray-900 mb-0">
+                                <Typography variant="reviewUserName">
                                     David Chen
-                                </CardTitle>
-                                <span className="block text-sm font-normal leading-5 text-gray-600">
+                                </Typography>
+                                <Typography variant="reviewUserInfo">
                                     Equipment Rental Owner, Atlanta
-                                </span>
+                                </Typography>
                             </div>
                         </CardHeader>
                         <CardContent className="flex flex-col flex-1 p-0">
                             <div className="mb-4">
-                                <span className="block text-base font-normal leading-tight text-gray-600 text-left">
+                                <Typography variant="reviewText">
                                     "As a merchant, FilmGearHub has helped me
-                                </span>
-                                <span className="block text-base font-normal leading-tight text-gray-600 text-left">
+                                </Typography>
+                                <Typography variant="reviewText">
                                     reach new clients and grow my business. The
-                                </span>
-                                <span className="block text-base font-normal leading-tight text-gray-600 text-left">
+                                </Typography>
+                                <Typography variant="reviewText">
                                     platform is intuitive and the social features
-                                </span>
-                                <span className="block text-base font-normal leading-tight text-gray-600 text-left">
+                                </Typography>
+                                <Typography variant="reviewText">
                                     build real relationships."
-                                </span>
+                                </Typography>
                             </div>
                             <div className="flex items-center gap-1 mt-auto">
                                 <img src={reviewIcon} alt="Review" className="w-5 h-4" />
