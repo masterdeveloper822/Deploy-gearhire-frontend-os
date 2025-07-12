@@ -43,8 +43,8 @@ export default function ResetPassBody() {
   };
 
   return (
-    <div className="w-full max-w-screen-2xl min-h-screen bg-transparent mx-auto flex flex-col items-center py-8 sm:py-12 lg:py-16 px-4">
-      <div className="relative w-full max-w-md flex flex-col items-center">
+    <div className="w-full max-w-screen-2xl bg-transparent mx-auto flex flex-col items-center py-8 sm:py-12 lg:py-16 px-4">
+      <div className="pt-12 md:pt-0 relative w-full max-w-md flex flex-col items-center">
         <div className="w-16 h-16 bg-sky-100 rounded-full relative z-10">
           <div className="relative z-10 mt-4 flex justify-center items-center">
             <img src={lockIcon} alt="Lock Icon" />

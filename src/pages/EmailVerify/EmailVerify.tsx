@@ -5,8 +5,8 @@ import EmailVerifyBody from "./components/EmailVerifyBody";
 
 export default function EmailVerify() {
   return (
-    <div className="main-container flex w-full max-w-[1440px] flex-col items-start flex-nowrap bg-[#fff] rounded-[8px] border-solid border-2 border-[#ced4da] relative overflow-hidden mx-auto my-0">
-      <div className="w-full min-h-screen bg-[#f9fafb] relative">
+    <div className="bg-white relative rounded-lg w-full min-h-screen">
+      <div className="bg-gray-50 w-full min-h-screen">
         <EmailVerifyHeader />
         <EmailVerifyBody />
       </div>

@@ -57,4 +57,50 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 )
 Button.displayName = "Button"
 
+interface UploadButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  iconSrc: string;
+  children: React.ReactNode;
+}
+
+export const UploadButton: React.FC<UploadButtonProps> = ({ iconSrc, children, ...props }) => (
+  <Button
+    className="flex items-center bg-sky-100 hover:bg-sky-200 rounded-lg px-6 py-2 mb-2 text-sky-700 font-medium"
+    type="button"
+    {...props}
+  >
+    <img src={iconSrc} alt="Upload" className="w-4 h-5 mr-2" />
+    {children}
+  </Button>
+);
+
+interface SaveChangesButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  iconSrc: string;
+  children: React.ReactNode;
+}
+
+export const SaveChangesButton: React.FC<SaveChangesButtonProps> = ({ iconSrc, children, ...props }) => (
+  <Button
+    className="flex items-center justify-center bg-sky-600 text-white w-full md:w-1/2 h-12 text-base font-semibold hover:bg-sky-700"
+    {...props}
+  >
+    <img src={iconSrc} alt="Save" className="w-4 h-4 mr-2" />
+    {children}
+  </Button>
+);
+
+interface PreviewProfileButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  iconSrc: string;
+  children: React.ReactNode;
+}
+
+export const PreviewProfileButton: React.FC<PreviewProfileButtonProps> = ({ iconSrc, children, ...props }) => (
+  <Button
+    className="flex items-center justify-center bg-white border border-gray-300 text-gray-700 font-medium w-full md:w-1/2 h-12 hover:bg-gray-100"
+    {...props}
+  >
+    <img src={iconSrc} alt="Preview" className="w-4 h-4 mr-2" />
+    {children}
+  </Button>
+);
+
 export { Button, buttonVariants }

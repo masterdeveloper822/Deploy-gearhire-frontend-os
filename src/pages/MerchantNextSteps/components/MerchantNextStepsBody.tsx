@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader } from "@/src/components/ui/card";
 import { Button } from "@/src/components/ui/button";
+import { Link } from "react-router-dom";
 
 import vanguardIcon from "@/public/assets/icons/vanguard.svg";
 import infoIcon from "@/public/assets/icons/info.svg";
@@ -59,7 +60,7 @@ export default function MerchantNextStepsBody() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 flex justify-center items-start pt-8 sm:pt-16 px-2 sm:px-4 relative w-full">
+    <div className="min-h-screen bg-gray-50 flex justify-center items-start py-8 sm:pt-16 px-2 sm:px-4 relative w-full">
       {/* Success Message - Positioned in top-right of this component */}
       {showSuccessMessage && (
         <div 
@@ -144,10 +145,12 @@ export default function MerchantNextStepsBody() {
 
         {/* Action Button */}
         <div className="mt-6">
-          <Button className="w-full h-14 text-base font-semibold bg-sky-600 text-white hover:bg-sky-700" size="lg">
-            <img src={editProfileIcon} alt="Edit Profile" className="w-5 h-5 mr-2 inline-block" />
-            Complete My Profile
-          </Button>
+          <Link to="/edit-merchant-profile" className="block">
+            <Button className="w-full h-14 text-base font-semibold bg-sky-600 text-white hover:bg-sky-700" size="lg">
+              <img src={editProfileIcon} alt="Edit Profile" className="w-5 h-5 mr-2 inline-block" />
+              Complete My Profile
+            </Button>
+          </Link>
         </div>
 
         {/* Footer Link */}

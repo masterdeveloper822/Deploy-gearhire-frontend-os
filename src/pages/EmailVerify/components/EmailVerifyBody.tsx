@@ -145,7 +145,7 @@ export default function EmailVerifyBody() {
   };
 
   return (
-    <div className="flex w-full min-h-screen items-center justify-center bg-transparent px-2 sm:px-0">
+    <div className="flex w-full items-center justify-center py-20 sm:py-12 lg:py-16 bg-transparent px-2 sm:px-0">
       <div className="flex flex-col items-center w-full max-w-[448px] mx-auto">
         {/* Icon and Headings */}
         <div className="flex flex-col items-center w-full mb-8">

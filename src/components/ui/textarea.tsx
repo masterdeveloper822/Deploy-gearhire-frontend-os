@@ -19,4 +19,20 @@ const Textarea = React.forwardRef<
 })
 Textarea.displayName = "Textarea"
 
+interface AboutTextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+}
+
+export const AboutTextarea: React.FC<AboutTextareaProps> = ({ value, onChange, maxLength = 500, placeholder = "Tell renters about your business, experience, and what sets you apart...", ...props }) => (
+  <Textarea
+    value={value}
+    onChange={onChange}
+    maxLength={maxLength}
+    placeholder={placeholder}
+    className={"md:text-base h-[122px] resize-none " + (props.className || "")}
+    {...props}
+  />
+);
+
 export { Textarea }

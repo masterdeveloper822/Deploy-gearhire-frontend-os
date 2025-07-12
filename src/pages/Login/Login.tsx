@@ -5,8 +5,8 @@ import LoginBody from "./components/LoginBody";
 
 export default function Login() {
   return (
-    <div className="main-container bg-gray-50 flex flex-col rounded-lg border-2 border-gray-300 relative overflow-hidden mx-auto w-full max-w-[1440px] min-h-screen">
-      <div className="w-full relative flex flex-col">
+    <div className="bg-white relative rounded-lg w-full min-h-screen">
+      <div className="bg-gray-50 w-full min-h-screen">
         <LoginHeader />
         <LoginBody />
       </div>

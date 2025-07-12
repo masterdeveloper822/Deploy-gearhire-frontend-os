@@ -23,7 +23,7 @@ export default function HeroSection() {
                 The easiest way to post RFQs, browse gear, and connect with
                 trusted merchants in the film production industry.
               </Typography>
-              <div className="relative z-[7] mt-8 md:mt-8 flex gap-4 text-base pr-0 md:pr-[150px]">
+              <div className="relative z-[7] mt-8 md:mt-8 flex gap-4 text-base px-10 md:pr-[150px]">
                 <Button variant="skyPrimary" className="w-full md:w-44 h-13 md:h-15">
                   <Link to="/renter-signup">
                     Join as Renter

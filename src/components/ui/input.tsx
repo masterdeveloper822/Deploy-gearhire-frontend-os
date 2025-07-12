@@ -36,4 +36,18 @@ export const EmailInput = React.forwardRef<HTMLInputElement, EmailInputProps>(
 );
 EmailInput.displayName = "EmailInput";
 
+interface BusinessNameInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export const BusinessNameInput: React.FC<BusinessNameInputProps> = ({ value, onChange, ...props }) => (
+  <Input
+    value={value}
+    onChange={onChange}
+    className={"h-[50px] md:text-base " + (props.className || "")}
+    {...props}
+  />
+);
+
 export { Input }

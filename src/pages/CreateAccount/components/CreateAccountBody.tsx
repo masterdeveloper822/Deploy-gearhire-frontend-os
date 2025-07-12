@@ -272,30 +272,29 @@ export default function CreateAccountBody() {
           </div>
           {/* Terms and Conditions */}
           <div className="flex items-center gap-2">
-            <div className="flex items-center">
-              <Checkbox 
-                id="terms" 
+            <label className="flex items-center gap-2 cursor-pointer">
+              <Checkbox
                 checked={formData.agreeToTerms}
                 onCheckedChange={(checked) => handleInputChange("agreeToTerms", checked as boolean)}
-                className="w-4 h-4 rounded border border-black data-[state=checked]:bg-sky-600 data-[state=checked]:border-sky-600" 
+                className="w-4 h-4 rounded border border-black data-[state=checked]:bg-sky-600 data-[state=checked]:border-sky-600"
               />
-            </div>
-            <span className="text-sm text-gray-700">
-              I agree to the{' '}
-              <a
-                href="#"
-                className="text-sky-600 underline hover:text-sky-700 transition-colors"
-              >
-                Terms of Service
-              </a>{' '}
-              and{' '}
-              <a
-                href="#"
-                className="text-sky-600 underline hover:text-sky-700 transition-colors"
-              >
-                Privacy Policy
-              </a>
-            </span>
+              <span className="text-sm text-gray-700 select-none">
+                I agree to the{' '}
+                <a
+                  href="#"
+                  className="text-sky-600 underline hover:text-sky-700 transition-colors"
+                >
+                  Terms of Service
+                </a>{' '}
+                and{' '}
+                <a
+                  href="#"
+                  className="text-sky-600 underline hover:text-sky-700 transition-colors"
+                >
+                  Privacy Policy
+                </a>
+              </span>
+            </label>
           </div>
           {/* Submit Button */}
           <Button
