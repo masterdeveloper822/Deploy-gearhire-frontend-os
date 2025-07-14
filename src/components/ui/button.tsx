@@ -1,8 +1,13 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
-
 import { cn } from "@/src/lib/utils"
+import { Link } from "react-router-dom";
+
+import instagramIcon from '@/public/assets/icons/instagram.svg';
+import twitterIcon from '@/public/assets/icons/twitter.svg';
+import facebookIcon from '@/public/assets/icons/facebook.svg';
+import linkedinIcon from '@/public/assets/icons/linkedin.svg';
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
@@ -62,7 +67,7 @@ interface UploadButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement
   children: React.ReactNode;
 }
 
-export const UploadButton: React.FC<UploadButtonProps> = ({ iconSrc, children, ...props }) => (
+const UploadButton: React.FC<UploadButtonProps> = ({ iconSrc, children, ...props }) => (
   <Button
     className="flex items-center bg-sky-100 hover:bg-sky-200 rounded-lg px-6 py-2 mb-2 text-sky-700 font-medium"
     type="button"
@@ -78,7 +83,7 @@ interface SaveChangesButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEl
   children: React.ReactNode;
 }
 
-export const SaveChangesButton: React.FC<SaveChangesButtonProps> = ({ iconSrc, children, ...props }) => (
+const SaveChangesButton: React.FC<SaveChangesButtonProps> = ({ iconSrc, children, ...props }) => (
   <Button
     className="flex items-center justify-center bg-sky-600 text-white w-full md:w-1/2 h-12 text-base font-semibold hover:bg-sky-700"
     {...props}
@@ -93,7 +98,7 @@ interface PreviewProfileButtonProps extends React.ButtonHTMLAttributes<HTMLButto
   children: React.ReactNode;
 }
 
-export const PreviewProfileButton: React.FC<PreviewProfileButtonProps> = ({ iconSrc, children, ...props }) => (
+const PreviewProfileButton: React.FC<PreviewProfileButtonProps> = ({ iconSrc, children, ...props }) => (
   <Button
     className="flex items-center justify-center bg-white border border-gray-300 text-gray-700 font-medium w-full md:w-1/2 h-12 hover:bg-gray-100"
     {...props}
@@ -103,4 +108,75 @@ export const PreviewProfileButton: React.FC<PreviewProfileButtonProps> = ({ icon
   </Button>
 );
 
-export { Button, buttonVariants }
+interface InstagramLinkProps {
+  to?: string;
+  className?: string;
+  iconClassName?: string;
+}
+
+const InstagramLink = ({ 
+  to = "/instagram", 
+  className = "flex items-center p-0",
+  iconClassName = "w-5 h-5"
+}: InstagramLinkProps) => {
+  return (
+    <Link to={to} className={className}>
+      <img src={instagramIcon} alt="Instagram" className={iconClassName} />
+    </Link>
+  );
+} 
+
+interface TwitterLinkProps {
+  to?: string;
+  className?: string;
+  iconClassName?: string;
+}
+
+const TwitterLink = ({ 
+  to = "/twitter", 
+  className = "flex items-center p-0",
+  iconClassName = "w-5 h-5"
+}: TwitterLinkProps) => {
+  return (
+    <Link to={to} className={className}>
+      <img src={twitterIcon} alt="Twitter" className={iconClassName} />
+    </Link>
+  );
+} 
+
+interface FacebookLinkProps {
+  to?: string;
+  className?: string;
+  iconClassName?: string;
+}
+
+const FacebookLink = ({ 
+  to = "/facebook", 
+  className = "flex items-center p-0",
+  iconClassName = "w-5 h-5"
+}: FacebookLinkProps) => {
+  return (
+    <Link to={to} className={className}>
+      <img src={facebookIcon} alt="Facebook" className={iconClassName} />
+    </Link>
+  );
+} 
+interface LinkedInLinkProps {
+  to?: string;
+  className?: string;
+  iconClassName?: string;
+}
+
+const LinkedInLink = ({ 
+  to = "/linkedin", 
+  className = "flex items-center p-0",
+  iconClassName = "w-5 h-5"
+}: LinkedInLinkProps) => {
+  return (
+    <Link to={to} className={className}>
+      <img src={linkedinIcon} alt="LinkedIn" className={iconClassName} />
+    </Link>
+  );
+} 
+export { Button, buttonVariants, UploadButton, SaveChangesButton, PreviewProfileButton, 
+  InstagramLink, TwitterLink, FacebookLink, LinkedInLink }
