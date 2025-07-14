@@ -5,41 +5,41 @@ import { Button } from "@/src/components/ui/button";
 import imgLandingPage from "@/public/assets/images/landing_image.png";
 import { Typography } from "@/src/components/ui/typography";
 
-const imgImg = "http://localhost:3845/assets/3a83d8ba059eb727a485e6341fb687c2c3575eb5.png";
-
 export default function HeroSection() {
   return (
-    <section className="w-full flex justify-center py-14">
-      <div className="w-full max-w-[1350px] flex flex-col md:flex-row gap-12 px-4 md:px-0">
+    <section className="w-full flex justify-center py-8 sm:py-14 md:py-0">
+      <div className="w-full max-w-[1350px] flex flex-col sm:flex-row gap-6 sm:gap-12 px-4 md:px-0">
         {/* Left: Text */}
-        <div className="w-full pt-0 md:pt-14 md:w-[670px] flex flex-col items-center md:items-start justify-center">
-          <h1 className="font-inter font-bold text-[40px] md:text-[60px] leading-[48px] md:leading-[60px] text-gray-800 mb-8">
+        <div className="w-full pt-0 md:pt-5 lg:pt-14 md:w-[670px] flex flex-col items-center md:items-start justify-center">
+          <h1 className="font-inter font-bold text-[30px] sm:text-[25px] md:text-[30px] lg:text-[40px] xl:text-[60px] leading-[40px] sm:leading-[30px]
+          lg:leading-[45px] xl:leading-[60px] text-gray-800 mb-5 md:mb-8">
             Find and Connect with Film Equipment Suppliers
           </h1>
-          <p className="font-inter text-[18px] md:text-[20px] text-gray-600 leading-[28px] mb-10 max-w-[514px]">
+          <p className="font-inter text-[16px] sm:text-[18px] md:text-[20px] text-gray-600 leading-[25px] sm:leading-[28px] mb-6
+          md:mb-10">
             The easiest way to post RFQs, browse gear, and connect with trusted merchants in the film production industry.
           </p>
-          <div className="flex gap-4">
+          <div className="flex gap-4 w-full">
             <a
               href="/renter-signup"
-              className="bg-sky-600 text-white rounded-lg h-[60px] w-[172.8px] flex items-center justify-center text-[16px] font-medium transition hover:bg-sky-700"
+              className="bg-sky-600 text-white rounded-lg h-[60px] w-full flex items-center justify-center text-center text-[16px] font-medium transition hover:bg-sky-700"
             >
               Join as Renter
             </a>
             <a
               href="/merchant-signup"
-              className="border-2 border-gray-700 text-gray-800 rounded-lg h-[60px] w-[199.7px] flex items-center justify-center text-[16px] font-medium transition hover:bg-gray-100"
+              className="border-2 border-gray-700 text-gray-800 rounded-lg text-center h-[60px] w-full flex items-center justify-center text-[16px] font-medium transition hover:bg-gray-100"
             >
               Join as Merchant
             </a>
           </div>
         </div>
         {/* Right: Image */}
-        <div className="w-full md:w-[624px] md: h-[300px] md: h-[460px] flex justify-center">
+        <div className="w-full md:w-[624px] h-[350px] md:h-[500px] lg: h-[460px] flex items-center justify-center lg:mt-6 xl:mt-[80px]">
           <img
             src={imgLandingPage}
             alt="Film equipment"
-            className="w-[312px] h-[312px] md:w-[560px] md:h-[560px] rounded-xl object-cover"
+            className="w-[312px] h-[312px] md:w-[360px] md:h-[360px] lg:w-[460px] lg:h-[460px] xl:w-[560px] xl:h-[560px] rounded-xl object-cover"
           />
         </div>
       </div>
