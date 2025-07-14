@@ -37,7 +37,7 @@ export default function HeroSection() {
         {/* Right: Image */}
         <div className="w-full md:w-[624px] md: h-[300px] md: h-[460px] flex justify-center">
           <img
-            src={imgImg}
+            src={imgLandingPage}
             alt="Film equipment"
             className="w-[312px] h-[312px] md:w-[560px] md:h-[560px] rounded-xl object-cover"
           />
