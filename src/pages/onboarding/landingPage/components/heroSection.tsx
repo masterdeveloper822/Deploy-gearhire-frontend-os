@@ -12,7 +12,7 @@ export default function HeroSection() {
     <section className="w-full flex justify-center py-14">
       <div className="w-full max-w-[1350px] flex flex-col md:flex-row items-center md:items-start gap-12 px-4 md:px-0">
         {/* Left: Text */}
-        <div className="w-full pt-14 md:w-[800px] flex flex-col justify-center">
+        <div className="w-full pt-14 md:w-[670px] flex flex-col justify-center">
           <h1 className="font-inter font-bold text-[40px] md:text-[60px] leading-[48px] md:leading-[60px] text-gray-800 mb-8">
             Find and Connect with Film Equipment Suppliers
           </h1>
