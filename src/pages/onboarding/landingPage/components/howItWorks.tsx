@@ -12,7 +12,7 @@ export default function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      className="w-full relative bg-gray-50 z-10 flex flex-col items-center my-6 md:my-24"
+      className="w-full relative bg-gray-50 z-10 flex flex-col items-center my-6 lg:my-10 xl:my-24 "
     >
       <Typography variant="h1" className="mb-3 md:mb-5">How FilmGearHub Works</Typography>
       <div className="w-full flex flex-col items-center">
@@ -20,7 +20,7 @@ export default function HowItWorks() {
           <Typography variant="heroSub" className="max-w-2xl text-center">A streamlined platform connecting filmmakers with the equipment they
           need</Typography>
         </div>
-        <div className="w-full flex flex-col md:flex-row gap-8 justify-center items-stretch">
+        <div className="w-full flex flex-col lg:flex-row gap-8 justify-center items-stretch">
           {/* For Renters */}
           <Card className="flex-1 min-w-72 rounded-xl border border-gray-100 shadow-lg flex flex-col items-start px-8 py-6 md:py-8 z-10 bg-gray-50">
             <div className="flex flex-col items-center w-full p-0 mb-3 md:mb-5">
