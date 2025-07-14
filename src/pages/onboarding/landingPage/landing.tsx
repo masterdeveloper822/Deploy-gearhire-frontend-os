@@ -16,13 +16,13 @@ export default function LandingPage() {
       <Header />
       <main className="flex-1 w-full max-w-screen-xl mx-auto px-4 sm:px-8 md:px-10">
         <HeroSection />
-        <HowItWorks />
+        {/* <HowItWorks />
         <Benefits />
         <Waitlist />
-        <UsersSay />
+        <UsersSay /> */}
       </main>
-      <ReadyToTransform />
-      <Footer />
+      {/* <ReadyToTransform />
+      <Footer /> */}
     </div>
   );
 }
