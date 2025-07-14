@@ -5,54 +5,44 @@ import { Button } from "@/src/components/ui/button";
 import imgLandingPage from "@/public/assets/images/landing_image.png";
 import { Typography } from "@/src/components/ui/typography";
 
+const imgImg = "http://localhost:3845/assets/3a83d8ba059eb727a485e6341fb687c2c3575eb5.png";
+
 export default function HeroSection() {
   return (
-    <div className="pt-7 md:pt-14 px-4 sm:px-8 md:px-20">
-      <div className="bg-transparent relative z-3 ml-0 md:ml-4">
-        <div className="flex flex-col md:flex-row w-full items-stretch">
-         <div className="flex flex-col md:flex-row w-full items-stretch overflow-x-hidden">
-          <div className="flex flex-col flex-1 z-[5] w-full min-w-0 max-w-full md:w-0 md:min-w-0 md:max-w-[calc(100%-624px)]">
-            <Typography
-              variant="hero"
-              className="z-[5] pt-8 md:pt-14 leading-8 md:leading-15 text-center md:text-left"
+    <section className="w-full flex justify-center py-14">
+      <div className="w-full max-w-[1350px] flex flex-col md:flex-row items-center md:items-start gap-12 px-4 md:px-0">
+        {/* Left: Text */}
+        <div className="w-full pt-14 md:w-[800px] flex flex-col justify-center">
+          <h1 className="font-inter font-bold text-[40px] md:text-[60px] leading-[48px] md:leading-[60px] text-gray-800 mb-8">
+            Find and Connect with Film Equipment Suppliers
+          </h1>
+          <p className="font-inter text-[18px] md:text-[20px] text-gray-600 leading-[28px] mb-10 max-w-[514px]">
+            The easiest way to post RFQs, browse gear, and connect with trusted merchants in the film production industry.
+          </p>
+          <div className="flex gap-4">
+            <a
+              href="/renter-signup"
+              className="bg-sky-600 text-white rounded-lg h-[60px] w-[172.8px] flex items-center justify-center text-[16px] font-medium transition hover:bg-sky-700"
             >
-              Find and Connect with Film Equipment Suppliers
-            </Typography>
-            <div className="pt-8 md:pt-18 pr-0 md:pr-28 pl-0 md:pl-0 text-center md:text-left">
-              <Typography variant="heroSub">
-                The easiest way to post RFQs, browse gear, and connect with
-                trusted merchants in the film production industry.
-              </Typography>
-              <div className="relative z-[7] mt-8 md:mt-8 flex gap-4 text-base px-10 md:pr-[150px]">
-                <Button variant="skyPrimary" className="w-full md:w-44 h-13 md:h-15">
-                  <Link to="/renter-signup">
-                    Join as Renter
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  variant="blackBorder"
-                  className="w-full md:flex-1 h-13 md:h-[60px]"
-                >
-                  <Link
-                    to="/merchant-signup"
-                  >
-                    Join as Merchant
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-          <div className="flex-shrink-0 pt-10 md:pt-0">
-            <img
-              src={imgLandingPage}
-              alt="Film equipment landing"
-              className="w-full max-w-full h-75 xs:h-75 sm:h-85 md:w-156 md:max-w-156 md:min-w-[624px] md:h-[572px] object-cover rounded-xl z-[13] object-top [object-position:top]"
-            />
+              Join as Renter
+            </a>
+            <a
+              href="/merchant-signup"
+              className="border-2 border-gray-700 text-gray-800 rounded-lg h-[60px] w-[199.7px] flex items-center justify-center text-[16px] font-medium transition hover:bg-gray-100"
+            >
+              Join as Merchant
+            </a>
           </div>
         </div>
+        {/* Right: Image */}
+        <div className="w-full md:w-[624px] flex justify-center">
+          <img
+            src={imgImg}
+            alt="Film equipment"
+            className="w-[312px] h-[312px] md:w-[624px] md:h-[624px] rounded-xl shadow-lg object-cover"
+          />
         </div>
       </div>
-    </div>
+    </section>
   );
 } 
