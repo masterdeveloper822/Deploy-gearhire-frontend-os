@@ -10,7 +10,7 @@ const imgImg = "http://localhost:3845/assets/3a83d8ba059eb727a485e6341fb687c2c35
 export default function HeroSection() {
   return (
     <section className="w-full flex justify-center py-14">
-      <div className="w-full max-w-[1350px] flex flex-col md:flex-row items-center md:items-start gap-12 px-4 md:px-0">
+      <div className="w-full max-w-[1350px] h-[] flex flex-col md:flex-row items-center md:items-start gap-12 px-4 md:px-0">
         {/* Left: Text */}
         <div className="w-full pt-14 md:w-[670px] flex flex-col justify-center">
           <h1 className="font-inter font-bold text-[40px] md:text-[60px] leading-[48px] md:leading-[60px] text-gray-800 mb-8">
@@ -39,7 +39,7 @@ export default function HeroSection() {
           <img
             src={imgImg}
             alt="Film equipment"
-            className="w-[312px] h-[312px] md:w-[560px] md:h-[560px] rounded-xl shadow-lg object-cover"
+            className="w-[312px] h-[312px] md:w-[560px] md:h-[560px] rounded-xl object-cover"
           />
         </div>
       </div>
