@@ -7,11 +7,11 @@ interface HeaderFrameProps {
 
 export default function HeaderFrame({ children }: HeaderFrameProps) {
   return (
-    <header className="bg-white shadow-sm relative z-10 px-4 sm:px-8 lg:px-20 h-[74px]">
-        <div className="container p-0 md:p-4 mx-auto md:mx-[104px] flex items-center justify-between h-[74px]">
-            <SiteLogo />
-            {children}
-        </div>
+    <header className="w-full bg-white shadow-sm">
+      <div className="max-w-[1550px] mx-auto flex items-center justify-between px-4 md:px-8 h-[74px]">
+        <SiteLogo />
+        {children}
+      </div>
     </header>
   );
 }
