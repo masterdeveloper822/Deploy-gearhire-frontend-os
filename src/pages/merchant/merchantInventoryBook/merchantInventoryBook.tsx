@@ -6,6 +6,7 @@ import { Button } from "@/src/components/ui/button";
 import { MerchantHeader } from "@/src/components/custom/header/merchantHeader";
 import { Input } from "@/src/components/ui/input";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/src/components/ui/select";
+import { Switch } from "@/src/components/ui/switch";
 
 // Figma image assets
 
@@ -14,7 +15,6 @@ import blackSearchIcon from "@/public/assets/icons/search_black.svg";
 import itemIcon from "@/public/assets/icons/item.svg";
 import greenEyeIcon from "@/public/assets/icons/green_eye.svg";
 import closedEyeIcon from "@/public/assets/icons/eye_closed.svg";
-import { SwitchToggle } from "@/src/components/custom/SwitchToggle";
 import editItemIcon from "@/public/assets/icons/item_edit.svg";
 import deleteItemIcon from "@/public/assets/icons/item_delete.svg";
 
@@ -194,10 +194,10 @@ export default function MerchantInventoryBook() {
               {/* Action bar: toggle, edit, delete */}
               <div className="flex items-center gap-4">
                 {/* Toggle Switch */}
-                <SwitchToggle
+                <Switch
                   checked={item.public}
-                  onChange={() => handleToggle(idx)}
-                  ariaLabel="Toggle public/private"
+                  onCheckedChange={() => handleToggle(idx)}
+                  aria-label="Toggle public/private"
                 />
                 {/* Edit Icon */}
                 <button className="p-1 hover:bg-gray-100 rounded" aria-label="Edit">
