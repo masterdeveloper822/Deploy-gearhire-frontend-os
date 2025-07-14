@@ -5,6 +5,7 @@ import { Button } from "@/src/components/ui/button";
 import imgLandingPage from "@/public/assets/images/landing_image.png";
 import { Typography } from "@/src/components/ui/typography";
 
+
 export default function HeroSection() {
   return (
     <section className="w-full flex justify-center py-8 sm:py-14 md:py-0">
