@@ -35,11 +35,11 @@ export default function HeroSection() {
           </div>
         </div>
         {/* Right: Image */}
-        <div className="w-full md:w-[624px] flex justify-center">
+        <div className="w-full md:w-[624px] h-[460px] flex justify-center">
           <img
             src={imgImg}
             alt="Film equipment"
-            className="w-[312px] h-[312px] md:w-[624px] md:h-[624px] rounded-xl shadow-lg object-cover"
+            className="w-[312px] h-[312px] md:w-[560px] md:h-[560px] rounded-xl shadow-lg object-cover"
           />
         </div>
       </div>
