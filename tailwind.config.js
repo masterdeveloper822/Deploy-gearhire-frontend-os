@@ -49,7 +49,11 @@ module.exports = {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
-  			}
+  			},
+			  tertiary: {
+				DEFAULT: 'hsl(var(--tertiary))',
+				foreground: 'hsl(var(--tertiary-foreground))'
+			},
   		},
 		fontFamily: {
 			sans: ['Inter', 'sans-serif'],

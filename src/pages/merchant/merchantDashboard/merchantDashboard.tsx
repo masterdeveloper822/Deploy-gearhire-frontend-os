@@ -128,7 +128,7 @@ export default function MerchantDashboard() {
                 <span className="text-gray-800 text-base font-medium">Pro Plan Active</span>
               </div>
               <div className="text-sm text-gray-600">Next billing: Jan 15, 2025</div>
-              <Button variant="skyPrimary" className="bg-sky-600 text-white rounded-lg w-full mt-2 hover:bg-sky-700">Manage Subscription</Button>
+              <Button variant="tertiary" size="lg" className="text-white rounded-lg w-full mt-2">Manage Subscription</Button>
             </Card>
             {/* This Month Stats */}
             <Card className="rounded-xl shadow p-6 flex flex-col gap-4">

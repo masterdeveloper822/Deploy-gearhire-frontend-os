@@ -28,6 +28,8 @@ const buttonVariants = cva(
         blackBorder: "border-black border px-4 py-2 bg-gray-50 text-gray-900 rounded-[8px] text-[16px] flex-1 flex items-center hover:bg-sky-50 hover:text-sky-900 justify-center box-border",
         whiteBorder: "flex-1 md:flex-none px-8 py-4 border-2 border-white text-white font-medium text-base bg-transparent hover:bg-white/10 transition-colors",
         skyPrimary: "bg-sky-600 text-white hover:bg-sky-700 px-4 py-2 rounded-[8px] text-[16px] flex items-center justify-center box-border",
+        tertiary:
+          "bg-tertiary text-tertiary-foreground shadow-sm hover:bg-tertiary/90",
       },
       size: {
         default: "h-9 px-4 py-2",

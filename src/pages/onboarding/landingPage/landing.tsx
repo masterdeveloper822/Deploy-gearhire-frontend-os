@@ -6,7 +6,7 @@ import HeroSection from "./components/heroSection";
 import HowItWorks from "./components/howItWorks";
 import Benefits from "./components/benefits";
 import Waitlist from "./components/waitlist";
-import UsersSay from "./components/usersSay";
+import { UsersSay } from "./components/users-say";
 import ReadyToTransform from "./components/readyToTransform";
 import Footer from "./components/footer";
 
@@ -19,8 +19,8 @@ export default function LandingPage() {
         <HowItWorks />
         <Benefits />
         <Waitlist />
-        <UsersSay />
       </main>
+      <UsersSay />
       <ReadyToTransform />
       <Footer />
     </div>
