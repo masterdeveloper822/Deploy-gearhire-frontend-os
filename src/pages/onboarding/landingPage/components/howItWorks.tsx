@@ -12,7 +12,7 @@ export default function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      className="w-full relative bg-gray-50 z-10 flex flex-col items-center py-6 md:py-24"
+      className="w-full relative bg-gray-50 z-10 flex flex-col items-center my-6 md:my-24"
     >
       <Typography variant="h1" className="mb-3 md:mb-5">How FilmGearHub Works</Typography>
       <div className="w-full flex flex-col items-center">
