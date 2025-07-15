@@ -1,9 +1,9 @@
 import React from "react";
-import "../../global.css";
+import "@/styles/global.css";
 import Header from "./components/header";
 import Body from "./components/body";
 
-export default function Login() {
+const Login: React.FC = () => {
   return (
     <div className="bg-white relative rounded-lg w-full min-h-screen">
       <div className="bg-gray-50 w-full min-h-screen">
@@ -12,4 +12,6 @@ export default function Login() {
       </div>
     </div>
   );
-}
+};
+
+export { Login };

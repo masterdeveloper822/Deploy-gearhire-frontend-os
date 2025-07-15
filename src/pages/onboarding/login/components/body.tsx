@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import {Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-import { Button } from "@/src/components/ui/button";
-import { useToast } from "@/src/hooks/use-toast";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 import { Eye, EyeOff } from "lucide-react";
 
 export default function Body() {
@@ -87,10 +87,16 @@ export default function Body() {
         <span className="block text-base sm:text-lg text-gray-600 text-center mb-6 sm:mb-8 px-4">
           Welcome back! Sign in to access your account
         </span>
-        <form onSubmit={handleSubmit} className="w-full bg-white rounded-2xl shadow-lg p-6 sm:p-8 flex flex-col gap-6">
+        <form
+          onSubmit={handleSubmit}
+          className="w-full bg-white rounded-2xl shadow-lg p-6 sm:p-8 flex flex-col gap-6"
+        >
           {/* Email */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2" htmlFor="email">
+            <label
+              className="block text-sm font-semibold text-gray-700 mb-2"
+              htmlFor="email"
+            >
               Email Address
             </label>
             <input
@@ -109,7 +115,10 @@ export default function Body() {
           </div>
           {/* Password */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2" htmlFor="password">
+            <label
+              className="block text-sm font-semibold text-gray-700 mb-2"
+              htmlFor="password"
+            >
               Password
             </label>
             <div className="relative">
@@ -141,13 +150,13 @@ export default function Body() {
               <p className="text-red-500 text-sm mt-1">{errors.password}</p>
             )}
           </div>
-          
+
           <Link
-              to="/reset-password"
-              className="font-normal text-sky-600 text-base underline p-0 h-auto text-right"
-            >
-              Forgot Password?
-            </Link>
+            to="/reset-password"
+            className="font-normal text-sky-600 text-base underline p-0 h-auto text-right"
+          >
+            Forgot Password?
+          </Link>
           {/* Submit Button */}
           <Button
             type="submit"
@@ -155,17 +164,17 @@ export default function Body() {
           >
             Log In
           </Button>
-        <div className="w-full flex justify-center border-t border-gray-200 pt-6">
-          <span className="text-base text-gray-600">
-            Don't have an account?{" "}
-            <Link
-              to="/create-account"
-              className="font-normal text-sky-600 text-base underline p-0 h-auto"
-            >
-              Sign Up
-            </Link>
-          </span>
-        </div>
+          <div className="w-full flex justify-center border-t border-gray-200 pt-6">
+            <span className="text-base text-gray-600">
+              Don't have an account?{" "}
+              <Link
+                to="/create-account"
+                className="font-normal text-sky-600 text-base underline p-0 h-auto"
+              >
+                Sign Up
+              </Link>
+            </span>
+          </div>
         </form>
       </div>
     </div>

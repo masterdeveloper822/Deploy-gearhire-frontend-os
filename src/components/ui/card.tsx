@@ -1,6 +1,6 @@
-import * as React from "react"
+import * as React from "react";
 
-import { cn } from "@/src/lib/utils"
+import { cn } from "@/lib/utils";
 
 const Card = React.forwardRef<
   HTMLDivElement,
@@ -10,12 +10,12 @@ const Card = React.forwardRef<
     ref={ref}
     className={cn(
       "rounded-xl border bg-card text-card-foreground shadow",
-      className
+      className,
     )}
     {...props}
   />
-))
-Card.displayName = "Card"
+));
+Card.displayName = "Card";
 
 const CardHeader = React.forwardRef<
   HTMLDivElement,
@@ -26,8 +26,8 @@ const CardHeader = React.forwardRef<
     className={cn("flex flex-col space-y-1.5 p-6", className)}
     {...props}
   />
-))
-CardHeader.displayName = "CardHeader"
+));
+CardHeader.displayName = "CardHeader";
 
 const CardTitle = React.forwardRef<
   HTMLDivElement,
@@ -38,8 +38,8 @@ const CardTitle = React.forwardRef<
     className={cn("font-semibold leading-none tracking-tight", className)}
     {...props}
   />
-))
-CardTitle.displayName = "CardTitle"
+));
+CardTitle.displayName = "CardTitle";
 
 const CardDescription = React.forwardRef<
   HTMLDivElement,
@@ -50,16 +50,16 @@ const CardDescription = React.forwardRef<
     className={cn("text-sm text-muted-foreground", className)}
     {...props}
   />
-))
-CardDescription.displayName = "CardDescription"
+));
+CardDescription.displayName = "CardDescription";
 
 const CardContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
   <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
-))
-CardContent.displayName = "CardContent"
+));
+CardContent.displayName = "CardContent";
 
 const CardFooter = React.forwardRef<
   HTMLDivElement,
@@ -70,8 +70,8 @@ const CardFooter = React.forwardRef<
     className={cn("flex items-center p-6 pt-0", className)}
     {...props}
   />
-))
-CardFooter.displayName = "CardFooter"
+));
+CardFooter.displayName = "CardFooter";
 
 interface CardIconProps {
   src: string;
@@ -80,7 +80,12 @@ interface CardIconProps {
   iconClassName?: string;
 }
 
-const CardIcon: React.FC<CardIconProps> = ({ src, alt, size = 64, iconClassName }) => (
+const CardIcon: React.FC<CardIconProps> = ({
+  src,
+  alt,
+  size = 64,
+  iconClassName,
+}) => (
   <div
     className="rounded-full flex items-center justify-center bg-sky-100"
     style={{ width: size, height: size }}
@@ -102,16 +107,18 @@ interface SquaredIconProps {
   iconClassName?: string;
 }
 
-const SquaredIcon: React.FC<SquaredIconProps> = ({ src, alt, size = 56, className = "", iconClassName }) => (
+const SquaredIcon: React.FC<SquaredIconProps> = ({
+  src,
+  alt,
+  size = 56,
+  className = "",
+  iconClassName,
+}) => (
   <div
     className={`rounded-[8px] relative flex items-center justify-center bg-[rgba(255,255,255,0.2)] z-[149] ${className}`}
     style={{ width: size, height: size }}
   >
-    <img
-      src={src}
-      alt={alt}
-      className={iconClassName || "w-7 h-6"}
-    />
+    <img src={src} alt={alt} className={iconClassName || "w-7 h-6"} />
   </div>
 );
 
@@ -120,7 +127,10 @@ interface ProfilePhotoPlaceholderProps {
   alt?: string;
 }
 
-const ProfilePhotoPlaceholder: React.FC<ProfilePhotoPlaceholderProps> = ({ src, alt = "Profile Placeholder" }) => (
+const ProfilePhotoPlaceholder: React.FC<ProfilePhotoPlaceholderProps> = ({
+  src,
+  alt = "Profile Placeholder",
+}) => (
   <div className="w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden">
     <img src={src} alt={alt} className="w-6 h-8" />
   </div>
@@ -148,7 +158,11 @@ const RecentActivityCard: React.FC<RecentActivityCardProps> = ({
   likesIcon,
 }) => (
   <div className="bg-gray-100 flex flex-row items-start gap-4 px-6 mb-4 py-5 rounded-[8px]">
-    <img src={avatar} alt={name} className="w-12 h-12 rounded-full object-cover" />
+    <img
+      src={avatar}
+      alt={name}
+      className="w-12 h-12 rounded-full object-cover"
+    />
     <div className="flex-1">
       <div className="flex items-center gap-2 mb-1">
         <span className="font-semibold text-gray-900">{name}</span>
@@ -169,5 +183,15 @@ const RecentActivityCard: React.FC<RecentActivityCardProps> = ({
   </div>
 );
 
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent , CardIcon, 
-  SquaredIcon, ProfilePhotoPlaceholder, RecentActivityCard}
+export {
+  Card,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardIcon,
+  SquaredIcon,
+  ProfilePhotoPlaceholder,
+  RecentActivityCard,
+};
