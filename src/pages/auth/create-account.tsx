@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 
 import { AuthHeader } from "@/components/layout/header/auth-header"
-import { CreateAccountForm } from "@/components/auth/create-account-form"
+import CreateAccountForm from "@/components/auth/create-account-form"
 
 const CreateAccount: React.FC = () => {
   return (

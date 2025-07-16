@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router-dom";
 import { LandingPage } from "../pages/landing";
 import { CreateAccount } from "@/pages/auth/create-account";
+import { Login } from "@/pages/auth/login";
 
 // export default function App() {
 //   return (
 //       <Routes>
 //         <Route path="/email-verify" element={<EmailVerify />} />
-//         <Route path="/login" element={<Login />} />
 //         <Route path="/reset-password" element={<ResetPassword />} />
 //         <Route path="/merchant-next-step" element={<MerchantNextStep />} />
 //         <Route
@@ -32,6 +32,7 @@ const AppRoutes = () => (
   <Routes>
     <Route path="/" element={<LandingPage />} />
     <Route path="/signup" element={<CreateAccount />} />
+    <Route path="/login" element={<Login />} />
   </Routes>
 );
 

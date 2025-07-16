@@ -1,143 +1,73 @@
 import React, { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
-
-import { useToast } from "@/hooks/use-toast"
+import { useForm, Controller } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { z } from "zod"
+import { useNavigate, Link } from "react-router-dom"
 import { Eye, EyeOff } from "lucide-react"
-
+import { AuthInput } from "@/components/auth/auth-input"
+import { SubmitButton } from "@/components/auth/submit-button"
+import { CheckboxWithLink } from "@/components/auth/checkbox-with-link"
+import { UserTypeSelector } from "@/components/auth/user-type-selector"
 import cameraIcon from "@/assets/images/ui/icons/camera.svg"
 import homeIcon from "@/assets/images/ui/icons/home.svg"
+import { useToast } from "@/hooks/use-toast"
 
-import { UserTypeSelector } from "@/components/auth/user-type-selector"
-import { AuthInput } from "@/components/auth/auth-input"
-import { CheckboxWithLink } from "@/components/auth/checkbox-with-link"
-import { SubmitButton } from "@/components/auth/submit-button"
+const createAccountSchema = z
+  .object({
+    type: z.enum(["renter", "merchant"], {
+      message: "Please select an account type",
+    }),
+    email: z
+      .string()
+      .min(1, "Email is required")
+      .email("Please enter a valid email address"),
+    password: z.string().min(8, "Password must be at least 8 characters"),
+    confirmPassword: z.string().min(1, "Please confirm your password"),
+    agreeToTerms: z.literal(true, { message: "You must agree to the terms" }),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+  })
+
+type CreateAccountSchema = z.infer<typeof createAccountSchema>
 
 const CreateAccountForm: React.FC = () => {
-  const [selectedType, setSelectedType] = useState<
-    "renter" | "merchant" | null
-  >(null)
-  const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const { toast } = useToast()
   const navigate = useNavigate()
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
-  // Form state
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    confirmPassword: "",
-    agreeToTerms: false,
-  })
-
-  // Validation state
-  const [errors, setErrors] = useState({
-    email: "",
-    password: "",
-    confirmPassword: "",
-    type: "",
-  })
-
-  // Handle input changes
-  const handleInputChange = (field: string, value: string | boolean) => {
-    setFormData((prev) => ({
-      ...prev,
-      [field]: value,
-    }))
-
-    // Clear error when user starts typing
-    if (field !== "agreeToTerms") {
-      setErrors((prev) => ({
-        ...prev,
-        [field]: "",
-      }))
-    }
-  }
-
-  // Validation function
-  const validateForm = () => {
-    const newErrors = {
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors, isValid },
+    setValue,
+    watch,
+  } = useForm<CreateAccountSchema>({
+    resolver: zodResolver(createAccountSchema),
+    mode: "onChange",
+    defaultValues: {
+      type: undefined,
       email: "",
       password: "",
       confirmPassword: "",
-      type: "",
-    }
+      agreeToTerms: true,
+    },
+  })
 
-    // Check account type
-    if (!selectedType) {
-      newErrors.type = "Please select an account type"
-    }
-
-    // Check email
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required"
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address"
-    }
-
-    // Check password
-    if (!formData.password) {
-      newErrors.password = "Password is required"
-    } else if (formData.password.length < 8) {
-      newErrors.password = "Password must be at least 8 characters"
-    }
-
-    // Check confirm password
-    if (!formData.confirmPassword) {
-      newErrors.confirmPassword = "Please confirm your password"
-    } else if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = "Passwords do not match"
-    }
-
-    setErrors(newErrors)
-    return (
-      !newErrors.email &&
-      !newErrors.password &&
-      !newErrors.confirmPassword &&
-      !newErrors.type
-    )
+  const onSubmit = (data: CreateAccountSchema) => {
+    toast({
+      title: "Success!",
+      description: "Account created successfully!",
+    })
+    setTimeout(() => {
+      navigate("/email-verify")
+    }, 1000)
   }
 
-  // Handle form submission
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-
-    if (validateForm() && formData.agreeToTerms) {
-      // Form is valid, proceed with submission
-      console.log("Form submitted:", { selectedType, ...formData })
-      toast({
-        title: "Success!",
-        description: "Account created successfully!",
-      })
-      // Add your submission logic here
-      setTimeout(() => {
-        navigate("/email-verify")
-      }, 1000)
-    } else if (!formData.agreeToTerms) {
-      // Show terms agreement error
-      toast({
-        variant: "destructive",
-        title: "Terms Required",
-        description: "Please agree to the Terms of Service and Privacy Policy",
-      })
-    } else {
-      // Show validation errors
-      validateForm()
-      toast({
-        variant: "destructive",
-        title: "Validation Error",
-        description: "Please fix the validation errors above",
-      })
-    }
-  }
-
-  // Check if form is valid for button state
-  const isFormValid =
-    selectedType &&
-    formData.email.trim() &&
-    formData.password &&
-    formData.confirmPassword &&
-    formData.password === formData.confirmPassword &&
-    formData.agreeToTerms
+  const selectedType = watch("type")
 
   return (
     <div className="mx-auto flex min-h-screen w-full max-w-screen-2xl flex-col items-center bg-transparent px-4 py-8 sm:py-12 lg:py-16">
@@ -150,44 +80,48 @@ const CreateAccountForm: React.FC = () => {
           industry
         </span>
         <form
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmit(onSubmit)}
           className="flex w-full flex-col gap-6 rounded-2xl bg-white p-6 shadow-lg sm:p-8"
         >
           {/* Account Type Selection */}
-          <div>
-            <span className="mb-3 block text-sm font-semibold text-gray-700">
-              I want to join as:
-            </span>
-            <UserTypeSelector
-              selectedType={selectedType}
-              setSelectedType={setSelectedType}
-              setErrors={setErrors}
-              cameraIcon={cameraIcon}
-              homeIcon={homeIcon}
-            />
-            {errors.type && (
-              <p className="mt-2 text-sm text-red-500">{errors.type}</p>
+          <Controller
+            name="type"
+            control={control}
+            render={({ field }) => (
+              <div>
+                <span className="mb-3 block text-sm font-semibold text-gray-700">
+                  I want to join as:
+                </span>
+                <UserTypeSelector
+                  selectedType={field.value}
+                  setSelectedType={field.onChange}
+                  cameraIcon={cameraIcon}
+                  homeIcon={homeIcon}
+                />
+                {errors.type && (
+                  <p className="mt-2 text-sm text-red-500">
+                    {errors.type.message}
+                  </p>
+                )}
+              </div>
             )}
-          </div>
+          />
           {/* Email */}
           <AuthInput
             id="email"
             label="Email Address"
             type="email"
-            value={formData.email}
-            onChange={(e) => handleInputChange("email", e.target.value)}
             placeholder="Enter your email address"
-            error={errors.email}
+            error={errors.email?.message}
+            {...register("email")}
           />
           {/* Password */}
           <AuthInput
             id="password"
             label="Password"
             type={showPassword ? "text" : "password"}
-            value={formData.password}
-            onChange={(e) => handleInputChange("password", e.target.value)}
             placeholder="Create a strong password"
-            error={errors.password}
+            error={errors.password?.message}
             rightAdornment={
               <button
                 type="button"
@@ -203,18 +137,15 @@ const CreateAccountForm: React.FC = () => {
                 )}
               </button>
             }
+            {...register("password")}
           />
           {/* Confirm Password */}
           <AuthInput
             id="confirm-password"
             label="Confirm Password"
             type={showConfirmPassword ? "text" : "password"}
-            value={formData.confirmPassword}
-            onChange={(e) =>
-              handleInputChange("confirmPassword", e.target.value)
-            }
             placeholder="Confirm your password"
-            error={errors.confirmPassword}
+            error={errors.confirmPassword?.message}
             rightAdornment={
               <button
                 type="button"
@@ -232,18 +163,28 @@ const CreateAccountForm: React.FC = () => {
                 )}
               </button>
             }
+            {...register("confirmPassword")}
           />
           {/* Terms and Conditions */}
-          <CheckboxWithLink
-            checked={formData.agreeToTerms}
-            onCheckedChange={(checked) =>
-              handleInputChange("agreeToTerms", checked as boolean)
-            }
-            termsUrl="/terms"
-            privacyUrl="/privacy"
+          <Controller
+            name="agreeToTerms"
+            control={control}
+            render={({ field }) => (
+              <CheckboxWithLink
+                checked={field.value}
+                onCheckedChange={field.onChange}
+                termsUrl="/terms"
+                privacyUrl="/privacy"
+              />
+            )}
           />
+          {errors.agreeToTerms && (
+            <p className="mt-2 text-sm text-red-500">
+              {errors.agreeToTerms.message}
+            </p>
+          )}
           {/* Submit Button */}
-          <SubmitButton isFormValid={isFormValid}>Create Account</SubmitButton>
+          <SubmitButton isFormValid={isValid}>Create Account</SubmitButton>
           <div className="mt-6 flex w-full justify-center border-t border-gray-200 pt-6">
             <span className="text-base text-gray-600">
               Already have an account?{" "}
@@ -261,4 +202,4 @@ const CreateAccountForm: React.FC = () => {
   )
 }
 
-export { CreateAccountForm }
+export default CreateAccountForm
