@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 import { LandingPage } from "../pages/landing";
+import { CreateAccount } from "@/pages/auth/create-account";
 
 // export default function App() {
 //   return (
 //       <Routes>
-//         <Route path="/create-account" element={<CreateAccount />} />
 //         <Route path="/email-verify" element={<EmailVerify />} />
 //         <Route path="/login" element={<Login />} />
 //         <Route path="/reset-password" element={<ResetPassword />} />
@@ -31,6 +31,7 @@ import { LandingPage } from "../pages/landing";
 const AppRoutes = () => (
   <Routes>
     <Route path="/" element={<LandingPage />} />
+    <Route path="/signup" element={<CreateAccount />} />
   </Routes>
 );
 
