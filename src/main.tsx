@@ -6,8 +6,10 @@ import App from "./App";
 import { Toaster } from "./components/ui/toaster";
 
 ReactDOM.createRoot(document.getElementById("app")!).render(
-  <BrowserRouter>
-    <App />
-    <Toaster />
-  </BrowserRouter>
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+      <Toaster />
+    </BrowserRouter>
+  </React.StrictMode>
 );

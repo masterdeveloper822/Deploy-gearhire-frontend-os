@@ -1,13 +1,13 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import "@/styles/global.css"
 
-import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 
 import { AuthHeader } from "@/components/layout/header/auth-header"
-import LogInForm from "../../components/auth/login-form"
+import { ResetPasswordForm } from "@/components/auth/reset-password-form"
 
-const Login: React.FC = () => {
+const ResetPassword: React.FC = () => {
   return (
     <div className="relative min-h-screen w-full rounded-lg bg-white">
       <div className="min-h-screen w-full bg-gray-50">
@@ -27,10 +27,10 @@ const Login: React.FC = () => {
             </Button>
           </div>
         </AuthHeader>
-        <LogInForm />
+        <ResetPasswordForm />
       </div>
     </div>
   )
 }
 
-export { Login }
+export { ResetPassword }

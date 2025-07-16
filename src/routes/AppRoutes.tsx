@@ -1,18 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import { LandingPage } from "../pages/landing";
-import { CreateAccount } from "@/pages/auth/create-account";
-import { Login } from "@/pages/auth/login";
+import { EditMerchantProfile } from "@/pages/merchant/edit-profile";
+import MerchantNextStep from "@/pages/merchant/next-step";
+import AuthRoutes from "./AuthRoutes";
 
-// export default function App() {
-//   return (
-//       <Routes>
-//         <Route path="/email-verify" element={<EmailVerify />} />
-//         <Route path="/reset-password" element={<ResetPassword />} />
-//         <Route path="/merchant-next-step" element={<MerchantNextStep />} />
-//         <Route
-//           path="/edit-merchant-profile"
-//           element={<EditMerchantProfile />}
-//         />
 //         <Route path="/merchant-dashboard" element={<MerchantDashboard />} />
 //         <Route
 //           path="/merchant-inventory-book"
@@ -24,15 +15,13 @@ import { Login } from "@/pages/auth/login";
 //         />
 //         <Route path="/training-course-list" element={<TrainingCourseList />} />
 //       </Routes>
-//   );
-// }
-
 
 const AppRoutes = () => (
   <Routes>
     <Route path="/" element={<LandingPage />} />
-    <Route path="/signup" element={<CreateAccount />} />
-    <Route path="/login" element={<Login />} />
+    {AuthRoutes}
+    <Route path="/edit-merchant-profile" element={<EditMerchantProfile />} />
+    <Route path="/merchant-next-step" element={<MerchantNextStep />} />
   </Routes>
 );
 
