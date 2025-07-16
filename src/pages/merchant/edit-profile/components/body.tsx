@@ -6,7 +6,7 @@ import merchantProfileDefaultIcon from "@/assets/images/ui/icons/merchantProfile
 import uploadPhotoIcon from "@/assets/images/ui/icons/uploadPhoto.svg"
 import instagramSmallIcon from "@/assets/images/ui/icons/social/instagramSmall.svg"
 import linkedinSmallIcon from "@/assets/images/ui/icons/social/linkedinSmall.svg"
-import saveButtonIcon from "@/assets/images/ui/icons/saveButton.svg"
+import saveButtonIcon from "@/assets/images/ui/icons/file-manage/saveButton.svg"
 import eyeIcon from "@/assets/images/ui/icons/eye.svg"
 
 import { BusinessNameInput } from "@/components/ui/input"

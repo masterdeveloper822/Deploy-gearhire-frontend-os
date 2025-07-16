@@ -1,34 +1,34 @@
-import React from "react";
+import React from "react"
 
-import { Typography } from "@/components/ui/typography";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { RecentActivityCard } from "@/components/ui/card";
-import { MerchantHeader } from "@/components/layout/header/merchant-header";
+import { Typography } from "@/components/ui/typography"
+import { Card } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { RecentActivityCard } from "@/components/ui/card"
+import { MerchantHeader } from "@/components/layout/header/merchant-header"
 
 // Figma image assets
 const imgFrame =
-  "http://localhost:3845/assets/ed4e1169b638e2e838350960320b53c878e45615.svg";
+  "http://localhost:3845/assets/ed4e1169b638e2e838350960320b53c878e45615.svg"
 const imgFrame3 =
-  "http://localhost:3845/assets/fe78f47cee056f7c1e4da9ef1369e247daf9bdd9.svg";
+  "http://localhost:3845/assets/fe78f47cee056f7c1e4da9ef1369e247daf9bdd9.svg"
 const imgFrame4 =
-  "http://localhost:3845/assets/d610c794e0934493cb23c041b0fe7fe2d768505e.svg";
+  "http://localhost:3845/assets/d610c794e0934493cb23c041b0fe7fe2d768505e.svg"
 const imgFrame5 =
-  "http://localhost:3845/assets/77ca1e3fa0656777303fbaeb5bd14e35c913d021.svg";
+  "http://localhost:3845/assets/77ca1e3fa0656777303fbaeb5bd14e35c913d021.svg"
 const imgFrame6 =
-  "http://localhost:3845/assets/04a1414121a05ee827326ca429ad2c8b4e359e3f.svg";
+  "http://localhost:3845/assets/04a1414121a05ee827326ca429ad2c8b4e359e3f.svg"
 const imgFrame7 =
-  "http://localhost:3845/assets/3d1f1c94bc4cc3cb4c118e0be60cd438bd83c560.svg";
+  "http://localhost:3845/assets/3d1f1c94bc4cc3cb4c118e0be60cd438bd83c560.svg"
 const imgFrame8 =
-  "http://localhost:3845/assets/229ba2971361b2bf735f5e0cd6364707b77b9723.svg";
+  "http://localhost:3845/assets/229ba2971361b2bf735f5e0cd6364707b77b9723.svg"
 const imgFrame9 =
-  "http://localhost:3845/assets/ca64e7fdf51fe8776e021df1937d9fa8931aee9d.svg";
+  "http://localhost:3845/assets/ca64e7fdf51fe8776e021df1937d9fa8931aee9d.svg"
 const imgImg1 =
-  "http://localhost:3845/assets/ec901f1c0d6bdc3abb3b7f2578c96a444ee001e2.png";
+  "http://localhost:3845/assets/ec901f1c0d6bdc3abb3b7f2578c96a444ee001e2.png"
 const imgImg2 =
-  "http://localhost:3845/assets/bec21fc75386a86210d32bec8ca98fcb2380d21e.png";
+  "http://localhost:3845/assets/bec21fc75386a86210d32bec8ca98fcb2380d21e.png"
 const imgImg3 =
-  "http://localhost:3845/assets/93261e682a4fc24925831eb042e025379dab45ab.png";
+  "http://localhost:3845/assets/93261e682a4fc24925831eb042e025379dab45ab.png"
 
 const MerchantDashboard: React.FC = () => {
   return (
@@ -37,14 +37,14 @@ const MerchantDashboard: React.FC = () => {
       <MerchantHeader />
 
       {/* Main Content */}
-      <main className="max-w-[1280px] mx-auto px-4 py-8">
+      <main className="mx-auto max-w-[1280px] px-4 py-8">
         {/* Welcome Section */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+        <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
             <div className="pb-4">
               <Typography
                 variant="h1"
-                className="text-[30px] text-gray-800 mb-1"
+                className="mb-1 text-[30px] text-gray-800"
               >
                 Welcome back, ProGear Studios
               </Typography>
@@ -55,19 +55,19 @@ const MerchantDashboard: React.FC = () => {
               </Typography>
             </div>
           </div>
-          <div className="flex items-center bg-green-100 rounded-full px-4 py-2 gap-2">
-            <img src={imgFrame3} alt="Verified" className="w-5 h-5" />
-            <span className="text-green-800 text-base font-medium">
+          <div className="flex items-center gap-2 rounded-full bg-green-100 px-4 py-2">
+            <img src={imgFrame3} alt="Verified" className="h-5 w-5" />
+            <span className="text-base font-medium text-green-800">
               Verified Merchant
             </span>
           </div>
         </div>
 
         {/* Main grid: Quick Access (left) + Sidebar (right) */}
-        <div className="flex flex-col lg:flex-row gap-8 mb-8">
+        <div className="mb-8 flex flex-col gap-8 lg:flex-row">
           {/* Quick Access Cards */}
           <div className="flex-1 flex-col">
-            <div className="mb-6">
+            <div className="mb-8">
               <Typography
                 variant="heroSub"
                 className="font-semibold text-gray-900"
@@ -75,12 +75,12 @@ const MerchantDashboard: React.FC = () => {
                 Quick Access
               </Typography>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               {/* My Inventory */}
-              <Card className="rounded-xl shadow p-6 flex flex-col gap-4">
+              <Card className="flex flex-col gap-4 rounded-xl p-6 shadow">
                 <div className="flex items-center gap-4">
-                  <div className="bg-sky-100 rounded-lg w-12 h-12 flex items-center justify-center">
-                    <img src={imgFrame4} alt="Inventory" className="w-6 h-6" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-sky-100">
+                    <img src={imgFrame4} alt="Inventory" className="h-6 w-6" />
                   </div>
                   <div className="flex-1 text-right">
                     <div className="text-2xl font-bold text-gray-800">24</div>
@@ -94,10 +94,10 @@ const MerchantDashboard: React.FC = () => {
                 </div>
               </Card>
               {/* RFQs Submitted */}
-              <Card className="rounded-xl shadow p-6 flex flex-col gap-4">
+              <Card className="flex flex-col gap-4 rounded-xl p-6 shadow">
                 <div className="flex items-center gap-4">
-                  <div className="bg-blue-100 rounded-lg w-12 h-12 flex items-center justify-center">
-                    <img src={imgFrame5} alt="RFQs" className="w-6 h-6" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100">
+                    <img src={imgFrame5} alt="RFQs" className="h-6 w-6" />
                   </div>
                   <div className="flex-1 text-right">
                     <div className="text-2xl font-bold text-gray-800">8</div>
@@ -111,10 +111,10 @@ const MerchantDashboard: React.FC = () => {
                 </div>
               </Card>
               {/* Reviews Received */}
-              <Card className="rounded-xl shadow p-6 flex flex-col gap-4">
+              <Card className="flex flex-col gap-4 rounded-xl p-6 shadow">
                 <div className="flex items-center gap-4">
-                  <div className="bg-yellow-100 rounded-lg w-12 h-12 flex items-center justify-center">
-                    <img src={imgFrame6} alt="Reviews" className="w-6 h-6" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-yellow-100">
+                    <img src={imgFrame6} alt="Reviews" className="h-6 w-6" />
                   </div>
                   <div className="flex-1 text-right">
                     <div className="text-2xl font-bold text-gray-800">4.8</div>
@@ -128,10 +128,10 @@ const MerchantDashboard: React.FC = () => {
                 </div>
               </Card>
               {/* My Training Courses */}
-              <Card className="rounded-xl shadow p-6 flex flex-col gap-4">
+              <Card className="flex flex-col gap-4 rounded-xl p-6 shadow">
                 <div className="flex items-center gap-4">
-                  <div className="bg-green-100 rounded-lg w-12 h-12 flex items-center justify-center">
-                    <img src={imgFrame7} alt="Courses" className="w-6 h-6" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-green-100">
+                    <img src={imgFrame7} alt="Courses" className="h-6 w-6" />
                   </div>
                   <div className="flex-1 text-right">
                     <div className="text-2xl font-bold text-gray-800">5</div>
@@ -150,15 +150,15 @@ const MerchantDashboard: React.FC = () => {
           </div>
 
           {/* Sidebar */}
-          <div className="w-full lg:w-[400px] flex flex-col gap-6">
+          <div className="flex w-full flex-col flex-wrap gap-6 sm:flex-row lg:w-[400px] lg:flex-col">
             {/* Subscription Status */}
-            <Card className="rounded-xl shadow p-6 flex flex-col gap-4">
+            <Card className="flex min-w-[260px] flex-1 flex-col gap-4 rounded-xl p-6 shadow">
               <Typography variant="h3" className="text-[18px] text-gray-800">
                 Subscription Status
               </Typography>
               <div className="flex items-center gap-2">
-                <span className="inline-block w-3 h-3 rounded-full bg-green-500" />
-                <span className="text-gray-800 text-base font-medium">
+                <span className="inline-block h-3 w-3 rounded-full bg-green-500" />
+                <span className="text-base font-medium text-gray-800">
                   Pro Plan Active
                 </span>
               </div>
@@ -168,28 +168,28 @@ const MerchantDashboard: React.FC = () => {
               <Button
                 variant="tertiary"
                 size="lg"
-                className="text-white rounded-lg w-full mt-2"
+                className="mt-2 w-full rounded-lg text-white"
               >
                 Manage Subscription
               </Button>
             </Card>
             {/* This Month Stats */}
-            <Card className="rounded-xl shadow p-6 flex flex-col gap-4">
+            <Card className="flex min-w-[260px] flex-1 flex-col gap-4 rounded-xl p-6 shadow">
               <Typography variant="h3" className="text-[18px] text-gray-800">
                 This Month
               </Typography>
               <div className="flex flex-col gap-2">
                 <div className="flex items-center justify-between">
                   <span className="text-gray-600">Profile Views</span>
-                  <span className="text-gray-800 font-semibold">156</span>
+                  <span className="font-semibold text-gray-800">156</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-gray-600">New Followers</span>
-                  <span className="text-gray-800 font-semibold">12</span>
+                  <span className="font-semibold text-gray-800">12</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-gray-600">RFQ Responses</span>
-                  <span className="text-gray-800 font-semibold">8</span>
+                  <span className="font-semibold text-gray-800">8</span>
                 </div>
               </div>
             </Card>
@@ -197,7 +197,7 @@ const MerchantDashboard: React.FC = () => {
         </div>
 
         {/* Recent Activity */}
-        <Card className="bg-white rounded-xl shadow-sm p-0 mb-8">
+        <Card className="mb-8 w-full rounded-xl bg-white p-0 shadow-sm">
           <div className="flex items-center justify-between px-6 py-6">
             <Typography
               variant="h2"
@@ -207,7 +207,7 @@ const MerchantDashboard: React.FC = () => {
             </Typography>
             <Button
               variant="ghost"
-              className="text-sky-600 hover:bg-white font-medium px-3 py-1 rounded transition"
+              className="rounded px-3 py-1 font-medium text-sky-600 transition hover:bg-white"
             >
               View Full Newsfeed
             </Button>
@@ -250,7 +250,7 @@ const MerchantDashboard: React.FC = () => {
         </Card>
       </main>
     </div>
-  );
-};
+  )
+}
 
-export { MerchantDashboard };
+export { MerchantDashboard }
