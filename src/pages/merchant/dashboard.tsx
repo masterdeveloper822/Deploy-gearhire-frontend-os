@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { RecentActivityCard } from "@/components/ui/card"
 import { MerchantHeader } from "@/components/layout/header/merchant-header"
+import { Link } from "react-router-dom"
 
 // Figma image assets
 const imgFrame =
@@ -77,75 +78,91 @@ const MerchantDashboard: React.FC = () => {
             </div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               {/* My Inventory */}
-              <Card className="flex flex-col gap-4 rounded-xl p-6 shadow">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-sky-100">
-                    <img src={imgFrame4} alt="Inventory" className="h-6 w-6" />
+              <Link to="/merchant-inventory-book">
+                <Card className="flex cursor-pointer flex-col gap-4 rounded-xl p-6 shadow transition hover:shadow-lg focus:ring-2 focus:ring-tertiary">
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-sky-100">
+                      <img
+                        src={imgFrame4}
+                        alt="Inventory"
+                        className="h-6 w-6"
+                      />
+                    </div>
+                    <div className="flex-1 text-right">
+                      <div className="text-2xl font-bold text-gray-800">24</div>
+                    </div>
                   </div>
-                  <div className="flex-1 text-right">
-                    <div className="text-2xl font-bold text-gray-800">24</div>
+                  <div>
+                    <Typography variant="cardSubTitle">My Inventory</Typography>
+                    <div className="text-sm text-gray-600">
+                      Manage your equipment listings
+                    </div>
                   </div>
-                </div>
-                <div>
-                  <Typography variant="cardSubTitle">My Inventory</Typography>
-                  <div className="text-sm text-gray-600">
-                    Manage your equipment listings
-                  </div>
-                </div>
-              </Card>
+                </Card>
+              </Link>
               {/* RFQs Submitted */}
-              <Card className="flex flex-col gap-4 rounded-xl p-6 shadow">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100">
-                    <img src={imgFrame5} alt="RFQs" className="h-6 w-6" />
+              <Link to="/merchant/rfqs">
+                <Card className="flex cursor-pointer flex-col gap-4 rounded-xl p-6 shadow transition hover:shadow-lg focus:ring-2 focus:ring-tertiary">
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100">
+                      <img src={imgFrame5} alt="RFQs" className="h-6 w-6" />
+                    </div>
+                    <div className="flex-1 text-right">
+                      <div className="text-2xl font-bold text-gray-800">8</div>
+                    </div>
                   </div>
-                  <div className="flex-1 text-right">
-                    <div className="text-2xl font-bold text-gray-800">8</div>
+                  <div>
+                    <Typography variant="cardSubTitle">
+                      RFQs Submitted
+                    </Typography>
+                    <div className="text-sm text-gray-600">
+                      View and respond to requests
+                    </div>
                   </div>
-                </div>
-                <div>
-                  <Typography variant="cardSubTitle">RFQs Submitted</Typography>
-                  <div className="text-sm text-gray-600">
-                    View and respond to requests
-                  </div>
-                </div>
-              </Card>
+                </Card>
+              </Link>
               {/* Reviews Received */}
-              <Card className="flex flex-col gap-4 rounded-xl p-6 shadow">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-yellow-100">
-                    <img src={imgFrame6} alt="Reviews" className="h-6 w-6" />
+              <Link to="/merchant/reviews">
+                <Card className="flex cursor-pointer flex-col gap-4 rounded-xl p-6 shadow transition hover:shadow-lg focus:ring-2 focus:ring-tertiary">
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-yellow-100">
+                      <img src={imgFrame6} alt="Reviews" className="h-6 w-6" />
+                    </div>
+                    <div className="flex-1 text-right">
+                      <div className="text-2xl font-bold text-gray-800">
+                        4.8
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex-1 text-right">
-                    <div className="text-2xl font-bold text-gray-800">4.8</div>
+                  <div>
+                    <Typography variant="cardSubTitle">
+                      Reviews Received
+                    </Typography>
+                    <div className="text-sm text-gray-600">12 reviews</div>
                   </div>
-                </div>
-                <div>
-                  <Typography variant="cardSubTitle">
-                    Reviews Received
-                  </Typography>
-                  <div className="text-sm text-gray-600">12 reviews</div>
-                </div>
-              </Card>
+                </Card>
+              </Link>
               {/* My Training Courses */}
-              <Card className="flex flex-col gap-4 rounded-xl p-6 shadow">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-green-100">
-                    <img src={imgFrame7} alt="Courses" className="h-6 w-6" />
+              <Link to="/merchant/courses">
+                <Card className="flex cursor-pointer flex-col gap-4 rounded-xl p-6 shadow transition hover:shadow-lg focus:ring-2 focus:ring-tertiary">
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-green-100">
+                      <img src={imgFrame7} alt="Courses" className="h-6 w-6" />
+                    </div>
+                    <div className="flex-1 text-right">
+                      <div className="text-2xl font-bold text-gray-800">5</div>
+                    </div>
                   </div>
-                  <div className="flex-1 text-right">
-                    <div className="text-2xl font-bold text-gray-800">5</div>
+                  <div>
+                    <Typography variant="cardSubTitle">
+                      My Training Courses
+                    </Typography>
+                    <div className="text-sm text-gray-600">
+                      Manage your listed courses
+                    </div>
                   </div>
-                </div>
-                <div>
-                  <Typography variant="cardSubTitle">
-                    My Training Courses
-                  </Typography>
-                  <div className="text-sm text-gray-600">
-                    Manage your listed courses
-                  </div>
-                </div>
-              </Card>
+                </Card>
+              </Link>
             </div>
           </div>
 

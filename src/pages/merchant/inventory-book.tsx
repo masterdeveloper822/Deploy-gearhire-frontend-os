@@ -23,6 +23,7 @@ import greenEyeIcon from "@/assets/images/ui/icons/green_eye.svg"
 import closedEyeIcon from "@/assets/images/ui/icons/eye_closed.svg"
 import editItemIcon from "@/assets/images/ui/icons/item_edit.svg"
 import deleteItemIcon from "@/assets/images/ui/icons/item_delete.svg"
+import { Link } from "react-router-dom"
 
 const imgFrame7 =
   "http://localhost:3845/assets/d54698fc9332e5ff9ca9e07428b5b67d44bc45bf.svg"
@@ -105,13 +106,15 @@ const MerchantInventoryBook: React.FC = () => {
               </Typography>
             </div>
           </div>
-          <Button
-            variant="tertiary"
-            className="flex h-12 items-center gap-2 px-8 text-base hover:bg-sky-700"
-          >
-            <img src={addIcon} alt="Add" className="h-4 w-4" />
-            Add Equipment
-          </Button>
+          <Link to="/merchant-add-equipment">
+            <Button
+              variant="tertiary"
+              className="flex h-12 items-center gap-2 px-8 text-base hover:bg-sky-700"
+            >
+              <img src={addIcon} alt="Add" className="h-4 w-4" />
+              Add Equipment
+            </Button>
+          </Link>
         </div>
 
         {/* Search and Filter Bar */}

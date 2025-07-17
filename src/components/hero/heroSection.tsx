@@ -23,13 +23,13 @@ export default function HeroSection() {
               variant="tertiary"
               className="h-[60px] w-full rounded-lg text-base"
             >
-              <Link to="/renter-signup">Join as Renter</Link>
+              <Link to="/signup">Join as Renter</Link>
             </Button>
             <Button
               variant="outline"
               className="h-[60px] w-full rounded-lg border-2 border-gray-700 text-base"
             >
-              <Link to="/renter-signup">Join as Merchant</Link>
+              <Link to="/signup">Join as Merchant</Link>
             </Button>
           </div>
         </div>

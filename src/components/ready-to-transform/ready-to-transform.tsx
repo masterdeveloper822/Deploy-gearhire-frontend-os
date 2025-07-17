@@ -2,6 +2,7 @@ import React from "react"
 
 import { Button } from "@/components/ui/button"
 import { Typography } from "@/components/ui/typography"
+import { Link } from "react-router-dom"
 
 export default function ReadyToTransform() {
   return (
@@ -26,14 +27,14 @@ export default function ReadyToTransform() {
             variant="white_sky"
             className="h-15 px-8 py-4 text-base text-sky-700"
           >
-            Join as Renter
+            <Link to="/signup">Join as Renter</Link>
           </Button>
           <Button
             variant="tertiary"
             size="lg"
             className="h-15 border-2 border-white px-8 py-4 text-base"
           >
-            Join as Merchant
+            <Link to="/signup">Join as Merchant</Link>
           </Button>
         </div>
       </div>
