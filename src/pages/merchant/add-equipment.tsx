@@ -12,7 +12,6 @@ import { MerchantHeader } from "@/components/layout/header/merchant-header"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Separator } from "@/components/ui/separator"
 import { Switch } from "@/components/ui/switch"
 import { Button } from "@/components/ui/button"
 import {
@@ -65,7 +64,7 @@ const MerchantAddEquipment: React.FC = () => {
             <img src={backArrow} alt="Back" className="h-6 w-6" />
           </button>
           <div className="flex w-full flex-col pl-12">
-            <h1 className="text-2xl font-bold text-gray-800">
+            <h1 className="text-3xl font-bold text-gray-800">
               Add New Equipment
             </h1>
             <p className="mt-1 text-base text-gray-600">

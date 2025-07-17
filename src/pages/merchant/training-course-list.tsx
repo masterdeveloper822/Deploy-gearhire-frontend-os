@@ -1,6 +1,5 @@
-import React from "react"
-import { HeaderFrame } from "@/components/layout/header/auth-header"
-import { Button } from "../../../components/ui/button"
+import { MerchantHeader } from "@/components/layout/header/merchant-header"
+import { Button } from "@/components/ui/button"
 
 // Figma asset URLs for course images
 const courseImg1 =
@@ -11,18 +10,15 @@ const courseImg3 =
   "http://localhost:3845/assets/845b75fe9cacb65817ff3b0b2f90f53d3b53033a.png"
 
 // Figma SVGs for status and action icons
-const publicIcon =
-  "http://localhost:3845/assets/eca6c3134f7ecf7b6029cc0eed3f3d3ebbd12985.svg"
-const privateIcon =
-  "http://localhost:3845/assets/1fb178b7c40a595465a4f761d8533a49e6e8d895.svg"
-const arrowIcon =
-  "http://localhost:3845/assets/a73a34ee52a39108710cbcd2ec4751a80bb8e7db.svg"
-const editIcon =
-  "http://localhost:3845/assets/28e9e88ed26136cc76e342f60b46b456f4c15c76.svg"
-const toggleIcon =
-  "http://localhost:3845/assets/7baf41d57cf0024cc4acb9a85e6dc2407f49cf3b.svg"
-// Placeholder for delete icon (replace with correct Figma SVG if available)
-// const deleteIcon = "<Figma-trash-icon-URL>";
+import publicIcon from "@/assets/images/ui/icons/eye-green.svg"
+import privateIcon from "@/assets/images/ui/icons/eye_closed.svg"
+import arrowIcon from "@/assets/images/ui/icons/outLink.svg"
+import editIcon from "@/assets/images/ui/icons/item_edit.svg"
+import toggleIcon from "@/assets/images/ui/icons/item_delete.svg"
+import addIcon from "@/assets/images/ui/icons/add.svg"
+
+import { Switch } from "@/components/ui/switch"
+import { Link } from "react-router-dom"
 
 const courses = [
   {
@@ -60,8 +56,8 @@ const courses = [
 const TrainingCourseList = () => {
   return (
     <div className="flex min-h-screen flex-col bg-gray-50">
-      <HeaderFrame />
-      <main className="flex w-full flex-col items-center px-4 py-8">
+      <MerchantHeader />
+      <main className="flex w-full flex-col items-center px-4 pb-8 pt-6">
         <div className="mb-8 flex w-full max-w-6xl flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
             <h1 className="text-2xl font-bold text-gray-800">
@@ -71,9 +67,11 @@ const TrainingCourseList = () => {
               Manage your training courses and workshops
             </p>
           </div>
-          <Button className="flex h-12 items-center gap-2 rounded-lg bg-sky-600 px-8 text-base font-medium text-white hover:bg-sky-700">
-            <span className="text-lg">+</span> Add New Course
-          </Button>
+          <Link to="/add-training-course">
+            <Button variant="tertiary" className="flex h-12 px-8 text-base">
+              <img src={addIcon} /> Add New Course
+            </Button>
+          </Link>
         </div>
         <div className="grid w-full max-w-6xl grid-cols-1 gap-8 md:grid-cols-2">
           {courses.map((course) => (
@@ -112,15 +110,25 @@ const TrainingCourseList = () => {
                     variant="link"
                     className="flex h-auto items-center gap-1 p-0 font-medium text-sky-600"
                   >
-                    {course.action}
                     <img src={arrowIcon} alt="Arrow" className="ml-1 h-4 w-4" />
+                    {course.action}
                   </Button>
                   <div className="flex items-center gap-2">
-                    <img src={toggleIcon} alt="Toggle" className="h-4 w-8" />
-                    <Button variant="ghost" size="icon" className="p-2">
+                    <Switch className="data-[state=checked]:bg-tertiary" />
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="px-2 hover:bg-background"
+                    >
                       <img src={editIcon} alt="Edit" className="h-5 w-5" />
                     </Button>
-                    {/* Delete icon omitted until correct Figma SVG is provided */}
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="px-2 hover:bg-background"
+                    >
+                      <img src={toggleIcon} alt="Toggle" className="h-4 w-8" />
+                    </Button>
                   </div>
                 </div>
               </div>
