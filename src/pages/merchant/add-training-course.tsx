@@ -52,9 +52,10 @@ const schema = z.object({
   title: z.string().min(2, "Course title is required"),
   category: z.string().min(1, "Category is required"),
   description: z.string().min(10, "Description is required").max(1000),
-  price: z.string().refine((val) => !isNaN(Number(val)) && Number(val) >= 0, {
-    message: "Price is required and must be a non-negative number",
-  }),
+  courseUrl: z
+    .string()
+    .url("A valid URL is required (must start with http or https)")
+    .min(1, "Course URL is required"),
   image: z
     .any()
     .refine(
@@ -82,7 +83,7 @@ const AddTrainingCourse: React.FC = () => {
       title: "",
       category: "",
       description: "",
-      price: "",
+      courseUrl: "",
       image: undefined,
       isPublic: true,
     },
@@ -98,8 +99,6 @@ const AddTrainingCourse: React.FC = () => {
   }, [form.formState.isSubmitted, form.formState.errors, form.setFocus])
 
   const onSubmit = (data: FormSchema) => {
-    // Convert price to number before using
-    const parsedData = { ...data, price: Number(data.price) }
     // handle save
     navigate("/training-course-list")
   }
@@ -224,29 +223,28 @@ const AddTrainingCourse: React.FC = () => {
                     External Booking Link
                   </Typography>
                 </div>
-                {/* Price */}
+                {/* Course URL */}
                 <FormField
                   control={form.control}
-                  name="price"
+                  name="courseUrl"
                   render={({ field }) => (
-                    <FormItem>
+                    <FormItem className="mb-6">
                       <FormLabel className="flex items-center gap-1 text-base font-medium text-gray-700">
-                        Course URL<span className="text-red-500">*</span>
+                        Course URL <span className="text-red-500">*</span>
                       </FormLabel>
                       <FormControl>
                         <Input
                           {...field}
-                          type="number"
-                          step="0.01"
-                          min={0}
-                          className={`mt-2 h-12 rounded-lg border border-gray-300 bg-white px-4 text-base focus:outline-none focus:ring-2 focus:ring-sky-500 ${form.formState.errors.price ? "border-red-500" : ""}`}
+                          type="url"
+                          className={`mt-2 h-12 rounded-lg border border-gray-300 bg-white px-4 text-base focus:outline-none focus:ring-2 focus:ring-sky-500 ${form.formState.errors.courseUrl ? "border-red-500" : ""}`}
                           placeholder="https://mycourse.com/register"
                         />
                       </FormControl>
                       <FormDescription>
                         <span className="flex items-center gap-2">
                           <img src={grayInfoIcon} alt="grayInfo" />
-                          Set a price for your course, or enter 0 for free.
+                          This link will be used for course registration and
+                          bookings.
                         </span>
                       </FormDescription>
                       <FormMessage />

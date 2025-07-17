@@ -1,5 +1,8 @@
-import React, { useState } from "react"
+import React from "react"
 import { useNavigate } from "react-router-dom"
+import { useForm, Controller } from "react-hook-form"
+import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod"
 
 // Placeholder icons (replace with your SVGs or assets as needed)
 import backArrow from "@/assets/images/ui/icons/backArrow.svg"
@@ -34,19 +37,61 @@ const categories = [
   "Accessories",
 ]
 
-const MerchantAddEquipment: React.FC = () => {
-  const [equipmentName, setEquipmentName] = useState("")
-  const [category, setCategory] = useState("")
-  const [keySpecs, setKeySpecs] = useState("")
-  const [notes, setNotes] = useState("")
-  const [isPublic, setIsPublic] = useState(true)
-  const [photos, setPhotos] = useState<File[]>([])
-  const navigate = useNavigate()
+const equipmentSchema = z.object({
+  equipmentName: z.string().min(2, "Equipment name is required"),
+  category: z.string().min(1, "Category is required"),
+  keySpecs: z.string().optional(),
+  notes: z.string().optional(),
+  photos: z
+    .array(z.any())
+    .min(1, "At least 1 photo is required")
+    .refine(
+      (files) =>
+        files.every(
+          (file) =>
+            file instanceof File &&
+            ["image/jpeg", "image/png"].includes(file.type) &&
+            file.size <= 10 * 1024 * 1024,
+        ),
+      { message: "JPG, PNG up to 10MB each" },
+    ),
+  isPublic: z.boolean().optional(),
+})
+type EquipmentFormSchema = z.infer<typeof equipmentSchema>
 
-  const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setPhotos(Array.from(e.target.files))
+const MerchantAddEquipment: React.FC = () => {
+  const navigate = useNavigate()
+  const {
+    register,
+    handleSubmit,
+    control,
+    setValue,
+    watch,
+    setFocus,
+    formState: { errors, isSubmitted },
+  } = useForm<EquipmentFormSchema>({
+    resolver: zodResolver(equipmentSchema),
+    defaultValues: {
+      equipmentName: "",
+      category: "",
+      keySpecs: "",
+      notes: "",
+      photos: [],
+      isPublic: true,
+    },
+  })
+
+  React.useEffect(() => {
+    if (isSubmitted && Object.keys(errors).length > 0) {
+      setFocus(Object.keys(errors)[0] as keyof EquipmentFormSchema)
     }
+  }, [isSubmitted, errors, setFocus])
+
+  const photos = watch("photos")
+
+  const onSubmit = (data: EquipmentFormSchema) => {
+    // handle save
+    navigate("/merchant-inventory-book")
   }
 
   return (
@@ -72,180 +117,219 @@ const MerchantAddEquipment: React.FC = () => {
             </p>
           </div>
         </div>
-        <Card className="mt-8 p-6">
-          <h2 className="mb-6 text-lg font-semibold text-gray-800">
-            Equipment Information
-          </h2>
-          <div className="flex flex-col gap-6">
-            {/* Equipment Name */}
-            <div>
-              <Label htmlFor="equipmentName">Equipment Name *</Label>
-              <Input
-                id="equipmentName"
-                placeholder="e.g. RED Komodo 6K Camera"
-                value={equipmentName}
-                onChange={(e) => setEquipmentName(e.target.value)}
-                className="mt-2 h-12 focus:ring-2 focus:ring-sky-500"
-                required
-              />
-            </div>
-            {/* Category/Type */}
-            <div>
-              <Label htmlFor="category">Category / Type *</Label>
-              <Select>
-                <SelectTrigger className="mt-2 h-12 w-full">
-                  <SelectValue placeholder="Select a category" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectLabel className="h-10">Categories</SelectLabel>
-                    {categories.map((cat) => (
-                      <SelectItem className="h-10" value={cat}>
-                        {cat}
-                      </SelectItem>
-                    ))}
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
-            </div>
-            {/* Key Specifications */}
-            <div>
-              <Label htmlFor="keySpecs">Key Specifications</Label>
-              <Textarea
-                id="keySpecs"
-                placeholder={
-                  "• 6K resolution, global shutter • Canon RF mount • Internal recording up to 120fps • Dual CFexpress Type B slots"
-                }
-                value={keySpecs}
-                onChange={(e) => setKeySpecs(e.target.value)}
-                className="mt-2 h-[122px] resize-none p-5 text-base"
-                rows={5}
-              />
-              <p className="mt-1 text-xs text-gray-500">
-                Add key specs like resolution, power needs, connectivity, etc.
-              </p>
-            </div>
-            {/* Additional Notes */}
-            <div>
-              <Label htmlFor="notes">Additional Notes</Label>
-              <Textarea
-                id="notes"
-                placeholder="Any additional information renters should know..."
-                value={notes}
-                onChange={(e) => setNotes(e.target.value)}
-                className="mt-2 resize-none"
-                rows={4}
-              />
-              <p className="mt-1 text-xs text-gray-500">
-                Optional notes visible to renters when browsing
-              </p>
-            </div>
-          </div>
-        </Card>
-        {/* Equipment Photos */}
-        <Card className="mt-8 p-6">
-          <h2 className="mb-6 text-lg font-semibold text-gray-800">
-            Equipment Photos *
-          </h2>
-          <div className="relative flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-8">
-            <label
-              htmlFor="photo-upload"
-              className="flex cursor-pointer flex-col items-center"
-            >
-              <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-md bg-gray-200">
-                <img
-                  src={merchantProfileDefaultIcon}
-                  alt="Upload"
-                  className="h-6 w-6"
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Card className="mt-8 p-6">
+            <h2 className="mb-6 text-lg font-semibold text-gray-800">
+              Equipment Information
+            </h2>
+            <div className="flex flex-col gap-6">
+              {/* Equipment Name */}
+              <div>
+                <Label htmlFor="equipmentName">Equipment Name *</Label>
+                <Input
+                  id="equipmentName"
+                  placeholder="e.g. RED Komodo 6K Camera"
+                  {...register("equipmentName")}
+                  className={`mt-2 h-12 focus:ring-2 focus:ring-sky-500 ${errors.equipmentName ? "border-red-500" : ""}`}
                 />
+                {errors.equipmentName && (
+                  <p className="mt-1 text-xs text-red-500">
+                    {errors.equipmentName.message}
+                  </p>
+                )}
               </div>
-              <span className="mb-1 mt-4 text-[18px] font-medium text-gray-700">
-                Upload Equipment Photos
-              </span>
-              <span className="mb-2 text-sm text-gray-500">
-                Drag and drop files here, or click to browse
-              </span>
-              <span className="mb-2 text-xs text-black">
-                JPG, PNG up to 10MB each. At least 1 photo required.
-              </span>
-              <input
-                id="photo-upload"
-                type="file"
-                accept="image/jpeg,image/png"
-                multiple
-                className="hidden"
-                onChange={handlePhotoUpload}
-              />
-            </label>
-            {photos.length > 0 && (
-              <div className="mt-4 flex flex-wrap gap-2">
-                {photos.map((file, idx) => (
-                  <div
-                    key={idx}
-                    className="flex h-20 w-20 items-center justify-center overflow-hidden rounded bg-gray-200"
+              {/* Category/Type */}
+              <div>
+                <Label htmlFor="category">Category / Type *</Label>
+                <Controller
+                  name="category"
+                  control={control}
+                  render={({ field }) => (
+                    <Select value={field.value} onValueChange={field.onChange}>
+                      <SelectTrigger
+                        className={`mt-2 h-12 w-full ${errors.category ? "border-red-500" : ""}`}
+                      >
+                        <SelectValue placeholder="Select a category" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectGroup>
+                          <SelectLabel className="h-10">Categories</SelectLabel>
+                          {categories.map((cat) => (
+                            <SelectItem className="h-10" value={cat} key={cat}>
+                              {cat}
+                            </SelectItem>
+                          ))}
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
+                  )}
+                />
+                {errors.category && (
+                  <p className="mt-1 text-xs text-red-500">
+                    {errors.category.message}
+                  </p>
+                )}
+              </div>
+              {/* Key Specifications */}
+              <div>
+                <Label htmlFor="keySpecs">Key Specifications</Label>
+                <Textarea
+                  id="keySpecs"
+                  placeholder={
+                    "• 6K resolution, global shutter • Canon RF mount • Internal recording up to 120fps • Dual CFexpress Type B slots"
+                  }
+                  {...register("keySpecs")}
+                  className={`mt-2 h-[122px] resize-none p-5 text-base ${errors.keySpecs ? "border-red-500" : ""}`}
+                  rows={5}
+                />
+                <p className="mt-1 text-xs text-gray-500">
+                  Add key specs like resolution, power needs, connectivity, etc.
+                </p>
+              </div>
+              {/* Additional Notes */}
+              <div>
+                <Label htmlFor="notes">Additional Notes</Label>
+                <Textarea
+                  id="notes"
+                  placeholder="Any additional information renters should know..."
+                  {...register("notes")}
+                  className={`mt-2 resize-none ${errors.notes ? "border-red-500" : ""}`}
+                  rows={4}
+                />
+                <p className="mt-1 text-xs text-gray-500">
+                  Optional notes visible to renters when browsing
+                </p>
+              </div>
+            </div>
+          </Card>
+          {/* Equipment Photos */}
+          <Card className="mt-8 p-6">
+            <h2 className="mb-6 text-lg font-semibold text-gray-800">
+              Equipment Photos *
+            </h2>
+            <Controller
+              name="photos"
+              control={control}
+              render={({ field }) => (
+                <div
+                  className={`relative flex flex-col items-center justify-center rounded-lg border-2 border-dashed bg-gray-50 p-8 ${errors.photos ? "border-red-500" : "border-gray-300"}`}
+                >
+                  <label
+                    htmlFor="photo-upload"
+                    className="flex cursor-pointer flex-col items-center"
                   >
-                    <img
-                      src={URL.createObjectURL(file)}
-                      alt={`Equipment photo ${idx + 1}`}
-                      className="h-full w-full object-cover"
+                    <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-md bg-gray-200">
+                      <img
+                        src={merchantProfileDefaultIcon}
+                        alt="Upload"
+                        className="h-6 w-6"
+                      />
+                    </div>
+                    <span className="mb-1 mt-4 text-[18px] font-medium text-gray-700">
+                      Upload Equipment Photos
+                    </span>
+                    <span className="mb-2 text-sm text-gray-500">
+                      Drag and drop files here, or click to browse
+                    </span>
+                    <span className="mb-2 text-xs text-black">
+                      JPG, PNG up to 10MB each. At least 1 photo required.
+                    </span>
+                    <input
+                      id="photo-upload"
+                      type="file"
+                      accept="image/jpeg,image/png"
+                      multiple
+                      className="hidden"
+                      onChange={(e) => {
+                        if (e.target.files) {
+                          field.onChange(Array.from(e.target.files))
+                        }
+                      }}
+                    />
+                  </label>
+                  {errors.photos && (
+                    <p className="mt-1 text-xs text-red-500">
+                      {errors.photos.message as string}
+                    </p>
+                  )}
+                  {photos && photos.length > 0 && (
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {photos.map((file: File, idx: number) => (
+                        <div
+                          key={idx}
+                          className="flex h-20 w-20 items-center justify-center overflow-hidden rounded bg-gray-200"
+                        >
+                          <img
+                            src={URL.createObjectURL(file)}
+                            alt={`Equipment photo ${idx + 1}`}
+                            className="h-full w-full object-cover"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+            />
+          </Card>
+
+          {/* Visibility Settings */}
+          <Card className="my-8 p-6">
+            <h2 className="mb-6 text-lg font-semibold text-gray-800">
+              Visibility Settings
+            </h2>
+            <Controller
+              name="isPublic"
+              control={control}
+              render={({ field }) => (
+                <div className="flex items-center gap-4">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <Label
+                        htmlFor="public-switch"
+                        className="text-base font-medium text-gray-700"
+                      >
+                        Make this item Public
+                      </Label>
+                      <img src={infoIcon} alt="info" />
+                    </div>
+                    <p className="text-sm text-gray-500">
+                      Public items appear in search results for renters
+                    </p>
+                  </div>
+                  <div className="ml-auto">
+                    <Switch
+                      className="data-[state=checked]:bg-tertiary"
+                      id="public-switch"
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
                     />
                   </div>
-                ))}
-              </div>
-            )}
+                </div>
+              )}
+            />
+          </Card>
+          {/* Action Buttons */}
+          <div className="flex h-[100px] flex-col gap-4 sm:flex-row">
+            <Button
+              variant="tertiary"
+              type="submit"
+              className="h-12 flex-1 text-base"
+            >
+              <img src={saveIcon} alt="save" />
+              Save Equipment
+            </Button>
+            <Button
+              type="button"
+              variant="secondary"
+              className="h-12 flex-1 rounded-lg bg-gray-100 text-base font-medium text-gray-700 hover:bg-gray-200"
+              onClick={() => navigate(-1)}
+            >
+              <img src={cancelIcon} alt="cancel" />
+              Cancel
+            </Button>
           </div>
-        </Card>
-
-        {/* Visibility Settings */}
-        <Card className="my-8 p-6">
-          <h2 className="mb-6 text-lg font-semibold text-gray-800">
-            Visibility Settings
-          </h2>
-          <div className="flex items-center gap-4">
-            <div>
-              <div className="flex items-center gap-2">
-                <Label
-                  htmlFor="public-switch"
-                  className="text-base font-medium text-gray-700"
-                >
-                  Make this item Public
-                </Label>
-                <img src={infoIcon} alt="info" />
-              </div>
-              <p className="text-sm text-gray-500">
-                Public items appear in search results for renters
-              </p>
-            </div>
-            <div className="ml-auto">
-              <Switch
-                className="data-[state=checked]:bg-tertiary"
-                id="public-switch"
-                checked={isPublic}
-                onCheckedChange={setIsPublic}
-              />
-            </div>
-          </div>
-        </Card>
-        {/* Action Buttons */}
-        <div className="flex h-[100px] flex-col gap-4 sm:flex-row">
-          <Button
-            variant="tertiary"
-            type="submit"
-            className="h-12 flex-1 text-base"
-          >
-            <img src={saveIcon} alt="save" />
-            Save Equipment
-          </Button>
-          <Button
-            type="button"
-            variant="secondary"
-            className="h-12 flex-1 rounded-lg bg-gray-100 text-base font-medium text-gray-700 hover:bg-gray-200"
-            onClick={() => navigate(-1)}
-          >
-            <img src={cancelIcon} alt="cancel" />
-            Cancel
-          </Button>
-        </div>
+        </form>
       </main>
     </div>
   )
