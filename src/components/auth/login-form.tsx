@@ -39,7 +39,7 @@ const LogInForm: React.FC = () => {
     })
     // Simulate submission
     console.log("Login submitted:", data)
-    navigate("/")
+    navigate("/merchant-dashboard")
   }
 
   return (

@@ -211,7 +211,7 @@ export default function Body() {
         {/* Action Buttons */}
         <div className="mb-12 flex flex-col items-center gap-4 sm:flex-row">
           <SaveChangesButton iconSrc={saveButtonIcon}>
-            <Link to="/">Save Changes</Link>
+            <Link to="/merchant-dashboard">Save Changes</Link>
           </SaveChangesButton>
           <PreviewProfileButton iconSrc={eyeIcon}>
             <Link to="/">Preview My Public Profile</Link>

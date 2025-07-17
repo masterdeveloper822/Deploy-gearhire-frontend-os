@@ -86,7 +86,7 @@ const MerchantAddEquipment: React.FC = () => {
                 placeholder="e.g. RED Komodo 6K Camera"
                 value={equipmentName}
                 onChange={(e) => setEquipmentName(e.target.value)}
-                className="mt-2 h-12"
+                className="mt-2 h-12 focus:ring-2 focus:ring-sky-500"
                 required
               />
             </div>
