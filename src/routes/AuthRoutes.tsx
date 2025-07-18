@@ -5,8 +5,12 @@ import { ResetPassword } from "@/pages/auth/reset-password"
 import { EmailVerify } from "@/pages/auth/email-verify"
 
 export default [
-  <Route path="/signup" element={<CreateAccount />} />,
-  <Route path="/email-verify" element={<EmailVerify />} />,
-  <Route path="/login" element={<Login />} />,
-  <Route path="/reset-password" element={<ResetPassword />} />,
+  <Route key="signup" path="/signup" element={<CreateAccount />} />,
+  <Route key="email-verify" path="/email-verify" element={<EmailVerify />} />,
+  <Route key="login" path="/login" element={<Login />} />,
+  <Route
+    key="reset-password"
+    path="/reset-password"
+    element={<ResetPassword />}
+  />,
 ]

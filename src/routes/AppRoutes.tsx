@@ -8,6 +8,7 @@ import { MerchantInventoryBook } from "@/pages/merchant/inventory-book"
 import { MerchantAddEquipment } from "@/pages/merchant/add-equipment"
 import { TrainingCourseList } from "@/pages/merchant/training-course-list"
 import AddTrainingCourse from "@/pages/merchant/add-training-course"
+import BrowseRFQ from "@/pages/merchant/browse-rfq"
 
 const AppRoutes = () => (
   <Routes>
@@ -23,6 +24,7 @@ const AppRoutes = () => (
     <Route path="/merchant-add-equipment" element={<MerchantAddEquipment />} />
     <Route path="/training-course-list" element={<TrainingCourseList />} />
     <Route path="/add-training-course" element={<AddTrainingCourse />} />
+    <Route path="/browse-RFQs" element={<BrowseRFQ />} />
   </Routes>
 )
 

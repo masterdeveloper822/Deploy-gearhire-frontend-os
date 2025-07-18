@@ -101,7 +101,7 @@ const MerchantDashboard: React.FC = () => {
                 </Card>
               </Link>
               {/* RFQs Submitted */}
-              <Link to="/merchant/rfqs">
+              <Link to="/browse-RFQs">
                 <Card className="flex cursor-pointer flex-col gap-4 rounded-xl p-6 shadow transition hover:shadow-lg focus:ring-2 focus:ring-tertiary">
                   <div className="flex items-center gap-4">
                     <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100">
