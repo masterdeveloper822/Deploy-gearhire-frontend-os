@@ -17,6 +17,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Card } from "@/components/ui/card"
+import { Link } from "react-router-dom"
 
 const statusColors = {
   Open: "bg-green-100 text-green-700 border-green-400",
@@ -244,15 +245,17 @@ export default function BrowseRFQ() {
                       </span>
                       <div className="flex gap-2">
                         {rfq.status === "Open" && (
-                          <Button
-                            variant="tertiary"
-                            className="rounded-lg px-6 py-2 text-base"
-                          >
-                            <span className="flex items-center gap-2">
-                              <RespondIcon />
-                              Respond
-                            </span>
-                          </Button>
+                          <Link to="/add-quote">
+                            <Button
+                              variant="tertiary"
+                              className="rounded-lg px-6 py-2 text-base"
+                            >
+                              <span className="flex items-center gap-2">
+                                <RespondIcon />
+                                Respond
+                              </span>
+                            </Button>
+                          </Link>
                         )}
                         {rfq.status === "Closed" && (
                           <button className="cursor-not-allowed rounded-lg bg-gray-200 px-6 py-2 font-medium text-gray-500">
