@@ -20,7 +20,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Card } from "@/components/ui/card"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 export default function BrowseRFQ() {
   const [search, setSearch] = useState("")
@@ -29,6 +29,7 @@ export default function BrowseRFQ() {
   const [status, setStatus] = useState("")
   const [dateRange, setDateRange] = useState({ from: "", to: "" })
   const [rfqs] = useState(mockRFQs)
+  const navigate = useNavigate()
 
   // Live filtering logic
   const filteredRFQs = useMemo(() => {
@@ -182,9 +183,11 @@ export default function BrowseRFQ() {
                   >
                     <div className="mb-2 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
                       <div className="flex flex-1 items-center gap-2">
-                        <h2 className="text-lg font-semibold text-gray-800 sm:text-xl">
-                          {rfq.title}
-                        </h2>
+                        <Link to="/rfq-detail">
+                          <h2 className="cursor-pointer text-lg font-semibold text-gray-800 sm:text-xl">
+                            {rfq.title}
+                          </h2>
+                        </Link>
                         <span
                           className={`rounded-full px-3 py-1 text-xs font-medium ${statusColors[rfq.status] || "border-gray-300 bg-gray-100 text-gray-600"}`}
                         >

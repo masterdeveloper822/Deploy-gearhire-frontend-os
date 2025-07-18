@@ -11,6 +11,7 @@ import AddTrainingCourse from "@/pages/merchant/add-training-course"
 import BrowseRFQ from "@/pages/merchant/browse-rfq"
 import AddQuote from "@/pages/merchant/add-quote"
 import SubmittedQuote from "@/pages/merchant/submitted-quote"
+import RFQDetails from "@/pages/merchant/rfq-details"
 
 const AppRoutes = () => (
   <Routes>
@@ -28,6 +29,7 @@ const AppRoutes = () => (
     <Route path="/add-training-course" element={<AddTrainingCourse />} />
     <Route path="/browse-RFQs" element={<BrowseRFQ />} />
     <Route path="/add-quote" element={<AddQuote />} />
+    <Route path="/rfq-detail" element={<RFQDetails />} />
     <Route path="/submitted-quote" element={<SubmittedQuote />} />
   </Routes>
 )
