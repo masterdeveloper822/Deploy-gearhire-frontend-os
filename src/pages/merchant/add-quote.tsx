@@ -69,7 +69,7 @@ export default function AddQuote() {
   const onSubmit = (data: AddQuoteForm) => {
     // handle submit logic here
     // e.g., send data to API
-    navigate("/merchant/dashboard")
+    navigate("/submitted-quote")
   }
 
   return (
@@ -88,7 +88,7 @@ export default function AddQuote() {
             >
               <BackArrowIcon alt="Back" className="h-6 w-6" />
             </Button>
-            <h2 className="mb-2 text-2xl font-bold text-gray-800">
+            <h2 className="mb-2 text-3xl font-bold text-gray-800">
               Submit a Quote
             </h2>
           </div>

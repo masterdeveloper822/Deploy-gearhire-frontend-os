@@ -1,5 +1,4 @@
 import React, { useState, useMemo } from "react"
-import { mockRFQs } from "@/types/types.js"
 import { MerchantHeader } from "@/components/layout/header/merchant-header"
 import { RFQSidebar } from "@/components/rfq-sidebar/sidebar"
 
@@ -9,6 +8,10 @@ import { LocationIcon } from "@/components/ui/icon"
 import { CalendarIcon } from "@/components/ui/icon"
 import { ClockIcon } from "@/components/ui/icon"
 import { Button } from "@/components/ui/button"
+
+import { mockRFQs } from "@/types/types.js"
+import { statusColors } from "@/types/types.js"
+import { tagColors } from "@/types/types.js"
 import {
   Select,
   SelectContent,
@@ -18,22 +21,6 @@ import {
 } from "@/components/ui/select"
 import { Card } from "@/components/ui/card"
 import { Link } from "react-router-dom"
-
-const statusColors = {
-  Open: "bg-green-100 text-green-700 border-green-400",
-  Closed: "bg-gray-100 text-gray-600 border-gray-300",
-  Accepted: "bg-sky-100 text-sky-700 border-sky-400",
-}
-
-const tagColors = {
-  Camera: "bg-blue-100 text-blue-700",
-  Lens: "bg-blue-100 text-blue-700",
-  Stabilizer: "bg-blue-100 text-blue-700",
-  Lighting: "bg-blue-100 text-blue-700",
-  Power: "bg-blue-100 text-blue-700",
-  Audio: "bg-blue-100 text-blue-700",
-  Accessories: "bg-blue-100 text-blue-700",
-}
 
 export default function BrowseRFQ() {
   const [search, setSearch] = useState("")

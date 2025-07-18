@@ -1,13 +1,13 @@
-import * as React from "react";
-import { Slot } from "@radix-ui/react-slot";
-import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/lib/utils";
-import { Link } from "react-router-dom";
+import * as React from "react"
+import { Slot } from "@radix-ui/react-slot"
+import { cva, type VariantProps } from "class-variance-authority"
+import { cn } from "@/lib/utils"
+import { Link } from "react-router-dom"
 
-import instagramIcon from "@/assets/images/ui/icons/social/instagram.svg";
-import twitterIcon from "@/assets/images/ui/icons/social/twitter.svg";
-import facebookIcon from "@/assets/images/ui/icons/social/facebook.svg";
-import linkedinIcon from "@/assets/images/ui/icons/social/linkedin.svg";
+import instagramIcon from "@/assets/images/ui/icons/social/instagram.svg"
+import twitterIcon from "@/assets/images/ui/icons/social/twitter.svg"
+import facebookIcon from "@/assets/images/ui/icons/social/facebook.svg"
+import linkedinIcon from "@/assets/images/ui/icons/social/linkedin.svg"
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
@@ -41,7 +41,7 @@ const buttonVariants = cva(
         colored_red:
           "bg-colored-red text-colored-redforeground shadow hover:bg-colored-red/90",
         colored_orange:
-          "bg-colored-orange text-colored-orangeforeground shadow hover:bg-colored-orange/90",
+          "bg-colored-orange text-colored-orangeforeground shadow hover:bg-gray-200",
         colored_blue:
           "bg-colored-blue text-background shadow hover:bg-colored-blue/90",
         colored_green:
@@ -58,32 +58,32 @@ const buttonVariants = cva(
       variant: "default",
     },
   },
-);
+)
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
-  asChild?: boolean;
+  asChild?: boolean
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
+    const Comp = asChild ? Slot : "button"
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
         {...props}
       />
-    );
+    )
   },
-);
-Button.displayName = "Button";
+)
+Button.displayName = "Button"
 
 interface UploadButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  iconSrc: string;
-  children: React.ReactNode;
+  iconSrc: string
+  children: React.ReactNode
 }
 
 const UploadButton: React.FC<UploadButtonProps> = ({
@@ -92,19 +92,19 @@ const UploadButton: React.FC<UploadButtonProps> = ({
   ...props
 }) => (
   <Button
-    className="flex items-center bg-sky-100 hover:bg-sky-200 rounded-lg px-6 py-2 mb-2 text-sky-700 font-medium"
+    className="mb-2 flex items-center rounded-lg bg-sky-100 px-6 py-2 font-medium text-sky-700 hover:bg-sky-200"
     type="button"
     {...props}
   >
-    <img src={iconSrc} alt="Upload" className="w-4 h-5 mr-2" />
+    <img src={iconSrc} alt="Upload" className="mr-2 h-5 w-4" />
     {children}
   </Button>
-);
+)
 
 interface SaveChangesButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  iconSrc: string;
-  children: React.ReactNode;
+  iconSrc: string
+  children: React.ReactNode
 }
 
 const SaveChangesButton: React.FC<SaveChangesButtonProps> = ({
@@ -113,18 +113,18 @@ const SaveChangesButton: React.FC<SaveChangesButtonProps> = ({
   ...props
 }) => (
   <Button
-    className="flex items-center justify-center bg-sky-600 text-white w-full md:w-1/2 h-12 text-base font-semibold hover:bg-sky-700"
+    className="flex h-12 w-full items-center justify-center bg-sky-600 text-base font-semibold text-white hover:bg-sky-700 md:w-1/2"
     {...props}
   >
-    <img src={iconSrc} alt="Save" className="w-4 h-4 mr-2" />
+    <img src={iconSrc} alt="Save" className="mr-2 h-4 w-4" />
     {children}
   </Button>
-);
+)
 
 interface PreviewProfileButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  iconSrc: string;
-  children: React.ReactNode;
+  iconSrc: string
+  children: React.ReactNode
 }
 
 const PreviewProfileButton: React.FC<PreviewProfileButtonProps> = ({
@@ -133,18 +133,18 @@ const PreviewProfileButton: React.FC<PreviewProfileButtonProps> = ({
   ...props
 }) => (
   <Button
-    className="flex items-center justify-center bg-white border border-gray-300 text-gray-700 font-medium w-full md:w-1/2 h-12 hover:bg-gray-100"
+    className="flex h-12 w-full items-center justify-center border border-gray-300 bg-white font-medium text-gray-700 hover:bg-gray-100 md:w-1/2"
     {...props}
   >
-    <img src={iconSrc} alt="Preview" className="w-4 h-4 mr-2" />
+    <img src={iconSrc} alt="Preview" className="mr-2 h-4 w-4" />
     {children}
   </Button>
-);
+)
 
 interface InstagramLinkProps {
-  to?: string;
-  className?: string;
-  iconClassName?: string;
+  to?: string
+  className?: string
+  iconClassName?: string
 }
 
 const InstagramLink = ({
@@ -156,13 +156,13 @@ const InstagramLink = ({
     <Link to={to} className={className}>
       <img src={instagramIcon} alt="Instagram" className={iconClassName} />
     </Link>
-  );
-};
+  )
+}
 
 interface TwitterLinkProps {
-  to?: string;
-  className?: string;
-  iconClassName?: string;
+  to?: string
+  className?: string
+  iconClassName?: string
 }
 
 const TwitterLink = ({
@@ -174,13 +174,13 @@ const TwitterLink = ({
     <Link to={to} className={className}>
       <img src={twitterIcon} alt="Twitter" className={iconClassName} />
     </Link>
-  );
-};
+  )
+}
 
 interface FacebookLinkProps {
-  to?: string;
-  className?: string;
-  iconClassName?: string;
+  to?: string
+  className?: string
+  iconClassName?: string
 }
 
 const FacebookLink = ({
@@ -192,12 +192,12 @@ const FacebookLink = ({
     <Link to={to} className={className}>
       <img src={facebookIcon} alt="Facebook" className={iconClassName} />
     </Link>
-  );
-};
+  )
+}
 interface LinkedInLinkProps {
-  to?: string;
-  className?: string;
-  iconClassName?: string;
+  to?: string
+  className?: string
+  iconClassName?: string
 }
 
 const LinkedInLink = ({
@@ -209,8 +209,8 @@ const LinkedInLink = ({
     <Link to={to} className={className}>
       <img src={linkedinIcon} alt="LinkedIn" className={iconClassName} />
     </Link>
-  );
-};
+  )
+}
 export {
   Button,
   buttonVariants,
@@ -221,4 +221,4 @@ export {
   TwitterLink,
   FacebookLink,
   LinkedInLink,
-};
+}
