@@ -1,6 +1,6 @@
 import React from "react"
 import { MerchantHeader } from "@/components/layout/header/merchant-header"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { BackArrowIcon } from "@/components/ui/icon"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -116,6 +116,9 @@ const RFQDetails: React.FC = () => {
                   <Button
                     variant="tertiary"
                     className="mb-3 flex h-12 w-full items-center justify-center gap-2 rounded-lg text-base"
+                    onClick={() => {
+                      navigate("/add-quote")
+                    }}
                   >
                     <img
                       src={imgFrame13}

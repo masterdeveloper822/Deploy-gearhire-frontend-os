@@ -12,6 +12,7 @@ import BrowseRFQ from "@/pages/merchant/browse-rfq"
 import AddQuote from "@/pages/merchant/add-quote"
 import SubmittedQuote from "@/pages/merchant/submitted-quote"
 import RFQDetails from "@/pages/merchant/rfq-details"
+import SubscriptionPage from "@/pages/merchant/subscription"
 
 const AppRoutes = () => (
   <Routes>
@@ -31,6 +32,7 @@ const AppRoutes = () => (
     <Route path="/add-quote" element={<AddQuote />} />
     <Route path="/rfq-detail" element={<RFQDetails />} />
     <Route path="/submitted-quote" element={<SubmittedQuote />} />
+    <Route path="/subscription" element={<SubscriptionPage />} />
   </Routes>
 )
 

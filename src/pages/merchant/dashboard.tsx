@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { RecentActivityCard } from "@/components/ui/card"
 import { MerchantHeader } from "@/components/layout/header/merchant-header"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 // Figma image assets
 const imgFrame =
@@ -32,6 +32,7 @@ const imgImg3 =
   "http://localhost:3845/assets/93261e682a4fc24925831eb042e025379dab45ab.png"
 
 const MerchantDashboard: React.FC = () => {
+  const navigate = useNavigate()
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -186,6 +187,9 @@ const MerchantDashboard: React.FC = () => {
                 variant="tertiary"
                 size="lg"
                 className="mt-2 w-full rounded-lg text-white"
+                onClick={() => {
+                  navigate("/subscription")
+                }}
               >
                 Manage Subscription
               </Button>
