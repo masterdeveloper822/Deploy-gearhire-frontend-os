@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import gearIcon from "../../../assets/images/ui/gear_icon.svg"
 import { Typography } from "@/components/ui/typography"
 import { Button } from "@/components/ui/button"
@@ -11,6 +11,8 @@ import notificationIcon from "@/assets/images/ui/icons/notification.svg"
 import settingIcon from "@/assets/images/ui/icons/setting.svg"
 
 export function MerchantHeader() {
+  const navigate = useNavigate()
+
   return (
     <header className="w-full bg-white shadow-sm">
       <div className="mx-auto flex h-[74px] max-w-[1550px] items-center justify-between px-4 md:px-8">
@@ -38,6 +40,9 @@ export function MerchantHeader() {
           <Button
             variant="ghost"
             className="bg-transparent p-1 hover:bg-gray-100 sm:p-2"
+            onClick={() => {
+              navigate("/merchant-notification")
+            }}
           >
             <img
               src={notificationIcon}

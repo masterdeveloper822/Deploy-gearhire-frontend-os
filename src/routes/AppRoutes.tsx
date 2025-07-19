@@ -14,27 +14,15 @@ import SubmittedQuote from "@/pages/merchant/submitted-quote"
 import RFQDetails from "@/pages/merchant/rfq-details"
 import SubscriptionPage from "@/pages/merchant/subscription"
 import Review from "@/pages/merchant/review"
+import MerchantRoutes from "./MerchantRoutes"
+import RenterRoutes from "./RenterRoutes"
 
 const AppRoutes = () => (
   <Routes>
     <Route path="/" element={<LandingPage />} />
     {AuthRoutes}
-    <Route path="/edit-merchant-profile" element={<EditMerchantProfile />} />
-    <Route path="/merchant-next-step" element={<MerchantNextStep />} />
-    <Route path="/merchant-dashboard" element={<MerchantDashboard />} />
-    <Route
-      path="/merchant-inventory-book"
-      element={<MerchantInventoryBook />}
-    />
-    <Route path="/merchant-add-equipment" element={<MerchantAddEquipment />} />
-    <Route path="/training-course-list" element={<TrainingCourseList />} />
-    <Route path="/add-training-course" element={<AddTrainingCourse />} />
-    <Route path="/browse-RFQs" element={<BrowseRFQ />} />
-    <Route path="/add-quote" element={<AddQuote />} />
-    <Route path="/rfq-detail" element={<RFQDetails />} />
-    <Route path="/submitted-quote" element={<SubmittedQuote />} />
-    <Route path="/subscription" element={<SubscriptionPage />} />
-    <Route path="/merchant-review" element={<Review />} />
+    {MerchantRoutes}
+    {RenterRoutes}
   </Routes>
 )
 

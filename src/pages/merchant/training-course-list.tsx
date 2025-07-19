@@ -60,10 +60,10 @@ const TrainingCourseList = () => {
       <main className="flex w-full flex-col items-center px-4 pb-8 pt-6">
         <div className="mb-8 flex w-full max-w-6xl flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-gray-800">
+            <h1 className="text-3xl font-bold text-gray-800">
               My Training Courses
             </h1>
-            <p className="mt-1 text-base text-gray-600">
+            <p className="mt-3 text-base text-gray-600">
               Manage your training courses and workshops
             </p>
           </div>
