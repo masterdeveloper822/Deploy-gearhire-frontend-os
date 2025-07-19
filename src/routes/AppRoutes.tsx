@@ -13,6 +13,7 @@ import AddQuote from "@/pages/merchant/add-quote"
 import SubmittedQuote from "@/pages/merchant/submitted-quote"
 import RFQDetails from "@/pages/merchant/rfq-details"
 import SubscriptionPage from "@/pages/merchant/subscription"
+import Review from "@/pages/merchant/review"
 
 const AppRoutes = () => (
   <Routes>
@@ -33,6 +34,7 @@ const AppRoutes = () => (
     <Route path="/rfq-detail" element={<RFQDetails />} />
     <Route path="/submitted-quote" element={<SubmittedQuote />} />
     <Route path="/subscription" element={<SubscriptionPage />} />
+    <Route path="/merchant-review" element={<Review />} />
   </Routes>
 )
 
