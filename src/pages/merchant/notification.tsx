@@ -116,7 +116,12 @@ const Notification: React.FC = () => {
                   </p>
                   <div className="flex items-center gap-4">
                     <span className="text-xs text-gray-500">2 minutes ago</span>
-                    <button className="text-sm font-medium text-sky-600 hover:text-sky-700">
+                    <button
+                      className="text-sm font-medium text-sky-600 hover:text-sky-700"
+                      onClick={() => {
+                        navigate("/merchant-message")
+                      }}
+                    >
                       View Message
                     </button>
                   </div>

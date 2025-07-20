@@ -100,6 +100,10 @@ button {
   }
 }
 
+.scrollbar-hide::-webkit-scrollbar {
+  background: transparent;
+}
+
 @layer base {
   * {
     @apply border-border;

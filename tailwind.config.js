@@ -97,6 +97,7 @@ module.exports = {
     extend: {},
   },
   plugins: [
+    require("tailwind-scrollbar-hide"),
     require("@tailwindcss/typography"),
     require("tailwindcss-animate"),
     function ({ addComponents }) {
@@ -108,7 +109,7 @@ module.exports = {
           "@apply text-base font-normal leading-6 text-gray-700 hover:text-sky-700 transition-colors px-2":
             {},
         },
-      });
+      })
     },
   ],
-};
+}

@@ -5,6 +5,7 @@ import BrowseRFQ from "@/pages/merchant/browse-rfq"
 import { MerchantDashboard } from "@/pages/merchant/dashboard"
 import { EditMerchantProfile } from "@/pages/merchant/edit-profile"
 import { MerchantInventoryBook } from "@/pages/merchant/inventory-book"
+import MerchantMessage from "@/pages/merchant/message"
 import MerchantNextStep from "@/pages/merchant/next-step"
 import Notification from "@/pages/merchant/notification"
 import Review from "@/pages/merchant/review"
@@ -29,4 +30,5 @@ export default [
   <Route path="/subscription" element={<SubscriptionPage />} />,
   <Route path="/merchant-review" element={<Review />} />,
   <Route path="/merchant-notification" element={<Notification />} />,
+  <Route path="/merchant-message" element={<MerchantMessage />} />,
 ]
