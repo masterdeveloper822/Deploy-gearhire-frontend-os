@@ -6,10 +6,8 @@ import { Button } from "@/components/ui/button"
 
 const imgImg =
   "http://localhost:3845/assets/f578f9c2a181ef669150341163e63e6e9da01878.png"
-import notificationIcon from "@/assets/images/ui/icons/notification.svg"
-const imgFrame1 =
-  "http://localhost:3845/assets/9861a0b6e8bb9b630982f192343e0944f05f6199.svg"
-import settingIcon from "@/assets/images/ui/icons/setting.svg"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faBell, faGear } from "@fortawesome/free-solid-svg-icons"
 
 export const RenterHeader = () => {
   const navigate = useNavigate()
@@ -27,8 +25,37 @@ export const RenterHeader = () => {
             FilmGearHub
           </Typography>
         </Link>
-        <div className="flex items-center gap-1 px-2 sm:gap-2 sm:px-0 md:gap-4">
-          <div className="pr-2 md:pr-0">
+        {/* Navigation */}
+        <div className="hidden items-center justify-center gap-8 lg:flex">
+          <Link to="/browse-equipment">
+            <p
+              className={
+                window.location.pathname === "/browse-equipment"
+                  ? "text-tertiary"
+                  : undefined
+              }
+            >
+              Equipment
+            </p>
+          </Link>
+          <Link to="/browse-training-course">
+            <p
+              className={
+                window.location.pathname === "/browse-training-course"
+                  ? "text-tertiary"
+                  : undefined
+              }
+            >
+              Training Courses
+            </p>
+          </Link>
+          <Link>
+            <p>Merchants</p>
+          </Link>
+        </div>
+        {/* User Profile and Actions */}
+        <div className="flex items-center gap-1 gap-4 px-2 text-base sm:px-0">
+          <div>
             <img
               src={imgImg}
               alt="Profile"
@@ -39,21 +66,21 @@ export const RenterHeader = () => {
           <span className="hidden max-w-[80px] truncate text-sm font-medium text-gray-700 sm:max-w-none sm:text-base md:inline">
             Sarah Chen
           </span>
-
+          {/* Notification Icon */}
           <Button variant="ghost" className="relative ml-1 sm:ml-3">
-            <img
-              src={notificationIcon}
-              alt="Notifications"
-              className="h-4 w-4 sm:h-5 sm:w-5"
+            <FontAwesomeIcon
+              className="text-tertiary"
+              style={{ height: 20, width: 20 }}
+              icon={faBell}
             />
-            <span className="absolute -right-1 -top-1 h-3 w-3 rounded-full bg-red-500"></span>
+            <span className="absolute -right-3 -top-3 h-3 w-3 rounded-full bg-red-500"></span>
           </Button>
-
+          {/* Settings Icon */}
           <Button variant="ghost" className="ml-1 sm:ml-3">
-            <img
-              src={settingIcon}
-              alt="Settings"
-              className="h-4 w-4 sm:h-5 sm:w-5"
+            <FontAwesomeIcon
+              className="text-gray-600"
+              style={{ height: 20, width: 20 }}
+              icon={faGear}
             />
           </Button>
         </div>

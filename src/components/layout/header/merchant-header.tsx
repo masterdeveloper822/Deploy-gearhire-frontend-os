@@ -7,8 +7,9 @@ import { Button } from "@/components/ui/button"
 
 const imgImg =
   "http://localhost:3845/assets/410c340aa057242400c608368f918307cdd72438.png"
-import notificationIcon from "@/assets/images/ui/icons/notification.svg"
-import settingIcon from "@/assets/images/ui/icons/setting.svg"
+
+import { faBell, faGear } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export function MerchantHeader() {
   const navigate = useNavigate()
@@ -16,6 +17,7 @@ export function MerchantHeader() {
   return (
     <header className="w-full bg-white shadow-sm">
       <div className="mx-auto flex h-[74px] max-w-[1550px] items-center justify-between px-4 md:px-8">
+        {/* Logo and Brand */}
         <Link
           to="/"
           className="flex cursor-pointer items-center"
@@ -26,6 +28,7 @@ export function MerchantHeader() {
             FilmGearHub
           </Typography>
         </Link>
+        {/* User Profile and Actions */}
         <div className="flex items-center gap-1 px-2 sm:gap-2 sm:px-0 md:gap-4">
           <div className="pr-2 md:pr-0">
             <img
@@ -37,6 +40,7 @@ export function MerchantHeader() {
           <span className="hidden max-w-[80px] truncate text-sm font-medium text-gray-700 sm:max-w-none sm:text-base md:inline">
             ProGear Studios
           </span>
+          {/* Notification Icon */}
           <Button
             variant="ghost"
             className="ml-1 sm:ml-3"
@@ -44,17 +48,18 @@ export function MerchantHeader() {
               navigate("/merchant-notification")
             }}
           >
-            <img
-              src={notificationIcon}
-              alt="Notifications"
-              className="h-4 w-4 sm:h-5 sm:w-5"
+            <FontAwesomeIcon
+              className="text-gray-600"
+              style={{ height: 20, width: 20 }}
+              icon={faBell}
             />
           </Button>
+          {/* Settings Icon */}
           <Button variant="ghost" className="ml-1 sm:ml-3">
-            <img
-              src={settingIcon}
-              alt="Settings"
-              className="h-4 w-4 sm:h-5 sm:w-5"
+            <FontAwesomeIcon
+              className="text-gray-600"
+              style={{ height: 20, width: 20 }}
+              icon={faGear}
             />
           </Button>
         </div>
