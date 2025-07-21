@@ -3,6 +3,7 @@ import { RenterHeader } from "@/components/layout/header/renter-header"
 import { CommonFooter } from "@/components/layout/footer/common"
 import { Button } from "@/components/ui/button"
 import { RFQIcon } from "@/components/ui/icon"
+import { Link } from "react-router-dom"
 
 const imgImg =
   "http://localhost:3845/assets/410c340aa057242400c608368f918307cdd72438.png"
@@ -38,6 +39,42 @@ const imgFrame8 =
   "http://localhost:3845/assets/e401703c397927a1e601799ae57cfade1df297a5.svg"
 const imgFrame9 =
   "http://localhost:3845/assets/c4fdaa6f54c86c97d5f8ef273dde147bad45e64f.svg"
+
+const updatesData = [
+  {
+    id: 1,
+    merchant: "ProGear Studios",
+    avatar: imgImg,
+    time: "2 hours ago",
+    content:
+      "Just added new RED Komodo cameras to our inventory! Perfect for indie filmmakers looking for cinema-quality footage. Check out our latest gear.",
+    likes: 12,
+    comments: 3,
+    image: null,
+  },
+  {
+    id: 2,
+    merchant: "Marcus Rodriguez",
+    avatar: imgImg1,
+    time: "1 day ago",
+    content:
+      "Behind the scenes from our latest commercial shoot! Thanks to all the amazing filmmakers who trusted us with their equipment needs. 🎬",
+    likes: 24,
+    comments: 8,
+    image: imgImg2,
+  },
+  {
+    id: 3,
+    merchant: "CineRent Pro",
+    avatar: imgImg3,
+    time: "2 days ago",
+    content:
+      "Pro tip: Always test your audio equipment before the shoot day! We offer free equipment testing sessions for all our clients.",
+    likes: 18,
+    comments: 5,
+    image: null,
+  },
+]
 
 export const RenterDashboard = () => {
   return (
@@ -159,153 +196,69 @@ export const RenterDashboard = () => {
                 </div>
 
                 <div className="space-y-6">
-                  {/* Update 1 */}
-                  <div className="border-b border-gray-100 pb-6">
-                    <div className="flex gap-4">
-                      <img
-                        src={imgImg}
-                        alt="ProGear Studios"
-                        className="h-10 w-10 rounded-full object-cover"
-                      />
-                      <div className="flex-1">
-                        <div className="mb-2 flex items-center gap-2">
-                          <span className="text-base font-semibold text-gray-800">
-                            ProGear Studios
-                          </span>
-                          <span className="text-xs text-gray-500">
-                            2 hours ago
-                          </span>
-                        </div>
-                        <p className="mb-4 text-base text-gray-700">
-                          Just added new RED Komodo cameras to our inventory!
-                          Perfect for indie filmmakers looking for
-                          cinema-quality footage. Check out our latest gear.
-                        </p>
-                        <div className="flex items-center gap-4">
-                          <button className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700">
-                            <img
-                              src={imgFrame4}
-                              alt="like"
-                              className="h-4 w-4"
-                            />
-                            <span>12</span>
-                          </button>
-                          <button className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700">
-                            <img
-                              src={imgFrame5}
-                              alt="comment"
-                              className="h-4 w-4"
-                            />
-                            <span>3</span>
-                          </button>
-                          <button className="text-sm font-medium text-sky-600 hover:text-sky-700">
-                            View Post
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Update 2 */}
-                  <div className="border-b border-gray-100 pb-6">
-                    <div className="flex gap-4">
-                      <img
-                        src={imgImg1}
-                        alt="Marcus Rodriguez"
-                        className="h-10 w-10 rounded-full object-cover"
-                      />
-                      <div className="flex-1">
-                        <div className="mb-2 flex items-center gap-2">
-                          <span className="text-base font-semibold text-gray-800">
-                            Marcus Rodriguez
-                          </span>
-                          <span className="text-xs text-gray-500">
-                            1 day ago
-                          </span>
-                        </div>
-                        <p className="mb-4 text-base text-gray-700">
-                          Behind the scenes from our latest commercial shoot!
-                          Thanks to all the amazing filmmakers who trusted us
-                          with their equipment needs. 🎬
-                        </p>
-                        <div className="mb-4 rounded-lg bg-gray-100 p-3">
+                  {updatesData.map((update, index) => (
+                    <div
+                      key={update.id}
+                      className={
+                        index < updatesData.length - 1
+                          ? "border-b border-gray-100 pb-6"
+                          : "pb-6"
+                      }
+                    >
+                      <div className="flex gap-4">
+                        <Link to="/merchant-profile">
                           <img
-                            src={imgImg2}
-                            alt="Behind the scenes"
-                            className="h-32 w-full rounded object-cover"
+                            src={update.avatar}
+                            alt={update.merchant}
+                            className="h-10 w-10 rounded-full object-cover"
                           />
-                        </div>
-                        <div className="flex items-center gap-4">
-                          <button className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700">
-                            <img
-                              src={imgFrame6}
-                              alt="like"
-                              className="h-4 w-4"
-                            />
-                            <span>24</span>
-                          </button>
-                          <button className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700">
-                            <img
-                              src={imgFrame5}
-                              alt="comment"
-                              className="h-4 w-4"
-                            />
-                            <span>8</span>
-                          </button>
-                          <button className="text-sm font-medium text-sky-600 hover:text-sky-700">
-                            View Post
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Update 3 */}
-                  <div className="pb-6">
-                    <div className="flex gap-4">
-                      <img
-                        src={imgImg3}
-                        alt="CineRent Pro"
-                        className="h-10 w-10 rounded-full object-cover"
-                      />
-                      <div className="flex-1">
-                        <div className="mb-2 flex items-center gap-2">
-                          <span className="text-base font-semibold text-gray-800">
-                            CineRent Pro
-                          </span>
-                          <span className="text-xs text-gray-500">
-                            2 days ago
-                          </span>
-                        </div>
-                        <p className="mb-4 text-base text-gray-700">
-                          Pro tip: Always test your audio equipment before the
-                          shoot day! We offer free equipment testing sessions
-                          for all our clients.
-                        </p>
-                        <div className="flex items-center gap-4">
-                          <button className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700">
-                            <img
-                              src={imgFrame4}
-                              alt="like"
-                              className="h-4 w-4"
-                            />
-                            <span>18</span>
-                          </button>
-                          <button className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700">
-                            <img
-                              src={imgFrame5}
-                              alt="comment"
-                              className="h-4 w-4"
-                            />
-                            <span>5</span>
-                          </button>
-                          <button className="text-sm font-medium text-sky-600 hover:text-sky-700">
-                            View Post
-                          </button>
+                        </Link>
+                        <div className="flex-1">
+                          <div className="mb-2 flex items-center gap-2">
+                            <span className="text-base font-semibold text-gray-800">
+                              {update.merchant}
+                            </span>
+                            <span className="text-xs text-gray-500">
+                              {update.time}
+                            </span>
+                          </div>
+                          <p className="mb-4 text-base text-gray-700">
+                            {update.content}
+                          </p>
+                          {update.image && (
+                            <div className="mb-4 rounded-lg bg-gray-100 p-3">
+                              <img
+                                src={update.image}
+                                alt="Update content"
+                                className="h-32 w-full rounded object-cover"
+                              />
+                            </div>
+                          )}
+                          <div className="flex items-center gap-4">
+                            <button className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700">
+                              <img
+                                src={update.id === 2 ? imgFrame6 : imgFrame4}
+                                alt="like"
+                                className="h-4 w-4"
+                              />
+                              <span>{update.likes}</span>
+                            </button>
+                            <button className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700">
+                              <img
+                                src={imgFrame5}
+                                alt="comment"
+                                className="h-4 w-4"
+                              />
+                              <span>{update.comments}</span>
+                            </button>
+                            <button className="text-sm font-medium text-sky-600 hover:text-sky-700">
+                              View Post
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  ))}
                 </div>
               </section>
             </div>

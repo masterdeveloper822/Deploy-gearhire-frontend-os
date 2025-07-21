@@ -4,6 +4,12 @@ import { Link, useNavigate } from "react-router-dom"
 import gearIcon from "../../../assets/images/ui/gear_icon.svg"
 import { Typography } from "@/components/ui/typography"
 import { Button } from "@/components/ui/button"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+import { LogOut } from "lucide-react"
 
 const imgImg =
   "http://localhost:3845/assets/410c340aa057242400c608368f918307cdd72438.png"
@@ -19,7 +25,7 @@ export function MerchantHeader() {
       <div className="mx-auto flex h-[74px] max-w-[1550px] items-center justify-between px-4 md:px-8">
         {/* Logo and Brand */}
         <Link
-          to="/"
+          to="/merchant-dashboard"
           className="flex cursor-pointer items-center"
           aria-label="Go to homepage"
         >
@@ -30,16 +36,31 @@ export function MerchantHeader() {
         </Link>
         {/* User Profile and Actions */}
         <div className="flex items-center gap-1 px-2 sm:gap-2 sm:px-0 md:gap-4">
-          <div className="pr-2 md:pr-0">
-            <img
-              src={imgImg}
-              alt="Profile"
-              className="h-7 w-7 rounded-full sm:h-8 sm:w-8"
-            />
-          </div>
-          <span className="hidden max-w-[80px] truncate text-sm font-medium text-gray-700 sm:max-w-none sm:text-base md:inline">
-            ProGear Studios
-          </span>
+          <Popover>
+            <PopoverTrigger className="flex cursor-pointer items-center gap-2 focus:outline-none">
+              <div className="pr-2 md:pr-0">
+                <img
+                  src={imgImg}
+                  alt="Profile"
+                  className="h-7 w-7 rounded-full sm:h-8 sm:w-8"
+                />
+              </div>
+              <span className="hidden max-w-[80px] truncate text-sm font-medium text-gray-700 sm:max-w-none sm:text-base md:inline">
+                ProGear Studios
+              </span>
+            </PopoverTrigger>
+            <PopoverContent className="w-30 p-3">
+              <Button
+                variant="link"
+                className="w-full justify-center px-2 text-base text-gray-700"
+                onClick={() => navigate("/")}
+              >
+                Logout
+                <LogOut />
+              </Button>
+            </PopoverContent>
+          </Popover>
+
           {/* Notification Icon */}
           <Button
             variant="ghost"

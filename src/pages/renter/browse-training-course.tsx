@@ -1,4 +1,5 @@
 import React from "react"
+import { Filter } from "lucide-react"
 import { RenterHeader } from "@/components/layout/header/renter-header"
 import { CommonFooter } from "@/components/layout/footer/common"
 import {
@@ -9,6 +10,13 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Button } from "@/components/ui/button"
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet"
 
 // Image and SVG asset URLs from Figma export
 const imgImg =
@@ -126,6 +134,66 @@ const mockCourses = [
   },
 ]
 
+const CourseFilters = () => (
+  <>
+    <div className="mb-6">
+      <label className="mb-2 block text-sm font-medium text-gray-700">
+        Search Courses
+      </label>
+      <div className="relative">
+        <input
+          className="w-full rounded-lg border border-gray-300 py-2 pl-10 pr-3 text-base text-gray-900 placeholder:text-[#adaebc] focus:outline-none"
+          placeholder="Search by title or desc..."
+          type="text"
+        />
+        <span className="absolute left-3 top-1/2 -translate-y-1/2">
+          <img src={imgFrame3} alt="search" className="h-4 w-4" />
+        </span>
+      </div>
+    </div>
+    {/* Category */}
+    <div className="mb-6">
+      <label className="mb-2 block text-sm font-medium text-gray-700">
+        Category
+      </label>
+      <div className="space-y-2">
+        {mockCourses.map((course) => (
+          <label
+            key={course.id}
+            className="flex items-center gap-2 text-sm text-gray-600"
+          >
+            <input type="checkbox" className="rounded border-gray-300" />{" "}
+            {course.category}
+          </label>
+        ))}
+      </div>
+    </div>
+    {/* Location */}
+    <div className="mb-6">
+      <label className="mb-2 block text-sm font-medium text-gray-700">
+        Location
+      </label>
+      <Select>
+        <SelectTrigger className="w-full">
+          <SelectValue placeholder="All Locations" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="all">All Locations</SelectItem>
+          <SelectItem value="america">America</SelectItem>
+          <SelectItem value="europe">Europe</SelectItem>
+        </SelectContent>
+      </Select>
+    </div>
+    {/* Clear Filters */}
+    <Button
+      variant="ghost"
+      className="w-full rounded-lg bg-gray-100 py-2 text-base font-normal text-gray-700"
+    >
+      Clear All Filters
+    </Button>
+  </>
+)
+
 const BrowseTrainingCourse = () => {
   const [sortMode, setSortMode] = React.useState<"newest" | "oldest">("newest")
 
@@ -133,223 +201,142 @@ const BrowseTrainingCourse = () => {
     <div className="min-h-screen bg-gray-50">
       <RenterHeader />
       {/* Main Content */}
-      <main className="mx-auto mb-12 max-w-[1280px] px-2 py-4 sm:px-4 sm:py-8">
+      <main className="mx-auto mb-12 w-full max-w-[1280px] px-4 py-6 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <h1 className="mb-4 text-3xl font-bold text-gray-800">
+          <h1 className="mb-2 text-2xl font-bold text-gray-800 sm:mb-4 sm:text-3xl">
             Browse Training Courses
           </h1>
-          <p className="text-base text-gray-600">
+          <p className="text-sm text-gray-600 sm:text-base">
             Learn from verified merchants and industry professionals
           </p>
         </div>
-        <div className="flex items-center justify-between">
-          <div className="flex items-start gap-8">
-            {/* Sidebar Filters */}
-            <aside className="relative w-72 rounded-lg bg-white p-6 shadow">
-              <h2 className="mb-4 text-lg font-semibold text-gray-800">
-                Filters
-              </h2>
-              {/* Search Courses */}
-              <div className="mb-6">
-                <label className="mb-2 block text-sm font-medium text-gray-700">
-                  Search Courses
-                </label>
-                <div className="relative">
-                  <input
-                    className="w-full rounded-lg border border-gray-300 py-2 pl-10 pr-3 text-base text-gray-900 placeholder:text-[#adaebc] focus:outline-none"
-                    placeholder="Search by title or desc..."
-                    type="text"
-                  />
-                  <span className="absolute left-3 top-1/2 -translate-y-1/2">
-                    <img src={imgFrame3} alt="search" className="h-4 w-4" />
-                  </span>
-                </div>
+        <div className="flex items-start gap-8">
+          {/* Desktop Sidebar */}
+          <aside className="relative hidden w-72 shrink-0 rounded-lg bg-white p-6 shadow lg:block">
+            <h2 className="mb-4 text-lg font-semibold text-gray-800">
+              Filters
+            </h2>
+            <CourseFilters />
+          </aside>
+          {/* Main Course List */}
+          <div className="flex-1">
+            <div className="mb-6 flex items-center justify-between gap-4">
+              {/* Mobile Filter Button */}
+              <div className="lg:hidden">
+                <Sheet>
+                  <SheetTrigger asChild>
+                    <Button
+                      variant="primary"
+                      className="flex items-center gap-2 text-gray-700"
+                    >
+                      <Filter className="h-4 w-4" />
+                      <span>Filters</span>
+                    </Button>
+                  </SheetTrigger>
+                  <SheetContent
+                    side="left"
+                    className="w-[300px] overflow-y-auto p-6"
+                  >
+                    <SheetHeader className="mb-4">
+                      <SheetTitle>Filters</SheetTitle>
+                    </SheetHeader>
+                    <CourseFilters />
+                  </SheetContent>
+                </Sheet>
               </div>
-              {/* Category */}
-              <div className="mb-6">
-                <label className="mb-2 block text-sm font-medium text-gray-700">
-                  Category
-                </label>
-                <div className="space-y-2">
-                  <label className="flex items-center gap-2 text-sm text-gray-600">
-                    <input
-                      type="checkbox"
-                      className="rounded border-gray-300"
-                    />{" "}
-                    Lighting
-                  </label>
-                  <label className="flex items-center gap-2 text-sm text-gray-600">
-                    <input
-                      type="checkbox"
-                      className="rounded border-gray-300"
-                    />{" "}
-                    Camera Operation
-                  </label>
-                  <label className="flex items-center gap-2 text-sm text-gray-600">
-                    <input
-                      type="checkbox"
-                      className="rounded border-gray-300"
-                    />{" "}
-                    Audio Recording
-                  </label>
-                  <label className="flex items-center gap-2 text-sm text-gray-600">
-                    <input
-                      type="checkbox"
-                      className="rounded border-gray-300"
-                    />{" "}
-                    Directing
-                  </label>
-                  <label className="flex items-center gap-2 text-sm text-gray-600">
-                    <input
-                      type="checkbox"
-                      className="rounded border-gray-300"
-                    />{" "}
-                    Post-Production
-                  </label>
-                  <label className="flex items-center gap-2 text-sm text-gray-600">
-                    <input
-                      type="checkbox"
-                      className="rounded border-gray-300"
-                    />{" "}
-                    Grip & Electric
-                  </label>
-                </div>
-              </div>
-              {/* Location */}
-              <div className="mb-6">
-                <label className="mb-2 block text-sm font-medium text-gray-700">
-                  Location
-                </label>
-                <Select>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="All Locations" />
+              <span className="hidden text-sm text-gray-600 sm:inline sm:text-base">
+                Showing 24 courses
+              </span>
+              <div className="relative">
+                <Select value={sortMode} onValueChange={setSortMode}>
+                  <SelectTrigger className="w-auto min-w-[140px] rounded-lg border border-gray-300 py-2 pl-3 pr-2 text-sm text-gray-900 shadow-sm">
+                    <span>
+                      {sortMode === "newest" ? "Newest First" : "Oldest First"}
+                    </span>
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">All Locations</SelectItem>
-                    <SelectItem value="america">America</SelectItem>
-                    <SelectItem value="europe">Europe</SelectItem>
+                    <SelectItem value="newest">Newest First</SelectItem>
+                    <SelectItem value="oldest">Oldest First</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
-              {/* Clear Filters */}
-              <Button
-                variant="ghost"
-                className="w-full rounded-lg bg-gray-100 py-2 text-base font-normal text-gray-700"
-              >
-                Clear All Filters
-              </Button>
-            </aside>
-            {/* Main Course List */}
-            <div className="flex-1">
-              <div className="flex items-center gap-4">
-                <span className="text-gray-600">Showing 24 courses</span>
-                <div className="relative ml-auto">
-                  <Select value={sortMode} onValueChange={setSortMode}>
-                    <SelectTrigger className="w-[130px] rounded-lg border border-gray-300 py-2 pl-3 pr-2 text-sm text-gray-900 shadow-sm transition-colors duration-150 focus:ring-2 focus:ring-sky-500">
-                      <span className="truncate">
-                        {sortMode === "newest"
-                          ? "Newest First"
-                          : "Oldest First"}
-                      </span>
-                    </SelectTrigger>
-                    <SelectContent className="rounded-lg border border-gray-200 bg-white shadow-lg">
-                      <SelectItem
-                        value="newest"
-                        className="transition-colors duration-100 hover:bg-sky-50"
-                      >
-                        <span className="flex items-center gap-2">
-                          Newest First
-                        </span>
-                      </SelectItem>
-                      <SelectItem
-                        value="oldest"
-                        className="transition-colors duration-100 hover:bg-sky-50"
-                      >
-                        <span className="flex items-center gap-2">
-                          Oldest First
-                        </span>
-                      </SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-              {/* Course Cards Grid */}
-              <div className="mt-6 grid grid-cols-3 gap-6">
-                {mockCourses.map((course) => (
-                  <div
-                    key={course.id}
-                    className="overflow-hidden rounded-lg bg-white p-0 shadow"
-                  >
-                    <div className="relative h-48 w-full">
-                      <img
-                        src={course.image}
-                        alt={course.category}
-                        className="h-full w-full object-cover"
-                      />
-                      <span
-                        className={`absolute left-3 top-3 rounded-full px-2 py-1 text-xs font-medium ${course.categoryColor}`}
-                      >
-                        {course.category}
-                      </span>
-                    </div>
-                    <div className="p-4">
-                      <h2 className="mb-1 text-lg font-semibold text-gray-800">
-                        {course.title}
-                      </h2>
-                      <p className="mb-4 text-sm text-gray-600">
-                        {course.description}
-                      </p>
-                      <div className="mb-4 flex items-center">
-                        <img
-                          src={course.companyLogo}
-                          alt={course.company}
-                          className="mr-2 h-6 w-6 rounded-full"
-                        />
-                        <span className="mr-2 text-sm text-gray-700">
-                          {course.company}
-                        </span>
-                        <img
-                          src={imgGroup}
-                          alt="verified"
-                          className="h-3.5 w-3.5"
-                        />
-                      </div>
-                      <Button
-                        variant="tertiary"
-                        className="flex w-full items-center justify-center gap-2 rounded-lg py-2 text-base font-normal"
-                      >
-                        <img
-                          src={imgFrame5}
-                          alt="learn more"
-                          className="h-4 w-4"
-                        />{" "}
-                        Learn More
-                      </Button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              {/* Pagination */}
-              <div className="mt-8 flex items-center justify-center gap-2">
-                <button className="flex h-10 w-9 items-center justify-center rounded-lg border border-gray-300 opacity-50">
-                  <img src={imgFrame6} alt="prev" className="h-4 w-2.5" />
-                </button>
-                <Button
-                  variant="tertiary"
-                  className="flex h-10 w-9 items-center justify-center rounded-lg"
+            </div>
+            {/* Course Cards Grid */}
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
+              {mockCourses.map((course) => (
+                <div
+                  key={course.id}
+                  className="overflow-hidden rounded-lg bg-white p-0 shadow"
                 >
-                  1
-                </Button>
-                <button className="flex h-10 w-9 items-center justify-center rounded-lg border border-gray-300 font-normal text-gray-600">
-                  2
-                </button>
-                <button className="flex h-10 w-9 items-center justify-center rounded-lg border border-gray-300 font-normal text-gray-600">
-                  3
-                </button>
-                <button className="flex h-10 w-9 items-center justify-center rounded-lg border border-gray-300">
-                  <img src={imgFrame7} alt="next" className="h-4 w-2.5" />
-                </button>
-              </div>
+                  <div className="relative h-44 w-full sm:h-48">
+                    <img
+                      src={course.image}
+                      alt={course.category}
+                      className="h-full w-full object-cover"
+                    />
+                    <span
+                      className={`absolute left-3 top-3 rounded-full px-2 py-1 text-xs font-medium ${course.categoryColor}`}
+                    >
+                      {course.category}
+                    </span>
+                  </div>
+                  <div className="p-4">
+                    <h2 className="mb-1 text-base font-semibold text-gray-800 sm:text-lg">
+                      {course.title}
+                    </h2>
+                    <p className="mb-4 text-sm text-gray-600">
+                      {course.description}
+                    </p>
+                    <div className="mb-4 flex items-center">
+                      <img
+                        src={course.companyLogo}
+                        alt={course.company}
+                        className="mr-2 h-6 w-6 rounded-full"
+                      />
+                      <span className="mr-2 text-sm text-gray-700">
+                        {course.company}
+                      </span>
+                      <img
+                        src={imgGroup}
+                        alt="verified"
+                        className="h-3.5 w-3.5"
+                      />
+                    </div>
+                    <Button
+                      variant="tertiary"
+                      className="flex w-full items-center justify-center gap-2 rounded-lg py-2 text-base font-normal"
+                    >
+                      <img
+                        src={imgFrame5}
+                        alt="learn more"
+                        className="h-4 w-4"
+                      />{" "}
+                      Learn More
+                    </Button>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {/* Pagination */}
+            <div className="mt-8 flex items-center justify-center gap-2">
+              <button className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-300 opacity-50 sm:h-10 sm:w-10">
+                <img src={imgFrame6} alt="prev" className="h-4 w-2.5" />
+              </button>
+              <Button
+                variant="tertiary"
+                className="flex h-9 w-9 items-center justify-center rounded-lg sm:h-10 sm:w-10"
+              >
+                1
+              </Button>
+              <button className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-300 font-normal text-gray-600 sm:h-10 sm:w-10">
+                2
+              </button>
+              <button className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-300 font-normal text-gray-600 sm:h-10 sm:w-10">
+                3
+              </button>
+              <button className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-300 sm:h-10 sm:w-10">
+                <img src={imgFrame7} alt="next" className="h-4 w-2.5" />
+              </button>
             </div>
           </div>
         </div>

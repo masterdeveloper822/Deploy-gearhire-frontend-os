@@ -1,6 +1,17 @@
 import React from "react"
 import { RenterHeader } from "@/components/layout/header/renter-header"
 import { CommonFooter } from "@/components/layout/footer/common"
+import { Card } from "@/components/ui/card"
+import { Switch } from "@/components/ui/switch"
+import { Button } from "@/components/ui/button"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { Input } from "@/components/ui/input"
 
 // Image and SVG asset URLs from Figma export
 const imgImg =
@@ -46,278 +57,227 @@ const imgGroup =
 const imgFrame6 =
   "http://localhost:3845/assets/f3f266a6575b79ab545a87d9b2e97be446a999cc.svg"
 
+// Mock data for equipment with original structure
+const equipmentData = [
+  {
+    id: 1,
+    image: imgImg1,
+    title: "RED Dragon 6K Cinema Camera",
+    description:
+      "Professional cinema camera with 6K resolution, dual ISO, and comprehensive codec support for high-end productions.",
+    category: "Camera",
+    categoryClass: "bg-sky-50 text-sky-600",
+    merchantImage: imgImg2,
+    merchantName: "CineGear Pro",
+    isFavorite: true,
+  },
+  {
+    id: 2,
+    image: imgImg3,
+    title: "Aputure 300D LED Light",
+    description:
+      "Powerful daylight-balanced LED with wireless control, perfect for interviews and commercial shoots.",
+    category: "Lighting",
+    categoryClass: "bg-green-50 text-green-600",
+    merchantImage: imgImg4,
+    merchantName: "LightWorks Studio",
+    isFavorite: false,
+  },
+  {
+    id: 3,
+    image: imgImg5,
+    title: "Rode NTG3 Shotgun Mic",
+    description:
+      "Professional broadcast-quality shotgun microphone with superior RF immunity and low noise floor.",
+    category: "Audio",
+    categoryClass: "bg-purple-50 text-purple-600",
+    merchantImage: imgImg6,
+    merchantName: "AudioVision",
+    isFavorite: true,
+  },
+  {
+    id: 4,
+    image: imgImg7,
+    title: "DJI Ronin-S Gimbal",
+    description:
+      "3-axis handheld gimbal stabilizer for DSLR and mirrorless cameras up to 3.6kg payload.",
+    category: "Grip",
+    categoryClass: "bg-orange-50 text-orange-600",
+    merchantImage: imgImg8,
+    merchantName: "Motion Masters",
+    isFavorite: true,
+  },
+  {
+    id: 5,
+    image: imgImg9,
+    title: "Canon 24-70mm f/2.8L",
+    description:
+      "Professional zoom lens with constant f/2.8 aperture, ideal for versatile shooting scenarios.",
+    category: "Accessories",
+    categoryClass: "bg-blue-50 text-blue-600",
+    merchantImage: imgImg10,
+    merchantName: "Lens Library",
+    isFavorite: false,
+  },
+  {
+    id: 6,
+    image: imgImg11,
+    title: "Gitzo Carbon Fiber Tripod",
+    description:
+      "Ultra-lightweight carbon fiber tripod with exceptional stability for professional camera work.",
+    category: "Grip",
+    categoryClass: "bg-orange-50 text-orange-600",
+    merchantImage: imgImg12,
+    merchantName: "Support Systems",
+    isFavorite: true,
+  },
+]
+
 const BrowseEquipment: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <RenterHeader />
-      <main className="mx-auto max-w-7xl px-4 py-8">
+      <main className="mx-auto w-full max-w-7xl px-2 py-4 sm:px-4 sm:py-8">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="mb-1 text-3xl font-bold text-gray-800">
+        <div className="mb-8 px-1 sm:px-0">
+          <h1 className="mb-2 text-2xl font-bold text-gray-800 sm:mb-4 sm:text-3xl">
             Browse Equipment
           </h1>
-          <p className="text-gray-600">
+          <p className="text-sm text-gray-600 sm:text-base">
             Discover professional film equipment from verified merchants
           </p>
         </div>
         {/* Search & Filters */}
-        <div className="mb-8 flex flex-wrap gap-4">
-          <div className="relative w-full max-w-md">
-            <input
-              className="w-full rounded-lg border border-gray-300 py-3 pl-10 pr-4 text-base text-gray-900"
+        <Card className="mb-8 flex flex-col gap-4 rounded-md p-4 sm:flex-row sm:gap-4 sm:p-6">
+          <div className="relative w-full sm:w-2/5">
+            <Input
+              className="h-12 w-full rounded-lg border border-gray-300 py-3 pl-10 pr-4 !text-base text-gray-900"
               placeholder="Search equipment..."
             />
             <span className="absolute left-3 top-1/2 -translate-y-1/2">
               <img src={imgFrame3} alt="Search" className="h-5 w-5" />
             </span>
           </div>
-          <select className="rounded-lg border border-gray-300 px-4 py-3 text-base text-gray-900">
-            <option>All Categories</option>
-          </select>
-          <select className="rounded-lg border border-gray-300 px-4 py-3 text-base text-gray-900">
-            <option>All Locations</option>
-          </select>
-          <label className="flex cursor-pointer select-none items-center gap-2">
-            <span className="relative inline-block h-6 w-10">
-              <input type="checkbox" className="peer sr-only" />
-              <span className="absolute left-0 top-0 h-6 w-10 rounded-full bg-gray-300 transition peer-checked:bg-sky-600" />
-              <span className="absolute left-1 top-1 h-4 w-4 rounded-full bg-white shadow transition peer-checked:translate-x-4" />
-            </span>
+          <Select>
+            <SelectTrigger className="h-12 w-full rounded-lg border-gray-300 text-base text-gray-900 sm:w-1/5">
+              <SelectValue placeholder="All Categories" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all" className="h-10">
+                All Categories
+              </SelectItem>
+              <SelectItem value="camera" className="h-10">
+                Camera
+              </SelectItem>
+              <SelectItem value="lighting" className="h-10">
+                Lighting
+              </SelectItem>
+              <SelectItem value="audio" className="h-10">
+                Audio
+              </SelectItem>
+              <SelectItem value="grip" className="h-10">
+                Grip
+              </SelectItem>
+              <SelectItem value="accessories" className="h-10">
+                Accessories
+              </SelectItem>
+            </SelectContent>
+          </Select>
+          <Select>
+            <SelectTrigger className="h-12 w-full rounded-lg border-gray-300 text-base text-gray-900 sm:w-1/5">
+              <SelectValue placeholder="All Locations" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all" className="h-10">
+                All Locations
+              </SelectItem>
+              <SelectItem value="new-york" className="h-10">
+                New York
+              </SelectItem>
+              <SelectItem value="los-angeles" className="h-10">
+                Los Angeles
+              </SelectItem>
+              <SelectItem value="chicago" className="h-10">
+                Chicago
+              </SelectItem>
+            </SelectContent>
+          </Select>
+          <label className="flex w-full cursor-pointer select-none items-center gap-3 sm:w-1/5">
+            <Switch
+              id="favourites-only"
+              className="data-[state=checked]:bg-tertiary"
+            />
             <span className="text-sm font-medium text-gray-700">
               Favourites Only
             </span>
           </label>
-        </div>
+        </Card>
+
         {/* Equipment Cards Grid */}
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {/* Card 1 */}
-          <div className="overflow-hidden rounded-lg bg-white shadow">
-            <div className="relative">
-              <img
-                src={imgImg1}
-                alt="RED Dragon 6K Cinema Camera"
-                className="h-48 w-full object-cover"
-              />
-              <button className="absolute right-3 top-3 rounded-full bg-white/90 p-2 shadow">
-                <img src={imgFrame5} alt="Favorite" className="h-5 w-5" />
-              </button>
-            </div>
-            <div className="p-6">
-              <span className="mb-2 inline-block rounded-full bg-sky-50 px-3 py-1 text-xs font-medium text-sky-600">
-                Camera
-              </span>
-              <h2 className="mb-1 text-lg font-semibold text-gray-800">
-                RED Dragon 6K Cinema Camera
-              </h2>
-              <p className="mb-4 text-sm text-gray-600">
-                Professional cinema camera with 6K resolution, dual ISO, and
-                comprehensive codec support for high-end productions.
-              </p>
-              <div className="mb-4 flex items-center gap-2">
+        <div className="xs:grid-cols-2 grid grid-cols-1 gap-6 md:grid-cols-3">
+          {equipmentData.map((item) => (
+            <div
+              key={item.id}
+              className="overflow-hidden rounded-lg bg-white shadow"
+            >
+              <div className="relative">
                 <img
-                  src={imgImg2}
-                  alt="Merchant"
-                  className="h-6 w-6 rounded-full object-cover"
+                  src={item.image}
+                  alt={item.title}
+                  className="h-44 w-full object-cover sm:h-48"
                 />
-                <span className="text-sm text-gray-600">CineGear Pro</span>
-                <img src={imgGroup} alt="Verified" className="h-3 w-3" />
+                <button className="absolute right-3 top-3 rounded-full bg-white/90 p-2 shadow">
+                  <img
+                    src={item.isFavorite ? imgFrame5 : imgFrame6}
+                    alt="Favorite"
+                    className="h-5 w-5"
+                  />
+                </button>
               </div>
-              <button className="w-full rounded-lg bg-sky-600 px-6 py-2 font-medium text-white">
-                View Details
-              </button>
-            </div>
-          </div>
-          {/* Card 2 */}
-          <div className="overflow-hidden rounded-lg bg-white shadow">
-            <div className="relative">
-              <img
-                src={imgImg3}
-                alt="Aputure 300D LED Light"
-                className="h-48 w-full object-cover"
-              />
-              <button className="absolute right-3 top-3 rounded-full bg-white/90 p-2 shadow">
-                <img src={imgFrame6} alt="Favorite" className="h-5 w-5" />
-              </button>
-            </div>
-            <div className="p-6">
-              <span className="mb-2 inline-block rounded-full bg-green-50 px-3 py-1 text-xs font-medium text-green-600">
-                Lighting
-              </span>
-              <h2 className="mb-1 text-lg font-semibold text-gray-800">
-                Aputure 300D LED Light
-              </h2>
-              <p className="mb-4 text-sm text-gray-600">
-                Powerful daylight-balanced LED with wireless control, perfect
-                for interviews and commercial shoots.
-              </p>
-              <div className="mb-4 flex items-center gap-2">
-                <img
-                  src={imgImg4}
-                  alt="Merchant"
-                  className="h-6 w-6 rounded-full object-cover"
-                />
-                <span className="text-sm text-gray-600">LightWorks Studio</span>
-                <img src={imgGroup} alt="Verified" className="h-3 w-3" />
+              <div className="p-4 sm:p-5">
+                <span
+                  className={`mb-2 inline-block rounded-full px-3 py-1 text-xs font-medium ${item.categoryClass}`}
+                >
+                  {item.category}
+                </span>
+                <h2 className="mb-1 text-base font-semibold text-gray-800 sm:text-lg">
+                  {item.title}
+                </h2>
+                <p className="mb-4 text-xs text-gray-600 sm:text-sm">
+                  {item.description}
+                </p>
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex items-center gap-2">
+                    <img
+                      src={item.merchantImage}
+                      alt="Merchant"
+                      className="h-6 w-6 rounded-full object-cover"
+                    />
+                    <span className="text-xs text-gray-600 sm:text-sm">
+                      {item.merchantName}
+                    </span>
+                    <img src={imgGroup} alt="Verified" className="h-3 w-3" />
+                  </div>
+                  <Button
+                    variant="tertiary"
+                    className="mt-2 w-full rounded-lg bg-sky-600 px-4 py-2 font-normal text-white sm:mt-0 sm:w-auto"
+                  >
+                    View Details
+                  </Button>
+                </div>
               </div>
-              <button className="w-full rounded-lg bg-sky-600 px-6 py-2 font-medium text-white">
-                View Details
-              </button>
             </div>
-          </div>
-          {/* Card 3 */}
-          <div className="overflow-hidden rounded-lg bg-white shadow">
-            <div className="relative">
-              <img
-                src={imgImg5}
-                alt="Rode NTG3 Shotgun Mic"
-                className="h-48 w-full object-cover"
-              />
-              <button className="absolute right-3 top-3 rounded-full bg-white/90 p-2 shadow">
-                <img src={imgFrame5} alt="Favorite" className="h-5 w-5" />
-              </button>
-            </div>
-            <div className="p-6">
-              <span className="mb-2 inline-block rounded-full bg-purple-50 px-3 py-1 text-xs font-medium text-purple-600">
-                Audio
-              </span>
-              <h2 className="mb-1 text-lg font-semibold text-gray-800">
-                Rode NTG3 Shotgun Mic
-              </h2>
-              <p className="mb-4 text-sm text-gray-600">
-                Professional broadcast-quality shotgun microphone with superior
-                RF immunity and low noise floor.
-              </p>
-              <div className="mb-4 flex items-center gap-2">
-                <img
-                  src={imgImg6}
-                  alt="Merchant"
-                  className="h-6 w-6 rounded-full object-cover"
-                />
-                <span className="text-sm text-gray-600">AudioVision</span>
-                <img src={imgGroup} alt="Verified" className="h-3 w-3" />
-              </div>
-              <button className="w-full rounded-lg bg-sky-600 px-6 py-2 font-medium text-white">
-                View Details
-              </button>
-            </div>
-          </div>
-          {/* Card 4 */}
-          <div className="overflow-hidden rounded-lg bg-white shadow">
-            <div className="relative">
-              <img
-                src={imgImg7}
-                alt="DJI Ronin-S Gimbal"
-                className="h-48 w-full object-cover"
-              />
-              <button className="absolute right-3 top-3 rounded-full bg-white/90 p-2 shadow">
-                <img src={imgFrame5} alt="Favorite" className="h-5 w-5" />
-              </button>
-            </div>
-            <div className="p-6">
-              <span className="mb-2 inline-block rounded-full bg-orange-50 px-3 py-1 text-xs font-medium text-orange-600">
-                Grip
-              </span>
-              <h2 className="mb-1 text-lg font-semibold text-gray-800">
-                DJI Ronin-S Gimbal
-              </h2>
-              <p className="mb-4 text-sm text-gray-600">
-                3-axis handheld gimbal stabilizer for DSLR and mirrorless
-                cameras up to 3.6kg payload.
-              </p>
-              <div className="mb-4 flex items-center gap-2">
-                <img
-                  src={imgImg8}
-                  alt="Merchant"
-                  className="h-6 w-6 rounded-full object-cover"
-                />
-                <span className="text-sm text-gray-600">Motion Masters</span>
-                <img src={imgGroup} alt="Verified" className="h-3 w-3" />
-              </div>
-              <button className="w-full rounded-lg bg-sky-600 px-6 py-2 font-medium text-white">
-                View Details
-              </button>
-            </div>
-          </div>
-          {/* Card 5 */}
-          <div className="overflow-hidden rounded-lg bg-white shadow">
-            <div className="relative">
-              <img
-                src={imgImg9}
-                alt="Canon 24-70mm f/2.8L"
-                className="h-48 w-full object-cover"
-              />
-              <button className="absolute right-3 top-3 rounded-full bg-white/90 p-2 shadow">
-                <img src={imgFrame6} alt="Favorite" className="h-5 w-5" />
-              </button>
-            </div>
-            <div className="p-6">
-              <span className="mb-2 inline-block rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-600">
-                Accessories
-              </span>
-              <h2 className="mb-1 text-lg font-semibold text-gray-800">
-                Canon 24-70mm f/2.8L
-              </h2>
-              <p className="mb-4 text-sm text-gray-600">
-                Professional zoom lens with constant f/2.8 aperture, ideal for
-                versatile shooting scenarios.
-              </p>
-              <div className="mb-4 flex items-center gap-2">
-                <img
-                  src={imgImg10}
-                  alt="Merchant"
-                  className="h-6 w-6 rounded-full object-cover"
-                />
-                <span className="text-sm text-gray-600">Lens Library</span>
-                <img src={imgGroup} alt="Verified" className="h-3 w-3" />
-              </div>
-              <button className="w-full rounded-lg bg-sky-600 px-6 py-2 font-medium text-white">
-                View Details
-              </button>
-            </div>
-          </div>
-          {/* Card 6 */}
-          <div className="overflow-hidden rounded-lg bg-white shadow">
-            <div className="relative">
-              <img
-                src={imgImg11}
-                alt="Gitzo Carbon Fiber Tripod"
-                className="h-48 w-full object-cover"
-              />
-              <button className="absolute right-3 top-3 rounded-full bg-white/90 p-2 shadow">
-                <img src={imgFrame5} alt="Favorite" className="h-5 w-5" />
-              </button>
-            </div>
-            <div className="p-6">
-              <span className="mb-2 inline-block rounded-full bg-orange-50 px-3 py-1 text-xs font-medium text-orange-600">
-                Grip
-              </span>
-              <h2 className="mb-1 text-lg font-semibold text-gray-800">
-                Gitzo Carbon Fiber Tripod
-              </h2>
-              <p className="mb-4 text-sm text-gray-600">
-                Ultra-lightweight carbon fiber tripod with exceptional stability
-                for professional camera work.
-              </p>
-              <div className="mb-4 flex items-center gap-2">
-                <img
-                  src={imgImg12}
-                  alt="Merchant"
-                  className="h-6 w-6 rounded-full object-cover"
-                />
-                <span className="text-sm text-gray-600">Support Systems</span>
-                <img src={imgGroup} alt="Verified" className="h-3 w-3" />
-              </div>
-              <button className="w-full rounded-lg bg-sky-600 px-6 py-2 font-medium text-white">
-                View Details
-              </button>
-            </div>
-          </div>
+          ))}
         </div>
+
         {/* Load More Button */}
-        <div className="mt-10 flex justify-center">
-          <button className="rounded-lg border border-gray-300 px-8 py-3 font-medium text-gray-700">
+        <div className="my-12 flex justify-center">
+          <Button
+            variant="ghost"
+            className="text-md rounded-lg border border-gray-300 px-8 py-3 font-medium text-gray-700 shadow"
+          >
             Load More Equipment
-          </button>
+          </Button>
         </div>
       </main>
       <CommonFooter />

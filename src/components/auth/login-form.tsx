@@ -37,9 +37,13 @@ const LogInForm: React.FC = () => {
       title: "Login Successful!",
       description: "You have logged in successfully.",
     })
-    // Simulate submission
-    console.log("Login submitted:", data)
-    navigate("/merchant-dashboard")
+
+    // Redirect based on email
+    if (data.email === "renter@gmail.com") {
+      navigate("/renter-dashboard")
+    } else {
+      navigate("/merchant-dashboard")
+    }
   }
 
   return (

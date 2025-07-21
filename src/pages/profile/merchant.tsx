@@ -1,6 +1,9 @@
 import React from "react"
 import { CommonFooter } from "@/components/layout/footer/common"
 import { RenterHeader } from "@/components/layout/header/renter-header"
+import { Card } from "@/components/ui/card"
+import { Plus } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 // Image and SVG asset URLs from Figma export
 const imgImg =
@@ -47,213 +50,268 @@ const MerchantProfile: React.FC = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <RenterHeader />
-      <main className="mx-auto flex max-w-7xl gap-8 px-4 py-8">
-        {/* Sidebar */}
-        <aside className="flex w-64 flex-col rounded-lg bg-white p-6 shadow">
-          <div className="relative mb-4 flex flex-col items-center">
-            <img
-              src={imgImg}
-              alt="Merchant Profile"
-              className="h-24 w-24 rounded-full border-4 border-gray-200 object-cover"
-            />
-            <span className="absolute -bottom-2 left-1/2 flex -translate-x-1/2 items-center gap-1 rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-700 shadow">
-              <img src={imgGroup} alt="Verified" className="h-4 w-4" /> Verified
-            </span>
-          </div>
-          <h2 className="text-center text-2xl font-bold text-gray-800">
-            ProGear Studios
-          </h2>
-          <div className="mb-2 flex items-center justify-center gap-2 text-center text-gray-600">
-            <img src={imgFrame3} alt="Location" className="h-4 w-4" /> Los
-            Angeles, CA
-          </div>
-          <div className="mb-2 flex items-center justify-center gap-1">
-            {[...Array(5)].map((_, i) => (
-              <img key={i} src={imgFrame4} alt="Star" className="h-4 w-4" />
-            ))}
-            <span className="ml-2 text-sm text-gray-600">4.9 (27 reviews)</span>
-          </div>
-          <a
-            href="#"
-            className="mb-4 flex items-center justify-center gap-1 text-sm text-sky-600"
-          >
-            <img src={imgFrame5} alt="Website" className="h-4 w-4" /> Website
-          </a>
-          <div className="mb-4 flex gap-2">
-            <button className="flex items-center gap-2 rounded-lg bg-sky-600 px-6 py-2 font-medium text-white">
-              <img src={imgFrame6} alt="Follow" className="h-4 w-4" /> Follow
-            </button>
-            <button className="flex items-center gap-2 rounded-lg border border-sky-600 px-6 py-2 font-medium text-sky-600">
-              <img src={imgFrame7} alt="Message" className="h-4 w-4" /> Message
-            </button>
-          </div>
-          <div className="mb-6 w-full text-left">
-            <h3 className="mb-1 font-semibold text-gray-800">About</h3>
-            <p className="text-sm text-gray-600">
-              Professional film equipment rental house serving the greater Los
-              Angeles area for over 10 years. We specialize in high-end cameras,
-              lighting, and grip equipment for feature films, commercials, and
-              documentaries.
-            </p>
-          </div>
-          <div className="mb-6 w-full text-left">
-            <h3 className="mb-1 font-semibold text-gray-800">
-              Equipment Categories
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              <span className="rounded-full bg-gray-100 px-4 py-1 text-sm text-gray-700">
-                Cameras
-              </span>
-              <span className="rounded-full bg-gray-100 px-4 py-1 text-sm text-gray-700">
-                Lighting
-              </span>
-              <span className="rounded-full bg-gray-100 px-4 py-1 text-sm text-gray-700">
-                Grip
-              </span>
-              <span className="rounded-full bg-gray-100 px-4 py-1 text-sm text-gray-700">
-                Audio
-              </span>
+      <main className="mx-auto mb-12 flex max-w-6xl flex-col gap-6 px-4 py-8 md:px-6 lg:px-8">
+        <div>
+          <Card className="flex flex-col items-center justify-between gap-6 p-6 md:flex-row md:gap-8 md:p-8">
+            <div className="grid gap-6">
+              <div className="flex items-center gap-6">
+                <img
+                  src={imgImg}
+                  alt="Merchant Profile"
+                  className="h-20 w-20 rounded-full border-4 border-gray-200 object-cover md:h-24 md:w-24"
+                />
+                <div className="flex flex-col justify-center">
+                  <div className="mb-2 flex items-center gap-3">
+                    <h2 className="pb-2 text-xl font-bold text-gray-800 md:text-2xl">
+                      ProGear Studios
+                    </h2>
+                    <span className="flex items-center gap-1 rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-700 shadow">
+                      <img src={imgGroup} alt="Verified" className="h-4 w-4" />
+                      Verified
+                    </span>
+                  </div>
+                  <div className="mb-2 flex items-center gap-2 text-sm text-gray-600 md:text-base">
+                    <img src={imgFrame3} alt="Location" className="h-4 w-4" />{" "}
+                    Los Angeles, CA
+                  </div>
+                  <div className="flex items-center gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <img
+                        key={i}
+                        src={imgFrame4}
+                        alt="Star"
+                        className="h-4 w-4"
+                      />
+                    ))}
+                    <span className="ml-1 text-sm text-gray-600 sm:mr-4">
+                      4.9 (27 reviews)
+                    </span>
+                    <a
+                      href="#"
+                      className="hidden items-center gap-1 text-sm text-sky-600 sm:flex"
+                    >
+                      <img src={imgFrame5} alt="Website" className="h-4 w-4" />{" "}
+                      Website
+                    </a>
+                  </div>
+                  <div className="mt-2 flex items-center gap-1 sm:hidden">
+                    <a
+                      href="#"
+                      className="flex items-center gap-2 text-sm text-sky-600"
+                    >
+                      <img src={imgFrame5} alt="Website" className="h-4 w-4" />{" "}
+                      Website
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="w-full text-left">
-            <h3 className="mb-1 font-semibold text-gray-800">Connect</h3>
-            <div className="flex gap-2">
-              <img src={imgFrame8} alt="Instagram" className="h-5 w-5" />
-              <img src={imgFrame9} alt="LinkedIn" className="h-5 w-5" />
-              <img src={imgFrame10} alt="Website" className="h-5 w-5" />
-            </div>
-          </div>
-        </aside>
-        {/* Main Content */}
-        <section className="flex-1">
-          {/* Tabs */}
-          <div className="mb-8 flex gap-8 border-b">
-            <button className="border-b-2 border-sky-600 py-4 font-medium text-sky-600">
-              Inventory
-            </button>
-            <button className="py-4 font-medium text-gray-600">Reviews</button>
-            <button className="py-4 font-medium text-gray-600">
-              Training Courses
-            </button>
-          </div>
-          <h1 className="mb-6 flex items-center justify-between text-2xl font-bold text-gray-800">
-            Available Equipment{" "}
-            <span className="text-base font-normal text-gray-500">
-              24 items
-            </span>
-          </h1>
-          {/* Equipment Grid */}
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {/* Card 1 */}
-            <div className="overflow-hidden rounded-lg bg-white shadow">
-              <img
-                src={imgImg1}
-                alt="RED Komodo 6K"
-                className="h-48 w-full object-cover"
-              />
-              <div className="p-6">
-                <h2 className="mb-1 text-lg font-semibold text-gray-800">
-                  RED Komodo 6K
-                </h2>
-                <p className="mb-2 text-sm text-gray-600">Cinema Camera</p>
-                <button className="w-full rounded-lg bg-sky-600 px-6 py-2 font-medium text-white">
-                  View Details
+            <div className="flex w-full flex-row items-center justify-center gap-2 md:w-auto md:flex-col md:items-end">
+              <div className="flex w-full flex-row items-center justify-center gap-2 md:w-auto md:flex-col md:items-end">
+                <button className="flex w-full items-center justify-center gap-2 rounded-lg bg-sky-600 px-4 py-2 font-medium text-white md:w-[124px] md:px-6">
+                  <Plus className="h-5 w-5" /> Follow
+                </button>
+                <button className="flex w-full items-center justify-center gap-2 rounded-lg border border-sky-600 px-4 py-2 font-medium text-sky-600 md:w-[148px] md:px-6">
+                  <img src={imgFrame7} alt="Message" className="h-4 w-4" />{" "}
+                  Message
                 </button>
               </div>
             </div>
-            {/* Card 2 */}
-            <div className="overflow-hidden rounded-lg bg-white shadow">
-              <img
-                src={imgImg2}
-                alt="ARRI SkyPanel S60-C"
-                className="h-48 w-full object-cover"
-              />
-              <div className="p-6">
-                <h2 className="mb-1 text-lg font-semibold text-gray-800">
-                  ARRI SkyPanel S60-C
-                </h2>
-                <p className="mb-2 text-sm text-gray-600">LED Panel</p>
-                <button className="w-full rounded-lg bg-sky-600 px-6 py-2 font-medium text-white">
-                  View Details
+          </Card>
+        </div>
+        <div className="flex w-full flex-col items-start gap-8 md:flex-row">
+          {/* Sidebar */}
+          <Card className="flex w-full shrink-0 flex-col rounded-lg bg-white p-6 shadow md:w-64">
+            <div className="mb-6 w-full text-left">
+              <h3 className="mb-1 font-semibold text-gray-800">About</h3>
+              <p className="text-sm text-gray-600">
+                Professional film equipment rental house serving the greater Los
+                Angeles area for over 10 years. We specialize in high-end
+                cameras, lighting, and grip equipment for feature films,
+                commercials, and documentaries.
+              </p>
+            </div>
+            <div className="mb-6 w-full text-left">
+              <h3 className="mb-1 font-semibold text-gray-800">
+                Equipment Categories
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                <span className="rounded-full bg-gray-100 px-4 py-1 text-sm text-gray-700">
+                  Cameras
+                </span>
+                <span className="rounded-full bg-gray-100 px-4 py-1 text-sm text-gray-700">
+                  Lighting
+                </span>
+                <span className="rounded-full bg-gray-100 px-4 py-1 text-sm text-gray-700">
+                  Grip
+                </span>
+                <span className="rounded-full bg-gray-100 px-4 py-1 text-sm text-gray-700">
+                  Audio
+                </span>
+              </div>
+            </div>
+            <div className="w-full text-left">
+              <h3 className="mb-1 font-semibold text-gray-800">Connect</h3>
+              <div className="flex gap-3">
+                <img src={imgFrame8} alt="Instagram" className="h-5 w-5" />
+                <img src={imgFrame9} alt="LinkedIn" className="h-5 w-5" />
+                <img src={imgFrame10} alt="Website" className="h-5 w-5" />
+              </div>
+            </div>
+          </Card>
+          {/* Main Content */}
+          <Card className="w-full flex-1">
+            {/* Tabs */}
+            <div className="flex flex-wrap border-b border-gray-300">
+              <button className="border-b-2 border-sky-600 px-4 py-3 font-medium text-sky-600 md:px-6 md:py-4">
+                Inventory
+              </button>
+              <button className="px-4 py-3 font-medium text-gray-600 md:px-6 md:py-4">
+                Reviews
+              </button>
+              <button className="px-4 py-3 font-medium text-gray-600 md:px-6 md:py-4">
+                Training Courses
+              </button>
+            </div>
+            <div className="p-4 md:p-6">
+              <h1 className="mb-4 flex flex-col items-start justify-between gap-2 text-xl font-bold text-gray-800 md:mb-6 md:flex-row md:items-center md:text-2xl">
+                Available Equipment{" "}
+                <span className="text-sm font-normal text-gray-500 md:text-base">
+                  24 items
+                </span>
+              </h1>
+              {/* Equipment Grid */}
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
+                {/* Card 1 */}
+                <div className="overflow-hidden rounded-lg bg-white shadow">
+                  <img
+                    src={imgImg1}
+                    alt="RED Komodo 6K"
+                    className="h-48 w-full object-cover"
+                  />
+                  <div className="p-4">
+                    <h2 className="mb-1 text-lg font-semibold text-gray-800">
+                      RED Komodo 6K
+                    </h2>
+                    <p className="mb-2 text-sm text-gray-600">Cinema Camera</p>
+                    <Button
+                      variant="tertiary"
+                      className="w-full rounded-lg px-6 py-2 text-base font-medium"
+                    >
+                      View Details
+                    </Button>
+                  </div>
+                </div>
+                {/* Card 2 */}
+                <div className="overflow-hidden rounded-lg bg-white shadow">
+                  <img
+                    src={imgImg2}
+                    alt="ARRI SkyPanel S60-C"
+                    className="h-48 w-full object-cover"
+                  />
+                  <div className="p-4">
+                    <h2 className="mb-1 text-lg font-semibold text-gray-800">
+                      ARRI SkyPanel S60-C
+                    </h2>
+                    <p className="mb-2 text-sm text-gray-600">LED Panel</p>
+                    <Button
+                      variant="tertiary"
+                      className="w-full rounded-lg px-6 py-2 text-base font-medium"
+                    >
+                      View Details
+                    </Button>
+                  </div>
+                </div>
+                {/* Card 3 */}
+                <div className="overflow-hidden rounded-lg bg-white shadow">
+                  <img
+                    src={imgImg3}
+                    alt="Sony FX6"
+                    className="h-48 w-full object-cover"
+                  />
+                  <div className="p-4">
+                    <h2 className="mb-1 text-lg font-semibold text-gray-800">
+                      Sony FX6
+                    </h2>
+                    <p className="mb-2 text-sm text-gray-600">Cinema Camera</p>
+                    <Button
+                      variant="tertiary"
+                      className="w-full rounded-lg px-6 py-2 text-base font-medium"
+                    >
+                      View Details
+                    </Button>
+                  </div>
+                </div>
+                {/* Card 4 */}
+                <div className="overflow-hidden rounded-lg bg-white shadow">
+                  <img
+                    src={imgImg4}
+                    alt="Canon 24-70mm f/2.8"
+                    className="h-48 w-full object-cover"
+                  />
+                  <div className="p-4">
+                    <h2 className="mb-1 text-lg font-semibold text-gray-800">
+                      Canon 24-70mm f/2.8
+                    </h2>
+                    <p className="mb-2 text-sm text-gray-600">Camera Lens</p>
+                    <Button
+                      variant="tertiary"
+                      className="w-full rounded-lg px-6 py-2 text-base font-medium"
+                    >
+                      View Details
+                    </Button>
+                  </div>
+                </div>
+                {/* Card 5 */}
+                <div className="overflow-hidden rounded-lg bg-white shadow">
+                  <img
+                    src={imgImg5}
+                    alt="Steadicam Vest & Arm"
+                    className="h-48 w-full object-cover"
+                  />
+                  <div className="p-4">
+                    <h2 className="mb-1 text-lg font-semibold text-gray-800">
+                      Steadicam Vest & Arm
+                    </h2>
+                    <p className="mb-2 text-sm text-gray-600">Stabilizer</p>
+                    <Button
+                      variant="tertiary"
+                      className="w-full rounded-lg px-6 py-2 text-base font-medium"
+                    >
+                      View Details
+                    </Button>
+                  </div>
+                </div>
+                {/* Card 6 */}
+                <div className="overflow-hidden rounded-lg bg-white shadow">
+                  <img
+                    src={imgImg6}
+                    alt="Rode Wireless GO II"
+                    className="h-48 w-full object-cover"
+                  />
+                  <div className="p-4">
+                    <h2 className="mb-1 text-lg font-semibold text-gray-800">
+                      Rode Wireless GO II
+                    </h2>
+                    <p className="mb-2 text-sm text-gray-600">Wireless Mic</p>
+                    <Button
+                      variant="tertiary"
+                      className="w-full rounded-lg px-6 py-2 text-base font-medium"
+                    >
+                      View Details
+                    </Button>
+                  </div>
+                </div>
+              </div>
+              {/* Load More Button */}
+              <div className="mt-8 flex justify-center">
+                <button className="rounded-lg border border-gray-300 px-8 py-3 font-medium text-gray-700">
+                  Load More Equipment
                 </button>
               </div>
             </div>
-            {/* Card 3 */}
-            <div className="overflow-hidden rounded-lg bg-white shadow">
-              <img
-                src={imgImg3}
-                alt="Sony FX6"
-                className="h-48 w-full object-cover"
-              />
-              <div className="p-6">
-                <h2 className="mb-1 text-lg font-semibold text-gray-800">
-                  Sony FX6
-                </h2>
-                <p className="mb-2 text-sm text-gray-600">Cinema Camera</p>
-                <button className="w-full rounded-lg bg-sky-600 px-6 py-2 font-medium text-white">
-                  View Details
-                </button>
-              </div>
-            </div>
-            {/* Card 4 */}
-            <div className="overflow-hidden rounded-lg bg-white shadow">
-              <img
-                src={imgImg4}
-                alt="Canon 24-70mm f/2.8"
-                className="h-48 w-full object-cover"
-              />
-              <div className="p-6">
-                <h2 className="mb-1 text-lg font-semibold text-gray-800">
-                  Canon 24-70mm f/2.8
-                </h2>
-                <p className="mb-2 text-sm text-gray-600">Camera Lens</p>
-                <button className="w-full rounded-lg bg-sky-600 px-6 py-2 font-medium text-white">
-                  View Details
-                </button>
-              </div>
-            </div>
-            {/* Card 5 */}
-            <div className="overflow-hidden rounded-lg bg-white shadow">
-              <img
-                src={imgImg5}
-                alt="Steadicam Vest & Arm"
-                className="h-48 w-full object-cover"
-              />
-              <div className="p-6">
-                <h2 className="mb-1 text-lg font-semibold text-gray-800">
-                  Steadicam Vest & Arm
-                </h2>
-                <p className="mb-2 text-sm text-gray-600">Stabilizer</p>
-                <button className="w-full rounded-lg bg-sky-600 px-6 py-2 font-medium text-white">
-                  View Details
-                </button>
-              </div>
-            </div>
-            {/* Card 6 */}
-            <div className="overflow-hidden rounded-lg bg-white shadow">
-              <img
-                src={imgImg6}
-                alt="Rode Wireless GO II"
-                className="h-48 w-full object-cover"
-              />
-              <div className="p-6">
-                <h2 className="mb-1 text-lg font-semibold text-gray-800">
-                  Rode Wireless GO II
-                </h2>
-                <p className="mb-2 text-sm text-gray-600">Wireless Mic</p>
-                <button className="w-full rounded-lg bg-sky-600 px-6 py-2 font-medium text-white">
-                  View Details
-                </button>
-              </div>
-            </div>
-          </div>
-          {/* Load More Button */}
-          <div className="mt-10 flex justify-center">
-            <button className="rounded-lg border border-gray-300 px-8 py-3 font-medium text-gray-700">
-              Load More Equipment
-            </button>
-          </div>
-        </section>
+          </Card>
+        </div>
       </main>
       <CommonFooter />
     </div>
