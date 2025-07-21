@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import React from "react"
 import { useNavigate } from "react-router-dom"
-import { MerchantFooter } from "@/components/layout/footer/merchant-footer"
+import { CommonFooter } from "@/components/layout/footer/common"
 
 const imgImg =
   "http://localhost:3845/assets/410c340aa057242400c608368f918307cdd72438.png"
@@ -301,7 +301,7 @@ const Review: React.FC = () => {
           </div>
         </div>
       </main>
-      <MerchantFooter />
+      <CommonFooter />
     </div>
   )
 }

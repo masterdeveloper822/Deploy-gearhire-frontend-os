@@ -1,7 +1,7 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
 import { MerchantHeader } from "@/components/layout/header/merchant-header"
-import { MerchantFooter } from "@/components/layout/footer/merchant-footer"
+import { CommonFooter } from "@/components/layout/footer/common"
 import {
   Select,
   SelectContent,
@@ -278,7 +278,7 @@ const Notification: React.FC = () => {
         </div>
       </main>
 
-      <MerchantFooter />
+      <CommonFooter />
     </div>
   )
 }

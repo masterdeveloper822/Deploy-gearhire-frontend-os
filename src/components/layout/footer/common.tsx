@@ -1,6 +1,6 @@
 import React from "react"
 
-export function MerchantFooter() {
+export function CommonFooter() {
   return (
     <footer className="border-t border-gray-200 bg-white py-6">
       <div className="text-center text-sm text-gray-500">

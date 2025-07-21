@@ -1,4 +1,4 @@
-import { MerchantFooter } from "@/components/layout/footer/merchant-footer"
+import { CommonFooter } from "@/components/layout/footer/common"
 import { MerchantHeader } from "@/components/layout/header/merchant-header"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -278,7 +278,7 @@ export default function SubscriptionPage() {
       </main>
 
       {/* Footer */}
-      <MerchantFooter />
+      <CommonFooter />
     </div>
   )
 }

@@ -39,7 +39,7 @@ export function MerchantHeader() {
           </span>
           <Button
             variant="ghost"
-            className="bg-transparent p-1 hover:bg-gray-100 sm:p-2"
+            className="ml-1 sm:ml-3"
             onClick={() => {
               navigate("/merchant-notification")
             }}
@@ -50,10 +50,7 @@ export function MerchantHeader() {
               className="h-4 w-4 sm:h-5 sm:w-5"
             />
           </Button>
-          <Button
-            variant="ghost"
-            className="bg-transparent p-1 hover:bg-gray-100 sm:p-2"
-          >
+          <Button variant="ghost" className="ml-1 sm:ml-3">
             <img
               src={settingIcon}
               alt="Settings"

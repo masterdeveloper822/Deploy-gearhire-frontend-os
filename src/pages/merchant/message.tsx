@@ -1,6 +1,6 @@
 import React from "react"
 import { MerchantHeader } from "@/components/layout/header/merchant-header"
-import { MerchantFooter } from "@/components/layout/footer/merchant-footer"
+import { CommonFooter } from "@/components/layout/footer/common"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 
@@ -268,7 +268,7 @@ const MerchantMessage = () => {
           </section>
         </div>
       </main>
-      <MerchantFooter />
+      <CommonFooter />
     </div>
   )
 }
