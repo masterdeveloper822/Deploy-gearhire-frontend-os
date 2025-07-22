@@ -118,7 +118,7 @@ const EditRenterProfile: React.FC = () => {
               Social Media Links
             </h3>
             <div className="space-y-4">
-              <div className="flex flex-col xs:flex-row items-stretch xs:items-center gap-2 xs:gap-3">
+              <div className="flex flex-col sm:flex-row items-stretch xs:items-center gap-2 xs:gap-3">
                 <span className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-lg bg-gradient-to-r from-purple-500 to-pink-500">
                   <FontAwesomeIcon icon={faInstagram} className="text-white h-4 w-4" />
                 </span>
@@ -127,7 +127,7 @@ const EditRenterProfile: React.FC = () => {
                   defaultValue="https://instagram.com/sarahchenfilms"
                 />
               </div>
-              <div className="flex flex-col xs:flex-row items-stretch xs:items-center gap-2 xs:gap-3">
+              <div className="flex flex-col sm:flex-row items-stretch xs:items-center gap-2 xs:gap-3">
                 <span className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-lg bg-blue-600">
                   <FontAwesomeIcon icon={faLinkedin} className="h-4 w-4 text-white" />
                 </span>
@@ -136,7 +136,7 @@ const EditRenterProfile: React.FC = () => {
                   defaultValue="https://linkedin.com/in/yourusername"
                 />
               </div>
-              <div className="flex flex-col xs:flex-row items-stretch xs:items-center gap-2 xs:gap-3">
+              <div className="flex flex-col sm:flex-row items-stretch xs:items-center gap-2 xs:gap-3">
                 <span className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-lg bg-blue-500">
                   <FontAwesomeIcon icon={faVimeo} className="text-white h-4 w-4" />
                 </span>
@@ -145,7 +145,7 @@ const EditRenterProfile: React.FC = () => {
                   defaultValue="https://vimeo.com/sarahchenfilms"
                 />
               </div>
-              <div className="flex flex-col xs:flex-row items-stretch xs:items-center gap-2 xs:gap-3">
+              <div className="flex flex-col sm:flex-row items-stretch xs:items-center gap-2 xs:gap-3">
                 <span className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-lg bg-red-600">
                   <FontAwesomeIcon icon={faYoutube} className="text-white h-4 w-4" />
                 </span>
