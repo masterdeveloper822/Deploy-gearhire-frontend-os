@@ -12,6 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Input } from "@/components/ui/input"
+import { Link } from "react-router-dom"
 
 // Image and SVG asset URLs from Figma export
 const imgImg =
@@ -258,12 +259,14 @@ const BrowseEquipment: React.FC = () => {
                     </span>
                     <img src={imgGroup} alt="Verified" className="h-3 w-3" />
                   </div>
-                  <Button
-                    variant="tertiary"
-                    className="mt-2 w-full rounded-lg bg-sky-600 px-4 py-2 font-normal text-white sm:mt-0 sm:w-auto"
-                  >
-                    View Details
-                  </Button>
+                  <Link to="/equipment-detail">
+                    <Button
+                      variant="tertiary"
+                      className="mt-2 w-full rounded-lg bg-sky-600 px-4 py-2 font-normal text-white sm:mt-0 sm:w-auto"
+                    >
+                      View Details
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>

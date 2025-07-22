@@ -1,10 +1,27 @@
 import { CommonFooter } from "@/components/layout/footer/common"
 import { RenterHeader } from "@/components/layout/header/renter-header"
 import { BackArrowIcon } from "@/components/ui/icon"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import { faCloudArrowUp } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React from "react"
 import { useNavigate } from "react-router-dom"
+import { Calendar } from "@/components/ui/calendar"
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from "@/components/ui/popover"
+import { Button } from "@/components/ui/button"
+import { Calendar as CalendarIcon } from "lucide-react"
+import { format } from "date-fns"
+import { Typography } from "@/components/ui/typography"
 
 // Image and SVG asset URLs from Figma export
 const imgImg =
@@ -47,17 +64,33 @@ const imgFrame17 =
   "http://localhost:3845/assets/60e2e0178ba9af28a95777979db6cbddaebda36c.svg"
 
 const EditRfq = () => {
+  const [status, setStatus] = React.useState("Open")
   const navigate = useNavigate()
+  const [expiryDate, setExpiryDate] = React.useState<Date | undefined>(
+    new Date("2025-01-05"),
+  )
+  const [expiryPopoverOpen, setExpiryPopoverOpen] = React.useState(false)
+  const [startDate, setStartDate] = React.useState<Date | undefined>(
+    new Date("2024-12-15"),
+  )
+  const [endDate, setEndDate] = React.useState<Date | undefined>(
+    new Date("2024-12-20"),
+  )
+  const [startPopoverOpen, setStartPopoverOpen] = React.useState(false)
+  const [endPopoverOpen, setEndPopoverOpen] = React.useState(false)
+  const [visibility, setVisibility] = React.useState("public")
+  const [selectedFiles, setSelectedFiles] = React.useState<File[]>([])
+  const fileInputRef = React.useRef<HTMLInputElement>(null)
   return (
     <div className="relative min-h-screen bg-gray-50">
       <RenterHeader />
       {/* Main Content */}
-      <main className="mx-auto w-[896px] px-4 py-8">
+      <main className="mx-auto w-full max-w-[896px] px-2 py-4 sm:px-4 sm:py-8">
         {/* Title and Note */}
         <div className="mb-8">
-          <div className="flex items-center">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
             <button
-              className="mr-4 flex h-6 w-6 items-center justify-center"
+              className="mb-2 mr-0 flex h-6 w-6 items-center justify-center sm:mb-0 sm:mr-4"
               onClick={() => navigate(-1)}
               aria-label="Back"
             >
@@ -70,7 +103,7 @@ const EditRfq = () => {
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-3 rounded-lg border border-blue-200 bg-blue-50 p-4">
+          <div className="flex flex-col gap-2 rounded-lg border border-blue-200 bg-blue-50 p-4 sm:flex-row sm:items-center">
             <img src={imgFrame4} alt="info" className="h-4 w-4" />
             <span className="text-sm text-blue-800">
               <b>Note:</b> Changes to your RFQ will be visible to merchants
@@ -82,7 +115,7 @@ const EditRfq = () => {
         {/* Form Sections */}
         <form className="space-y-8">
           {/* Project Information */}
-          <section className="rounded-lg bg-white p-6 shadow">
+          <section className="rounded-lg bg-white p-4 shadow sm:p-6">
             <div className="mb-4 flex items-center">
               <img src={imgFrame5} alt="project" className="mr-2 h-4 w-4" />
               <h2 className="text-lg font-semibold text-gray-800">
@@ -113,7 +146,7 @@ const EditRfq = () => {
             </div>
           </section>
           {/* Location & Dates */}
-          <section className="rounded-lg bg-white p-6 shadow">
+          <section className="rounded-lg bg-white p-4 shadow sm:p-6">
             <div className="mb-4 flex items-center">
               <img src={imgFrame6} alt="location" className="mr-2 h-4 w-4" />
               <h2 className="text-lg font-semibold text-gray-800">
@@ -130,38 +163,91 @@ const EditRfq = () => {
                 defaultValue="London, UK"
               />
             </div>
-            <div className="flex gap-4">
+            <div className="flex flex-col gap-4 sm:flex-row">
               <div className="flex-1">
-                <label className="mb-1 block text-sm font-medium text-gray-700">
+                <label className="mb-2 block text-sm font-medium text-gray-700">
                   Rental Start Date
                 </label>
-                <input
-                  type="date"
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 text-base text-gray-900"
-                  defaultValue="2024-12-15"
-                />
+                <Popover
+                  open={startPopoverOpen}
+                  onOpenChange={setStartPopoverOpen}
+                >
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      className="flex h-12 w-full items-center justify-start rounded-md border py-2 pl-6 pr-3 text-left text-base font-normal ring-offset-background placeholder:text-muted-foreground hover:bg-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-sky-500"
+                    >
+                      <span className="flex-1">
+                        {startDate ? (
+                          format(startDate, "MMM dd, yyyy")
+                        ) : (
+                          <span>mm/dd/yyyy</span>
+                        )}
+                      </span>
+                      <CalendarIcon className="ml-auto h-4 w-4 opacity-80" />
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-[270px] p-0" align="end">
+                    <Calendar
+                      className="w-full"
+                      captionLayout="dropdown"
+                      mode="single"
+                      selected={startDate}
+                      onSelect={(date) => {
+                        setStartDate(date)
+                        setStartPopoverOpen(false)
+                      }}
+                      initialFocus
+                    />
+                  </PopoverContent>
+                </Popover>
               </div>
               <div className="flex-1">
-                <label className="mb-1 block text-sm font-medium text-gray-700">
+                <label className="mb-2 block text-sm font-medium text-gray-700">
                   Rental End Date
                 </label>
-                <input
-                  type="date"
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 text-base text-gray-900"
-                  defaultValue="2024-12-20"
-                />
+                <Popover open={endPopoverOpen} onOpenChange={setEndPopoverOpen}>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      className="flex h-12 w-full items-center justify-start rounded-md border py-2 pl-6 pr-3 text-left text-base font-normal ring-offset-background placeholder:text-muted-foreground hover:bg-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-sky-500"
+                    >
+                      <span className="flex-1">
+                        {endDate ? (
+                          format(endDate, "MMM dd, yyyy")
+                        ) : (
+                          <span>mm/dd/yyyy</span>
+                        )}
+                      </span>
+                      <CalendarIcon className="ml-auto h-4 w-4 opacity-80" />
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-[270px] p-0" align="end">
+                    <Calendar
+                      className="w-full"
+                      captionLayout="dropdown"
+                      mode="single"
+                      selected={endDate}
+                      onSelect={(date) => {
+                        setEndDate(date)
+                        setEndPopoverOpen(false)
+                      }}
+                      initialFocus
+                    />
+                  </PopoverContent>
+                </Popover>
               </div>
             </div>
           </section>
           {/* Equipment Needs */}
-          <section className="rounded-lg bg-white p-6 shadow">
+          <section className="rounded-lg bg-white p-4 shadow sm:p-6">
             <div className="mb-4 flex items-center">
               <img src={imgFrame8} alt="equipment" className="mr-2 h-5 w-5" />
               <h2 className="text-lg font-semibold text-gray-800">
                 Equipment Needs
               </h2>
             </div>
-            <div className="mb-4 grid grid-cols-3 gap-4">
+            <div className="mb-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
               <label className="flex items-center gap-2 rounded-lg border border-gray-400 p-3 text-sm text-gray-700">
                 <input
                   type="checkbox"
@@ -213,7 +299,7 @@ const EditRfq = () => {
             </div>
           </section>
           {/* Attachments */}
-          <section className="rounded-lg bg-white p-6 shadow">
+          <section className="rounded-lg bg-white p-4 shadow sm:p-6">
             <div className="mb-4 flex items-center">
               <img
                 src={imgFrame10}
@@ -223,28 +309,6 @@ const EditRfq = () => {
               <h2 className="text-lg font-semibold text-gray-800">
                 Attachments
               </h2>
-            </div>
-            <div className="mb-4 space-y-2">
-              <div className="flex items-center rounded-lg bg-gray-100 p-3">
-                <img src={imgFrame11} alt="pdf" className="mr-2 h-4 w-4" />
-                <span className="flex-1 text-sm text-gray-700">
-                  project-details.pdf{" "}
-                  <span className="ml-2 text-xs text-gray-500">(2.1 MB)</span>
-                </span>
-                <button>
-                  <img src={imgFrame12} alt="remove" className="h-3 w-3" />
-                </button>
-              </div>
-              <div className="flex items-center rounded-lg bg-gray-100 p-3">
-                <img src={imgFrame13} alt="jpg" className="mr-2 h-4 w-3" />
-                <span className="flex flex-1 items-center text-sm text-gray-700">
-                  location-reference.jpg{" "}
-                  <span className="ml-2 text-xs text-gray-500">(1.8 MB)</span>
-                </span>
-                <button className="ml-2">
-                  <img src={imgFrame12} alt="remove" className="h-3 w-3" />
-                </button>
-              </div>
             </div>
             <div className="mt-4 flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 py-8">
               <FontAwesomeIcon
@@ -257,62 +321,181 @@ const EditRfq = () => {
               <span className="text-xs text-gray-500">
                 PDF, JPG, DOC files up to 5MB each (3 files max)
               </span>
-              <button className="mt-4 rounded-lg bg-gray-100 px-4 py-2 font-medium text-gray-700">
+              <Button
+                variant="ghost"
+                className="mt-4 rounded-lg bg-gray-100 px-4 py-2 text-base text-gray-700"
+                type="button"
+                onClick={() => fileInputRef.current?.click()}
+              >
                 Choose Files
-              </button>
+              </Button>
+              <input
+                type="file"
+                multiple
+                ref={fileInputRef}
+                className="hidden"
+                onChange={(e) => {
+                  if (e.target.files) {
+                    const files = Array.from(e.target.files)
+                    setSelectedFiles(files)
+                    console.log("Selected files:", files)
+                  }
+                }}
+              />
+              {selectedFiles.length > 0 && (
+                <ul className="mt-2 text-sm text-gray-700">
+                  {selectedFiles.map((file, idx) => (
+                    <li key={idx}>{file.name}</li>
+                  ))}
+                </ul>
+              )}
             </div>
           </section>
           {/* RFQ Settings */}
-          <section className="rounded-lg bg-white p-6 shadow">
+          <section className="rounded-lg bg-white p-4 shadow sm:p-6">
             <div className="mb-4 flex items-center">
               <img src={imgFrame15} alt="settings" className="mr-2 h-4 w-4" />
               <h2 className="text-lg font-semibold text-gray-800">
                 RFQ Settings
               </h2>
             </div>
-            <div className="mb-4 flex gap-4">
+            <div className="mb-6 flex flex-col gap-4 sm:flex-row">
               <div className="flex-1">
-                <label className="mb-1 block text-sm font-medium text-gray-700">
+                <label className="mb-2 block text-sm font-medium text-gray-700">
                   Expiry Date
                 </label>
-                <input
-                  type="date"
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 text-base text-gray-900"
-                  defaultValue="2025-01-05"
-                />
+                <Popover
+                  open={expiryPopoverOpen}
+                  onOpenChange={setExpiryPopoverOpen}
+                >
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      className="flex h-12 w-full items-center justify-start rounded-md border py-2 pl-6 pr-3 text-left text-base font-normal ring-offset-background placeholder:text-muted-foreground hover:bg-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-sky-500"
+                    >
+                      <span className="flex-1">
+                        {expiryDate ? (
+                          format(expiryDate, "MMM dd, yyyy")
+                        ) : (
+                          <span>mm/dd/yyyy</span>
+                        )}
+                      </span>
+                      <CalendarIcon className="ml-auto h-4 w-4 opacity-80" />
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-[270px] p-0" align="end">
+                    <Calendar
+                      className="w-full"
+                      captionLayout="dropdown"
+                      mode="single"
+                      selected={expiryDate}
+                      onSelect={(date) => {
+                        setExpiryDate(date)
+                        setExpiryPopoverOpen(false)
+                      }}
+                      initialFocus
+                    />
+                  </PopoverContent>
+                </Popover>
                 <span className="text-xs text-gray-500">
                   Merchants can submit quotes until this date
                 </span>
               </div>
               <div className="flex-1">
-                <label className="mb-1 block text-sm font-medium text-gray-700">
+                <label className="mb-2 block text-sm font-medium text-gray-700">
                   Status
                 </label>
-                <select className="w-full rounded-lg border border-gray-300 px-3 py-2 text-base text-gray-900">
-                  <option>Open</option>
-                  <option>Closed</option>
-                </select>
+                <Select value={status} onValueChange={setStatus}>
+                  <SelectTrigger className="h-11 w-full rounded-lg border border-gray-300 px-3 py-2 text-base text-gray-900">
+                    <SelectValue placeholder="Select status" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Open">Open</SelectItem>
+                    <SelectItem value="Closed">Closed</SelectItem>
+                  </SelectContent>
+                </Select>
                 <span className="text-xs text-gray-500">
                   Only open RFQs accept new quotes
                 </span>
               </div>
             </div>
+            <div className="mb-4">
+              <label className="mb-3 block text-sm font-medium text-gray-700">
+                RFQ Visibility
+              </label>
+              <div className="space-y-3">
+                <label
+                  className={`flex cursor-pointer flex-col rounded-lg border p-4 ${
+                    visibility === "public"
+                      ? "border-blue-400 bg-blue-50"
+                      : "border-gray-200 bg-white"
+                  }`}
+                >
+                  <span className="flex items-center gap-2">
+                    <input
+                      type="radio"
+                      name="rfq-visibility"
+                      value="public"
+                      checked={visibility === "public"}
+                      onChange={() => setVisibility("public")}
+                      className="form-radio h-4 w-4 text-sky-600"
+                    />
+                    <span
+                      className={`${visibility === "public" ? "text-blue-800" : "text-gray-800"} text-sm`}
+                    >
+                      Public
+                    </span>
+                  </span>
+                  <span className="ml-6 text-sm text-gray-600">
+                    All verified merchants can see and respond to this RFQ
+                  </span>
+                </label>
+                <label
+                  className={`flex cursor-pointer flex-col rounded-lg border p-4 ${
+                    visibility === "private"
+                      ? "border-blue-400 bg-blue-50"
+                      : "border-gray-200 bg-white"
+                  }`}
+                >
+                  <span className="flex items-center gap-2">
+                    <input
+                      type="radio"
+                      name="rfq-visibility"
+                      value="private"
+                      checked={visibility === "private"}
+                      onChange={() => setVisibility("private")}
+                      className="form-radio h-4 w-4 text-sky-600"
+                    />
+                    <span
+                      className={`${visibility === "private" ? "text-blue-800" : "text-gray-800"} text-sm`}
+                    >
+                      Private
+                    </span>
+                  </span>
+                  <span className="ml-6 text-sm text-gray-600">
+                    Only selected merchants can see and respond to this RFQ
+                  </span>
+                </label>
+              </div>
+            </div>
           </section>
           {/* Action Buttons */}
-          <div className="mt-8 flex gap-4">
-            <button
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+            <Button
+              variant="tertiary"
               type="submit"
-              className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-sky-600 py-3 font-medium text-white"
+              className="flex flex-1 items-center justify-center gap-2 rounded-lg py-3 text-base font-medium"
             >
               <img src={imgFrame17} alt="save" className="h-4 w-4" /> Save
               Changes
-            </button>
-            <button
+            </Button>
+            <Button
+              variant="ghost"
               type="button"
-              className="flex-1 rounded-lg border border-gray-300 py-3 font-medium text-gray-700"
+              className="flex-1 rounded-lg border border-gray-300 py-3 text-base font-medium text-gray-700"
             >
               Cancel
-            </button>
+            </Button>
           </div>
         </form>
       </main>
