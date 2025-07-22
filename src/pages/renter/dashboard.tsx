@@ -136,7 +136,7 @@ export const RenterDashboard = () => {
                   </Link>
 
                   {/* Edit Profile */}
-                  <Link>
+                  <Link to="/renter-edit-profile">
                     <div className="cursor-pointer rounded-lg bg-gradient-to-r from-orange-50 to-orange-100 p-4 transition hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-300 active:scale-95">
                       <div className="flex items-center justify-between">
                         <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-orange-600">

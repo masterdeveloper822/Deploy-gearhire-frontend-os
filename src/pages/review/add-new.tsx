@@ -4,8 +4,6 @@ import { CommonFooter } from "@/components/layout/footer/common"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import man1 from "@/assets/images/avatars/man1.png"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faStar } from "@fortawesome/free-solid-svg-icons"
 import StarRating from "@/components/review/star-rating"
 
 // Image and SVG asset URLs from Figma export

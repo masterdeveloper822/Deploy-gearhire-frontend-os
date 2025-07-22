@@ -13,45 +13,37 @@ import { Route } from "react-router-dom"
 
 export default [
   <Route
-    key="renter-dashboard"
     path="/renter-dashboard"
     element={<RenterDashboard />}
   />,
   <Route
-    key="browse-training-course"
     path="/browse-training-course"
     element={<BrowseTrainingCourse />}
   />,
-  <Route key="rfq-list" path="/rfq-list" element={<RfqList />} />,
-  <Route key="edit-rfq" path="/edit-rfq" element={<EditRfq />} />,
+  <Route path="/rfq-list" element={<RfqList />} />,
+  <Route path="/edit-rfq" element={<EditRfq />} />,
   <Route
-    key="renter-notification"
     path="/renter-notification"
     element={<Notification />}
   />,
   <Route
-    key="renter-message"
     path="/renter-message"
     element={<RenterMessage />}
   />,
-  <Route key="add-review" path="/add-review" element={<AddNewReview />} />,
+  <Route path="/add-review" element={<AddNewReview />} />,
   <Route
-    key="renter-edit-profile"
     path="/renter-edit-profile"
     element={<EditRenterProfile />}
   />,
   <Route
-    key="renter-profile"
     path="/renter-profile"
     element={<RenterProfile />}
   />,
   <Route
-    key="browse-equipment"
     path="/browse-equipment"
     element={<BrowseEquipment />}
   />,
   <Route
-    key="equipment-detail"
     path="/equipment-detail"
     element={<EquipmentDetail />}
   />,

@@ -10,6 +10,8 @@
     "lint:fix": "eslint . --config eslint.config.mjs --fix"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-brands-svg-icons": "^7.0.0",
     "@fortawesome/free-regular-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
@@ -68,5 +70,10 @@
     "typescript-eslint": "^8.37.0",
     "vite": "^4.5.14",
     "vite-plugin-svgr": "^4.3.0"
-  }
+  },
+   "resolutions": {
+     "@fortawesome/fontawesome-svg-core": "6.5.2",
+     "@fortawesome/free-brands-svg-icons": "6.5.2",
+     "@fortawesome/react-fontawesome": "0.2.0"
+   }
 }
