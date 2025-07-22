@@ -9,8 +9,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
-const imgImg =
-  "http://localhost:3845/assets/f578f9c2a181ef669150341163e63e6e9da01878.png"
+import imgImg from "@/assets/images/avatars/woman3.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBell, faGear } from "@fortawesome/free-solid-svg-icons"
 import { LogOut } from "lucide-react"

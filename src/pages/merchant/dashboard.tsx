@@ -6,16 +6,12 @@ import { Button } from "@/components/ui/button"
 import { RecentActivityCard } from "@/components/ui/card"
 import { MerchantHeader } from "@/components/layout/header/merchant-header"
 import { Link, useNavigate } from "react-router-dom"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faBoxesStacked, faClipboardList, faComment, faGraduationCap, faHeart, faStar } from "@fortawesome/free-solid-svg-icons"
+import woman1 from "@/assets/images/avatars/woman1.png"
+import man3 from "@/assets/images/avatars/man3.png"
+import woman2 from "@/assets/images/avatars/woman2.png"
 
-// Figma image assets
-const imgFrame =
-  "http://localhost:3845/assets/ed4e1169b638e2e838350960320b53c878e45615.svg"
-const imgFrame3 =
-  "http://localhost:3845/assets/fe78f47cee056f7c1e4da9ef1369e247daf9bdd9.svg"
-const imgFrame4 =
-  "http://localhost:3845/assets/d610c794e0934493cb23c041b0fe7fe2d768505e.svg"
-const imgFrame5 =
-  "http://localhost:3845/assets/77ca1e3fa0656777303fbaeb5bd14e35c913d021.svg"
 const imgFrame6 =
   "http://localhost:3845/assets/04a1414121a05ee827326ca429ad2c8b4e359e3f.svg"
 const imgFrame7 =
@@ -28,8 +24,6 @@ const imgImg1 =
   "http://localhost:3845/assets/ec901f1c0d6bdc3abb3b7f2578c96a444ee001e2.png"
 const imgImg2 =
   "http://localhost:3845/assets/bec21fc75386a86210d32bec8ca98fcb2380d21e.png"
-const imgImg3 =
-  "http://localhost:3845/assets/93261e682a4fc24925831eb042e025379dab45ab.png"
 
 const MerchantDashboard: React.FC = () => {
   const navigate = useNavigate()
@@ -58,7 +52,33 @@ const MerchantDashboard: React.FC = () => {
             </div>
           </div>
           <div className="flex items-center gap-2 rounded-full bg-green-100 px-4 py-2">
-            <img src={imgFrame3} alt="Verified" className="h-5 w-5" />
+            <span
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: 16,
+                height: 16,
+                borderRadius: "50%",
+                backgroundColor: "#166534",
+              }}
+            >
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 6.5L5.5 9L9 4.5"
+                  stroke="white"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
             <span className="text-base font-medium text-green-800">
               Verified Merchant
             </span>
@@ -83,11 +103,7 @@ const MerchantDashboard: React.FC = () => {
                 <Card className="flex cursor-pointer flex-col gap-4 rounded-xl p-6 shadow transition hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-tertiary active:scale-95">
                   <div className="flex items-center gap-4">
                     <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-sky-100">
-                      <img
-                        src={imgFrame4}
-                        alt="Inventory"
-                        className="h-6 w-6"
-                      />
+                      <FontAwesomeIcon icon={faBoxesStacked} className="h-6 w-6 text-tertiary" />
                     </div>
                     <div className="flex-1 text-right">
                       <div className="text-2xl font-bold text-gray-800">24</div>
@@ -106,7 +122,7 @@ const MerchantDashboard: React.FC = () => {
                 <Card className="flex cursor-pointer flex-col gap-4 rounded-xl p-6 shadow transition hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-tertiary active:scale-95">
                   <div className="flex items-center gap-4">
                     <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100">
-                      <img src={imgFrame5} alt="RFQs" className="h-6 w-6" />
+                      <FontAwesomeIcon icon={faClipboardList} className="h-6 w-6 text-colored-blue" />
                     </div>
                     <div className="flex-1 text-right">
                       <div className="text-2xl font-bold text-gray-800">8</div>
@@ -127,7 +143,7 @@ const MerchantDashboard: React.FC = () => {
                 <Card className="flex cursor-pointer flex-col gap-4 rounded-xl p-6 shadow transition hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-tertiary active:scale-95">
                   <div className="flex items-center gap-4">
                     <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-yellow-100">
-                      <img src={imgFrame6} alt="Reviews" className="h-6 w-6" />
+                      <FontAwesomeIcon icon={faStar} className="h-6 w-6 text-yellow-500" />
                     </div>
                     <div className="flex-1 text-right">
                       <div className="text-2xl font-bold text-gray-800">
@@ -148,7 +164,7 @@ const MerchantDashboard: React.FC = () => {
                 <Card className="flex cursor-pointer flex-col gap-4 rounded-xl p-6 shadow transition hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-tertiary active:scale-95">
                   <div className="flex items-center gap-4">
                     <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-green-100">
-                      <img src={imgFrame7} alt="Courses" className="h-6 w-6" />
+                      <FontAwesomeIcon icon={faGraduationCap} className="h-6 w-6 text-green-500" />
                     </div>
                     <div className="flex-1 text-right">
                       <div className="text-2xl font-bold text-gray-800">5</div>
@@ -236,36 +252,36 @@ const MerchantDashboard: React.FC = () => {
           <div className="px-6 pb-2">
             {/* Activity Card 1 */}
             <RecentActivityCard
-              avatar={imgImg1}
+              avatar={woman1}
               name="Sarah Chen"
               time="2 hours ago"
               message="Looking for RED cameras for a 3-day shoot in downtown LA. Any recommendations?"
-              commentsCount={12}
-              likesCount={3}
-              commentsIcon={imgFrame8}
-              likesIcon={imgFrame9}
+              likesCount={12}
+              commentsCount={3}
+              commentsIcon={<FontAwesomeIcon icon={faComment} className="h-4 w-4 text-gray-500" />}
+              likesIcon={<FontAwesomeIcon icon={faHeart} className="h-4 w-4 text-gray-500" />}
             />
             {/* Activity Card 2 */}
             <RecentActivityCard
-              avatar={imgImg2}
+              avatar={man3}
               name="Mike Rodriguez"
               time="4 hours ago"
               message="Just added new Arri lighting kit to my inventory! Perfect for studio setups."
-              commentsCount={8}
-              likesCount={1}
-              commentsIcon={imgFrame8}
-              likesIcon={imgFrame9}
+              likesCount={8}
+              commentsCount={1}
+              likesIcon={<FontAwesomeIcon icon={faHeart} className="h-4 w-4 text-gray-500" />}
+              commentsIcon={<FontAwesomeIcon icon={faComment} className="h-4 w-4 text-gray-500" />}
             />
             {/* Activity Card 3 */}
             <RecentActivityCard
-              avatar={imgImg2}
+              avatar={woman2}
               name="Emma Watson"
               time="6 hours ago"
               message="Thanks to everyone who helped with our documentary project! Great community here."
-              commentsCount={24}
-              likesCount={7}
-              commentsIcon={imgFrame8}
-              likesIcon={imgFrame9}
+              likesCount={24}
+              commentsCount={7}
+              likesIcon={<FontAwesomeIcon icon={faHeart} className="h-4 w-4 text-gray-500" />}
+              commentsIcon={<FontAwesomeIcon icon={faComment} className="h-4 w-4 text-gray-500" />}
             />
           </div>
         </Card>

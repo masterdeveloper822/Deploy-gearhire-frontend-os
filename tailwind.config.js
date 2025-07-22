@@ -72,6 +72,7 @@ module.exports = {
           orangeforeground: "hsl(var(--colored-orangeforeground))",
           blue: "hsl(var(--colored-blue))",
           green: "hsl(var(--colored-green))",
+          purple: "hsl(var(--colored-purple))",
         },
       },
       fontFamily: {

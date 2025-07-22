@@ -157,7 +157,7 @@ const RecentActivityCard: React.FC<RecentActivityCardProps> = ({
   commentsIcon,
   likesIcon,
 }) => (
-  <div className="bg-gray-100 flex flex-row items-start gap-4 px-6 mb-4 py-5 rounded-[8px]">
+  <div className="bg-gray-50 flex flex-row items-start gap-4 px-6 mb-4 py-5 rounded-[8px]">
     <img
       src={avatar}
       alt={name}
@@ -171,12 +171,12 @@ const RecentActivityCard: React.FC<RecentActivityCardProps> = ({
       <div className="text-gray-700 mb-3">{message}</div>
       <div className="flex items-center gap-6 text-gray-500 text-sm">
         <div className="flex items-center gap-1">
-          <img src={commentsIcon} alt="Comments" className="w-4 h-4" />
-          <span>{commentsCount}</span>
+          {likesIcon}
+          <span>{likesCount}</span>
         </div>
         <div className="flex items-center gap-1">
-          <img src={likesIcon} alt="Likes" className="w-4 h-4" />
-          <span>{likesCount}</span>
+          {commentsIcon}
+          <span>{commentsCount}</span>
         </div>
       </div>
     </div>

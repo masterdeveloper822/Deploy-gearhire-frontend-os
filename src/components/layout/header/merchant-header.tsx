@@ -4,15 +4,13 @@ import { Link, useNavigate } from "react-router-dom"
 import gearIcon from "../../../assets/images/ui/gear_icon.svg"
 import { Typography } from "@/components/ui/typography"
 import { Button } from "@/components/ui/button"
+import imgImg from "@/assets/images/avatars/man1.png"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { LogOut } from "lucide-react"
-
-const imgImg =
-  "http://localhost:3845/assets/410c340aa057242400c608368f918307cdd72438.png"
 
 import { faBell, faGear } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"

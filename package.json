@@ -10,6 +10,7 @@
     "lint:fix": "eslint . --config eslint.config.mjs --fix"
   },
   "dependencies": {
+    "@fortawesome/free-regular-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@hookform/resolvers": "^5.1.1",
@@ -39,6 +40,7 @@
     "react-hot-toast": "^2.5.2",
     "react-resizable-panels": "^3.0.3",
     "react-router-dom": "^7.6.3",
+    "save": "^2.9.0",
     "shadcn-ui": "^0.9.5",
     "tailwind-merge": "^3.3.1",
     "tailwind-scrollbar-hide": "^4.0.0",
