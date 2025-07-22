@@ -102,85 +102,93 @@ export const RenterDashboard = () => {
                 </h2>
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   {/* My RFQs */}
-                  <div className="rounded-lg bg-gradient-to-r from-blue-50 to-blue-100 p-4">
-                    <div className="flex items-center justify-between">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
-                        <RFQIcon />
+                  <Link to="/rfq-list">
+                    <div className="cursor-pointer rounded-lg bg-gradient-to-r from-blue-50 to-blue-100 p-4 transition hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-300 active:scale-95">
+                      <div className="flex items-center justify-between">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
+                          <RFQIcon />
+                        </div>
+                        <span className="rounded-full bg-blue-200 px-2 py-1 text-xs font-medium text-blue-800">
+                          3 Active
+                        </span>
                       </div>
-                      <span className="rounded-full bg-blue-200 px-2 py-1 text-xs font-medium text-blue-800">
-                        3 Active
-                      </span>
+                      <h3 className="mt-4 text-base font-semibold text-gray-800">
+                        My RFQs
+                      </h3>
+                      <p className="mt-1 text-sm text-gray-600">
+                        View and manage your requests
+                      </p>
                     </div>
-                    <h3 className="mt-4 text-base font-semibold text-gray-800">
-                      My RFQs
-                    </h3>
-                    <p className="mt-1 text-sm text-gray-600">
-                      View and manage your requests
-                    </p>
-                  </div>
+                  </Link>
 
                   {/* Messages */}
-                  <div className="rounded-lg bg-gradient-to-r from-green-50 to-green-100 p-4">
-                    <div className="flex items-center justify-between">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-green-600">
-                        <img
-                          src={imgFrame1}
-                          alt="Messages"
-                          className="h-4 w-4"
-                        />
+                  <Link to="/renter-message">
+                    <div className="cursor-pointer rounded-lg bg-gradient-to-r from-green-50 to-green-100 p-4 transition hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-300 active:scale-95">
+                      <div className="flex items-center justify-between">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-green-600">
+                          <img
+                            src={imgFrame1}
+                            alt="Messages"
+                            className="h-4 w-4"
+                          />
+                        </div>
+                        <span className="rounded-full bg-green-200 px-2 py-1 text-xs font-medium text-green-800">
+                          2 New
+                        </span>
                       </div>
-                      <span className="rounded-full bg-green-200 px-2 py-1 text-xs font-medium text-green-800">
-                        2 New
-                      </span>
+                      <h3 className="mt-4 text-base font-semibold text-gray-800">
+                        Messages
+                      </h3>
+                      <p className="mt-1 text-sm text-gray-600">
+                        Connect with merchants
+                      </p>
                     </div>
-                    <h3 className="mt-4 text-base font-semibold text-gray-800">
-                      Messages
-                    </h3>
-                    <p className="mt-1 text-sm text-gray-600">
-                      Connect with merchants
-                    </p>
-                  </div>
+                  </Link>
 
                   {/* Document Vault */}
-                  <div className="rounded-lg bg-gradient-to-r from-purple-50 to-purple-100 p-4">
-                    <div className="flex items-center justify-between">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-purple-600">
-                        <img
-                          src={imgFrame2}
-                          alt="Documents"
-                          className="h-4 w-4"
-                        />
+                  <Link>
+                    <div className="cursor-pointer rounded-lg bg-gradient-to-r from-purple-50 to-purple-100 p-4 transition hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-300 active:scale-95">
+                      <div className="flex items-center justify-between">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-purple-600">
+                          <img
+                            src={imgFrame2}
+                            alt="Documents"
+                            className="h-4 w-4"
+                          />
+                        </div>
+                        <span className="rounded-full bg-purple-200 px-2 py-1 text-xs font-medium text-purple-800">
+                          12 Files
+                        </span>
                       </div>
-                      <span className="rounded-full bg-purple-200 px-2 py-1 text-xs font-medium text-purple-800">
-                        12 Files
-                      </span>
+                      <h3 className="mt-4 text-base font-semibold text-gray-800">
+                        Document Vault
+                      </h3>
+                      <p className="mt-1 text-sm text-gray-600">
+                        Store and share documents
+                      </p>
                     </div>
-                    <h3 className="mt-4 text-base font-semibold text-gray-800">
-                      Document Vault
-                    </h3>
-                    <p className="mt-1 text-sm text-gray-600">
-                      Store and share documents
-                    </p>
-                  </div>
+                  </Link>
 
                   {/* Edit Profile */}
-                  <div className="rounded-lg bg-gradient-to-r from-orange-50 to-orange-100 p-4">
-                    <div className="flex items-center justify-between">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-orange-600">
-                        <img
-                          src={imgFrame3}
-                          alt="Profile"
-                          className="h-4 w-5"
-                        />
+                  <Link>
+                    <div className="cursor-pointer rounded-lg bg-gradient-to-r from-orange-50 to-orange-100 p-4 transition hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-300 active:scale-95">
+                      <div className="flex items-center justify-between">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-orange-600">
+                          <img
+                            src={imgFrame3}
+                            alt="Profile"
+                            className="h-4 w-5"
+                          />
+                        </div>
                       </div>
+                      <h3 className="mt-4 text-base font-semibold text-gray-800">
+                        Edit Profile
+                      </h3>
+                      <p className="mt-1 text-sm text-gray-600">
+                        Update your information
+                      </p>
                     </div>
-                    <h3 className="mt-4 text-base font-semibold text-gray-800">
-                      Edit Profile
-                    </h3>
-                    <p className="mt-1 text-sm text-gray-600">
-                      Update your information
-                    </p>
-                  </div>
+                  </Link>
                 </div>
               </section>
 

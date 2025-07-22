@@ -87,14 +87,16 @@ export const RenterHeader = () => {
           </Popover>
 
           {/* Notification Icon */}
-          <Button variant="ghost" className="relative ml-1 sm:ml-3">
-            <FontAwesomeIcon
-              className="text-tertiary"
-              style={{ height: 20, width: 20 }}
-              icon={faBell}
-            />
-            <span className="absolute -right-3 -top-3 h-3 w-3 rounded-full bg-red-500"></span>
-          </Button>
+          <Link to="/renter-notification">
+            <Button variant="ghost" className="relative ml-1 sm:ml-3">
+              <FontAwesomeIcon
+                className="text-tertiary"
+                style={{ height: 20, width: 20 }}
+                icon={faBell}
+              />
+              <span className="absolute -right-3 -top-3 h-3 w-3 rounded-full bg-red-500"></span>
+            </Button>
+          </Link>
           {/* Settings Icon */}
           <Button variant="ghost" className="ml-1 sm:ml-3">
             <FontAwesomeIcon

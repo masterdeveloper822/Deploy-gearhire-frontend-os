@@ -1,5 +1,13 @@
 import { CommonFooter } from "@/components/layout/footer/common"
 import { RenterHeader } from "@/components/layout/header/renter-header"
+import { Card } from "@/components/ui/card"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import React from "react"
 
 // Image and SVG asset URLs from Figma export
@@ -47,11 +55,11 @@ const Notification = () => {
     <div className="relative min-h-screen w-full bg-gray-50">
       <RenterHeader />
       {/* Main Content */}
-      <div className="mx-auto max-w-4xl px-4 py-8">
+      <div className="mx-auto mb-10 max-w-4xl px-4 py-8">
         {/* Title and filter */}
-        <div className="mb-8 flex items-center justify-between">
+        <div className="mb-6 flex items-center justify-between">
           <div>
-            <h1 className="mb-1 text-3xl font-bold text-gray-800">
+            <h1 className="mb-4 text-3xl font-bold text-gray-800">
               Notifications
             </h1>
             <p className="text-base text-gray-600">
@@ -64,236 +72,243 @@ const Notification = () => {
           </button>
         </div>
         {/* Filter */}
-        <div className="mb-6 flex items-center gap-4">
+        <Card className="mb-8 flex items-center gap-4 rounded-md p-4">
           <span className="text-sm font-medium text-gray-700">Filter by:</span>
-          <div className="relative">
-            <select className="rounded-lg border border-gray-300 py-1.5 pl-3 pr-8 text-sm text-gray-900">
-              <option>All Notifications</option>
-            </select>
-            <span className="absolute right-2 top-1/2 -translate-y-1/2">
-              <img src={imgFrame4} alt="dropdown" className="h-4 w-4" />
-            </span>
-          </div>
-        </div>
+          <Select>
+            <SelectTrigger className="w-40 rounded-lg border border-gray-300 px-3 py-1.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-sky-500">
+              <SelectValue placeholder="All Notifications" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Notifications</SelectItem>
+              {/* Add more filter options here if needed */}
+            </SelectContent>
+          </Select>
+        </Card>
         {/* Notification Cards */}
-        <div className="space-y-4">
+        <div className="space-y-1">
           {/* Card 1: New quote received */}
-          <div className="flex rounded-lg border-l-4 border-blue-200 bg-blue-50 p-0">
-            <div className="flex w-20 items-center justify-center">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100">
-                <img src={imgFrame5} alt="quote" className="h-4 w-4" />
-              </div>
-            </div>
-            <div className="ml-[-8px] flex flex-1 flex-col justify-between rounded-lg bg-white p-4 shadow">
-              <div className="flex flex-col gap-1">
-                <span className="text-sm font-semibold text-gray-800">
-                  New quote received
-                </span>
-                <span className="text-sm text-gray-600">
-                  John's Camera House submitted a quote for your "Camera Package
-                  for Short Film" RFQ
-                </span>
-                <div className="mt-2 flex items-center gap-2">
-                  <img
-                    src={imgImg1}
-                    alt="avatar"
-                    className="h-6 w-6 rounded-full"
-                  />
-                  <span className="text-xs text-gray-500">2 hours ago</span>
+          <Card className="flex rounded-lg border-0 border-l-4 border-gray-300 bg-gray-50">
+            <div className="flex flex-1 flex-col gap-4 rounded-lg bg-white p-4 shadow">
+              <div className="flex w-full items-start gap-4">
+                {/* Icon column */}
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100">
+                  <img src={imgFrame5} alt="quote" className="h-4 w-4" />
+                </div>
+                {/* Content column */}
+                <div className="flex flex-1 flex-col gap-1">
+                  <span className="text-sm font-semibold text-gray-800">
+                    New quote received
+                  </span>
+                  <span className="text-sm text-gray-600">
+                    John's Camera House submitted a quote for your "Camera
+                    Package for Short Film" RFQ
+                  </span>
+                  <div className="mt-2 flex items-center gap-2">
+                    <img
+                      src={imgImg1}
+                      alt="avatar"
+                      className="h-6 w-6 rounded-full"
+                    />
+                    <span className="text-xs text-gray-500">2 hours ago</span>
+                  </div>
+                </div>
+                {/* Action column */}
+                <div className="ml-4 flex flex-col items-end justify-center">
+                  <button className="text-sm font-medium text-sky-600">
+                    View Quote
+                  </button>
                 </div>
               </div>
-              <div className="mt-2 flex justify-end">
-                <button className="text-sm font-medium text-sky-600">
-                  View Quote
-                </button>
-              </div>
             </div>
-          </div>
+          </Card>
           {/* Card 2: New message from merchant */}
-          <div className="flex rounded-lg border-l-4 border-blue-200 bg-blue-50 p-0">
-            <div className="flex w-20 items-center justify-center">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100">
-                <img src={imgFrame6} alt="message" className="h-4 w-4" />
-              </div>
-            </div>
-            <div className="ml-[-8px] flex flex-1 flex-col justify-between rounded-lg bg-white p-4 shadow">
-              <div className="flex flex-col gap-1">
-                <span className="text-sm font-semibold text-gray-800">
-                  New message from merchant
-                </span>
-                <span className="text-sm text-gray-600">
-                  Emma Rodriguez: "Hi! I have some follow-up questions about
-                  your lighting requirements..."
-                </span>
-                <div className="mt-2 flex items-center gap-2">
-                  <img
-                    src={imgImg2}
-                    alt="avatar"
-                    className="h-6 w-6 rounded-full"
-                  />
-                  <span className="text-xs text-gray-500">4 hours ago</span>
+          <Card className="flex rounded-lg bg-gray-50">
+            <div className="flex flex-1 flex-col gap-4 rounded-lg bg-white p-4 shadow">
+              <div className="flex w-full items-start gap-4">
+                {/* Icon column */}
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100">
+                  <img src={imgFrame6} alt="message" className="h-4 w-4" />
+                </div>
+                {/* Content column */}
+                <div className="flex flex-1 flex-col gap-1">
+                  <span className="text-sm font-semibold text-gray-800">
+                    New message from merchant
+                  </span>
+                  <span className="text-sm text-gray-600">
+                    Emma Rodriguez: "Hi! I have some follow-up questions about
+                    your lighting requirements..."
+                  </span>
+                  <div className="mt-2 flex items-center gap-2">
+                    <img
+                      src={imgImg2}
+                      alt="avatar"
+                      className="h-6 w-6 rounded-full"
+                    />
+                    <span className="text-xs text-gray-500">4 hours ago</span>
+                  </div>
+                </div>
+                {/* Action column */}
+                <div className="ml-4 flex flex-col items-end justify-center">
+                  <button className="text-sm font-medium text-sky-600">
+                    Open Message
+                  </button>
                 </div>
               </div>
-              <div className="mt-2 flex justify-end">
-                <button className="text-sm font-medium text-sky-600">
-                  Open Message
-                </button>
-              </div>
             </div>
-          </div>
+          </Card>
           {/* Card 3: RFQ expiring soon */}
-          <div className="flex rounded-lg border-l-4 border-yellow-200 bg-yellow-50 p-0">
-            <div className="flex w-20 items-center justify-center">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-yellow-100">
-                <img src={imgFrame7} alt="rfq expiring" className="h-4 w-4" />
-              </div>
-            </div>
-            <div className="ml-[-8px] flex flex-1 flex-col justify-between rounded-lg bg-white p-4 shadow">
-              <div className="flex flex-col gap-1">
-                <span className="text-sm font-semibold text-gray-800">
-                  RFQ expiring soon
-                </span>
-                <span className="text-sm text-gray-600">
-                  Your "Audio Equipment for Documentary" RFQ expires in 2 days
-                </span>
-                <div className="mt-2 flex items-center gap-2">
-                  <span className="text-xs text-gray-500">6 hours ago</span>
+          <Card className="flex rounded-lg border-0 border-l-4 border-gray-300 bg-yellow-50 p-0">
+            <div className="flex flex-1 flex-col gap-4 rounded-lg bg-white p-4 shadow">
+              <div className="flex w-full items-start gap-4">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-yellow-100">
+                  <img src={imgFrame7} alt="rfq expiring" className="h-4 w-4" />
+                </div>
+                <div className="flex flex-1 flex-col gap-1">
+                  <span className="text-sm font-semibold text-gray-800">
+                    RFQ expiring soon
+                  </span>
+                  <span className="text-sm text-gray-600">
+                    Your "Audio Equipment for Documentary" RFQ expires in 2 days
+                  </span>
+                  <div className="mt-2 flex items-center gap-2">
+                    <span className="text-xs text-gray-500">6 hours ago</span>
+                  </div>
+                </div>
+                <div className="mt-2 flex justify-end">
+                  <button className="text-sm font-medium text-sky-600">
+                    View RFQ
+                  </button>
                 </div>
               </div>
-              <div className="mt-2 flex justify-end">
-                <button className="text-sm font-medium text-sky-600">
-                  View RFQ
-                </button>
-              </div>
             </div>
-          </div>
+          </Card>
           {/* Card 4: New follower */}
-          <div className="flex rounded-lg border-l-4 border-purple-200 bg-purple-50 p-0">
-            <div className="flex w-20 items-center justify-center">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-yellow-100">
-                <img src={imgFrame8} alt="follower" className="h-5 w-5" />
-              </div>
-            </div>
-            <div className="ml-[-8px] flex flex-1 flex-col justify-between rounded-lg bg-white p-4 shadow">
-              <div className="flex flex-col gap-1">
-                <span className="text-sm font-semibold text-gray-800">
-                  New follower
-                </span>
-                <span className="text-sm text-gray-600">
-                  Pro Light Studios started following you
-                </span>
-                <div className="mt-2 flex items-center gap-2">
-                  <img
-                    src={imgImg3}
-                    alt="avatar"
-                    className="h-6 w-6 rounded-full"
-                  />
-                  <span className="text-xs text-gray-500">1 day ago</span>
+          <Card className="flex rounded-lg bg-purple-50 p-0">
+            <div className="flex flex-1 flex-col gap-4 rounded-lg bg-white p-4 shadow">
+              <div className="flex w-full items-start gap-4">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-purple-100">
+                  <img src={imgFrame8} alt="follower" className="h-4 w-5" />
+                </div>
+                <div className="flex flex-1 flex-col gap-1">
+                  <span className="text-sm font-semibold text-gray-800">
+                    New follower
+                  </span>
+                  <span className="text-sm text-gray-600">
+                    Pro Light Studios started following you
+                  </span>
+                  <div className="mt-2 flex items-center gap-2">
+                    <img
+                      src={imgImg3}
+                      alt="avatar"
+                      className="h-6 w-6 rounded-full"
+                    />
+                    <span className="text-xs text-gray-500">1 day ago</span>
+                  </div>
+                </div>
+                <div className="mt-2 flex justify-end">
+                  <button className="text-sm font-medium text-sky-600">
+                    View Profile
+                  </button>
                 </div>
               </div>
-              <div className="mt-2 flex justify-end">
-                <button className="text-sm font-medium text-sky-600">
-                  View Profile
-                </button>
-              </div>
             </div>
-          </div>
+          </Card>
           {/* Card 5: New training course available */}
-          <div className="flex rounded-lg border-l-4 border-green-200 bg-green-50 p-0">
-            <div className="flex w-20 items-center justify-center">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-100">
-                <img src={imgFrame9} alt="course" className="h-5 w-5" />
-              </div>
-            </div>
-            <div className="ml-[-8px] flex flex-1 flex-col justify-between rounded-lg bg-white p-4 shadow">
-              <div className="flex flex-col gap-1">
-                <span className="text-sm font-semibold text-gray-800">
-                  New training course available
-                </span>
-                <span className="text-sm text-gray-600">
-                  Cinema Lens Academy posted "Advanced Cinematography
-                  Techniques" course
-                </span>
-                <div className="mt-2 flex items-center gap-2">
-                  <img
-                    src={imgImg4}
-                    alt="avatar"
-                    className="h-6 w-6 rounded-full"
-                  />
-                  <span className="text-xs text-gray-500">1 day ago</span>
+          <Card className="flex rounded-lg border-0 border-l-4 border-gray-300 bg-green-50 p-0">
+            <div className="flex flex-1 flex-col rounded-lg bg-white p-4 shadow">
+              <div className="flex w-full items-start gap-4">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-100">
+                  <img src={imgFrame9} alt="course" className="h-5 w-5" />
+                </div>
+                <div className="flex flex-1 flex-col gap-1">
+                  <span className="text-sm font-semibold text-gray-800">
+                    New training course available
+                  </span>
+                  <span className="text-sm text-gray-600">
+                    Cinema Lens Academy posted "Advanced Cinematography
+                    Techniques" course
+                  </span>
+                  <div className="mt-2 flex items-center gap-2">
+                    <img
+                      src={imgImg4}
+                      alt="avatar"
+                      className="h-6 w-6 rounded-full"
+                    />
+                    <span className="text-xs text-gray-500">1 day ago</span>
+                  </div>
+                </div>
+                <div className="mt-2 flex justify-end">
+                  <button className="text-sm font-medium text-sky-600">
+                    View Course
+                  </button>
                 </div>
               </div>
-              <div className="mt-2 flex justify-end">
-                <button className="text-sm font-medium text-sky-600">
-                  View Course
-                </button>
-              </div>
             </div>
-          </div>
+          </Card>
           {/* Card 6: Post liked */}
-          <div className="flex rounded-lg border-l-4 border-red-200 bg-red-50 p-0">
-            <div className="flex w-20 items-center justify-center">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-yellow-100">
-                <img src={imgFrame10} alt="liked" className="h-4 w-4" />
-              </div>
-            </div>
-            <div className="ml-[-8px] flex flex-1 flex-col justify-between rounded-lg bg-white p-4 shadow">
-              <div className="flex flex-col gap-1">
-                <span className="text-sm font-semibold text-gray-800">
-                  Post liked
-                </span>
-                <span className="text-sm text-gray-600">
-                  Michael Torres and 3 others liked your post about "Best Camera
-                  Settings for Low Light"
-                </span>
-                <div className="mt-2 flex items-center gap-2">
-                  <img
-                    src={imgImg5}
-                    alt="avatar"
-                    className="h-6 w-6 rounded-full"
-                  />
-                  <span className="text-xs text-gray-500">2 days ago</span>
+          <Card className="flex rounded-lg bg-red-50 p-0">
+            <div className="flex flex-1 flex-col gap-4 rounded-lg bg-white p-4 shadow">
+              <div className="flex w-full items-start gap-4">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-yellow-100">
+                  <img src={imgFrame10} alt="liked" className="h-4 w-4" />
+                </div>
+                <div className="flex flex-1 flex-col gap-1">
+                  <span className="text-sm font-semibold text-gray-800">
+                    Post liked
+                  </span>
+                  <span className="text-sm text-gray-600">
+                    Michael Torres and 3 others liked your post about "Best
+                    Camera Settings for Low Light"
+                  </span>
+                  <div className="mt-2 flex items-center gap-2">
+                    <img
+                      src={imgImg5}
+                      alt="avatar"
+                      className="h-6 w-6 rounded-full"
+                    />
+                    <span className="text-xs text-gray-500">2 days ago</span>
+                  </div>
+                </div>
+                <div className="mt-2 flex justify-end">
+                  <button className="text-sm font-medium text-sky-600">
+                    View Post
+                  </button>
                 </div>
               </div>
-              <div className="mt-2 flex justify-end">
-                <button className="text-sm font-medium text-sky-600">
-                  View Post
-                </button>
-              </div>
             </div>
-          </div>
+          </Card>
           {/* Card 7: Review received */}
-          <div className="flex rounded-lg border-l-4 border-yellow-200 bg-yellow-50 p-0">
-            <div className="flex w-20 items-center justify-center">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-yellow-100">
-                <img src={imgFrame11} alt="review" className="h-4 w-4" />
-              </div>
-            </div>
-            <div className="ml-[-8px] flex flex-1 flex-col justify-between rounded-lg bg-white p-4 shadow">
-              <div className="flex flex-col gap-1">
-                <span className="text-sm font-semibold text-gray-800">
-                  Review received
-                </span>
-                <span className="text-sm text-gray-600">
-                  Alex Kim left a 5-star review: "Great communication and clear
-                  requirements. Easy to work with!"
-                </span>
-                <div className="mt-2 flex items-center gap-2">
-                  <img
-                    src={imgImg6}
-                    alt="avatar"
-                    className="h-6 w-6 rounded-full"
-                  />
-                  <span className="text-xs text-gray-500">3 days ago</span>
+          <Card className="flex rounded-lg bg-yellow-50 p-0">
+            <div className="flex flex-1 flex-col rounded-lg bg-white p-4 shadow">
+              <div className="flex w-full items-start gap-4">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-yellow-100">
+                  <img src={imgFrame11} alt="review" className="h-4 w-4" />
+                </div>
+                <div className="flex flex-1 flex-col gap-1">
+                  <span className="text-sm font-semibold text-gray-800">
+                    Review received
+                  </span>
+                  <span className="text-sm text-gray-600">
+                    Alex Kim left a 5-star review: "Great communication and
+                    clear requirements. Easy to work with!"
+                  </span>
+                  <div className="mt-2 flex items-center gap-2">
+                    <img
+                      src={imgImg6}
+                      alt="avatar"
+                      className="h-6 w-6 rounded-full"
+                    />
+                    <span className="text-xs text-gray-500">3 days ago</span>
+                  </div>
+                </div>
+                <div className="mt-2 flex justify-end">
+                  <button className="text-sm font-medium text-sky-600">
+                    View Review
+                  </button>
                 </div>
               </div>
-              <div className="mt-2 flex justify-end">
-                <button className="text-sm font-medium text-sky-600">
-                  View Review
-                </button>
-              </div>
             </div>
-          </div>
+          </Card>
         </div>
       </div>
       <CommonFooter />

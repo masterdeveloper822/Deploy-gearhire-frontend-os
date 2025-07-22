@@ -1,6 +1,10 @@
 import { CommonFooter } from "@/components/layout/footer/common"
 import { RenterHeader } from "@/components/layout/header/renter-header"
+import { BackArrowIcon } from "@/components/ui/icon"
+import { faCloudArrowUp } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React from "react"
+import { useNavigate } from "react-router-dom"
 
 // Image and SVG asset URLs from Figma export
 const imgImg =
@@ -43,20 +47,25 @@ const imgFrame17 =
   "http://localhost:3845/assets/60e2e0178ba9af28a95777979db6cbddaebda36c.svg"
 
 const EditRfq = () => {
+  const navigate = useNavigate()
   return (
-    <div className="relative min-h-screen w-full bg-gray-50">
+    <div className="relative min-h-screen bg-gray-50">
       <RenterHeader />
       {/* Main Content */}
-      <div className="relative m-auto">
+      <main className="mx-auto w-[896px] px-4 py-8">
         {/* Title and Note */}
         <div className="mb-8">
-          <div className="mb-2 flex items-center">
-            <button className="mr-4 flex h-6 w-6 items-center justify-center">
-              <img src={imgFrame3} alt="back" className="h-4 w-4" />
+          <div className="flex items-center">
+            <button
+              className="mr-4 flex h-6 w-6 items-center justify-center"
+              onClick={() => navigate(-1)}
+              aria-label="Back"
+            >
+              <BackArrowIcon />
             </button>
             <div>
               <h1 className="text-3xl font-bold text-gray-800">Edit RFQ</h1>
-              <p className="text-base text-gray-600">
+              <p className="my-4 text-base text-gray-600">
                 Update your equipment request details
               </p>
             </div>
@@ -95,7 +104,7 @@ const EditRfq = () => {
                 Description
               </label>
               <textarea
-                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-base text-gray-900"
+                className="w-full resize-none rounded-lg border border-gray-300 px-3 py-2 text-base text-gray-900"
                 rows={4}
                 defaultValue={
                   "Looking for a complete camera package for a 5-day short film shoot. Need a professional cinema\ncamera with various lens options, stabilization equipment, and basic lighting setup. The project is a\ndrama with both indoor and outdoor scenes."
@@ -153,7 +162,7 @@ const EditRfq = () => {
               </h2>
             </div>
             <div className="mb-4 grid grid-cols-3 gap-4">
-              <label className="flex items-center gap-2 text-sm text-gray-700">
+              <label className="flex items-center gap-2 rounded-lg border border-gray-400 p-3 text-sm text-gray-700">
                 <input
                   type="checkbox"
                   className="rounded border-gray-300"
@@ -161,7 +170,7 @@ const EditRfq = () => {
                 />{" "}
                 Camera
               </label>
-              <label className="flex items-center gap-2 text-sm text-gray-700">
+              <label className="flex items-center gap-2 rounded-lg border border-gray-400 p-3 text-sm text-gray-700">
                 <input
                   type="checkbox"
                   className="rounded border-gray-300"
@@ -169,7 +178,7 @@ const EditRfq = () => {
                 />{" "}
                 Lighting
               </label>
-              <label className="flex items-center gap-2 text-sm text-gray-700">
+              <label className="flex items-center gap-2 rounded-lg border border-gray-400 p-3 text-sm text-gray-700">
                 <input
                   type="checkbox"
                   className="rounded border-gray-300"
@@ -177,25 +186,25 @@ const EditRfq = () => {
                 />{" "}
                 Audio
               </label>
-              <label className="flex items-center gap-2 text-sm text-gray-700">
+              <label className="flex items-center gap-2 rounded-lg border border-gray-400 p-3 text-sm text-gray-700">
                 <input type="checkbox" className="rounded border-gray-300" />{" "}
                 Grip
               </label>
-              <label className="flex items-center gap-2 text-sm text-gray-700">
+              <label className="flex items-center gap-2 rounded-lg border border-gray-400 p-3 text-sm text-gray-700">
                 <input type="checkbox" className="rounded border-gray-300" />{" "}
                 Power
               </label>
-              <label className="flex items-center gap-2 text-sm text-gray-700">
+              <label className="flex items-center gap-2 rounded-lg border border-gray-400 p-3 text-sm text-gray-700">
                 <input type="checkbox" className="rounded border-gray-300" />{" "}
                 Accessories
               </label>
             </div>
             <div>
-              <label className="mb-1 block text-sm font-medium text-gray-700">
+              <label className="mb-2 block text-sm font-medium text-gray-700">
                 Optional Notes per Category
               </label>
               <textarea
-                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-base text-gray-900"
+                className="w-full resize-none rounded-lg border border-gray-300 px-3 py-2 text-base text-gray-900"
                 rows={3}
                 defaultValue={
                   "Camera: Need 4K capability with cinema lens mount. Lighting: Basic 3-point lighting setup preferred.\nAudio: Wireless mic system for dialogue recording."
@@ -216,29 +225,32 @@ const EditRfq = () => {
               </h2>
             </div>
             <div className="mb-4 space-y-2">
-              <div className="flex items-center rounded-lg bg-gray-50 p-3">
+              <div className="flex items-center rounded-lg bg-gray-100 p-3">
                 <img src={imgFrame11} alt="pdf" className="mr-2 h-4 w-4" />
                 <span className="flex-1 text-sm text-gray-700">
-                  project-details.pdf
+                  project-details.pdf{" "}
+                  <span className="ml-2 text-xs text-gray-500">(2.1 MB)</span>
                 </span>
-                <span className="mr-2 text-xs text-gray-500">(2.1 MB)</span>
                 <button>
                   <img src={imgFrame12} alt="remove" className="h-3 w-3" />
                 </button>
               </div>
-              <div className="flex items-center rounded-lg bg-gray-50 p-3">
+              <div className="flex items-center rounded-lg bg-gray-100 p-3">
                 <img src={imgFrame13} alt="jpg" className="mr-2 h-4 w-3" />
-                <span className="flex-1 text-sm text-gray-700">
-                  location-reference.jpg
+                <span className="flex flex-1 items-center text-sm text-gray-700">
+                  location-reference.jpg{" "}
+                  <span className="ml-2 text-xs text-gray-500">(1.8 MB)</span>
                 </span>
-                <span className="mr-2 text-xs text-gray-500">(1.8 MB)</span>
-                <button>
+                <button className="ml-2">
                   <img src={imgFrame12} alt="remove" className="h-3 w-3" />
                 </button>
               </div>
             </div>
             <div className="mt-4 flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 py-8">
-              <img src={imgFrame14} alt="upload" className="mb-2 h-8 w-8" />
+              <FontAwesomeIcon
+                icon={faCloudArrowUp}
+                className="mb-2 h-8 w-8 text-gray-400"
+              />
               <span className="text-sm text-gray-600">
                 Drag and drop files here, or click to browse
               </span>
@@ -303,7 +315,7 @@ const EditRfq = () => {
             </button>
           </div>
         </form>
-      </div>
+      </main>
       <CommonFooter />
     </div>
   )

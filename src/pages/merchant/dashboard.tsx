@@ -80,7 +80,7 @@ const MerchantDashboard: React.FC = () => {
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               {/* My Inventory */}
               <Link to="/merchant-inventory-book">
-                <Card className="flex cursor-pointer flex-col gap-4 rounded-xl p-6 shadow transition hover:shadow-lg focus:ring-2 focus:ring-tertiary">
+                <Card className="flex cursor-pointer flex-col gap-4 rounded-xl p-6 shadow transition hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-tertiary active:scale-95">
                   <div className="flex items-center gap-4">
                     <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-sky-100">
                       <img
@@ -103,7 +103,7 @@ const MerchantDashboard: React.FC = () => {
               </Link>
               {/* RFQs Submitted */}
               <Link to="/browse-RFQs">
-                <Card className="flex cursor-pointer flex-col gap-4 rounded-xl p-6 shadow transition hover:shadow-lg focus:ring-2 focus:ring-tertiary">
+                <Card className="flex cursor-pointer flex-col gap-4 rounded-xl p-6 shadow transition hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-tertiary active:scale-95">
                   <div className="flex items-center gap-4">
                     <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100">
                       <img src={imgFrame5} alt="RFQs" className="h-6 w-6" />
@@ -124,7 +124,7 @@ const MerchantDashboard: React.FC = () => {
               </Link>
               {/* Reviews Received */}
               <Link to="/merchant-review">
-                <Card className="flex cursor-pointer flex-col gap-4 rounded-xl p-6 shadow transition hover:shadow-lg focus:ring-2 focus:ring-tertiary">
+                <Card className="flex cursor-pointer flex-col gap-4 rounded-xl p-6 shadow transition hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-tertiary active:scale-95">
                   <div className="flex items-center gap-4">
                     <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-yellow-100">
                       <img src={imgFrame6} alt="Reviews" className="h-6 w-6" />
@@ -145,7 +145,7 @@ const MerchantDashboard: React.FC = () => {
               </Link>
               {/* My Training Courses */}
               <Link to="/training-course-list">
-                <Card className="flex cursor-pointer flex-col gap-4 rounded-xl p-6 shadow transition hover:shadow-lg focus:ring-2 focus:ring-tertiary">
+                <Card className="flex cursor-pointer flex-col gap-4 rounded-xl p-6 shadow transition hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-tertiary active:scale-95">
                   <div className="flex items-center gap-4">
                     <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-green-100">
                       <img src={imgFrame7} alt="Courses" className="h-6 w-6" />
