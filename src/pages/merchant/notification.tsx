@@ -236,7 +236,9 @@ const Notification: React.FC = () => {
             <div className="rounded-lg border border-gray-200 bg-white p-4">
               <div className="flex items-start gap-4">
                 <div className="rounded-full bg-emerald-100 p-3">
-                  <DottedQuestionIcon className="h-4 w-4" />
+                  <span className="text-green-700">
+                    <DottedQuestionIcon className="h-4 w-4" />
+                  </span>
                 </div>
                 <div className="flex-1">
                   <h3 className="mb-2 font-medium text-gray-800">

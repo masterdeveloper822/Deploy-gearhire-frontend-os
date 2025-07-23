@@ -8,7 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { faCloudArrowUp } from "@fortawesome/free-solid-svg-icons"
+import { faCloudArrowUp, faFileImage, faFileLines, faFilePdf, faFloppyDisk, faGear, faInfoCircle, faLocationDot, faPaperclip, faTrash, faVideo } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React from "react"
 import { useNavigate } from "react-router-dom"
@@ -103,8 +103,8 @@ const EditRfq = () => {
               </p>
             </div>
           </div>
-          <div className="flex flex-col gap-2 rounded-lg border border-blue-200 bg-blue-50 p-4 sm:flex-row sm:items-center">
-            <img src={imgFrame4} alt="info" className="h-4 w-4" />
+          <div className="flex flex-col gap-3 rounded-lg border border-blue-200 bg-blue-50 p-4 sm:flex-row sm:items-center">
+            <FontAwesomeIcon icon={faInfoCircle} alt="info" className="text-blue-700 h-4 w-4" />
             <span className="text-sm text-blue-800">
               <b>Note:</b> Changes to your RFQ will be visible to merchants
               immediately after saving. Only RFQs with "Open" status can be
@@ -117,7 +117,7 @@ const EditRfq = () => {
           {/* Project Information */}
           <section className="rounded-lg bg-white p-4 shadow sm:p-6">
             <div className="mb-4 flex items-center">
-              <img src={imgFrame5} alt="project" className="mr-2 h-4 w-4" />
+              <FontAwesomeIcon icon={faFileLines} alt="project" className="text-tertiary mr-2 h-4 w-4" />
               <h2 className="text-lg font-semibold text-gray-800">
                 Project Information
               </h2>
@@ -148,7 +148,7 @@ const EditRfq = () => {
           {/* Location & Dates */}
           <section className="rounded-lg bg-white p-4 shadow sm:p-6">
             <div className="mb-4 flex items-center">
-              <img src={imgFrame6} alt="location" className="mr-2 h-4 w-4" />
+              <FontAwesomeIcon icon={faLocationDot} alt="location" className="text-tertiary mr-2 h-4 w-4" />
               <h2 className="text-lg font-semibold text-gray-800">
                 Location & Dates
               </h2>
@@ -242,7 +242,7 @@ const EditRfq = () => {
           {/* Equipment Needs */}
           <section className="rounded-lg bg-white p-4 shadow sm:p-6">
             <div className="mb-4 flex items-center">
-              <img src={imgFrame8} alt="equipment" className="mr-2 h-5 w-5" />
+              <FontAwesomeIcon icon={faVideo} alt="equipment" className="text-tertiary mr-2 h-5 w-5" />
               <h2 className="text-lg font-semibold text-gray-800">
                 Equipment Needs
               </h2>
@@ -301,14 +301,35 @@ const EditRfq = () => {
           {/* Attachments */}
           <section className="rounded-lg bg-white p-4 shadow sm:p-6">
             <div className="mb-4 flex items-center">
-              <img
-                src={imgFrame10}
+              <FontAwesomeIcon
+                icon={faPaperclip}
                 alt="attachments"
-                className="mr-2 h-4 w-4"
+                className="text-tertiary mr-2 h-4 w-4"
               />
               <h2 className="text-lg font-semibold text-gray-800">
                 Attachments
               </h2>
+            </div>
+            <div className="mb-4 space-y-2">
+              <div className="flex items-center rounded-lg bg-gray-50 p-3">
+                <FontAwesomeIcon icon={faFilePdf} alt="pdf" className="text-red-500 mr-2 h-4 w-4" />
+                <span className="flex-1 text-sm text-gray-700">
+                  project-details.pdf <span className="ml-2 text-xs text-gray-500">(2.1 MB)</span>
+                </span>
+                <button>
+                  <FontAwesomeIcon icon={faTrash} alt="remove" className="text-red-500 h-3 w-3" />
+                </button>
+              </div>
+              <div className="flex items-center rounded-lg bg-gray-50 p-3">
+                <FontAwesomeIcon icon={faFileImage} alt="jpg" className="text-blue-500 mr-2 h-4 w-3" />
+                <span className="flex-1 text-sm text-gray-700">
+                  location-reference.jpg
+                <span className="ml-2 text-xs text-gray-500">(1.8 MB)</span>
+                </span>
+                <button>
+                  <FontAwesomeIcon icon={faTrash} alt="remove" className="text-red-500 h-3 w-3" />
+                </button>
+              </div>
             </div>
             <div className="mt-4 flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 py-8">
               <FontAwesomeIcon
@@ -354,7 +375,7 @@ const EditRfq = () => {
           {/* RFQ Settings */}
           <section className="rounded-lg bg-white p-4 shadow sm:p-6">
             <div className="mb-4 flex items-center">
-              <img src={imgFrame15} alt="settings" className="mr-2 h-4 w-4" />
+              <FontAwesomeIcon icon={faGear} alt="settings" className="text-tertiary mr-2 h-4 w-4" />
               <h2 className="text-lg font-semibold text-gray-800">
                 RFQ Settings
               </h2>
@@ -486,7 +507,7 @@ const EditRfq = () => {
               type="submit"
               className="flex flex-1 items-center justify-center gap-2 rounded-lg py-3 text-base font-medium"
             >
-              <img src={imgFrame17} alt="save" className="h-4 w-4" /> Save
+              <FontAwesomeIcon icon={faFloppyDisk} alt="save" className="h-4 w-4" /> Save
               Changes
             </Button>
             <Button

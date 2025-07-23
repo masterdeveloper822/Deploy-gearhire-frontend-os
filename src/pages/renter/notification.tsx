@@ -1,3 +1,4 @@
+import React from "react"
 import { CommonFooter } from "@/components/layout/footer/common"
 import { RenterHeader } from "@/components/layout/header/renter-header"
 import { Card } from "@/components/ui/card"
@@ -8,47 +9,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import React from "react"
+import { faCheckDouble, faClock, faFileInvoiceDollar, faGraduationCap, faHeart, faMessage, faStar, faUserPlus } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-// Image and SVG asset URLs from Figma export
-const imgImg =
-  "http://localhost:3845/assets/f578f9c2a181ef669150341163e63e6e9da01878.png"
-const imgImg1 =
-  "http://localhost:3845/assets/1d5ad8aaf12fd61a75197f707f6ef40c7edd6e1f.png"
-const imgImg2 =
-  "http://localhost:3845/assets/ec901f1c0d6bdc3abb3b7f2578c96a444ee001e2.png"
-const imgImg3 =
-  "http://localhost:3845/assets/bec21fc75386a86210d32bec8ca98fcb2380d21e.png"
-const imgImg4 =
-  "http://localhost:3845/assets/410c340aa057242400c608368f918307cdd72438.png"
-const imgImg5 =
-  "http://localhost:3845/assets/1ecb12199697dd16c82152392c0b02a04bd85271.png"
-const imgImg6 =
-  "http://localhost:3845/assets/157a8cae4c47674ef06c93dae0edece12ad3c0a6.png"
-const imgFrame =
-  "http://localhost:3845/assets/ed4e1169b638e2e838350960320b53c878e45615.svg"
-const imgFrame1 =
-  "http://localhost:3845/assets/9861a0b6e8bb9b630982f192343e0944f05f6199.svg"
-const imgFrame2 =
-  "http://localhost:3845/assets/1efdeed862e90b5b080da5ccaa63bb5c3a6cf0bc.svg"
-const imgFrame3 =
-  "http://localhost:3845/assets/9bbcf70bbe74a66d5be007f363ab45fe565e761f.svg"
-const imgFrame4 =
-  "http://localhost:3845/assets/bd1717698f752c3deaf3fae1021b3aba1feb3b7d.svg"
-const imgFrame5 =
-  "http://localhost:3845/assets/481edf7158cd57dd6586673aec6bca09f1194883.svg"
-const imgFrame6 =
-  "http://localhost:3845/assets/ef9bd8e8713223592c7771abec5a546c7974ea75.svg"
-const imgFrame7 =
-  "http://localhost:3845/assets/1b82d8ccb02f994df33b26bef246ef1dcb8b6377.svg"
-const imgFrame8 =
-  "http://localhost:3845/assets/cc764d96982c8c1183db8ca0b40a4a05ba9d96a2.svg"
-const imgFrame9 =
-  "http://localhost:3845/assets/211493d4aeefd7775e4e226a11e8a3778bf3b893.svg"
-const imgFrame10 =
-  "http://localhost:3845/assets/78e9ab1fc59463cb9d6d3a448eed66011bff8fb9.svg"
-const imgFrame11 =
-  "http://localhost:3845/assets/559a70f1bdd03787114705de7e3cef062e1371ec.svg"
+import man1 from "@/assets/images/avatars/man1.png"
+import man2 from "@/assets/images/avatars/man2.png"
+import man3 from "@/assets/images/avatars/man3.png"
+import man4 from "@/assets/images/avatars/man4.png"
+import man5 from "@/assets/images/avatars/man5.png"
+import woman1 from "@/assets/images/avatars/woman1.png"
 
 const Notification = () => {
   return (
@@ -67,7 +36,7 @@ const Notification = () => {
             </p>
           </div>
           <button className="flex items-center gap-2 text-sm font-medium text-sky-600">
-            <img src={imgFrame3} alt="mark all as read" className="h-4 w-4" />{" "}
+            <FontAwesomeIcon icon={faCheckDouble} alt="mark all as read" className="h-4 w-4" />{" "}
             Mark All as Read
           </button>
         </div>
@@ -92,7 +61,7 @@ const Notification = () => {
               <div className="flex w-full items-start gap-4">
                 {/* Icon column */}
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100">
-                  <img src={imgFrame5} alt="quote" className="h-4 w-4" />
+                  <FontAwesomeIcon icon={faFileInvoiceDollar} alt="quote" className="text-green-600 h-4 w-4" />
                 </div>
                 {/* Content column */}
                 <div className="flex flex-1 flex-col gap-1">
@@ -105,7 +74,7 @@ const Notification = () => {
                   </span>
                   <div className="mt-2 flex items-center gap-2">
                     <img
-                      src={imgImg1}
+                      src={man2}
                       alt="avatar"
                       className="h-6 w-6 rounded-full"
                     />
@@ -127,7 +96,7 @@ const Notification = () => {
               <div className="flex w-full items-start gap-4">
                 {/* Icon column */}
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100">
-                  <img src={imgFrame6} alt="message" className="h-4 w-4" />
+                  <FontAwesomeIcon icon={faMessage} alt="message" className="text-blue-600 h-4 w-4" />
                 </div>
                 {/* Content column */}
                 <div className="flex flex-1 flex-col gap-1">
@@ -140,7 +109,7 @@ const Notification = () => {
                   </span>
                   <div className="mt-2 flex items-center gap-2">
                     <img
-                      src={imgImg2}
+                      src={woman1}
                       alt="avatar"
                       className="h-6 w-6 rounded-full"
                     />
@@ -161,7 +130,7 @@ const Notification = () => {
             <div className="flex flex-1 flex-col gap-4 rounded-lg bg-white p-4 shadow">
               <div className="flex w-full items-start gap-4">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-yellow-100">
-                  <img src={imgFrame7} alt="rfq expiring" className="h-4 w-4" />
+                  <FontAwesomeIcon icon={faClock} alt="rfq expiring" className="text-yellow-600 h-4 w-4" />
                 </div>
                 <div className="flex flex-1 flex-col gap-1">
                   <span className="text-sm font-semibold text-gray-800">
@@ -187,7 +156,7 @@ const Notification = () => {
             <div className="flex flex-1 flex-col gap-4 rounded-lg bg-white p-4 shadow">
               <div className="flex w-full items-start gap-4">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-purple-100">
-                  <img src={imgFrame8} alt="follower" className="h-4 w-5" />
+                  <FontAwesomeIcon icon={faUserPlus} alt="follower" className="text-purple-600 h-4 w-5" />
                 </div>
                 <div className="flex flex-1 flex-col gap-1">
                   <span className="text-sm font-semibold text-gray-800">
@@ -198,7 +167,7 @@ const Notification = () => {
                   </span>
                   <div className="mt-2 flex items-center gap-2">
                     <img
-                      src={imgImg3}
+                      src={man3}
                       alt="avatar"
                       className="h-6 w-6 rounded-full"
                     />
@@ -218,7 +187,7 @@ const Notification = () => {
             <div className="flex flex-1 flex-col rounded-lg bg-white p-4 shadow">
               <div className="flex w-full items-start gap-4">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-100">
-                  <img src={imgFrame9} alt="course" className="h-5 w-5" />
+                  <FontAwesomeIcon icon={faGraduationCap} alt="course" className="text-indigo-600 h-5 w-5" />
                 </div>
                 <div className="flex flex-1 flex-col gap-1">
                   <span className="text-sm font-semibold text-gray-800">
@@ -230,7 +199,7 @@ const Notification = () => {
                   </span>
                   <div className="mt-2 flex items-center gap-2">
                     <img
-                      src={imgImg4}
+                      src={man1}
                       alt="avatar"
                       className="h-6 w-6 rounded-full"
                     />
@@ -249,8 +218,8 @@ const Notification = () => {
           <Card className="flex rounded-lg bg-red-50 p-0">
             <div className="flex flex-1 flex-col gap-4 rounded-lg bg-white p-4 shadow">
               <div className="flex w-full items-start gap-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-yellow-100">
-                  <img src={imgFrame10} alt="liked" className="h-4 w-4" />
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-red-100">
+                  <FontAwesomeIcon icon={faHeart} alt="liked" className="text-red-600 h-4 w-4" />
                 </div>
                 <div className="flex flex-1 flex-col gap-1">
                   <span className="text-sm font-semibold text-gray-800">
@@ -262,7 +231,7 @@ const Notification = () => {
                   </span>
                   <div className="mt-2 flex items-center gap-2">
                     <img
-                      src={imgImg5}
+                      src={man5}
                       alt="avatar"
                       className="h-6 w-6 rounded-full"
                     />
@@ -282,7 +251,7 @@ const Notification = () => {
             <div className="flex flex-1 flex-col rounded-lg bg-white p-4 shadow">
               <div className="flex w-full items-start gap-4">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-yellow-100">
-                  <img src={imgFrame11} alt="review" className="h-4 w-4" />
+                  <FontAwesomeIcon icon={faStar} alt="review" className="text-yellow-600 h-4 w-4" />
                 </div>
                 <div className="flex flex-1 flex-col gap-1">
                   <span className="text-sm font-semibold text-gray-800">
@@ -294,7 +263,7 @@ const Notification = () => {
                   </span>
                   <div className="mt-2 flex items-center gap-2">
                     <img
-                      src={imgImg6}
+                      src={man4}
                       alt="avatar"
                       className="h-6 w-6 rounded-full"
                     />

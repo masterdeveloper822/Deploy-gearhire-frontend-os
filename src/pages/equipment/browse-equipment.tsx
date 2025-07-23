@@ -13,122 +13,96 @@ import {
 } from "@/components/ui/select"
 import { Input } from "@/components/ui/input"
 import { Link } from "react-router-dom"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faHeart as faHeartSolid, faSearch } from "@fortawesome/free-solid-svg-icons"
+import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons"
 
-// Image and SVG asset URLs from Figma export
-const imgImg =
-  "http://localhost:3845/assets/410c340aa057242400c608368f918307cdd72438.png"
-const imgImg1 =
-  "http://localhost:3845/assets/c6031a5de036466f56dc8e2773036ec26805ea92.png"
-const imgImg2 =
-  "http://localhost:3845/assets/1d5ad8aaf12fd61a75197f707f6ef40c7edd6e1f.png"
-const imgImg3 =
-  "http://localhost:3845/assets/4a6d225ab75de462bf8a83b8f42e91a3030c8f42.png"
-const imgImg4 =
-  "http://localhost:3845/assets/ec901f1c0d6bdc3abb3b7f2578c96a444ee001e2.png"
-const imgImg5 =
-  "http://localhost:3845/assets/6932bef90a236331295c89b26725ce63ada3f532.png"
-const imgImg6 =
-  "http://localhost:3845/assets/bec21fc75386a86210d32bec8ca98fcb2380d21e.png"
-const imgImg7 =
-  "http://localhost:3845/assets/2452158bfd7fe391a3978751295d9d708fd7903d.png"
-const imgImg8 =
-  "http://localhost:3845/assets/1ecb12199697dd16c82152392c0b02a04bd85271.png"
-const imgImg9 =
-  "http://localhost:3845/assets/78ad89b9aad9447fee94a60babfea0f75b48166e.png"
-const imgImg10 =
-  "http://localhost:3845/assets/157a8cae4c47674ef06c93dae0edece12ad3c0a6.png"
-const imgImg11 =
-  "http://localhost:3845/assets/3af456c127980b82adba965b9d9e0383b10f0a29.png"
-const imgImg12 =
-  "http://localhost:3845/assets/93261e682a4fc24925831eb042e025379dab45ab.png"
-const imgFrame =
-  "http://localhost:3845/assets/ed4e1169b638e2e838350960320b53c878e45615.svg"
-const imgFrame1 =
-  "http://localhost:3845/assets/9861a0b6e8bb9b630982f192343e0944f05f6199.svg"
-const imgFrame2 =
-  "http://localhost:3845/assets/1efdeed862e90b5b080da5ccaa63bb5c3a6cf0bc.svg"
-const imgFrame3 =
-  "http://localhost:3845/assets/d2989890a47036eb3eba43c9b9ea24bc925f1b69.svg"
-const imgFrame4 =
-  "http://localhost:3845/assets/1151dd5a8a661dc7b4075423fe864a3209140e35.svg"
-const imgFrame5 =
-  "http://localhost:3845/assets/3496f07f6bab83974d24f957ae205dd5463ac6fb.svg"
-const imgGroup =
-  "http://localhost:3845/assets/6b361ecba5c41862d4e4249610cf33728c12d1f9.svg"
-const imgFrame6 =
-  "http://localhost:3845/assets/f3f266a6575b79ab545a87d9b2e97be446a999cc.svg"
+import equip1 from "@/assets/images/equipment/equip1.png"
+import equip2 from "@/assets/images/equipment/equip2.png"
+import equip3 from "@/assets/images/equipment/equip3.png"
+import equip4 from "@/assets/images/equipment/equip4.png"
+import equip5 from "@/assets/images/equipment/equip5.png"
+import equip6 from "@/assets/images/equipment/equip6.png"
+
+import man2 from "@/assets/images/avatars/man2.png"
+import man3 from "@/assets/images/avatars/man3.png"
+import man4 from "@/assets/images/avatars/man4.png"
+import man5 from "@/assets/images/avatars/man5.png"
+import woman1 from "@/assets/images/avatars/woman1.png"
+import woman2 from "@/assets/images/avatars/woman2.png"
+import { DottedQuestionIcon } from "@/components/ui/icon"
 
 // Mock data for equipment with original structure
 const equipmentData = [
   {
     id: 1,
-    image: imgImg1,
+    image: equip1,
     title: "RED Dragon 6K Cinema Camera",
     description:
       "Professional cinema camera with 6K resolution, dual ISO, and comprehensive codec support for high-end productions.",
     category: "Camera",
     categoryClass: "bg-sky-50 text-sky-600",
-    merchantImage: imgImg2,
+    merchantImage: man2,
     merchantName: "CineGear Pro",
     isFavorite: true,
   },
   {
     id: 2,
-    image: imgImg3,
+    image: equip2,
     title: "Aputure 300D LED Light",
     description:
       "Powerful daylight-balanced LED with wireless control, perfect for interviews and commercial shoots.",
     category: "Lighting",
     categoryClass: "bg-green-50 text-green-600",
-    merchantImage: imgImg4,
+    merchantImage: woman1,
     merchantName: "LightWorks Studio",
     isFavorite: false,
   },
   {
     id: 3,
-    image: imgImg5,
+    image: equip3,
     title: "Rode NTG3 Shotgun Mic",
     description:
       "Professional broadcast-quality shotgun microphone with superior RF immunity and low noise floor.",
     category: "Audio",
     categoryClass: "bg-purple-50 text-purple-600",
-    merchantImage: imgImg6,
+    merchantImage: man3,
     merchantName: "AudioVision",
     isFavorite: true,
   },
   {
     id: 4,
-    image: imgImg7,
+    image: equip4,
     title: "DJI Ronin-S Gimbal",
     description:
       "3-axis handheld gimbal stabilizer for DSLR and mirrorless cameras up to 3.6kg payload.",
     category: "Grip",
     categoryClass: "bg-orange-50 text-orange-600",
-    merchantImage: imgImg8,
+    merchantImage: man5,
     merchantName: "Motion Masters",
     isFavorite: true,
   },
   {
     id: 5,
-    image: imgImg9,
+    image: equip5,
     title: "Canon 24-70mm f/2.8L",
     description:
       "Professional zoom lens with constant f/2.8 aperture, ideal for versatile shooting scenarios.",
     category: "Accessories",
     categoryClass: "bg-blue-50 text-blue-600",
-    merchantImage: imgImg10,
+    merchantImage: man4,
     merchantName: "Lens Library",
     isFavorite: false,
   },
   {
     id: 6,
-    image: imgImg11,
+    image: equip6,
     title: "Gitzo Carbon Fiber Tripod",
     description:
       "Ultra-lightweight carbon fiber tripod with exceptional stability for professional camera work.",
     category: "Grip",
     categoryClass: "bg-orange-50 text-orange-600",
-    merchantImage: imgImg12,
+    merchantImage: woman2,
     merchantName: "Support Systems",
     isFavorite: true,
   },
@@ -156,7 +130,7 @@ const BrowseEquipment: React.FC = () => {
               placeholder="Search equipment..."
             />
             <span className="absolute left-3 top-1/2 -translate-y-1/2">
-              <img src={imgFrame3} alt="Search" className="h-5 w-5" />
+              <FontAwesomeIcon icon={faSearch} alt="Search" className="h-4 w-4" />
             </span>
           </div>
           <Select>
@@ -227,12 +201,17 @@ const BrowseEquipment: React.FC = () => {
                   alt={item.title}
                   className="h-44 w-full object-cover sm:h-48"
                 />
-                <button className="absolute right-3 top-3 rounded-full bg-white/90 p-2 shadow">
-                  <img
-                    src={item.isFavorite ? imgFrame5 : imgFrame6}
+                <button className="absolute right-3 top-3 rounded-full bg-white/90 px-2 py-1.5 shadow">
+                  
+                  {item.isFavorite ? <FontAwesomeIcon
+                    icon={faHeartSolid}
                     alt="Favorite"
-                    className="h-5 w-5"
-                  />
+                    className="h-4 w-5 text-red-500"
+                  /> : <FontAwesomeIcon
+                    icon={faHeartRegular}
+                    alt="Favorite"
+                    className="h-4 w-5 text-gray-700"
+                  />}
                 </button>
               </div>
               <div className="p-4 sm:p-5">
@@ -257,7 +236,9 @@ const BrowseEquipment: React.FC = () => {
                     <span className="text-xs text-gray-600 sm:text-sm">
                       {item.merchantName}
                     </span>
-                    <img src={imgGroup} alt="Verified" className="h-3 w-3" />
+                    <span className="text-blue-500">
+                      <DottedQuestionIcon alt="Verified" className="h-3 w-3" />
+                      </span>
                   </div>
                   <Link to="/equipment-detail">
                     <Button

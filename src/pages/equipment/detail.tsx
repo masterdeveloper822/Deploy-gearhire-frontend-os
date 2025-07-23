@@ -1,11 +1,21 @@
 import React from "react"
 import { RenterHeader } from "@/components/layout/header/renter-header"
 import { CommonFooter } from "@/components/layout/footer/common"
-import { BackArrowIcon } from "@/components/ui/icon"
+import { BackArrowIcon, DottedQuestionIcon } from "@/components/ui/icon"
 import { useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { PlusIcon } from "lucide-react"
+
+import equip1 from "@/assets/images/equipment/equip1-2.png"
+import equip1_3 from "@/assets/images/equipment/equip1-3.png"
+import equip4 from "@/assets/images/equipment/equip4-2.png"
+import equip5 from "@/assets/images/equipment/equip5-2.png"
+import equip2 from "@/assets/images/equipment/equip2-2.png"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faHeart } from "@fortawesome/free-regular-svg-icons"
+
+import man2 from "@/assets/images/avatars/man2.png"
+import { faClock, faEye, faFileVideo, faMessage, faPalette, faPlug, faPlus, faVideo } from "@fortawesome/free-solid-svg-icons"
 
 // Image and SVG asset URLs from Figma export
 const imgImg =
@@ -71,12 +81,12 @@ const EquipmentDetail: React.FC = () => {
             {/* Main Image */}
             <Card className="relative mb-8">
               <img
-                src={imgImg1}
+                src={equip1_3}
                 alt="RED Dragon 6K Cinema Camera"
                 className="h-96 w-full rounded-t-lg object-cover"
               />
-              <button className="absolute right-4 top-4 rounded-full bg-white/90 p-3 shadow">
-                <img src={imgFrame4} alt="Favorite" className="h-6 w-6" />
+              <button className="absolute right-4 top-4 rounded-full bg-white/90 px-3 py-2 shadow">
+                <FontAwesomeIcon icon={faHeart} alt="Favorite" className="text-gray-700 h-4 w-4" />
               </button>
               {/* Category and Title */}
               <div className="p-6">
@@ -89,14 +99,16 @@ const EquipmentDetail: React.FC = () => {
                 {/* Merchant Info */}
                 <div className="mb-4 flex items-center gap-3">
                   <img
-                    src={imgImg2}
+                    src={man2}
                     alt="Merchant"
                     className="h-8 w-8 rounded-full object-cover"
                   />
                   <span className="font-medium text-gray-700">
                     CineGear Pro
                   </span>
-                  <img src={imgGroup} alt="Verified" className="h-4 w-4" />
+                  <span className="text-blue-500">
+                      <DottedQuestionIcon alt="Verified" className="h-4 w-4" />
+                    </span>
                   <span className="text-sm text-gray-500">• Vancouver, BC</span>
                 </div>
               </div>
@@ -108,27 +120,27 @@ const EquipmentDetail: React.FC = () => {
               </h2>
               <ul className="space-y-3">
                 <li className="flex items-center gap-3 text-gray-700">
-                  <img src={imgFrame5} alt="Spec" className="h-5 w-5" /> 6K
+                  <FontAwesomeIcon icon={faVideo} alt="Spec" className="text-tertiary h-4 w-4" /> 6K
                   Resolution (6144 x 3160)
                 </li>
                 <li className="flex items-center gap-3 text-gray-700">
-                  <img src={imgFrame6} alt="Spec" className="h-5 w-5" /> Super35
+                  <FontAwesomeIcon icon={faEye} alt="Spec" className="text-tertiary h-4 w-4" /> Super35
                   Dragon Sensor
                 </li>
                 <li className="flex items-center gap-3 text-gray-700">
-                  <img src={imgFrame7} alt="Spec" className="h-5 w-5" /> 16.5+
+                  <FontAwesomeIcon icon={faPalette} alt="Spec" className="text-tertiary h-4 w-4" /> 16.5+
                   Stops Dynamic Range
                 </li>
                 <li className="flex items-center gap-3 text-gray-700">
-                  <img src={imgFrame8} alt="Spec" className="h-5 w-5" /> Up to
+                  <FontAwesomeIcon icon={faClock} alt="Spec" className="text-tertiary h-4 w-4" /> Up to
                   75fps at 6K, 300fps at 2K
                 </li>
                 <li className="flex items-center gap-3 text-gray-700">
-                  <img src={imgFrame9} alt="Spec" className="h-5 w-5" /> REDCODE
+                  <FontAwesomeIcon icon={faFileVideo} alt="Spec" className="text-tertiary h-4 w-4" /> REDCODE
                   RAW, ProRes, DNxHR
                 </li>
                 <li className="flex items-center gap-3 text-gray-700">
-                  <img src={imgFrame10} alt="Spec" className="h-5 w-5" /> Canon
+                  <FontAwesomeIcon icon={faPlug} alt="Spec" className="text-tertiary h-4 w-4" /> Canon
                   EF Mount (PL Mount available)
                 </li>
               </ul>
@@ -141,28 +153,28 @@ const EquipmentDetail: React.FC = () => {
               <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-4">
                 <div className="aspect-square">
                   <img
-                    src={imgImg1}
+                    src={equip1}
                     alt="Main"
-                    className="h-full w-full rounded-lg border-2 border-sky-500 object-cover"
+                    className="h-full w-auto rounded-lg border-2 border-sky-500 object-cover mx-auto"
                   />
                 </div>
                 <div className="aspect-square">
                   <img
-                    src={imgImg3}
+                    src={equip4}
                     alt="Alt1"
-                    className="h-full w-full rounded-lg object-cover"
+                    className="h-full w-full overflow-hidden rounded-lg object-cover"
                   />
                 </div>
                 <div className="aspect-square">
                   <img
-                    src={imgImg4}
+                    src={equip5}
                     alt="Alt2"
                     className="h-full w-full rounded-lg object-cover"
                   />
                 </div>
                 <div className="aspect-square">
                   <img
-                    src={imgImg5}
+                    src={equip2}
                     alt="Alt3"
                     className="h-full w-full rounded-lg object-cover"
                   />
@@ -193,14 +205,16 @@ const EquipmentDetail: React.FC = () => {
               </h3>
               <div className="mb-2 flex items-center gap-3">
                 <img
-                  src={imgImg2}
+                  src={man2}
                   alt="Merchant"
                   className="h-12 w-12 rounded-full object-cover"
                 />
                 <div>
                   <div className="flex items-center gap-1 font-semibold text-gray-800">
                     CineGear Pro{" "}
-                    <img src={imgGroup} alt="Verified" className="h-4 w-4" />
+                    <span className="text-blue-500">
+                      <DottedQuestionIcon alt="Verified" className="h-4 w-4" />
+                    </span>
                   </div>
                   <div className="text-sm text-gray-600">Vancouver, BC</div>
                 </div>
@@ -232,13 +246,13 @@ const EquipmentDetail: React.FC = () => {
                 variant="colored_green"
                 className="mb-2 flex w-full items-center justify-center gap-2 rounded-lg px-6 py-3 text-base font-medium shadow"
               >
-                <PlusIcon className="h-5 w-5" /> Create RFQ for this Item
+                <FontAwesomeIcon icon={ faPlus } className="h-3 w-3" /> Create RFQ for this Item
               </Button>
               <Button
                 variant="white_sky"
                 className="mb-2 flex w-full items-center justify-center gap-2 rounded-lg px-6 py-3 text-base font-medium shadow"
               >
-                <img src={imgFrame12} alt="Message" className="h-5 w-5" />{" "}
+                <FontAwesomeIcon icon={faMessage} alt="Message" className="h-5 w-5" />{" "}
                 Message Merchant
               </Button>
               <div className="mt-2 text-center text-xs text-gray-500">

@@ -3,6 +3,14 @@ import { RenterHeader } from "@/components/layout/header/renter-header"
 import { CommonFooter } from "@/components/layout/footer/common"
 import { EllipsisVertical } from "lucide-react"
 
+import man1 from "@/assets/images/avatars/man1.png"
+import man2 from "@/assets/images/avatars/man2.png"
+import man3 from "@/assets/images/avatars/man3.png"
+import man5 from "@/assets/images/avatars/man5.png"
+import woman3 from "@/assets/images/avatars/woman3.png"
+import { faFileLines, faFilePdf, faPaperclip, faPaperPlane, faSearch } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+
 // Image and SVG asset URLs from Figma export
 const imgImg =
   "http://localhost:3845/assets/f578f9c2a181ef669150341163e63e6e9da01878.png"
@@ -83,7 +91,7 @@ const RenterMessage = () => {
                   type="text"
                 />
                 <span className="absolute left-3 top-1/2 -translate-y-1/2">
-                  <img src={imgFrame3} alt="search" className="h-4 w-4" />
+                  <FontAwesomeIcon icon={faSearch} alt="search" className="text-gray-500 h-4 w-4" />
                 </span>
               </div>
             </div>
@@ -92,7 +100,7 @@ const RenterMessage = () => {
               {/* Example Conversation 1 */}
               <div className="flex cursor-pointer items-center gap-3 border-l-4 border-blue-100 bg-blue-50 px-4 py-3">
                 <img
-                  src={imgImg1}
+                  src={man1}
                   alt="avatar"
                   className="h-10 w-10 rounded-full object-cover"
                 />
@@ -108,7 +116,7 @@ const RenterMessage = () => {
                   </div>
                   <div className="mt-1 flex items-center gap-2">
                     <span className="flex items-center gap-1 rounded-full bg-green-100 px-2 py-0.5 text-xs text-green-800">
-                      <img src={imgFrame4} alt="verified" className="h-3 w-3" />{" "}
+                      <span alt="verified" className="rounded-full bg-green-700 h-3 w-3"></span>{" "}
                       Verified
                     </span>
                     <span className="inline-block h-2 w-2 rounded-full bg-sky-500" />
@@ -118,7 +126,7 @@ const RenterMessage = () => {
               {/* Example Conversation 2 */}
               <div className="flex cursor-pointer items-center gap-3 border-b border-gray-100 px-4 py-3">
                 <img
-                  src={imgImg2}
+                  src={man2}
                   alt="avatar"
                   className="h-10 w-10 rounded-full object-cover"
                 />
@@ -135,7 +143,7 @@ const RenterMessage = () => {
                   </div>
                   <div className="mt-1 flex items-center gap-2">
                     <span className="flex items-center gap-1 rounded-full bg-green-100 px-2 py-0.5 text-xs text-green-800">
-                      <img src={imgFrame4} alt="verified" className="h-3 w-3" />{" "}
+                      <span alt="verified" className="rounded-full bg-green-700 h-3 w-3"></span>{" "}
                       Verified
                     </span>
                   </div>
@@ -144,7 +152,7 @@ const RenterMessage = () => {
               {/* Example Conversation 3 */}
               <div className="flex cursor-pointer items-center gap-3 border-b border-gray-100 px-4 py-3">
                 <img
-                  src={imgImg3}
+                  src={man5}
                   alt="avatar"
                   className="h-10 w-10 rounded-full object-cover"
                 />
@@ -161,7 +169,7 @@ const RenterMessage = () => {
                   </div>
                   <div className="mt-1 flex items-center gap-2">
                     <span className="flex items-center gap-1 rounded-full bg-green-100 px-2 py-0.5 text-xs text-green-800">
-                      <img src={imgFrame4} alt="verified" className="h-3 w-3" />{" "}
+                      <span alt="verified" className="rounded-full bg-green-700 h-3 w-3"></span>{" "}
                       Verified
                     </span>
                   </div>
@@ -170,7 +178,7 @@ const RenterMessage = () => {
               {/* Example Conversation 4 */}
               <div className="flex cursor-pointer items-center gap-3 border-b border-gray-100 px-4 py-3">
                 <img
-                  src={imgImg4}
+                  src={man3}
                   alt="avatar"
                   className="h-10 w-10 rounded-full object-cover"
                 />
@@ -187,7 +195,7 @@ const RenterMessage = () => {
                   </div>
                   <div className="mt-1 flex items-center gap-2">
                     <span className="flex items-center gap-1 rounded-full bg-green-100 px-2 py-0.5 text-xs text-green-800">
-                      <img src={imgFrame4} alt="verified" className="h-3 w-3" />{" "}
+                      <span alt="verified" className="rounded-full bg-green-700 h-3 w-3"></span>{" "}
                       Verified
                     </span>
                   </div>
@@ -201,7 +209,7 @@ const RenterMessage = () => {
             <div className="flex flex-col gap-2 border-b border-gray-200 bg-gray-50 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-6 sm:py-4">
               <div className="flex items-center gap-3">
                 <img
-                  src={imgImg1}
+                  src={man1}
                   alt="avatar"
                   className="h-10 w-10 rounded-full object-cover"
                 />
@@ -214,7 +222,7 @@ const RenterMessage = () => {
               </div>
               <div className="mt-2 flex items-center gap-2 sm:mt-0">
                 <button className="flex items-center gap-1 rounded-lg bg-sky-100 px-4 py-2 text-sm font-medium text-sky-700">
-                  <img src={imgFrame5} alt="rfq" className="h-3 w-3" /> View RFQ
+                  <FontAwesomeIcon icon={faFileLines} alt="rfq" className="h-3.5 w-3.5" /> View RFQ
                 </button>
                 <button className="rounded-lg px-2 py-2">
                   <EllipsisVertical />
@@ -226,7 +234,7 @@ const RenterMessage = () => {
               {/* Message 1 (merchant) */}
               <div className="flex items-start gap-3">
                 <img
-                  src={imgImg1}
+                  src={man1}
                   alt="avatar"
                   className="h-8 w-8 rounded-full object-cover"
                 />
@@ -245,7 +253,7 @@ const RenterMessage = () => {
               <div className="flex justify-end">
                 <div className="flex max-w-xl flex-row-reverse items-start gap-3">
                   <img
-                    src={imgImg}
+                    src={woman3}
                     alt="avatar"
                     className="h-8 w-8 rounded-full object-cover"
                   />
@@ -263,7 +271,7 @@ const RenterMessage = () => {
               {/* Message 3 (merchant) */}
               <div className="flex items-start gap-3">
                 <img
-                  src={imgImg1}
+                  src={man1}
                   alt="avatar"
                   className="h-8 w-8 rounded-full object-cover"
                 />
@@ -280,7 +288,7 @@ const RenterMessage = () => {
                   </div>
                   <div className="mt-2 max-w-xs flex-row items-center gap-2 rounded-lg bg-gray-100 p-3">
                     <div className="flex">
-                      <img src={imgFrame7} alt="pdf" className="h-4 w-4" />
+                      <FontAwesomeIcon icon={faFilePdf} alt="pdf" className="text-red-500 h-4 w-4" />
                       <span className="mb-2 ml-2 flex text-xs text-gray-700">
                         camera-specs.pdf
                       </span>
@@ -296,7 +304,7 @@ const RenterMessage = () => {
               <div className="flex justify-end">
                 <div className="flex max-w-xl flex-row-reverse items-start gap-3">
                   <img
-                    src={imgImg}
+                    src={woman3}
                     alt="avatar"
                     className="h-8 w-8 rounded-full object-cover"
                   />
@@ -314,7 +322,7 @@ const RenterMessage = () => {
               {/* Message 5 (merchant) */}
               <div className="flex items-start gap-3">
                 <img
-                  src={imgImg1}
+                  src={man1}
                   alt="avatar"
                   className="h-8 w-8 rounded-full object-cover"
                 />
@@ -342,7 +350,7 @@ const RenterMessage = () => {
                 />
               </div>
               <span onClick={handleAttachClick}>
-                <img src={imgFrame8} alt="attach" className="h-5 w-5" />
+                <FontAwesomeIcon icon={faPaperclip} alt="attach" className="h-5 w-5" />
               </span>
               <input
                 type="file"
@@ -354,7 +362,7 @@ const RenterMessage = () => {
                 type="submit"
                 className="mt-2 flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-600 sm:mt-0"
               >
-                <img src={imgFrame9} alt="send" className="h-5 w-5" />
+                <FontAwesomeIcon icon={faPaperPlane} alt="send" className="text-white h-5 w-5" />
               </button>
             </form>
             {selectedFile && (
@@ -370,7 +378,7 @@ const RenterMessage = () => {
                 </button>
               </div>
             )}
-            <div className="px-2 pb-4 text-xs text-gray-500 sm:px-8">
+            <div className="px-2 pb-4 text-xs bg-white text-gray-500 sm:px-8">
               JPG, PDF, DOC files up to 5MB
             </div>
           </section>
