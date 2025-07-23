@@ -10,9 +10,9 @@ import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Textarea } from "@/components/ui/textarea"
 
-// Image asset constants (replace with your actual asset paths if needed)
-const imgImg =
-  "http://localhost:3845/assets/410c340aa057242400c608368f918307cdd72438.png"
+import woman3 from "@/assets/images/avatars/woman3.png"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faLocationDot, faPaperPlane } from "@fortawesome/free-solid-svg-icons"
 const imgImg1 =
   "http://localhost:3845/assets/f578f9c2a181ef669150341163e63e6e9da01878.png"
 const imgFrame4 =
@@ -106,11 +106,8 @@ export default function AddQuote() {
             categories={["Camera", "Lens", "Stabilizer"]}
             description="Looking for a complete cinema camera package including RED or ARRI camera body, prime lens set, and professional stabilization system for independent feature production. Need reliable equipment with backup options available."
             posterName="Sarah Chen"
-            posterAvatar={imgImg1}
+            posterAvatar={woman3}
             postedAgo="Posted 2 days ago"
-            locationIcon={imgFrame4}
-            dateIcon={imgFrame5}
-            expiryIcon={imgFrame6}
           />
           {/* Right: Quote Form */}
           <Card className="w-full flex-1 rounded-lg p-4 sm:p-6">
@@ -216,7 +213,7 @@ export default function AddQuote() {
                   type="submit"
                   className="flex w-full items-center justify-center rounded-lg bg-sky-600 px-8 py-3 font-medium text-white transition hover:bg-sky-700 sm:w-1/2"
                 >
-                  <img src={imgFrame8} alt="" className="mr-2 h-5 w-5" />
+                  <FontAwesomeIcon icon={faPaperPlane} alt="" className="mr-2 h-5 w-5" />
                   Send Quote
                 </button>
                 <button

@@ -1,6 +1,8 @@
 import React from "react"
 import { Card } from "@/components/ui/card"
 import { Typography } from "@/components/ui/typography"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCalendarDays, faFilePdf, faLocationDot } from "@fortawesome/free-solid-svg-icons"
 
 // Figma image assets (should be passed as props ideally, but keep as fallback)
 const imgFrame8 =
@@ -28,9 +30,7 @@ export interface RequestDetailProps {
 export const RequestDetail: React.FC<RequestDetailProps> = ({
   categories,
   location,
-  locationIcon = imgFrame8,
   rentalDates,
-  rentalDatesIcon = imgFrame9,
   description,
   attachedFiles,
 }) => {
@@ -55,14 +55,14 @@ export const RequestDetail: React.FC<RequestDetailProps> = ({
           <div className="w-1/2 pr-4">
             <Typography variant="body">Pickup Location</Typography>
             <div className="mt-2 flex items-center">
-              <img src={locationIcon} alt="Location" className="h-4 w-4" />
+              <FontAwesomeIcon icon={faLocationDot} alt="Location" className="text-tertiary h-4 w-4" />
               <span className="ml-2 text-gray-600">{location}</span>
             </div>
           </div>
           <div className="w-1/2 pl-4">
             <Typography variant="body">Rental Dates</Typography>
             <div className="mt-2 flex items-center">
-              <img src={rentalDatesIcon} alt="Dates" className="h-4 w-4" />
+              <FontAwesomeIcon icon={faCalendarDays} alt="Dates" className="text-tertiary h-4 w-4" />
               <span className="ml-2 text-gray-600">{rentalDates}</span>
             </div>
           </div>
@@ -82,7 +82,7 @@ export const RequestDetail: React.FC<RequestDetailProps> = ({
             key={file.name}
             className="mb-2 flex items-center rounded-lg bg-gray-100 p-3"
           >
-            <img src={file.icon} alt={file.name} className="mr-3 h-4 w-4" />
+            {file.icon}
             <div className="flex-1">
               <Typography variant="caption" className="text-gray-900">
                 {file.name}
@@ -91,11 +91,7 @@ export const RequestDetail: React.FC<RequestDetailProps> = ({
             </div>
             {file.downloadIcon && (
               <button className="ml-3">
-                <img
-                  src={file.downloadIcon}
-                  alt="Download"
-                  className="h-4 w-4"
-                />
+                { file.downloadIcon }
               </button>
             )}
           </div>

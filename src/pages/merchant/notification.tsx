@@ -10,6 +10,15 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
+import woman3 from "@/assets/images/avatars/woman3.png"
+import man2 from "@/assets/images/avatars/man2.png"
+import man3 from "@/assets/images/avatars/man3.png"
+import woman1 from "@/assets/images/avatars/woman1.png"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faClock, faFileLines, faMessage, faStar, faUserPlus } from "@fortawesome/free-solid-svg-icons"
+import { faCircleQuestion } from "@fortawesome/free-regular-svg-icons"
+import { DottedQuestionIcon } from "@/components/ui/icon"
+
 const imgImg =
   "http://localhost:3845/assets/410c340aa057242400c608368f918307cdd72438.png"
 const imgImg1 =
@@ -95,13 +104,13 @@ const Notification: React.FC = () => {
             {/* Message Notification */}
             <div className="rounded-lg border border-gray-200 bg-white p-4">
               <div className="flex items-start gap-4">
-                <div className="rounded-full bg-blue-100 p-2.5">
-                  <img src={imgFrame4} alt="message" className="h-4 w-4" />
+                <div className="rounded-full bg-blue-100 px-3 py-2">
+                  <FontAwesomeIcon icon={faMessage} alt="message" className="text-blue-600 h-4 w-4" />
                 </div>
                 <div className="flex-1">
                   <div className="mb-2 flex items-center gap-2">
                     <img
-                      src={imgImg1}
+                      src={woman3}
                       alt="Sarah Chen"
                       className="h-6 w-6 rounded-full"
                     />
@@ -132,13 +141,13 @@ const Notification: React.FC = () => {
             {/* Quote Notification */}
             <div className="rounded-lg border border-gray-200 bg-white p-4">
               <div className="flex items-start gap-4">
-                <div className="rounded-full bg-green-100 p-2.5">
-                  <img src={imgFrame5} alt="quote" className="h-4 w-3" />
+                <div className="rounded-full bg-green-100 px-3 py-2">
+                  <FontAwesomeIcon icon={faFileLines} alt="quote" className="text-green-700 h-4 w-4" />
                 </div>
                 <div className="flex-1">
                   <div className="mb-2 flex items-center gap-2">
                     <img
-                      src={imgImg2}
+                      src={man2}
                       alt="Marcus Rodriguez"
                       className="h-6 w-6 rounded-full"
                     />
@@ -163,13 +172,14 @@ const Notification: React.FC = () => {
             {/* Follow Notification */}
             <div className="rounded-lg border border-gray-200 bg-white p-4">
               <div className="flex items-start gap-4">
-                <div className="rounded-full bg-purple-100 p-2.5">
-                  <img src={imgFrame6} alt="follow" className="h-4 w-5" />
+                <div className="rounded-full bg-purple-100 px-3 py-2">
+                  <FontAwesomeIcon
+                    icon={faUserPlus} alt="follow" className="text-purple-700 h-4 w-4" />
                 </div>
                 <div className="flex-1">
                   <div className="mb-2 flex items-center gap-2">
                     <img
-                      src={imgImg3}
+                      src={woman1}
                       alt="Emma Thompson"
                       className="h-6 w-6 rounded-full"
                     />
@@ -194,13 +204,13 @@ const Notification: React.FC = () => {
             {/* Review Notification */}
             <div className="rounded-lg border border-gray-200 bg-white p-4">
               <div className="flex items-start gap-4">
-                <div className="rounded-full bg-yellow-100 p-2.5">
-                  <img src={imgFrame7} alt="review" className="h-4 w-[18px]" />
+                <div className="rounded-full bg-yellow-100 px-3 py-2">
+                  <FontAwesomeIcon icon={faStar} alt="review" className="text-yellow-600 h-4 w-4" />
                 </div>
                 <div className="flex-1">
                   <div className="mb-2 flex items-center gap-2">
                     <img
-                      src={imgImg4}
+                      src={man3}
                       alt="David Kim"
                       className="h-6 w-6 rounded-full"
                     />
@@ -225,8 +235,8 @@ const Notification: React.FC = () => {
             {/* Account Notification */}
             <div className="rounded-lg border border-gray-200 bg-white p-4">
               <div className="flex items-start gap-4">
-                <div className="rounded-full bg-emerald-100 p-2.5">
-                  <img src={imgGroup} alt="account" className="h-4 w-4" />
+                <div className="rounded-full bg-emerald-100 p-3">
+                  <DottedQuestionIcon className="h-4 w-4" />
                 </div>
                 <div className="flex-1">
                   <h3 className="mb-2 font-medium text-gray-800">
@@ -248,8 +258,8 @@ const Notification: React.FC = () => {
             {/* RFQ Notification */}
             <div className="rounded-lg border border-gray-200 bg-white p-4">
               <div className="flex items-start gap-4">
-                <div className="rounded-full bg-orange-100 p-2.5">
-                  <img src={imgFrame8} alt="rfq" className="h-4 w-4" />
+                <div className="rounded-full bg-orange-100 px-3 py-2">
+                  <FontAwesomeIcon icon={faClock} alt="rfq" className="text-orange-500 h-4 w-4" />
                 </div>
                 <div className="flex-1">
                   <h3 className="mb-2 font-medium text-gray-800">

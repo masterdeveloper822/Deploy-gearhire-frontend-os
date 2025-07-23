@@ -17,6 +17,15 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faSearch } from "@fortawesome/free-solid-svg-icons"
+
+import tc4 from "@/assets/images/training-course/tc4.png"
+import tc5 from "@/assets/images/training-course/tc5.png"
+import tc6 from "@/assets/images/training-course/tc6.png"
+import tc7 from "@/assets/images/training-course/tc7.png"
+import tc8 from "@/assets/images/training-course/tc8.png"
+import tc9 from "@/assets/images/training-course/tc9.png"
 
 // Image and SVG asset URLs from Figma export
 const imgImg =
@@ -75,7 +84,7 @@ const mockCourses = [
     categoryColor: "bg-blue-100 text-blue-800",
     company: "ProGear Studios",
     companyLogo: imgImg2,
-    image: imgImg1,
+    image: tc4,
   },
   {
     id: 2,
@@ -86,7 +95,7 @@ const mockCourses = [
     categoryColor: "bg-green-100 text-green-800",
     company: "LensWorks Studio",
     companyLogo: imgImg4,
-    image: imgImg3,
+    image: tc5,
   },
   {
     id: 3,
@@ -97,7 +106,7 @@ const mockCourses = [
     categoryColor: "bg-purple-100 text-purple-800",
     company: "AudioTech Rentals",
     companyLogo: imgImg6,
-    image: imgImg5,
+    image: tc6,
   },
   {
     id: 4,
@@ -108,7 +117,7 @@ const mockCourses = [
     categoryColor: "bg-orange-100 text-orange-800",
     company: "Marcus Rodriguez",
     companyLogo: imgImg8,
-    image: imgImg7,
+    image: tc7,
   },
   {
     id: 5,
@@ -119,7 +128,7 @@ const mockCourses = [
     categoryColor: "bg-red-100 text-red-800",
     company: "CineRent Pro",
     companyLogo: imgImg10,
-    image: imgImg9,
+    image: tc8,
   },
   {
     id: 6,
@@ -130,7 +139,7 @@ const mockCourses = [
     categoryColor: "bg-yellow-100 text-yellow-800",
     company: "Grip & Electric Co",
     companyLogo: imgImg12,
-    image: imgImg11,
+    image: tc9,
   },
 ]
 
@@ -147,7 +156,7 @@ const CourseFilters = () => (
           type="text"
         />
         <span className="absolute left-3 top-1/2 -translate-y-1/2">
-          <img src={imgFrame3} alt="search" className="h-4 w-4" />
+          <FontAwesomeIcon icon={faSearch} alt="search" className="text-gray-500 h-4 w-4" />
         </span>
       </div>
     </div>

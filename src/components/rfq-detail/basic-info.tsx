@@ -1,6 +1,8 @@
 import React from "react"
 import { Card } from "@/components/ui/card"
 import { Typography } from "@/components/ui/typography"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCalendar, faClock } from "@fortawesome/free-solid-svg-icons"
 
 export interface BasicInfoProps {
   title: string
@@ -20,13 +22,9 @@ export interface BasicInfoProps {
 export const BasicInfo: React.FC<BasicInfoProps> = ({
   title,
   status,
-  statusIcon,
   isPublic,
-  publicIcon,
   postedDate,
-  postedIcon,
   expiresDate,
-  expiresIcon,
   publisherAvatar,
   publisherName,
   publisherRole,
@@ -41,12 +39,12 @@ export const BasicInfo: React.FC<BasicInfoProps> = ({
             </div>
             <div className="my-1">
               <span className="inline-flex items-center rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-800">
-                <img src={statusIcon} alt="Status" className="mr-1 h-3 w-3" />
+                <span className="inline-block h-3 w-3 rounded-full bg-green-800 mr-1" />
                 {status}
               </span>
               {isPublic && (
                 <span className="ml-2 inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-800">
-                  <img src={publicIcon} alt="Public" className="mr-1 h-3 w-3" />
+                  <span className="inline-block h-3 w-3 rounded-full bg-blue-800 mr-1" />
                   Public
                 </span>
               )}
@@ -56,14 +54,14 @@ export const BasicInfo: React.FC<BasicInfoProps> = ({
             <div>
               <div className="flex flex-row items-start gap-4 sm:flex-col sm:gap-0">
                 <span className="inline-flex items-center text-sm text-gray-500">
-                  <img src={postedIcon} alt="Posted" className="mr-1 h-4 w-4" />
+                  <FontAwesomeIcon icon={faCalendar} alt="Posted" className="mr-3 h-4 w-4" />
                   {postedDate}
                 </span>
                 <span className="inline-flex items-center text-sm text-gray-500 sm:mt-1">
-                  <img
-                    src={expiresIcon}
+                  <FontAwesomeIcon
+                    icon={faClock}
                     alt="Expires"
-                    className="mr-1 h-4 w-4"
+                    className="mr-3 h-4 w-4"
                   />
                   {expiresDate}
                 </span>

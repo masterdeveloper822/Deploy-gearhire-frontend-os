@@ -3,6 +3,8 @@ import { MerchantHeader } from "@/components/layout/header/merchant-header"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { BackArrowIcon } from "@/components/ui/icon"
+import { faBox, faComments, faCreditCard, faEnvelope, faHeadset, faMagnifyingGlass, faPaperPlane, faStar } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React from "react"
 import { useNavigate } from "react-router-dom"
 
@@ -92,11 +94,11 @@ export default function SubscriptionPage() {
               <div className="space-y-6">
                 {/* Benefit 1 */}
                 <div className="flex items-start space-x-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-sky-100">
-                    <img
+                  <div className="text-tertiary flex h-10 w-10 items-center justify-center rounded-lg bg-sky-100">
+                    <FontAwesomeIcon
                       alt="Search icon"
                       className="h-4 w-4"
-                      src={imgFrame4}
+                      icon={faMagnifyingGlass}
                     />
                   </div>
                   <div className="flex-1">
@@ -113,7 +115,7 @@ export default function SubscriptionPage() {
                 {/* Benefit 2 */}
                 <div className="flex items-start space-x-4">
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-sky-100">
-                    <img alt="RFQ icon" className="h-4 w-4" src={imgFrame5} />
+                    <FontAwesomeIcon alt="RFQ icon" className="text-tertiary h-4 w-4" icon={faPaperPlane} />
                   </div>
                   <div className="flex-1">
                     <h4 className="font-medium text-gray-800">
@@ -128,11 +130,11 @@ export default function SubscriptionPage() {
 
                 {/* Benefit 3 */}
                 <div className="flex items-start space-x-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-sky-100">
-                    <img
+                  <div className="flex text-tertiary h-10 w-10 items-center justify-center rounded-lg bg-sky-100">
+                    <FontAwesomeIcon
                       alt="Message icon"
-                      className="h-4 w-4"
-                      src={imgFrame6}
+                      className="h-4 w-5"
+                      icon={faComments}
                     />
                   </div>
                   <div className="flex-1">
@@ -147,11 +149,11 @@ export default function SubscriptionPage() {
 
                 {/* Benefit 4 */}
                 <div className="flex items-start space-x-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-sky-100">
-                    <img
+                  <div className="text-tertiary flex h-10 w-10 items-center justify-center rounded-lg bg-sky-100">
+                    <FontAwesomeIcon
                       alt="Inventory icon"
                       className="h-4 w-4"
-                      src={imgFrame7}
+                      icon={faBox}
                     />
                   </div>
                   <div className="flex-1">
@@ -168,10 +170,10 @@ export default function SubscriptionPage() {
                 {/* Benefit 5 */}
                 <div className="flex items-start space-x-4">
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-sky-100">
-                    <img
+                    <FontAwesomeIcon
                       alt="Review icon"
-                      className="h-4 w-4"
-                      src={imgFrame8}
+                      className="h-4 w-4 text-tertiary"
+                      icon={faStar}
                     />
                   </div>
                   <div className="flex-1">
@@ -202,11 +204,7 @@ export default function SubscriptionPage() {
               <div className="mt-6">
                 <div className="mb-4 flex justify-center">
                   <span className="inline-flex items-center rounded-full bg-red-100 px-3 py-1 text-sm font-medium text-red-800">
-                    <img
-                      alt="Status icon"
-                      className="mr-2 h-3 w-3"
-                      src={imgFrame9}
-                    />
+                    <span alt="Status icon" className="mr-2 inline-block h-3 w-3 rounded-full bg-red-800"></span>
                     Inactive
                   </span>
                 </div>
@@ -217,10 +215,10 @@ export default function SubscriptionPage() {
                   onClick={handleActivateSubscription}
                 >
                   <div className="flex items-center justify-center space-x-2">
-                    <img
+                    <FontAwesomeIcon
                       alt="Activate icon"
                       className="h-4 w-4"
-                      src={imgFrame10}
+                      icon={faCreditCard}
                     />
                     <span>Activate My Subscription</span>
                   </div>
@@ -240,17 +238,17 @@ export default function SubscriptionPage() {
           <div className="rounded-lg bg-blue-50 p-6">
             <div className="text-center">
               <div className="mb-4 flex justify-center">
-                <img alt="Help icon" className="h-6 w-6" src={imgFrame11} />
-              </div>
-              <h3 className="mb-2 text-lg font-semibold text-gray-800">
+                <FontAwesomeIcon alt="Help icon" className="text-colored-blue h-6 w-6" icon={faHeadset} />
+              <h3 className="ml-3 mb-2 text-lg font-semibold text-gray-800">
                 Need Help?
               </h3>
+              </div>
               <p className="mb-4 text-gray-600">
                 Need help activating your subscription or have questions about
                 merchant features?
               </p>
               <div className="flex items-center justify-center space-x-2 text-sky-600">
-                <img alt="Email icon" className="h-4 w-4" src={imgFrame12} />
+                <FontAwesomeIcon alt="Email icon" className="h-4 w-4" icon={faEnvelope} />
                 <a
                   href="mailto:support@filmgearhub.com"
                   className="font-medium hover:underline"

@@ -24,33 +24,14 @@ import closedEyeIcon from "@/assets/images/ui/icons/eye_closed.svg"
 import editItemIcon from "@/assets/images/ui/icons/item_edit.svg"
 import deleteItemIcon from "@/assets/images/ui/icons/item_delete.svg"
 import { Link } from "react-router-dom"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEye } from "@fortawesome/free-solid-svg-icons"
 
-const imgFrame7 =
-  "http://localhost:3845/assets/d54698fc9332e5ff9ca9e07428b5b67d44bc45bf.svg"
-const imgFrame8 =
-  "http://localhost:3845/assets/440de8e3762c4f47d1c043b36fb1b4a8b6a362be.svg"
-const imgFrame9 =
-  "http://localhost:3845/assets/eca6c3134f7ecf7b6029cc0eed3f3d3ebbd12985.svg"
-const imgFrame10 =
-  "http://localhost:3845/assets/7baf41d57cf0024cc4acb9a85e6dc2407f49cf3b.svg"
-const imgFrame11 =
-  "http://localhost:3845/assets/28e9e88ed26136cc76e342f60b46b456f4c15c76.svg"
-const imgFrame12 =
-  "http://localhost:3845/assets/48efa9bfc9ff5af2a8f6e8a3cb119666c892ac2b.svg"
-const imgFrame13 =
-  "http://localhost:3845/assets/11e343858c87c43adf774bd449873b46df3be747.svg"
-const imgFrame14 =
-  "http://localhost:3845/assets/cf29938f88a961c33e43a7979fa07b5699596921.svg"
-const imgImg1 =
-  "http://localhost:3845/assets/59ac253f4cf01c58a461caa65b61532eb61ac9b2.png"
-const imgImg2 =
-  "http://localhost:3845/assets/3cef05ab9d99d1c2802e522d8be68eb1ac3447b2.png"
-const imgImg3 =
-  "http://localhost:3845/assets/19a62cb56a507b6e29c571f43e45a7c2894e49b3.png"
-const imgImg4 =
-  "http://localhost:3845/assets/0759ab605d5f69d4deeec6561a9405e2d5293b53.png"
-const imgImg5 =
-  "http://localhost:3845/assets/306bbe4098ac12ac4362f3aa19d7c251f9284e3e.png"
+import gear1 from "@/assets/images/gear/gear1.png"
+import gear2 from "@/assets/images/gear/gear2.png"
+import gear3 from "@/assets/images/gear/gear3.png"
+import gear4 from "@/assets/images/gear/gear4.png"
+import gear5 from "@/assets/images/gear/gear5.png"
 
 const MerchantInventoryBook: React.FC = () => {
   // Example state for toggles (in real app, use item-specific state)
@@ -177,35 +158,35 @@ const MerchantInventoryBook: React.FC = () => {
           {/* Inventory Card 1 */}
           {[
             {
-              img: imgImg1,
+              img: gear1,
               title: "RED Komodo 6K",
               desc: "Camera • 6K Resolution, Global Shutter",
               public: publicToggles[0],
               status: "Public",
             },
             {
-              img: imgImg2,
+              img: gear2,
               title: "ARRI SkyPanel S60-C",
               desc: "Lighting • LED Panel, Color Temperature Control",
               public: publicToggles[1],
               status: "Public",
             },
             {
-              img: imgImg3,
+              img: gear3,
               title: "Canon EF 24-70mm f/2.8L",
               desc: "Lens • Zoom Lens, f/2.8 Aperture",
               public: publicToggles[2],
               status: "Private",
             },
             {
-              img: imgImg4,
+              img: gear4,
               title: "DJI Ronin 4D",
               desc: "Stabilizer • 4-Axis Gimbal, LiDAR Focus",
               public: publicToggles[3],
               status: "Public",
             },
             {
-              img: imgImg5,
+              img: gear5,
               title: "Rode NTG4+ Shotgun Mic",
               desc: "Audio • Directional Microphone, Phantom Power",
               public: publicToggles[4],
@@ -231,12 +212,12 @@ const MerchantInventoryBook: React.FC = () => {
                 <div className="mt-2 flex items-center gap-2">
                   {item.status === "Public" ? (
                     <span className="flex items-center gap-1 rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-800">
-                      <img src={imgFrame9} alt="Public" className="h-3 w-3" />{" "}
+                      <FontAwesomeIcon icon={faEye} alt="Public" className="text-green-800 h-3 w-3" />{" "}
                       Public
                     </span>
                   ) : (
                     <span className="flex items-center gap-1 rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600">
-                      <img src={imgFrame12} alt="Private" className="h-3 w-3" />{" "}
+                      <FontAwesomeIcon icon={faEye} alt="Private" className="text-gray-600 h-3 w-3" />{" "}
                       Private
                     </span>
                   )}

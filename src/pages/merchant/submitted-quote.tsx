@@ -16,6 +16,8 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/select"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCalendar, faCalendarDay, faCalendarDays, faLocationDot } from "@fortawesome/free-solid-svg-icons"
 
 const imgImg =
   "http://localhost:3845/assets/410c340aa057242400c608368f918307cdd72438.png"
@@ -118,12 +120,12 @@ const SubmittedQuotesPage: React.FC = () => {
                   </Typography>
                 </div>
                 <div className="mt-2 flex flex-row gap-6">
-                  <div className="flex items-center gap-2 text-sm text-gray-500">
-                    <img src={imgFrame5} alt="Location" className="h-4 w-4" />
+                  <div className="flex items-center gap-1 text-sm text-gray-500">
+                    <FontAwesomeIcon icon={faLocationDot} alt="Location" className="text-tertiary h-4 w-4" />
                     {card.location}
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-500">
-                    <img src={imgFrame6} alt="Date" className="h-4 w-4" />
+                  <div className="flex items-center gap-1 text-sm text-gray-500">
+                    <FontAwesomeIcon icon={faCalendarDays} alt="Date" className="text-tertiary h-4 w-4" />
                     {card.dateRange}
                   </div>
                 </div>
@@ -145,7 +147,7 @@ const SubmittedQuotesPage: React.FC = () => {
 
               <div className="mt-3 flex flex-col gap-3 sm:flex-row md:ml-auto md:mt-0">
                 <span
-                  className={`mr-3 flex h-9 items-center gap-2 rounded-full px-3 py-1 text-sm font-medium ${statusColors[card.status]}`}
+                  className={`mr-3 flex h-9 items-center gap-1 rounded-full px-3 py-1 text-sm font-medium ${statusColors[card.status]}`}
                 >
                   {card.status === "Accepted" ? (
                     <AcceptedStateIcon />

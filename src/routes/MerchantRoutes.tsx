@@ -18,66 +18,54 @@ import MerchantProfile from "@/pages/profile/merchant"
 
 export default [
   <Route
-    key="edit-merchant-profile"
     path="/edit-merchant-profile"
     element={<EditMerchantProfile />}
   />,
   <Route
-    key="merchant-next-step"
     path="/merchant-next-step"
     element={<MerchantNextStep />}
   />,
   <Route
-    key="merchant-dashboard"
     path="/merchant-dashboard"
     element={<MerchantDashboard />}
   />,
   <Route
-    key="merchant-inventory-book"
     path="/merchant-inventory-book"
     element={<MerchantInventoryBook />}
   />,
   <Route
-    key="merchant-add-equipment"
     path="/merchant-add-equipment"
     element={<MerchantAddEquipment />}
   />,
   <Route
-    key="training-course-list"
     path="/training-course-list"
     element={<TrainingCourseList />}
   />,
   <Route
-    key="add-training-course"
     path="/add-training-course"
     element={<AddTrainingCourse />}
   />,
-  <Route key="browse-RFQs" path="/browse-RFQs" element={<BrowseRFQ />} />,
-  <Route key="add-quote" path="/add-quote" element={<AddQuote />} />,
-  <Route key="rfq-detail" path="/rfq-detail" element={<RFQDetails />} />,
+  <Route path="/browse-RFQs" element={<BrowseRFQ />} />,
+  <Route path="/add-quote" element={<AddQuote />} />,
+  <Route  path="/rfq-detail" element={<RFQDetails />} />,
   <Route
-    key="submitted-quote"
     path="/submitted-quote"
     element={<SubmittedQuotesPage />}
   />,
   <Route
-    key="subscription"
     path="/subscription"
     element={<SubscriptionPage />}
   />,
-  <Route key="merchant-review" path="/merchant-review" element={<Review />} />,
+  <Route path="/merchant-review" element={<Review />} />,
   <Route
-    key="merchant-notification"
     path="/merchant-notification"
     element={<Notification />}
   />,
   <Route
-    key="merchant-message"
     path="/merchant-message"
     element={<MerchantMessage />}
   />,
   <Route
-    key="merchant-profile"
     path="/merchant-profile"
     element={<MerchantProfile />}
   />,

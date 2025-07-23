@@ -9,7 +9,6 @@ import backArrow from "@/assets/images/ui/icons/backArrow.svg"
 import infoIcon from "@/assets/images/ui/icons/info-black.svg"
 import saveIcon from "@/assets/images/ui/icons/file-manage/saveButton.svg"
 import cancelIcon from "@/assets/images/ui/icons/file-manage/cancel.svg"
-import merchantProfileDefaultIcon from "@/assets/images/ui/icons/merchantProfileDefault.svg"
 
 import { MerchantHeader } from "@/components/layout/header/merchant-header"
 import { Label } from "@/components/ui/label"
@@ -27,6 +26,8 @@ import {
   SelectLabel,
 } from "@/components/ui/select"
 import { Card } from "@/components/ui/card"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCamera } from "@fortawesome/free-solid-svg-icons"
 
 const categories = [
   "Camera Body",
@@ -219,8 +220,8 @@ const MerchantAddEquipment: React.FC = () => {
                     className="flex cursor-pointer flex-col items-center"
                   >
                     <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-md bg-gray-200">
-                      <img
-                        src={merchantProfileDefaultIcon}
+                      <FontAwesomeIcon
+                        icon={faCamera}
                         alt="Upload"
                         className="h-6 w-6"
                       />

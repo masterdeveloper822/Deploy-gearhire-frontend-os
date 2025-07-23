@@ -1,15 +1,10 @@
 import { MerchantHeader } from "@/components/layout/header/merchant-header"
 import { Button } from "@/components/ui/button"
 
-// Figma asset URLs for course images
-const courseImg1 =
-  "http://localhost:3845/assets/944dfe497d9f130202fb4173166d1bf98ae0bede.png"
-const courseImg2 =
-  "http://localhost:3845/assets/0f78d139b1b6483a32cb5e42eaeace047d2f8546.png"
-const courseImg3 =
-  "http://localhost:3845/assets/845b75fe9cacb65817ff3b0b2f90f53d3b53033a.png"
+import tc1 from "@/assets/images/training-course/tc1.png"
+import tc2 from "@/assets/images/training-course/tc2.png"
+import tc3 from "@/assets/images/training-course/tc3.png"
 
-// Figma SVGs for status and action icons
 import publicIcon from "@/assets/images/ui/icons/eye-green.svg"
 import privateIcon from "@/assets/images/ui/icons/eye_closed.svg"
 import arrowIcon from "@/assets/images/ui/icons/outLink.svg"
@@ -25,7 +20,7 @@ const courses = [
     id: 1,
     title: "Advanced Cinematography Masterclass",
     desc: "Learn professional cinematography techniques with hands-on experience using RED cameras and professional lighting equipment.",
-    image: courseImg1,
+    image: tc1,
     status: "Public",
     statusColor: "bg-green-100 text-green-800",
     statusIcon: publicIcon,
@@ -35,7 +30,7 @@ const courses = [
     id: 2,
     title: "Professional Audio Recording Workshop",
     desc: "Master the art of film audio recording with industry-standard equipment and techniques used in major productions.",
-    image: courseImg2,
+    image: tc2,
     status: "Private",
     statusColor: "bg-gray-100 text-gray-800",
     statusIcon: privateIcon,
@@ -45,7 +40,7 @@ const courses = [
     id: 3,
     title: "Film Lighting Fundamentals",
     desc: "Learn essential lighting techniques for film production, from basic setups to advanced cinematic lighting patterns.",
-    image: courseImg3,
+    image: tc3,
     status: "Public",
     statusColor: "bg-green-100 text-green-800",
     statusIcon: publicIcon,
