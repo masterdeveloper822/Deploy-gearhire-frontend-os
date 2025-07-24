@@ -43,7 +43,6 @@ const CreateAccountForm: React.FC = () => {
     handleSubmit,
     control,
     formState: { errors, isValid },
-    setValue,
     watch,
   } = useForm<CreateAccountSchema>({
     resolver: zodResolver(createAccountSchema),
@@ -57,17 +56,41 @@ const CreateAccountForm: React.FC = () => {
     },
   })
 
-  const onSubmit = (data: CreateAccountSchema) => {
-    toast({
-      title: "Success!",
-      description: "Account created successfully!",
-    })
-    setTimeout(() => {
-      navigate("/email-verify")
-    }, 1000)
-  }
+  const onSubmit = async (data: CreateAccountSchema) => {
+    try {
+      const response = await fetch("http://localhost:8000/api/user/create/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          role: data.type,
+          email: data.email,
+          password: data.password,
+        }),
+      });
 
-  const selectedType = watch("type")
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error( errorData.email || errorData.message || "Failed to create account");
+      }
+
+      toast({
+        title: "Success!",
+        description: "Account created successfully!",
+      });
+      setTimeout(() => {
+        navigate("/email-verify", { state: { email: data.email } });
+      }, 1000);
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to create account.",
+        variant: "destructive",
+      });
+      console.log("error: ", error);
+    }
+  }
 
   return (
     <div className="mx-auto flex min-h-screen w-full max-w-screen-2xl flex-col items-center bg-transparent px-4 py-8 sm:py-12 lg:py-16">
