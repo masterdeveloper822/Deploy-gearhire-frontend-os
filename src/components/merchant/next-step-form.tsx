@@ -65,7 +65,7 @@ export default function NextStepForm() {
   ]
 
   return (
-    <div className="relative flex min-h-screen w-full items-start justify-center bg-gray-50 px-2 py-8 sm:px-4 sm:pt-16">
+    <div className="relative flex min-h-screen w-full items-start justify-center px-2 py-8 sm:px-4 sm:pt-16">
       {/* Success Message - Positioned in top-right of this component */}
       <VerificationSuccessAlert
         show={showSuccessMessage}

@@ -45,12 +45,19 @@ export default function EmailVerifyForm() {
         throw new Error(errorData.message || "Verification failed");
       }
 
-      toast({
-        title: "Email Verified!",
-        description: "Your email has been successfully verified.",
-      });
+      const result = await response.json();
+      console.log("result", result);
+      
       setTimeout(() => {
-        navigate("/login");
+        if (result && result.role === "merchant") {
+          navigate("/merchant-next-step");
+        } else {
+          toast({
+            title: "Email Verified!",
+            description: "Your email has been successfully verified.",
+          });
+          navigate("/login");
+        }
       }, 1000);
     } catch (error: any) {
       toast({
@@ -130,6 +137,7 @@ export default function EmailVerifyForm() {
               value={verificationCode}
               onChange={setVerificationCode}
               autoFocus
+              onEnter={handleVerify}
             />
           </div>
 

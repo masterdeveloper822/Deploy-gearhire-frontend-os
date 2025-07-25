@@ -58,7 +58,7 @@ const schema = z.object({
 })
 type FormSchema = z.infer<typeof schema>
 
-export default function Body() {
+export default function MerchantProfileEditForm() {
   const navigate = useNavigate()
   const {
     register,

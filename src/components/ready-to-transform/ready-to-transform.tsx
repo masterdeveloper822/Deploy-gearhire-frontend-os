@@ -27,14 +27,14 @@ export default function ReadyToTransform() {
             variant="white_sky"
             className="h-15 px-8 py-4 text-base text-sky-700"
           >
-            <Link to="/signup">Join as Renter</Link>
+            <Link to="/signup" state={{role: "renter"}}>Join as Renter</Link>
           </Button>
           <Button
             variant="tertiary"
             size="lg"
             className="h-15 border-2 border-white px-8 py-4 text-base"
           >
-            <Link to="/signup">Join as Merchant</Link>
+            <Link to="/signup" state={{role: "merchant"}}>Join as Merchant</Link>
           </Button>
         </div>
       </div>

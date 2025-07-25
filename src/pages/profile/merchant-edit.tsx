@@ -3,7 +3,7 @@ import { AuthHeader } from "@/components/layout/header/auth-header"
 
 import defaultMerchantProfileIcon from "@/assets/images/ui/icons/defaultMerchantProfile.svg"
 import { Avatar } from "@radix-ui/react-avatar"
-import Body from "../merchant/edit-profile/components/body"
+import MerchantProfileEditForm from "../../components/merchant/merchant-profile-edit-form"
 
 const EditMerchantProfile: React.FC = () => {
   return (
@@ -26,7 +26,7 @@ const EditMerchantProfile: React.FC = () => {
             </div>
           </div>
         </AuthHeader>
-        <Body />
+        <MerchantProfileEditForm />
       </div>
     </div>
   )

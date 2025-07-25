@@ -22,6 +22,7 @@ const LogInForm: React.FC = () => {
   const { toast } = useToast()
   const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const {
     register,
@@ -32,17 +33,59 @@ const LogInForm: React.FC = () => {
     mode: "onChange",
   })
 
-  const onSubmit = (data: LoginSchema) => {
-    toast({
-      title: "Login Successful!",
-      description: "You have logged in successfully.",
-    })
+  const onSubmit = async (data: LoginSchema) => {
+    setIsLoading(true);
+    try {
+      const response = await fetch("http://localhost:8000/api/token/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: data.email,
+          password: data.password,
+        }),
+      });
 
-    // Redirect based on email
-    if (data.email === "renter@gmail.com") {
-      navigate("/renter-dashboard")
-    } else {
-      navigate("/merchant-dashboard")
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || errorData.message || "Login failed");
+      }
+
+      const result = await response.json();
+      console.log("result", result);
+
+      if (!result.is_verified) {
+        toast({
+          title: "Email Not Verified",
+          description: "Please verify your email before logging in.",
+          variant: "destructive",
+        });
+        navigate("/email-verify", { state: { email: data.email } });
+        return;
+      }
+
+      // Store tokens in localStorage
+      localStorage.setItem("accessToken", result.access);
+      localStorage.setItem("refreshToken", result.refresh);
+
+      toast({
+        title: "Login Successful!",
+        description: "You have logged in successfully.",
+      });
+
+      // Redirect based on user type/role if available
+      if (result.role === "renter") {
+        navigate("/renter-dashboard");
+      } else {
+        navigate("/merchant-dashboard");
+      }
+    } catch (error: any) {
+      toast({
+        title: "Login Failed",
+        description: error.message || "Invalid email or password.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -100,7 +143,9 @@ const LogInForm: React.FC = () => {
             Forgot Password?
           </Link>
           {/* Submit Button */}
-          <SubmitButton isFormValid={isValid}>Log In</SubmitButton>
+          <SubmitButton isFormValid={isValid} disabled={isLoading}>
+            {isLoading ? "Logging in..." : "Log In"}
+          </SubmitButton>
           <div className="flex w-full justify-center border-t border-gray-200 pt-6">
             <span className="text-base text-gray-600">
               Don't have an account?{" "}

@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { useForm, Controller } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
-import { useNavigate, Link } from "react-router-dom"
+import { useNavigate, Link, useLocation } from "react-router-dom"
 import { Eye, EyeOff } from "lucide-react"
 import { AuthInput } from "@/components/auth/auth-input"
 import { SubmitButton } from "@/components/auth/submit-button"
@@ -37,6 +37,8 @@ const CreateAccountForm: React.FC = () => {
   const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const { state } = useLocation()
+  const role = state?.role
 
   const {
     register,
@@ -48,7 +50,7 @@ const CreateAccountForm: React.FC = () => {
     resolver: zodResolver(createAccountSchema),
     mode: "onChange",
     defaultValues: {
-      type: undefined,
+      type: role === "renter" ? "renter" : role === "merchant" ? "merchant" : undefined,
       email: "",
       password: "",
       confirmPassword: "",
