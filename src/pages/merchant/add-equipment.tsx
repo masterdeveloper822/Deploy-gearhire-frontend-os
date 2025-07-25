@@ -10,7 +10,7 @@ import infoIcon from "@/assets/images/ui/icons/info-black.svg"
 import saveIcon from "@/assets/images/ui/icons/file-manage/saveButton.svg"
 import cancelIcon from "@/assets/images/ui/icons/file-manage/cancel.svg"
 
-import { MerchantHeader } from "@/components/layout/header/merchant-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -98,7 +98,7 @@ const MerchantAddEquipment: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header*/}
-      <MerchantHeader />
+      <AuthHeader />
       {/* Form Card */}
       <main className="mx-auto max-w-[800px] p-6">
         <div className="relative w-full">

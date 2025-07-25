@@ -1,5 +1,5 @@
 import React from "react"
-import { RenterHeader } from "@/components/layout/header/renter-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { CommonFooter } from "@/components/layout/footer/common"
 import { Card } from "@/components/ui/card"
 import { Switch } from "@/components/ui/switch"
@@ -111,7 +111,7 @@ const equipmentData = [
 const BrowseEquipment: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
-      <RenterHeader />
+      <AuthHeader />
       <main className="mx-auto w-full max-w-7xl px-2 py-4 sm:px-4 sm:py-8">
         {/* Header */}
         <div className="mb-8 px-1 sm:px-0">

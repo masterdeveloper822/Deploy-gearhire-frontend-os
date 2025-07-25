@@ -1,7 +1,7 @@
 import React from "react"
 
 import { Typography } from "@/components/ui/typography"
-import { MerchantHeader } from "@/components/layout/header/merchant-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -66,7 +66,7 @@ const MerchantInventoryBook: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <MerchantHeader />
+      <AuthHeader />
 
       {/* Main Content */}
       <main className="mx-auto max-w-[1280px] px-4 py-6">

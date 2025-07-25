@@ -6,7 +6,7 @@ import { TwitterLink } from "@/components/ui/button"
 import { FacebookLink } from "@/components/ui/button"
 import { LinkedInLink } from "@/components/ui/button"
 
-import gearFooterIcon from "@/assets/images/ui/gear_icon_footer.svg"
+import gearFooterIcon from "@/assets/images/ui/GearHireLogo-02.svg"
 
 export default function Footer() {
   return (
@@ -23,9 +23,8 @@ export default function Footer() {
               <img
                 src={gearFooterIcon}
                 alt="Gear Footer Icon"
-                className="mt-1 h-6 w-6"
+                className="mt-1 h-20"
               />
-              FilmGearHub
             </Link>
             <span className="pr-0 text-base text-gray-400 2xl:pr-[120px]">
               Connecting filmmakers with equipment merchants worldwide.

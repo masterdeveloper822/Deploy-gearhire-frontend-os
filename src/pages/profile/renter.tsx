@@ -1,5 +1,5 @@
 import React from "react"
-import { RenterHeader } from "@/components/layout/header/renter-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { CommonFooter } from "@/components/layout/footer/common"
 
 import woman3 from "@/assets/images/avatars/woman3.png"
@@ -49,7 +49,7 @@ const imgFrame13 =
 const RenterProfile: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
-      <RenterHeader />
+      <AuthHeader />
       <main className="mx-auto flex flex-col lg:flex-row max-w-6xl items-start gap-4 lg:gap-8 px-2 sm:px-4 py-6 sm:py-8">
         {/* Sidebar */}
         <aside className="flex w-full lg:w-80 flex-col items-center self-start rounded-lg bg-white p-4 sm:p-6 shadow mb-6 lg:mb-0">

@@ -1,6 +1,6 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
-import { MerchantHeader } from "@/components/layout/header/merchant-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { CommonFooter } from "@/components/layout/footer/common"
 import {
   Select,
@@ -55,7 +55,7 @@ const Notification: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <MerchantHeader />
+      <AuthHeader />
 
       <main className="mx-auto mb-12 max-w-7xl px-4 py-8">
         <div className="mx-auto max-w-4xl">

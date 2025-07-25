@@ -1,4 +1,4 @@
-import { MerchantHeader } from "@/components/layout/header/merchant-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { Button } from "@/components/ui/button"
 
 import tc1 from "@/assets/images/training-course/tc1.png"
@@ -51,7 +51,7 @@ const courses = [
 const TrainingCourseList = () => {
   return (
     <div className="flex min-h-screen flex-col bg-gray-50">
-      <MerchantHeader />
+      <AuthHeader />
       <main className="flex w-full flex-col items-center px-4 pb-8 pt-6">
         <div className="mb-8 flex w-full max-w-6xl flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>

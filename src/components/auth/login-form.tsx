@@ -7,6 +7,7 @@ import { Eye, EyeOff } from "lucide-react"
 import { AuthInput } from "@/components/auth/auth-input"
 import { SubmitButton } from "@/components/auth/submit-button"
 import { useToast } from "@/hooks/use-toast"
+import { useUser } from "@/context/user-context"
 
 const loginSchema = z.object({
   email: z
@@ -32,6 +33,7 @@ const LogInForm: React.FC = () => {
     resolver: zodResolver(loginSchema),
     mode: "onChange",
   })
+  const { setUser } = useUser();
 
   const onSubmit = async (data: LoginSchema) => {
     setIsLoading(true);
@@ -47,11 +49,13 @@ const LogInForm: React.FC = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.detail || errorData.message || "Login failed");
+        console.log("errorData", errorData);
+        throw new Error(errorData.email || errorData.password || "Login failed");
       }
 
       const result = await response.json();
       console.log("result", result);
+      localStorage.setItem("user", JSON.stringify(result));
 
       if (!result.is_verified) {
         toast({
@@ -63,7 +67,7 @@ const LogInForm: React.FC = () => {
         return;
       }
 
-      // Store tokens in localStorage
+      setUser(result);
       localStorage.setItem("accessToken", result.access);
       localStorage.setItem("refreshToken", result.refresh);
 

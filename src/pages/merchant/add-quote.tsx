@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react"
-import { MerchantHeader } from "@/components/layout/header/merchant-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { BackArrowIcon, CloudUploadIcon } from "@/components/ui/icon"
@@ -75,7 +75,7 @@ export default function AddQuote() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <MerchantHeader />
+      <AuthHeader />
       {/* Main Content */}
       <main className="flex w-full flex-col items-center px-4 py-4 sm:py-8">
         <div className="w-full max-w-[1248px] px-2 sm:px-0">

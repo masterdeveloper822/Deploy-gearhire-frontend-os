@@ -1,6 +1,6 @@
 import React from "react"
 import { CommonFooter } from "@/components/layout/footer/common"
-import { RenterHeader } from "@/components/layout/header/renter-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { Card } from "@/components/ui/card"
 import { Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -21,7 +21,7 @@ const MerchantProfile: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <RenterHeader />
+      <AuthHeader />
       <main className="mx-auto mb-12 flex max-w-6xl flex-col gap-6 px-4 py-8 md:px-6 lg:px-8">
         <div>
           <Card className="flex flex-col items-center justify-between gap-6 p-6 md:flex-row md:gap-8 md:p-8">

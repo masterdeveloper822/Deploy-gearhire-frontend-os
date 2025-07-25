@@ -1,5 +1,5 @@
 import React from "react"
-import { MerchantHeader } from "@/components/layout/header/merchant-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { CommonFooter } from "@/components/layout/footer/common"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -14,7 +14,7 @@ import { faDownload, faFileLines, faFilePdf, faPaperclip, faPaperPlane, faSearch
 const MerchantMessage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
-      <MerchantHeader />
+      <AuthHeader />
       <main className="mx-auto mb-12 max-w-[1440px] px-2 py-4 sm:px-4 sm:py-8">
         <div className="flex min-h-[600px] flex-col overflow-hidden rounded-lg bg-white shadow sm:flex-row">
           {/* Sidebar */}

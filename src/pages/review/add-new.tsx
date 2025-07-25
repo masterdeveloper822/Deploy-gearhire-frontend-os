@@ -1,5 +1,5 @@
 import React from "react"
-import { RenterHeader } from "@/components/layout/header/renter-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { CommonFooter } from "@/components/layout/footer/common"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -27,7 +27,7 @@ const imgFrame5 =
 const AddNewReview = () => {
   return (
     <div className="min-h-screen bg-gray-50">
-      <RenterHeader />
+      <AuthHeader />
       <main className="mx-auto max-w-2xl px-2 sm:px-4 py-6 sm:py-8">
         <h1 className="mb-3 text-2xl sm:text-3xl font-bold text-gray-800">
           Leave a Review

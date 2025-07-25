@@ -1,4 +1,4 @@
-import { MerchantHeader } from "@/components/layout/header/merchant-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { BackArrowIcon } from "@/components/ui/icon"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -51,7 +51,7 @@ const Review: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <MerchantHeader />
+      <AuthHeader />
 
       <main className="flex min-h-[calc(100vh-64px)] items-center justify-center px-4 pb-20 pt-8 sm:px-6 lg:px-8">
         <div className="w-full max-w-4xl px-4">

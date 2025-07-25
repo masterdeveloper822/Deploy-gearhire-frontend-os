@@ -1,5 +1,5 @@
 import { CommonFooter } from "@/components/layout/footer/common"
-import { RenterHeader } from "@/components/layout/header/renter-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Plus } from "lucide-react"
@@ -19,7 +19,7 @@ const RfqList = () => {
   const navigate = useNavigate()
   return (
     <div className="min-h-screen bg-gray-50">
-      <RenterHeader />
+      <AuthHeader />
 
       <main className="mx-auto mb-12 max-w-[1440px] px-2 py-4 sm:px-4 sm:py-8">
         <div className="mx-auto max-w-[1152px]">

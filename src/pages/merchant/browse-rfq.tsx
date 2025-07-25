@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react"
-import { MerchantHeader } from "@/components/layout/header/merchant-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { RFQSidebar } from "@/components/rfq-sidebar/sidebar"
 
 import { RespondIcon, RFQSaveIcon } from "@/components/ui/icon"
@@ -90,7 +90,7 @@ export default function BrowseRFQ() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <MerchantHeader />
+      <AuthHeader />
       <div className="mx-auto flex max-w-[1440px] flex-col px-2 sm:px-4">
         {/* Main Content */}
         <main className="flex-1 p-4 sm:p-8">

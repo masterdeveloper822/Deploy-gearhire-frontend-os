@@ -1,5 +1,4 @@
 import React from "react"
-import { RenterHeader } from "@/components/layout/header/renter-header"
 import { CommonFooter } from "@/components/layout/footer/common"
 import { Button } from "@/components/ui/button"
 import { Link } from "react-router-dom"
@@ -13,6 +12,7 @@ import man3 from "@/assets/images/avatars/man3.png"
 import man4 from "@/assets/images/avatars/man4.png"
 import man5 from "@/assets/images/avatars/man5.png"
 import woman2 from "@/assets/images/avatars/woman2.png"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 
 const updatesData = [
   {
@@ -53,7 +53,7 @@ const updatesData = [
 export const RenterDashboard = () => {
   return (
     <div className="min-h-screen bg-gray-50">
-      <RenterHeader />
+      <AuthHeader />
       <main className="mx-auto mb-12 max-w-[1440px] px-2 py-4 sm:px-4 sm:py-8">
         <div className="mx-auto max-w-[1152px]">
           {/* Header Section */}

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react"
-import { RenterHeader } from "@/components/layout/header/renter-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { CommonFooter } from "@/components/layout/footer/common"
 import { EllipsisVertical } from "lucide-react"
 
@@ -69,7 +69,7 @@ const RenterMessage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <RenterHeader />
+      <AuthHeader />
       {/* Main Content */}
       <main className="mx-auto mb-12 max-w-[1440px] px-2 py-2 sm:px-4">
         {/* Title and subtitle */}

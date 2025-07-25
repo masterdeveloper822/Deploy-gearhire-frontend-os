@@ -1,5 +1,5 @@
 import React from "react"
-import { MerchantHeader } from "@/components/layout/header/merchant-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { Link, useNavigate } from "react-router-dom"
 import { BackArrowIcon } from "@/components/ui/icon"
 import { Card } from "@/components/ui/card"
@@ -62,7 +62,7 @@ const RFQDetails: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <MerchantHeader />
+      <AuthHeader />
       <main className="flex min-h-[calc(100vh-64px)] items-center justify-center px-2 py-4 sm:px-4 sm:py-8">
         <div className="w-full max-w-full sm:max-w-[1300px]">
           <div className="mb-2 flex flex-wrap items-center gap-2 sm:gap-4">

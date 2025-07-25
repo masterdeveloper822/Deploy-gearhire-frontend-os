@@ -1,5 +1,5 @@
 import { CommonFooter } from "@/components/layout/footer/common"
-import { RenterHeader } from "@/components/layout/header/renter-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { BackArrowIcon } from "@/components/ui/icon"
 import {
   Select,
@@ -83,7 +83,7 @@ const EditRfq = () => {
   const fileInputRef = React.useRef<HTMLInputElement>(null)
   return (
     <div className="relative min-h-screen bg-gray-50">
-      <RenterHeader />
+      <AuthHeader />
       {/* Main Content */}
       <main className="mx-auto w-full max-w-[896px] px-2 py-4 sm:px-4 sm:py-8">
         {/* Title and Note */}

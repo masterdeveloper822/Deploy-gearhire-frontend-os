@@ -1,6 +1,6 @@
 import React from "react"
 import { Filter } from "lucide-react"
-import { RenterHeader } from "@/components/layout/header/renter-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { CommonFooter } from "@/components/layout/footer/common"
 import {
   Select,
@@ -170,7 +170,7 @@ const BrowseTrainingCourse = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <RenterHeader />
+      <AuthHeader />
       {/* Main Content */}
       <main className="mx-auto mb-12 w-full max-w-[1280px] px-4 py-6 sm:px-6 lg:px-8">
         <div className="mb-8">

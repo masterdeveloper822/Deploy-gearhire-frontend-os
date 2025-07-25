@@ -1,5 +1,5 @@
 import { CommonFooter } from "@/components/layout/footer/common"
-import { MerchantHeader } from "@/components/layout/header/merchant-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { BackArrowIcon } from "@/components/ui/icon"
@@ -54,7 +54,7 @@ export default function SubscriptionPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <MerchantHeader />
+      <AuthHeader />
 
       <main className="relative flex min-h-[calc(100vh-64px)] items-center justify-center px-4 pb-20 pt-8 sm:px-6 lg:px-8">
         <div className="w-full max-w-4xl px-4">

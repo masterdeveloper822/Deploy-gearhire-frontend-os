@@ -4,13 +4,13 @@ import { Typography } from "@/components/ui/typography"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { RecentActivityCard } from "@/components/ui/card"
-import { MerchantHeader } from "@/components/layout/header/merchant-header"
 import { Link, useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBoxesStacked, faClipboardList, faComment, faGraduationCap, faHeart, faStar } from "@fortawesome/free-solid-svg-icons"
 import woman1 from "@/assets/images/avatars/woman1.png"
 import man3 from "@/assets/images/avatars/man3.png"
 import woman2 from "@/assets/images/avatars/woman2.png"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 
 const imgFrame6 =
   "http://localhost:3845/assets/04a1414121a05ee827326ca429ad2c8b4e359e3f.svg"
@@ -30,7 +30,7 @@ const MerchantDashboard: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <MerchantHeader />
+      <AuthHeader />
 
       {/* Main Content */}
       <main className="mx-auto max-w-[1280px] px-4 py-8">

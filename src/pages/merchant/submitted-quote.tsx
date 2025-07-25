@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { MerchantHeader } from "@/components/layout/header/merchant-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Typography } from "@/components/ui/typography"
@@ -46,7 +46,7 @@ const SubmittedQuotesPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <MerchantHeader />
+      <AuthHeader />
       <main className="mx-auto max-w-[1440px] px-4 py-8">
         {/* Page Title */}
         <div className="mx-auto max-w-[1280px]">

@@ -1,6 +1,6 @@
 import React from "react"
 import { CommonFooter } from "@/components/layout/footer/common"
-import { RenterHeader } from "@/components/layout/header/renter-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { Card } from "@/components/ui/card"
 import {
   Select,
@@ -22,7 +22,7 @@ import woman1 from "@/assets/images/avatars/woman1.png"
 const Notification = () => {
   return (
     <div className="relative min-h-screen w-full bg-gray-50">
-      <RenterHeader />
+      <AuthHeader />
       {/* Main Content */}
       <div className="mx-auto mb-10 max-w-4xl px-4 py-8">
         {/* Title and filter */}

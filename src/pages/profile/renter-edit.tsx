@@ -1,5 +1,5 @@
 import { CommonFooter } from "@/components/layout/footer/common"
-import { RenterHeader } from "@/components/layout/header/renter-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { faCamera, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React from "react"
@@ -33,7 +33,7 @@ const imgFrame8 =
 const EditRenterProfile: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
-      <RenterHeader />
+      <AuthHeader />
       <main className="mx-auto max-w-2xl px-2 sm:px-4 py-6 sm:py-8">
         <h1 className="mb-3 text-2xl sm:text-3xl font-bold text-gray-800">
           Edit Your Profile

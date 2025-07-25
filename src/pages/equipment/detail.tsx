@@ -1,5 +1,5 @@
 import React from "react"
-import { RenterHeader } from "@/components/layout/header/renter-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { CommonFooter } from "@/components/layout/footer/common"
 import { BackArrowIcon, DottedQuestionIcon } from "@/components/ui/icon"
 import { useNavigate } from "react-router-dom"
@@ -63,7 +63,7 @@ const EquipmentDetail: React.FC = () => {
   const navigate = useNavigate()
   return (
     <div className="min-h-screen bg-gray-50">
-      <RenterHeader />
+      <AuthHeader />
       <main className="mx-auto max-w-7xl px-4 py-8">
         {/* Back Button at the very top */}
         <div>
