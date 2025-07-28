@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 
 import { Card, CardContent, CardIcon } from "@/components/ui/card"
 import { Typography } from "@/components/ui/typography"

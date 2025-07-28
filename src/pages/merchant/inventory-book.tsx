@@ -25,7 +25,7 @@ import editItemIcon from "@/assets/images/ui/icons/item_edit.svg"
 import deleteItemIcon from "@/assets/images/ui/icons/item_delete.svg"
 import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faEye } from "@fortawesome/free-solid-svg-icons"
+import { faAngleLeft, faAngleRight, faEye } from "@fortawesome/free-solid-svg-icons"
 
 import gear1 from "@/assets/images/gear/gear1.png"
 import gear2 from "@/assets/images/gear/gear2.png"
@@ -254,7 +254,7 @@ const MerchantInventoryBook: React.FC = () => {
         {/* Pagination */}
         <div className="mt-8 flex items-center justify-center gap-2">
           <button className="flex h-8 w-8 items-center justify-center rounded text-gray-500 hover:bg-gray-100">
-            &lt;
+            <FontAwesomeIcon icon={faAngleLeft} />
           </button>
           <button className="flex h-8 w-8 items-center justify-center rounded bg-sky-600 font-semibold text-white">
             1
@@ -266,7 +266,7 @@ const MerchantInventoryBook: React.FC = () => {
             3
           </button>
           <button className="flex h-8 w-8 items-center justify-center rounded text-gray-500 hover:bg-gray-100">
-            &gt;
+            <FontAwesomeIcon icon={faAngleRight} />
           </button>
         </div>
       </main>
