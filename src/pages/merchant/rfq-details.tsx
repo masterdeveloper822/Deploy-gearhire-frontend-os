@@ -1,5 +1,5 @@
 import React from "react"
-import { MerchantHeader } from "@/components/layout/header/merchant-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { Link, useNavigate } from "react-router-dom"
 import { BackArrowIcon } from "@/components/ui/icon"
 import { Card } from "@/components/ui/card"
@@ -10,33 +10,10 @@ import {
   AttachedFile,
 } from "@/components/rfq-detail/request-detail"
 
-// Figma image assets
-const imgImg1 =
-  "http://localhost:3845/assets/f578f9c2a181ef669150341163e63e6e9da01878.png"
-const imgFrame4 =
-  "http://localhost:3845/assets/1a64978febaad0f1b785c7e0ae8a7fab1223df37.svg"
-const imgFrame5 =
-  "http://localhost:3845/assets/80a1927320533aa24082f7cd3030f31c70bcc8c6.svg"
-const imgFrame6 =
-  "http://localhost:3845/assets/84a21b5522e90764105b42d00080ffd918b13743.svg"
-const imgFrame7 =
-  "http://localhost:3845/assets/5bae80b73ddaa48065d9895f5449eda33c84bf92.svg"
-const imgFrame8 =
-  "http://localhost:3845/assets/3e37af258052bda7f0fa4f26b86313a9420fb018.svg"
-const imgFrame9 =
-  "http://localhost:3845/assets/70b0413e7b2ddfae6a4410971d41808652cbc9e1.svg"
-const imgFrame10 =
-  "http://localhost:3845/assets/9421ac7b9341d210b910662c4fe7d9f28bf56477.svg"
-const imgFrame11 =
-  "http://localhost:3845/assets/cba9e88b03c5870708570303c8083d008fc40dec.svg"
-const imgFrame12 =
-  "http://localhost:3845/assets/eb6cba590cab38215da137ee00caa9eae1e3e6b4.svg"
-const imgFrame13 =
-  "http://localhost:3845/assets/393b2c64082c1298f54496bda3e1b323df69b7a4.svg"
-const imgFrame14 =
-  "http://localhost:3845/assets/c407408351cd5e908095876a7fc9f60c7cf46f2c.svg"
-const imgFrame15 =
-  "http://localhost:3845/assets/c52f7aeeefb472b09e2554420fc7263bb419498d.svg"
+import woman3 from "@/assets/images/avatars/woman3.png"
+import { faDownload, faFileImage, faFilePdf, faFlag, faPaperPlane } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faBookmark } from "@fortawesome/free-regular-svg-icons"
 
 const RFQDetails: React.FC = () => {
   const navigate = useNavigate()
@@ -51,20 +28,21 @@ const RFQDetails: React.FC = () => {
     {
       name: "Equipment_Requirements.pdf",
       size: "2.4 MB",
-      icon: imgFrame10,
-      downloadIcon: imgFrame11,
+      icon: <FontAwesomeIcon icon={faFilePdf}  className="text-whity-red mr-3 h-4 w-4"  />,
+      downloadIcon: <FontAwesomeIcon icon={faDownload} className="text-tertiary h-4 w-4"/>,
     },
     {
       name: "Reference_Setup.jpg",
       size: "1.8 MB",
-      icon: imgFrame12,
-      downloadIcon: imgFrame11,
+      icon: <FontAwesomeIcon icon={faFileImage}  className="text-tertiary mr-3 h-4 w-4" />,
+      downloadIcon: <FontAwesomeIcon icon={faDownload} className="text-tertiary h-4 w-4"/>,
+
     },
   ]
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <MerchantHeader />
+      <AuthHeader />
       <main className="flex min-h-[calc(100vh-64px)] items-center justify-center px-2 py-4 sm:px-4 sm:py-8">
         <div className="w-full max-w-full sm:max-w-[1300px]">
           <div className="mb-2 flex flex-wrap items-center gap-2 sm:gap-4">
@@ -85,23 +63,17 @@ const RFQDetails: React.FC = () => {
               <BasicInfo
                 title="Cinema Camera Package for Feature Film"
                 status="Open"
-                statusIcon={imgFrame4}
                 isPublic={true}
-                publicIcon={imgFrame5}
                 postedDate="Posted Jan 8, 2025"
-                postedIcon={imgFrame6}
                 expiresDate="Expires Jan 10, 2025"
-                expiresIcon={imgFrame7}
-                publisherAvatar={imgImg1}
+                publisherAvatar={woman3}
                 publisherName="Sarah Chen"
                 publisherRole="Independent Producer"
               />
               <RequestDetail
                 categories={categories}
                 location={location}
-                locationIcon={imgFrame8}
                 rentalDates={rentalDates}
-                rentalDatesIcon={imgFrame9}
                 description={description}
                 attachedFiles={attachedFiles}
               />
@@ -120,20 +92,20 @@ const RFQDetails: React.FC = () => {
                       navigate("/add-quote")
                     }}
                   >
-                    <img
-                      src={imgFrame13}
+                    <FontAwesomeIcon
+                      icon={faPaperPlane}
                       alt="Submit Quote"
                       className="h-4 w-4"
                     />
                     Submit Quote
                   </Button>
                   <button className="mb-3 flex w-full items-center justify-center gap-2 rounded-lg bg-gray-100 py-3 font-medium text-gray-700">
-                    <img src={imgFrame14} alt="Save RFQ" className="h-4 w-4" />
+                    <FontAwesomeIcon icon={faBookmark} alt="Save RFQ" className="h-4 w-4" />
                     Save RFQ
                   </button>
                   <button className="flex w-full items-center justify-center gap-2 rounded-lg bg-red-50 py-3 font-medium text-red-600">
-                    <img
-                      src={imgFrame15}
+                    <FontAwesomeIcon
+                      icon={faFlag}
                       alt="Report RFQ"
                       className="h-4 w-4"
                     />

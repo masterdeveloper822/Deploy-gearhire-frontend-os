@@ -1,5 +1,5 @@
 import { CommonFooter } from "@/components/layout/footer/common"
-import { RenterHeader } from "@/components/layout/header/renter-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { BackArrowIcon } from "@/components/ui/icon"
 import {
   Select,
@@ -8,7 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { faCloudArrowUp } from "@fortawesome/free-solid-svg-icons"
+import { faCloudArrowUp, faFileImage, faFileLines, faFilePdf, faFloppyDisk, faGear, faInfoCircle, faLocationDot, faPaperclip, faTrash, faVideo } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React from "react"
 import { useNavigate } from "react-router-dom"
@@ -21,47 +21,6 @@ import {
 import { Button } from "@/components/ui/button"
 import { Calendar as CalendarIcon } from "lucide-react"
 import { format } from "date-fns"
-import { Typography } from "@/components/ui/typography"
-
-// Image and SVG asset URLs from Figma export
-const imgImg =
-  "http://localhost:3845/assets/f578f9c2a181ef669150341163e63e6e9da01878.png"
-const imgFrame =
-  "http://localhost:3845/assets/ed4e1169b638e2e838350960320b53c878e45615.svg"
-const imgFrame1 =
-  "http://localhost:3845/assets/9861a0b6e8bb9b630982f192343e0944f05f6199.svg"
-const imgFrame2 =
-  "http://localhost:3845/assets/1efdeed862e90b5b080da5ccaa63bb5c3a6cf0bc.svg"
-const imgFrame3 =
-  "http://localhost:3845/assets/97be41678977bd78c837da782e70fb9a468cf77a.svg"
-const imgFrame4 =
-  "http://localhost:3845/assets/77a813c36a890de9f20510714d9fa43383f196a2.svg"
-const imgFrame5 =
-  "http://localhost:3845/assets/268af550e6b73fb848646cc032f043d7b305fd5a.svg"
-const imgFrame6 =
-  "http://localhost:3845/assets/f1ea8fc8b4f702114fa9eca74d6a4134c117f1c0.svg"
-const imgFrame7 =
-  "http://localhost:3845/assets/14bb3f29ea205e726313fb14b430d85d23064db9.svg"
-const imgFrame8 =
-  "http://localhost:3845/assets/bab2b2b45b0479a7fb33c7d9aee5f00ba59ec1e5.svg"
-const imgFrame9 =
-  "http://localhost:3845/assets/891dec6e8268492399d657c9dfe1e20caf9c3507.svg"
-const imgFrame10 =
-  "http://localhost:3845/assets/56622b71fb3795a6424c358eb5ac463fcefbe217.svg"
-const imgFrame11 =
-  "http://localhost:3845/assets/9421ac7b9341d210b910662c4fe7d9f28bf56477.svg"
-const imgFrame12 =
-  "http://localhost:3845/assets/0c635fa71a5b7ef77bef381a1d4f6c035d587f66.svg"
-const imgFrame13 =
-  "http://localhost:3845/assets/eb6cba590cab38215da137ee00caa9eae1e3e6b4.svg"
-const imgFrame14 =
-  "http://localhost:3845/assets/04d098c094ebbc24fc3adc3f388e17e24437be7d.svg"
-const imgFrame15 =
-  "http://localhost:3845/assets/237036d88812ae3ad3eb50443b640b748eb276e0.svg"
-const imgFrame16 =
-  "http://localhost:3845/assets/3fb4b81e046289a29f1daa8f4528d66d37ad2c91.svg"
-const imgFrame17 =
-  "http://localhost:3845/assets/60e2e0178ba9af28a95777979db6cbddaebda36c.svg"
 
 const EditRfq = () => {
   const [status, setStatus] = React.useState("Open")
@@ -83,7 +42,7 @@ const EditRfq = () => {
   const fileInputRef = React.useRef<HTMLInputElement>(null)
   return (
     <div className="relative min-h-screen bg-gray-50">
-      <RenterHeader />
+      <AuthHeader />
       {/* Main Content */}
       <main className="mx-auto w-full max-w-[896px] px-2 py-4 sm:px-4 sm:py-8">
         {/* Title and Note */}
@@ -103,8 +62,8 @@ const EditRfq = () => {
               </p>
             </div>
           </div>
-          <div className="flex flex-col gap-2 rounded-lg border border-blue-200 bg-blue-50 p-4 sm:flex-row sm:items-center">
-            <img src={imgFrame4} alt="info" className="h-4 w-4" />
+          <div className="flex flex-col gap-3 rounded-lg border border-blue-200 bg-blue-50 p-4 sm:flex-row sm:items-center">
+            <FontAwesomeIcon icon={faInfoCircle} alt="info" className="text-blue-700 h-4 w-4" />
             <span className="text-sm text-blue-800">
               <b>Note:</b> Changes to your RFQ will be visible to merchants
               immediately after saving. Only RFQs with "Open" status can be
@@ -117,7 +76,7 @@ const EditRfq = () => {
           {/* Project Information */}
           <section className="rounded-lg bg-white p-4 shadow sm:p-6">
             <div className="mb-4 flex items-center">
-              <img src={imgFrame5} alt="project" className="mr-2 h-4 w-4" />
+              <FontAwesomeIcon icon={faFileLines} alt="project" className="text-tertiary mr-2 h-4 w-4" />
               <h2 className="text-lg font-semibold text-gray-800">
                 Project Information
               </h2>
@@ -148,7 +107,7 @@ const EditRfq = () => {
           {/* Location & Dates */}
           <section className="rounded-lg bg-white p-4 shadow sm:p-6">
             <div className="mb-4 flex items-center">
-              <img src={imgFrame6} alt="location" className="mr-2 h-4 w-4" />
+              <FontAwesomeIcon icon={faLocationDot} alt="location" className="text-tertiary mr-2 h-4 w-4" />
               <h2 className="text-lg font-semibold text-gray-800">
                 Location & Dates
               </h2>
@@ -242,7 +201,7 @@ const EditRfq = () => {
           {/* Equipment Needs */}
           <section className="rounded-lg bg-white p-4 shadow sm:p-6">
             <div className="mb-4 flex items-center">
-              <img src={imgFrame8} alt="equipment" className="mr-2 h-5 w-5" />
+              <FontAwesomeIcon icon={faVideo} alt="equipment" className="text-tertiary mr-2 h-5 w-5" />
               <h2 className="text-lg font-semibold text-gray-800">
                 Equipment Needs
               </h2>
@@ -301,14 +260,35 @@ const EditRfq = () => {
           {/* Attachments */}
           <section className="rounded-lg bg-white p-4 shadow sm:p-6">
             <div className="mb-4 flex items-center">
-              <img
-                src={imgFrame10}
+              <FontAwesomeIcon
+                icon={faPaperclip}
                 alt="attachments"
-                className="mr-2 h-4 w-4"
+                className="text-tertiary mr-2 h-4 w-4"
               />
               <h2 className="text-lg font-semibold text-gray-800">
                 Attachments
               </h2>
+            </div>
+            <div className="mb-4 space-y-2">
+              <div className="flex items-center rounded-lg bg-gray-50 p-3">
+                <FontAwesomeIcon icon={faFilePdf} alt="pdf" className="text-red-500 mr-2 h-4 w-4" />
+                <span className="flex-1 text-sm text-gray-700">
+                  project-details.pdf <span className="ml-2 text-xs text-gray-500">(2.1 MB)</span>
+                </span>
+                <button>
+                  <FontAwesomeIcon icon={faTrash} alt="remove" className="text-red-500 h-3 w-3" />
+                </button>
+              </div>
+              <div className="flex items-center rounded-lg bg-gray-50 p-3">
+                <FontAwesomeIcon icon={faFileImage} alt="jpg" className="text-blue-500 mr-2 h-4 w-3" />
+                <span className="flex-1 text-sm text-gray-700">
+                  location-reference.jpg
+                <span className="ml-2 text-xs text-gray-500">(1.8 MB)</span>
+                </span>
+                <button>
+                  <FontAwesomeIcon icon={faTrash} alt="remove" className="text-red-500 h-3 w-3" />
+                </button>
+              </div>
             </div>
             <div className="mt-4 flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 py-8">
               <FontAwesomeIcon
@@ -354,7 +334,7 @@ const EditRfq = () => {
           {/* RFQ Settings */}
           <section className="rounded-lg bg-white p-4 shadow sm:p-6">
             <div className="mb-4 flex items-center">
-              <img src={imgFrame15} alt="settings" className="mr-2 h-4 w-4" />
+              <FontAwesomeIcon icon={faGear} alt="settings" className="text-tertiary mr-2 h-4 w-4" />
               <h2 className="text-lg font-semibold text-gray-800">
                 RFQ Settings
               </h2>
@@ -486,7 +466,7 @@ const EditRfq = () => {
               type="submit"
               className="flex flex-1 items-center justify-center gap-2 rounded-lg py-3 text-base font-medium"
             >
-              <img src={imgFrame17} alt="save" className="h-4 w-4" /> Save
+              <FontAwesomeIcon icon={faFloppyDisk} alt="save" className="h-4 w-4" /> Save
               Changes
             </Button>
             <Button

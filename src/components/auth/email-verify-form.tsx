@@ -1,101 +1,110 @@
-import React, { useState, useEffect } from "react"
-
-import { VerificationCodeInput } from "@/components/auth/verification-code-input"
-import { VerifyButton } from "@/components/auth/verify-button"
-import { ResendCodeLink } from "@/components/auth/resend-code-link"
-import { BackToSignUp } from "@/components/auth/back-to-signup"
-
-import verifyMessageIcon from "@/assets/images/ui/icons/verifyMessage.svg"
-
-import { useNavigate } from "react-router-dom"
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { VerificationCodeInput } from "@/components/auth/verification-code-input";
+import { VerifyButton } from "@/components/auth/verify-button";
+import { ResendCodeLink } from "@/components/auth/resend-code-link";
+import { BackToSignUp } from "@/components/auth/back-to-signup";
+import verifyMessageIcon from "@/assets/images/ui/icons/verifyMessage.svg";
 import { useToast } from "@/hooks/use-toast"
+import { API_ENDPOINTS } from "@/lib/api";
 
 export default function EmailVerifyForm() {
-  const navigate = useNavigate()
-  const { toast } = useToast()
+  const navigate = useNavigate();
+  const { toast } = useToast();
+  const location = useLocation();
+  const email = location.state?.email || ""; // Get email from navigation state
 
-  // For demo, static email. In real use, get from props/context.
-  const email = "john.doe@example.com"
+  const [verificationCode, setVerificationCode] = useState<string[]>(["", "", "", "", "", ""]);
+  const [isVerifying, setIsVerifying] = useState(false);
+  const [isResending, setIsResending] = useState(false);
+  const [resendCountdown, setResendCountdown] = useState(0);
 
-  // State for verification code
-  const [verificationCode, setVerificationCode] = useState<string[]>([
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-  ])
-  const [isVerifying, setIsVerifying] = useState(false)
-  const [isResending, setIsResending] = useState(false)
-  const [resendCountdown, setResendCountdown] = useState(0)
-
-  // Resend countdown timer
   useEffect(() => {
     if (resendCountdown > 0) {
-      const timer = setTimeout(
-        () => setResendCountdown(resendCountdown - 1),
-        1000,
-      )
-      return () => clearTimeout(timer)
+      const timer = setTimeout(() => setResendCountdown(resendCountdown - 1), 1000);
+      return () => clearTimeout(timer);
     }
-  }, [resendCountdown])
+  }, [resendCountdown]);
 
-  // Check if code is complete
-  const isCodeComplete = verificationCode.every((digit) => digit !== "")
+  const isCodeComplete = verificationCode.every((digit) => digit !== "");
 
   // Verify email
-  const handleVerify = () => {
-    if (!isCodeComplete) return
+  const handleVerify = async () => {
+    if (!isCodeComplete) return;
+    setIsVerifying(true);
+    const code = verificationCode.join("");
 
-    setIsVerifying(true)
-    const code = verificationCode.join("")
+    try {
+              const response = await fetch(API_ENDPOINTS.USER_VERIFY_EMAIL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, code }),
+      });
 
-    // TODO: Replace with actual API call
-    // const response = await verifyEmailAPI(email, code);
-
-    // Simulate API call
-    setTimeout(() => {
-      // For demo purposes, accept any 6-digit code
-      if (code.length === 6 && /^\d{6}$/.test(code)) {
-        // Navigate to success page or dashboard
-        setTimeout(() => {
-          navigate("/merchant-next-step")
-        }, 1500)
-      } else {
-        toast({
-          title: "Verification Failed",
-          description: "Invalid verification code. Please try again.",
-          variant: "destructive",
-        })
-        // Clear the code on error
-        setVerificationCode(["", "", "", "", "", ""])
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Verification failed");
       }
-      setIsVerifying(false)
-    }, 2000)
-  }
+
+      const result = await response.json();
+      console.log("result", result);
+      
+      setTimeout(() => {
+        if (result && result.role === "merchant") {
+          navigate("/merchant-next-step");
+        } else {
+          toast({
+            title: "Email Verified!",
+            description: "Your email has been successfully verified.",
+          });
+          navigate("/login");
+        }
+      }, 1000);
+    } catch (error: any) {
+      toast({
+        title: "Verification Failed",
+        description: error.message || "Invalid verification code. Please try again.",
+        variant: "destructive",
+      });
+      setVerificationCode(["", "", "", "", "", ""]);
+    } finally {
+      setIsVerifying(false);
+    }
+  };
 
   // Resend code
-  const handleResendCode = () => {
-    if (resendCountdown > 0) return
+  const handleResendCode = async () => {
+    if (resendCountdown > 0) return;
+    setIsResending(true);
 
-    setIsResending(true)
+    try {
+      const response = await fetch(API_ENDPOINTS.USER_RESEND_VERIFICATION, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
 
-    // TODO: Replace with actual API call
-    // await resendVerificationCodeAPI(email);
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Failed to resend code");
+      }
 
-    // Simulate API call
-    setTimeout(() => {
       toast({
         title: "Code Resent",
         description: "A new verification code has been sent to your email.",
-      })
-
-      // Start countdown (30 seconds)
-      setResendCountdown(30)
-      setIsResending(false)
-    }, 1000)
-  }
+      });
+      setResendCountdown(30);
+    } catch (error: any) {
+      console.log("error: ", error);
+      toast({
+        title: "Error",
+        description: error.message || "Failed to resend code.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsResending(false);
+    }
+  };
 
   return (
     <div className="flex w-full items-center justify-center bg-transparent px-2 py-20 sm:px-0 sm:py-12 lg:py-16">
@@ -103,11 +112,7 @@ export default function EmailVerifyForm() {
         {/* Icon and Headings */}
         <div className="mb-8 flex w-full flex-col items-center">
           <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-sky-100">
-            <img
-              src={verifyMessageIcon}
-              alt="Verify Email"
-              className="h-[24px] w-[30px]"
-            />
+            <img src={verifyMessageIcon} alt="Verify Email" className="h-[24px] w-[30px]" />
           </div>
           <h1 className="mb-4 text-center text-2xl font-bold text-gray-800 sm:text-3xl md:text-4xl">
             Verify Your Email
@@ -133,6 +138,7 @@ export default function EmailVerifyForm() {
               value={verificationCode}
               onChange={setVerificationCode}
               autoFocus
+              onEnter={handleVerify}
             />
           </div>
 
@@ -160,5 +166,5 @@ export default function EmailVerifyForm() {
         </div>
       </div>
     </div>
-  )
+  );
 }

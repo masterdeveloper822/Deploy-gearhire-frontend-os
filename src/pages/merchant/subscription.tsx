@@ -1,41 +1,12 @@
 import { CommonFooter } from "@/components/layout/footer/common"
-import { MerchantHeader } from "@/components/layout/header/merchant-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { BackArrowIcon } from "@/components/ui/icon"
+import { faBox, faCircleCheck, faComments, faCreditCard, faEnvelope, faHeadset, faMagnifyingGlass, faPaperPlane, faStar } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React from "react"
 import { useNavigate } from "react-router-dom"
-
-const imgImg =
-  "http://localhost:3845/assets/410c340aa057242400c608368f918307cdd72438.png"
-const imgFrame =
-  "http://localhost:3845/assets/ed4e1169b638e2e838350960320b53c878e45615.svg"
-const imgFrame1 =
-  "http://localhost:3845/assets/e23f57a2af62e42bd83fb2f8760ed0b74b1af3c6.svg"
-const imgFrame2 =
-  "http://localhost:3845/assets/1efdeed862e90b5b080da5ccaa63bb5c3a6cf0bc.svg"
-const imgFrame3 =
-  "http://localhost:3845/assets/aa466758cde76b5a218860ec71500af7d0ad95a6.svg"
-const imgFrame4 =
-  "http://localhost:3845/assets/2d688070c2fd022540bbeb927ab784f0542e6729.svg"
-const imgFrame5 =
-  "http://localhost:3845/assets/0c9f3fcee0e1cfe4184cef46aa6bcf3c06f6c01d.svg"
-const imgFrame6 =
-  "http://localhost:3845/assets/0d076c4e2c5a842d430270e18afc741698e41d5f.svg"
-const imgFrame7 =
-  "http://localhost:3845/assets/a9dca2051de545753b56731c0720b013a1dcfb37.svg"
-const imgFrame8 =
-  "http://localhost:3845/assets/78f156a0197cf995c670135b37774d978d44de42.svg"
-const imgFrame9 =
-  "http://localhost:3845/assets/e378b5fd539b5c16f7529a34c6bf776ca1b6aa3a.svg"
-const imgFrame10 =
-  "http://localhost:3845/assets/346b399cc20bd51521c66b98914dde438137fbe8.svg"
-const imgFrame11 =
-  "http://localhost:3845/assets/6e0528ee918f6ebce3d71465fe895b6b2a89e114.svg"
-const imgFrame12 =
-  "http://localhost:3845/assets/4e2e082d3de9515c05514fa14e3c98345c298554.svg"
-const imgFrame13 =
-  "http://localhost:3845/assets/434d55ea193a56467b8b69d6112426656f8ae546.svg"
 
 export default function SubscriptionPage() {
   const navigate = useNavigate()
@@ -52,7 +23,7 @@ export default function SubscriptionPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <MerchantHeader />
+      <AuthHeader />
 
       <main className="relative flex min-h-[calc(100vh-64px)] items-center justify-center px-4 pb-20 pt-8 sm:px-6 lg:px-8">
         <div className="w-full max-w-4xl px-4">
@@ -92,11 +63,11 @@ export default function SubscriptionPage() {
               <div className="space-y-6">
                 {/* Benefit 1 */}
                 <div className="flex items-start space-x-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-sky-100">
-                    <img
+                  <div className="text-tertiary flex h-10 w-10 items-center justify-center rounded-lg bg-sky-100">
+                    <FontAwesomeIcon
                       alt="Search icon"
                       className="h-4 w-4"
-                      src={imgFrame4}
+                      icon={faMagnifyingGlass}
                     />
                   </div>
                   <div className="flex-1">
@@ -113,7 +84,7 @@ export default function SubscriptionPage() {
                 {/* Benefit 2 */}
                 <div className="flex items-start space-x-4">
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-sky-100">
-                    <img alt="RFQ icon" className="h-4 w-4" src={imgFrame5} />
+                    <FontAwesomeIcon alt="RFQ icon" className="text-tertiary h-4 w-4" icon={faPaperPlane} />
                   </div>
                   <div className="flex-1">
                     <h4 className="font-medium text-gray-800">
@@ -128,11 +99,11 @@ export default function SubscriptionPage() {
 
                 {/* Benefit 3 */}
                 <div className="flex items-start space-x-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-sky-100">
-                    <img
+                  <div className="flex text-tertiary h-10 w-10 items-center justify-center rounded-lg bg-sky-100">
+                    <FontAwesomeIcon
                       alt="Message icon"
-                      className="h-4 w-4"
-                      src={imgFrame6}
+                      className="h-4 w-5"
+                      icon={faComments}
                     />
                   </div>
                   <div className="flex-1">
@@ -147,11 +118,11 @@ export default function SubscriptionPage() {
 
                 {/* Benefit 4 */}
                 <div className="flex items-start space-x-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-sky-100">
-                    <img
+                  <div className="text-tertiary flex h-10 w-10 items-center justify-center rounded-lg bg-sky-100">
+                    <FontAwesomeIcon
                       alt="Inventory icon"
                       className="h-4 w-4"
-                      src={imgFrame7}
+                      icon={faBox}
                     />
                   </div>
                   <div className="flex-1">
@@ -168,10 +139,10 @@ export default function SubscriptionPage() {
                 {/* Benefit 5 */}
                 <div className="flex items-start space-x-4">
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-sky-100">
-                    <img
+                    <FontAwesomeIcon
                       alt="Review icon"
-                      className="h-4 w-4"
-                      src={imgFrame8}
+                      className="h-4 w-4 text-tertiary"
+                      icon={faStar}
                     />
                   </div>
                   <div className="flex-1">
@@ -202,11 +173,7 @@ export default function SubscriptionPage() {
               <div className="mt-6">
                 <div className="mb-4 flex justify-center">
                   <span className="inline-flex items-center rounded-full bg-red-100 px-3 py-1 text-sm font-medium text-red-800">
-                    <img
-                      alt="Status icon"
-                      className="mr-2 h-3 w-3"
-                      src={imgFrame9}
-                    />
+                    <span alt="Status icon" className="mr-2 inline-block h-3 w-3 rounded-full bg-red-800"></span>
                     Inactive
                   </span>
                 </div>
@@ -217,10 +184,10 @@ export default function SubscriptionPage() {
                   onClick={handleActivateSubscription}
                 >
                   <div className="flex items-center justify-center space-x-2">
-                    <img
+                    <FontAwesomeIcon
                       alt="Activate icon"
                       className="h-4 w-4"
-                      src={imgFrame10}
+                      icon={faCreditCard}
                     />
                     <span>Activate My Subscription</span>
                   </div>
@@ -240,17 +207,17 @@ export default function SubscriptionPage() {
           <div className="rounded-lg bg-blue-50 p-6">
             <div className="text-center">
               <div className="mb-4 flex justify-center">
-                <img alt="Help icon" className="h-6 w-6" src={imgFrame11} />
-              </div>
-              <h3 className="mb-2 text-lg font-semibold text-gray-800">
+                <FontAwesomeIcon alt="Help icon" className="text-colored-blue h-6 w-6" icon={faHeadset} />
+              <h3 className="ml-3 mb-2 text-lg font-semibold text-gray-800">
                 Need Help?
               </h3>
+              </div>
               <p className="mb-4 text-gray-600">
                 Need help activating your subscription or have questions about
                 merchant features?
               </p>
               <div className="flex items-center justify-center space-x-2 text-sky-600">
-                <img alt="Email icon" className="h-4 w-4" src={imgFrame12} />
+                <FontAwesomeIcon alt="Email icon" className="h-4 w-4" icon={faEnvelope} />
                 <a
                   href="mailto:support@filmgearhub.com"
                   className="font-medium hover:underline"
@@ -269,7 +236,7 @@ export default function SubscriptionPage() {
           }`}
         >
           <div className="flex items-center space-x-3 text-white">
-            <img alt="Success icon" className="h-4 w-4" src={imgFrame13} />
+            <FontAwesomeIcon icon={faCircleCheck} alt="Success icon" className="h-4 w-4" />
             <span className="text-sm font-medium">
               Subscription activated successfully!
             </span>

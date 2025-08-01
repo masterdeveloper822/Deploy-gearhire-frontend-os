@@ -34,7 +34,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Typography } from "@/components/ui/typography"
-import { MerchantHeader } from "@/components/layout/header/merchant-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 
 const categories = [
   "Filmmaking",
@@ -105,7 +105,7 @@ const AddTrainingCourse: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <MerchantHeader />
+      <AuthHeader />
       <main className="mx-auto w-full max-w-2xl px-4 py-8">
         <div>
           <div className="flex w-full items-center pb-8">

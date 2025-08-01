@@ -1,15 +1,10 @@
-import { MerchantHeader } from "@/components/layout/header/merchant-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { Button } from "@/components/ui/button"
 
-// Figma asset URLs for course images
-const courseImg1 =
-  "http://localhost:3845/assets/944dfe497d9f130202fb4173166d1bf98ae0bede.png"
-const courseImg2 =
-  "http://localhost:3845/assets/0f78d139b1b6483a32cb5e42eaeace047d2f8546.png"
-const courseImg3 =
-  "http://localhost:3845/assets/845b75fe9cacb65817ff3b0b2f90f53d3b53033a.png"
+import tc1 from "@/assets/images/training-course/tc1.png"
+import tc2 from "@/assets/images/training-course/tc2.png"
+import tc3 from "@/assets/images/training-course/tc3.png"
 
-// Figma SVGs for status and action icons
 import publicIcon from "@/assets/images/ui/icons/eye-green.svg"
 import privateIcon from "@/assets/images/ui/icons/eye_closed.svg"
 import arrowIcon from "@/assets/images/ui/icons/outLink.svg"
@@ -18,14 +13,15 @@ import toggleIcon from "@/assets/images/ui/icons/item_delete.svg"
 import addIcon from "@/assets/images/ui/icons/add.svg"
 
 import { Switch } from "@/components/ui/switch"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { BackArrowIcon } from "@/components/ui/icon"
 
 const courses = [
   {
     id: 1,
     title: "Advanced Cinematography Masterclass",
     desc: "Learn professional cinematography techniques with hands-on experience using RED cameras and professional lighting equipment.",
-    image: courseImg1,
+    image: tc1,
     status: "Public",
     statusColor: "bg-green-100 text-green-800",
     statusIcon: publicIcon,
@@ -35,7 +31,7 @@ const courses = [
     id: 2,
     title: "Professional Audio Recording Workshop",
     desc: "Master the art of film audio recording with industry-standard equipment and techniques used in major productions.",
-    image: courseImg2,
+    image: tc2,
     status: "Private",
     statusColor: "bg-gray-100 text-gray-800",
     statusIcon: privateIcon,
@@ -45,7 +41,7 @@ const courses = [
     id: 3,
     title: "Film Lighting Fundamentals",
     desc: "Learn essential lighting techniques for film production, from basic setups to advanced cinematic lighting patterns.",
-    image: courseImg3,
+    image: tc3,
     status: "Public",
     statusColor: "bg-green-100 text-green-800",
     statusIcon: publicIcon,
@@ -54,18 +50,28 @@ const courses = [
 ]
 
 const TrainingCourseList = () => {
+  const navigate = useNavigate()
   return (
     <div className="flex min-h-screen flex-col bg-gray-50">
-      <MerchantHeader />
+      <AuthHeader />
       <main className="flex w-full flex-col items-center px-4 pb-8 pt-6">
         <div className="mb-8 flex w-full max-w-6xl flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-800">
-              My Training Courses
-            </h1>
-            <p className="mt-3 text-base text-gray-600">
-              Manage your training courses and workshops
-            </p>
+          <div className="relative">
+            <button
+              className="absolute left-0 top-1/2 -translate-y-1/2 rounded p-2 hover:bg-gray-100"
+              onClick={() => navigate(-1)}
+              aria-label="Back"
+            >
+              <BackArrowIcon />
+            </button>
+            <div className="pl-12">
+              <h1 className="text-3xl font-bold text-gray-800">
+                My Training Courses
+              </h1>
+              <p className="mt-3 text-base text-gray-600">
+                Manage your training courses and workshops
+              </p>
+            </div>
           </div>
           <Link to="/add-training-course">
             <Button variant="tertiary" className="flex h-12 px-8 text-base">

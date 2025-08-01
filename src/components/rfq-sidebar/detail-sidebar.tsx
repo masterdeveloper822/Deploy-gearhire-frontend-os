@@ -1,4 +1,6 @@
 import { Card } from "@/components/ui/card"
+import { faCalendar, faClock, faLocationDot } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React from "react"
 
 interface DetailSidebarProps {
@@ -26,8 +28,6 @@ export const DetailSidebar: React.FC<DetailSidebarProps> = ({
   posterName,
   posterAvatar,
   postedAgo,
-  locationIcon,
-  dateIcon,
   expiryIcon,
 }) => (
   <Card className="w-full rounded-lg p-6 lg:w-[400px]">
@@ -35,15 +35,15 @@ export const DetailSidebar: React.FC<DetailSidebarProps> = ({
     <div className="mb-4 border-l-4 border-sky-400 pl-4">
       <div className="mb-2 text-base font-semibold text-gray-800">{title}</div>
       <div className="mb-1 flex items-center text-sm text-gray-600">
-        <img src={locationIcon} alt="Location" className="mr-2 h-4 w-4" />
+        <FontAwesomeIcon icon={faLocationDot} alt="Date" className="mr-2 h-4 w-4" />
         {location}
       </div>
       <div className="mb-1 flex items-center text-sm text-gray-600">
-        <img src={dateIcon} alt="Date" className="mr-2 h-4 w-4" />
+        <FontAwesomeIcon icon={faCalendar} alt="Date" className="mr-2 h-4 w-4" />
         {dateRange}
       </div>
       <div className="flex items-center text-sm text-gray-600">
-        <img src={expiryIcon} alt="Expires" className="mr-2 h-4 w-4" />
+        <FontAwesomeIcon icon={faClock} alt="Expires" className="mr-2 h-4 w-4" />
         {expiry}
       </div>
     </div>

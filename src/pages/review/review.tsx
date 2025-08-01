@@ -1,50 +1,25 @@
-import { MerchantHeader } from "@/components/layout/header/merchant-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { BackArrowIcon } from "@/components/ui/icon"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import React from "react"
 import { useNavigate } from "react-router-dom"
 import { CommonFooter } from "@/components/layout/footer/common"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCamera, faLightbulb, faStar, faVideo } from "@fortawesome/free-solid-svg-icons"
 
-const imgImg =
-  "http://localhost:3845/assets/410c340aa057242400c608368f918307cdd72438.png"
-const imgImg1 =
-  "http://localhost:3845/assets/f578f9c2a181ef669150341163e63e6e9da01878.png"
-const imgImg2 =
-  "http://localhost:3845/assets/1d5ad8aaf12fd61a75197f707f6ef40c7edd6e1f.png"
-const imgImg3 =
-  "http://localhost:3845/assets/ec901f1c0d6bdc3abb3b7f2578c96a444ee001e2.png"
-const imgImg4 =
-  "http://localhost:3845/assets/bec21fc75386a86210d32bec8ca98fcb2380d21e.png"
-const imgFrame =
-  "http://localhost:3845/assets/ed4e1169b638e2e838350960320b53c878e45615.svg"
-const imgFrame1 =
-  "http://localhost:3845/assets/e23f57a2af62e42bd83fb2f8760ed0b74b1af3c6.svg"
-const imgFrame2 =
-  "http://localhost:3845/assets/1efdeed862e90b5b080da5ccaa63bb5c3a6cf0bc.svg"
-const imgFrame3 =
-  "http://localhost:3845/assets/aa466758cde76b5a218860ec71500af7d0ad95a6.svg"
-const imgFrame4 =
-  "http://localhost:3845/assets/7c555f9781c3a5db5083ae78fe81b469edf8128a.svg"
-const imgFrame5 =
-  "http://localhost:3845/assets/8004c3ad27617893292ad79baaf25f19237fa246.svg"
-const imgFrame6 =
-  "http://localhost:3845/assets/3dcb2d8f63d1a93d17138c2348b67db7144552b4.svg"
-const imgFrame7 =
-  "http://localhost:3845/assets/1a023847114a1c0df704186238df69114c37c84a.svg"
-const imgFrame8 =
-  "http://localhost:3845/assets/7d4fc88f626df962d5e9c7a4103485562a5545ba.svg"
-const imgFrame9 =
-  "http://localhost:3845/assets/505f5a1179fd6b4f986fd8ef200c7a8de0650b5c.svg"
-const imgFrame10 =
-  "http://localhost:3845/assets/abd0335e38703aec074b848d4a45dd37111309ea.svg"
+import man2 from "@/assets/images/avatars/man2.png"
+import man3 from "@/assets/images/avatars/man3.png"
+import woman1 from "@/assets/images/avatars/woman1.png"
+import woman3 from "@/assets/images/avatars/woman3.png"
+
 
 const Review: React.FC = () => {
   const navigate = useNavigate()
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <MerchantHeader />
+      <AuthHeader />
 
       <main className="flex min-h-[calc(100vh-64px)] items-center justify-center px-4 pb-20 pt-8 sm:px-6 lg:px-8">
         <div className="w-full max-w-4xl px-4">
@@ -71,11 +46,11 @@ const Review: React.FC = () => {
                   <span className="text-4xl font-bold text-gray-800">4.6</span>
                   <div className="ml-4 flex">
                     {[1, 2, 3, 4, 5].map((star) => (
-                      <img
+                      <FontAwesomeIcon
                         key={star}
                         alt={`${star} star`}
-                        className="h-5 w-5"
-                        src={star <= 4 ? imgFrame4 : imgFrame5}
+                        className={`h-5 w-5 ${star <= 4 ? "text-yellow-400" : "text-gray-200"}` }
+                        icon={faStar}
                       />
                     ))}
                   </div>
@@ -123,7 +98,7 @@ const Review: React.FC = () => {
               <div className="flex space-x-4">
                 <div
                   className="h-12 w-12 rounded-full bg-cover bg-center bg-no-repeat"
-                  style={{ backgroundImage: `url('${imgImg1}')` }}
+                  style={{ backgroundImage: `url('${woman3}')` }}
                 />
                 <div className="flex-1">
                   <div className="mb-2">
@@ -133,11 +108,11 @@ const Review: React.FC = () => {
                     <div className="flex items-center space-x-2 text-sm text-gray-500">
                       <div className="flex">
                         {[1, 2, 3, 4, 5].map((star) => (
-                          <img
+                          <FontAwesomeIcon
                             key={star}
                             alt={`${star} star`}
-                            className="h-4 w-4"
-                            src={imgFrame6}
+                            className="text-yellow-400 h-4 w-4"
+                            icon={faStar}
                           />
                         ))}
                       </div>
@@ -152,10 +127,10 @@ const Review: React.FC = () => {
                     recommend for any production needs.
                   </p>
                   <div className="flex items-center space-x-2 text-sm text-gray-500">
-                    <img
+                    <FontAwesomeIcon
                       alt="Equipment icon"
                       className="h-4 w-4"
-                      src={imgFrame7}
+                      icon={faVideo}
                     />
                     <span>RED Camera Package</span>
                   </div>
@@ -168,7 +143,7 @@ const Review: React.FC = () => {
               <div className="flex space-x-4">
                 <div
                   className="h-12 w-12 rounded-full bg-cover bg-center bg-no-repeat"
-                  style={{ backgroundImage: `url('${imgImg2}')` }}
+                  style={{ backgroundImage: `url('${man2}')` }}
                 />
                 <div className="flex-1">
                   <div className="mb-2">
@@ -180,11 +155,11 @@ const Review: React.FC = () => {
                     <div className="flex items-center space-x-2 text-sm text-gray-500">
                       <div className="flex">
                         {[1, 2, 3, 4, 5].map((star) => (
-                          <img
+                          <FontAwesomeIcon
                             key={star}
                             alt={`${star} star`}
-                            className="h-4 w-4"
-                            src={star <= 4 ? imgFrame6 : imgFrame8}
+                            className={`h-4 w-4 ${star <= 4 ? "text-yellow-400" : "text-gray-200"}` }
+                            icon={faStar}
                           />
                         ))}
                       </div>
@@ -199,10 +174,10 @@ const Review: React.FC = () => {
                     experience.
                   </p>
                   <div className="flex items-center space-x-2 text-sm text-gray-500">
-                    <img
+                    <FontAwesomeIcon
                       alt="Equipment icon"
                       className="h-4 w-4"
-                      src={imgFrame9}
+                      icon={faLightbulb}
                     />
                     <span>ARRI Lighting Kit</span>
                   </div>
@@ -215,7 +190,7 @@ const Review: React.FC = () => {
               <div className="flex space-x-4">
                 <div
                   className="h-12 w-12 rounded-full bg-cover bg-center bg-no-repeat"
-                  style={{ backgroundImage: `url('${imgImg3}')` }}
+                  style={{ backgroundImage: `url('${woman1}')` }}
                 />
                 <div className="flex-1">
                   <div className="mb-2">
@@ -227,11 +202,11 @@ const Review: React.FC = () => {
                     <div className="flex items-center space-x-2 text-sm text-gray-500">
                       <div className="flex">
                         {[1, 2, 3, 4, 5].map((star) => (
-                          <img
+                          <FontAwesomeIcon
                             key={star}
                             alt={`${star} star`}
-                            className="h-4 w-4"
-                            src={imgFrame6}
+                            className="h-4 w-4 text-yellow-400"
+                            icon={faStar}
                           />
                         ))}
                       </div>
@@ -253,7 +228,7 @@ const Review: React.FC = () => {
               <div className="flex space-x-4">
                 <div
                   className="h-12 w-12 rounded-full bg-cover bg-center bg-no-repeat"
-                  style={{ backgroundImage: `url('${imgImg4}')` }}
+                  style={{ backgroundImage: `url('${man3}')` }}
                 />
                 <div className="flex-1">
                   <div className="mb-2">
@@ -263,11 +238,11 @@ const Review: React.FC = () => {
                     <div className="flex items-center space-x-2 text-sm text-gray-500">
                       <div className="flex">
                         {[1, 2, 3, 4, 5].map((star) => (
-                          <img
+                          <FontAwesomeIcon
                             key={star}
                             alt={`${star} star`}
-                            className="h-4 w-4"
-                            src={star <= 3 ? imgFrame6 : imgFrame8}
+                            className={`h-4 w-4 ${star <= 3 ? "text-yellow-400" : "text-gray-200"}` }
+                            icon={faStar}
                           />
                         ))}
                       </div>
@@ -281,10 +256,10 @@ const Review: React.FC = () => {
                     again for less critical projects.
                   </p>
                   <div className="flex items-center space-x-2 text-sm text-gray-500">
-                    <img
+                    <FontAwesomeIcon
                       alt="Equipment icon"
                       className="h-4 w-4"
-                      src={imgFrame10}
+                      icon={faCamera}
                     />
                     <span>Grip & Support Equipment</span>
                   </div>

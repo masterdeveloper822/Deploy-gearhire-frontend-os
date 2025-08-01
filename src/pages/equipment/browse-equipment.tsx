@@ -1,5 +1,5 @@
-import React from "react"
-import { RenterHeader } from "@/components/layout/header/renter-header"
+import React, { useEffect, useState } from "react"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { CommonFooter } from "@/components/layout/footer/common"
 import { Card } from "@/components/ui/card"
 import { Switch } from "@/components/ui/switch"
@@ -12,141 +12,127 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Input } from "@/components/ui/input"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faHeart as faHeartSolid, faSearch } from "@fortawesome/free-solid-svg-icons"
+import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons"
+import { useToast } from "@/hooks/use-toast"
+import { API_ENDPOINTS } from "@/lib/api"
 
-// Image and SVG asset URLs from Figma export
-const imgImg =
-  "http://localhost:3845/assets/410c340aa057242400c608368f918307cdd72438.png"
-const imgImg1 =
-  "http://localhost:3845/assets/c6031a5de036466f56dc8e2773036ec26805ea92.png"
-const imgImg2 =
-  "http://localhost:3845/assets/1d5ad8aaf12fd61a75197f707f6ef40c7edd6e1f.png"
-const imgImg3 =
-  "http://localhost:3845/assets/4a6d225ab75de462bf8a83b8f42e91a3030c8f42.png"
-const imgImg4 =
-  "http://localhost:3845/assets/ec901f1c0d6bdc3abb3b7f2578c96a444ee001e2.png"
-const imgImg5 =
-  "http://localhost:3845/assets/6932bef90a236331295c89b26725ce63ada3f532.png"
-const imgImg6 =
-  "http://localhost:3845/assets/bec21fc75386a86210d32bec8ca98fcb2380d21e.png"
-const imgImg7 =
-  "http://localhost:3845/assets/2452158bfd7fe391a3978751295d9d708fd7903d.png"
-const imgImg8 =
-  "http://localhost:3845/assets/1ecb12199697dd16c82152392c0b02a04bd85271.png"
-const imgImg9 =
-  "http://localhost:3845/assets/78ad89b9aad9447fee94a60babfea0f75b48166e.png"
-const imgImg10 =
-  "http://localhost:3845/assets/157a8cae4c47674ef06c93dae0edece12ad3c0a6.png"
-const imgImg11 =
-  "http://localhost:3845/assets/3af456c127980b82adba965b9d9e0383b10f0a29.png"
-const imgImg12 =
-  "http://localhost:3845/assets/93261e682a4fc24925831eb042e025379dab45ab.png"
-const imgFrame =
-  "http://localhost:3845/assets/ed4e1169b638e2e838350960320b53c878e45615.svg"
-const imgFrame1 =
-  "http://localhost:3845/assets/9861a0b6e8bb9b630982f192343e0944f05f6199.svg"
-const imgFrame2 =
-  "http://localhost:3845/assets/1efdeed862e90b5b080da5ccaa63bb5c3a6cf0bc.svg"
-const imgFrame3 =
-  "http://localhost:3845/assets/d2989890a47036eb3eba43c9b9ea24bc925f1b69.svg"
-const imgFrame4 =
-  "http://localhost:3845/assets/1151dd5a8a661dc7b4075423fe864a3209140e35.svg"
-const imgFrame5 =
-  "http://localhost:3845/assets/3496f07f6bab83974d24f957ae205dd5463ac6fb.svg"
-const imgGroup =
-  "http://localhost:3845/assets/6b361ecba5c41862d4e4249610cf33728c12d1f9.svg"
-const imgFrame6 =
-  "http://localhost:3845/assets/f3f266a6575b79ab545a87d9b2e97be446a999cc.svg"
+import equip1 from "@/assets/images/equipment/equip1.png"
 
-// Mock data for equipment with original structure
-const equipmentData = [
-  {
-    id: 1,
-    image: imgImg1,
-    title: "RED Dragon 6K Cinema Camera",
-    description:
-      "Professional cinema camera with 6K resolution, dual ISO, and comprehensive codec support for high-end productions.",
-    category: "Camera",
-    categoryClass: "bg-sky-50 text-sky-600",
-    merchantImage: imgImg2,
-    merchantName: "CineGear Pro",
-    isFavorite: true,
-  },
-  {
-    id: 2,
-    image: imgImg3,
-    title: "Aputure 300D LED Light",
-    description:
-      "Powerful daylight-balanced LED with wireless control, perfect for interviews and commercial shoots.",
-    category: "Lighting",
-    categoryClass: "bg-green-50 text-green-600",
-    merchantImage: imgImg4,
-    merchantName: "LightWorks Studio",
-    isFavorite: false,
-  },
-  {
-    id: 3,
-    image: imgImg5,
-    title: "Rode NTG3 Shotgun Mic",
-    description:
-      "Professional broadcast-quality shotgun microphone with superior RF immunity and low noise floor.",
-    category: "Audio",
-    categoryClass: "bg-purple-50 text-purple-600",
-    merchantImage: imgImg6,
-    merchantName: "AudioVision",
-    isFavorite: true,
-  },
-  {
-    id: 4,
-    image: imgImg7,
-    title: "DJI Ronin-S Gimbal",
-    description:
-      "3-axis handheld gimbal stabilizer for DSLR and mirrorless cameras up to 3.6kg payload.",
-    category: "Grip",
-    categoryClass: "bg-orange-50 text-orange-600",
-    merchantImage: imgImg8,
-    merchantName: "Motion Masters",
-    isFavorite: true,
-  },
-  {
-    id: 5,
-    image: imgImg9,
-    title: "Canon 24-70mm f/2.8L",
-    description:
-      "Professional zoom lens with constant f/2.8 aperture, ideal for versatile shooting scenarios.",
-    category: "Accessories",
-    categoryClass: "bg-blue-50 text-blue-600",
-    merchantImage: imgImg10,
-    merchantName: "Lens Library",
-    isFavorite: false,
-  },
-  {
-    id: 6,
-    image: imgImg11,
-    title: "Gitzo Carbon Fiber Tripod",
-    description:
-      "Ultra-lightweight carbon fiber tripod with exceptional stability for professional camera work.",
-    category: "Grip",
-    categoryClass: "bg-orange-50 text-orange-600",
-    merchantImage: imgImg12,
-    merchantName: "Support Systems",
-    isFavorite: true,
-  },
-]
+import man2 from "@/assets/images/avatars/man2.png"
+import { BackArrowIcon, DottedQuestionIcon } from "@/components/ui/icon"
+
+// Helper function to get category class based on category name
+const getCategoryClass = (categoryName: string) => {
+  const categoryMap: { [key: string]: string } = {
+    'Camera': 'bg-sky-50 text-sky-600',
+    'Lighting': 'bg-green-50 text-green-600',
+    'Audio': 'bg-purple-50 text-purple-600',
+    'Grip': 'bg-orange-50 text-orange-600',
+    'Accessories': 'bg-blue-50 text-blue-600',
+  };
+  return categoryMap[categoryName] || 'bg-gray-50 text-gray-600';
+};
+
+// Interface for gear item from API
+interface GearItem {
+  id: number;
+  equipment_name: string;
+  key_specifications?: string;
+  notes?: string;
+  is_public: boolean;
+  provider: number;
+  equipment_category: {
+    id: number;
+    category_name: string;
+  };
+  gear_item_pictures: Array<{
+    id: number;
+    image: string;
+  }>;
+  provider_details?: {
+    display_name?: string;
+    profile_picture?: string;
+  };
+}
 
 const BrowseEquipment: React.FC = () => {
+  const { toast } = useToast();
+  const [gearItems, setGearItems] = useState<GearItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedLocation, setSelectedLocation] = useState("all");
+  const [favoritesOnly, setFavoritesOnly] = useState(false);
+  const navigate = useNavigate()
+
+  // Fetch gear items from API
+  useEffect(() => {
+    const fetchGearItems = async () => {
+      try {
+        const response = await fetch(API_ENDPOINTS.GEAR_ITEMS);
+        if (response.ok) {
+          const data = await response.json();
+          console.log("data: ", data.results);
+          setGearItems(data.results || data);
+        } else {
+          console.error("Error fetching gear items:", response.statusText);
+          toast({
+            title: "Error",
+            description: "Failed to load equipment. Please try again.",
+            variant: "destructive",
+          });
+        }
+      } catch (error) {
+        console.error("Error fetching gear items:", error);
+        toast({
+          title: "Error",
+          description: "Failed to load equipment. Please try again.",
+          variant: "destructive",
+        });
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchGearItems();
+  }, [toast]);
+
+  // Filter items based on search and filters
+  const filteredItems = gearItems.filter((item) => {
+    const matchesSearch = searchTerm === "" || 
+      item.equipment_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (item.key_specifications && item.key_specifications.toLowerCase().includes(searchTerm.toLowerCase()));
+    
+    const matchesCategory = selectedCategory === "all" || 
+      item.equipment_category.category_name.toLowerCase() === selectedCategory.toLowerCase();
+    
+    return matchesSearch && matchesCategory;
+  });
+
   return (
     <div className="min-h-screen bg-gray-50">
-      <RenterHeader />
+      <AuthHeader />
       <main className="mx-auto w-full max-w-7xl px-2 py-4 sm:px-4 sm:py-8">
         {/* Header */}
-        <div className="mb-8 px-1 sm:px-0">
-          <h1 className="mb-2 text-2xl font-bold text-gray-800 sm:mb-4 sm:text-3xl">
-            Browse Equipment
-          </h1>
-          <p className="text-sm text-gray-600 sm:text-base">
-            Discover professional film equipment from verified merchants
-          </p>
+        <div className="mb-8 px-1 sm:px-0 relative">
+          <button
+            className="absolute left-0 top-1/2 -translate-y-1/2 rounded p-2 hover:bg-gray-100"
+            onClick={() => navigate(-1)}
+            aria-label="Back"
+          >
+            <BackArrowIcon />
+          </button>
+          <div className="pl-12">
+            <h1 className="mb-2 text-2xl font-bold text-gray-800 sm:mb-4 sm:text-3xl">
+              Browse Equipment
+            </h1>
+            <p className="text-sm text-gray-600 sm:text-base">
+              Discover professional film equipment from verified merchants
+            </p>
+          </div>
         </div>
         {/* Search & Filters */}
         <Card className="mb-8 flex flex-col gap-4 rounded-md p-4 sm:flex-row sm:gap-4 sm:p-6">
@@ -154,12 +140,14 @@ const BrowseEquipment: React.FC = () => {
             <Input
               className="h-12 w-full rounded-lg border border-gray-300 py-3 pl-10 pr-4 !text-base text-gray-900"
               placeholder="Search equipment..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
             <span className="absolute left-3 top-1/2 -translate-y-1/2">
-              <img src={imgFrame3} alt="Search" className="h-5 w-5" />
+              <FontAwesomeIcon icon={faSearch} alt="Search" className="h-4 w-4" />
             </span>
           </div>
-          <Select>
+          <Select value={selectedCategory} onValueChange={setSelectedCategory}>
             <SelectTrigger className="h-12 w-full rounded-lg border-gray-300 text-base text-gray-900 sm:w-1/5">
               <SelectValue placeholder="All Categories" />
             </SelectTrigger>
@@ -184,7 +172,7 @@ const BrowseEquipment: React.FC = () => {
               </SelectItem>
             </SelectContent>
           </Select>
-          <Select>
+          <Select value={selectedLocation} onValueChange={setSelectedLocation}>
             <SelectTrigger className="h-12 w-full rounded-lg border-gray-300 text-base text-gray-900 sm:w-1/5">
               <SelectValue placeholder="All Locations" />
             </SelectTrigger>
@@ -207,6 +195,8 @@ const BrowseEquipment: React.FC = () => {
             <Switch
               id="favourites-only"
               className="data-[state=checked]:bg-tertiary"
+              checked={favoritesOnly}
+              onCheckedChange={setFavoritesOnly}
             />
             <span className="text-sm font-medium text-gray-700">
               Favourites Only
@@ -215,63 +205,75 @@ const BrowseEquipment: React.FC = () => {
         </Card>
 
         {/* Equipment Cards Grid */}
-        <div className="xs:grid-cols-2 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {equipmentData.map((item) => (
-            <div
-              key={item.id}
-              className="overflow-hidden rounded-lg bg-white shadow"
-            >
-              <div className="relative">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="h-44 w-full object-cover sm:h-48"
-                />
-                <button className="absolute right-3 top-3 rounded-full bg-white/90 p-2 shadow">
+        {isLoading ? (
+          <div className="flex justify-center py-8">
+            <div className="text-lg text-gray-600">Loading equipment...</div>
+          </div>
+        ) : filteredItems.length === 0 ? (
+          <div className="flex justify-center py-8">
+            <div className="text-lg text-gray-600">No equipment found.</div>
+          </div>
+        ) : (
+          <div className="xs:grid-cols-2 grid grid-cols-1 gap-6 md:grid-cols-3">
+            {filteredItems.map((item) => (
+              <div
+                key={item.id}
+                className="overflow-hidden rounded-lg bg-white shadow"
+              >
+                <div className="relative">
                   <img
-                    src={item.isFavorite ? imgFrame5 : imgFrame6}
-                    alt="Favorite"
-                    className="h-5 w-5"
+                    src={item.gear_item_pictures[0]?.image || equip1}
+                    alt={item.equipment_name}
+                    className="h-44 w-full object-cover sm:h-48"
                   />
-                </button>
-              </div>
-              <div className="p-4 sm:p-5">
-                <span
-                  className={`mb-2 inline-block rounded-full px-3 py-1 text-xs font-medium ${item.categoryClass}`}
-                >
-                  {item.category}
-                </span>
-                <h2 className="mb-1 text-base font-semibold text-gray-800 sm:text-lg">
-                  {item.title}
-                </h2>
-                <p className="mb-4 text-xs text-gray-600 sm:text-sm">
-                  {item.description}
-                </p>
-                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                  <div className="flex items-center gap-2">
-                    <img
-                      src={item.merchantImage}
-                      alt="Merchant"
-                      className="h-6 w-6 rounded-full object-cover"
+                  <button className="absolute right-3 top-3 rounded-full bg-white/90 px-2 py-1.5 shadow">
+                    <FontAwesomeIcon
+                      icon={faHeartRegular}
+                      alt="Favorite"
+                      className="h-4 w-5 text-gray-700"
                     />
-                    <span className="text-xs text-gray-600 sm:text-sm">
-                      {item.merchantName}
-                    </span>
-                    <img src={imgGroup} alt="Verified" className="h-3 w-3" />
+                  </button>
+                </div>
+                <div className="p-4 sm:p-5">
+                  <span
+                    className={`mb-2 inline-block rounded-full px-3 py-1 text-xs font-medium ${getCategoryClass(item.equipment_category.category_name)}`}
+                  >
+                    {item.equipment_category.category_name}
+                  </span>
+                  <h2 className="mb-1 text-base font-semibold text-gray-800 sm:text-lg">
+                    {item.equipment_name}
+                  </h2>
+                  <p className="mb-4 text-xs text-gray-600 sm:text-sm">
+                    {item.key_specifications || item.notes || "No description available"}
+                  </p>
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                    <div className="flex items-center gap-2">
+                      <img
+                        src={item.provider_details?.profile_picture || man2}
+                        alt="Merchant"
+                        className="h-6 w-6 rounded-full object-cover"
+                      />
+                      <span className="text-xs text-gray-600 sm:text-sm">
+                        {item.provider_details?.display_name || "Unknown Merchant"}
+                      </span>
+                      <span className="text-blue-500">
+                        <DottedQuestionIcon alt="Verified" className="h-3 w-3" />
+                      </span>
+                    </div>
+                    <Link to="/equipment-detail">
+                      <Button
+                        variant="tertiary"
+                        className="mt-2 w-full rounded-lg bg-sky-600 px-4 py-2 font-normal text-white sm:mt-0 sm:w-auto"
+                      >
+                        View Details
+                      </Button>
+                    </Link>
                   </div>
-                  <Link to="/equipment-detail">
-                    <Button
-                      variant="tertiary"
-                      className="mt-2 w-full rounded-lg bg-sky-600 px-4 py-2 font-normal text-white sm:mt-0 sm:w-auto"
-                    >
-                      View Details
-                    </Button>
-                  </Link>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
 
         {/* Load More Button */}
         <div className="my-12 flex justify-center">

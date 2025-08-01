@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { useForm, Controller } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
-import { useNavigate, Link } from "react-router-dom"
+import { useNavigate, Link, useLocation } from "react-router-dom"
 import { Eye, EyeOff } from "lucide-react"
 import { AuthInput } from "@/components/auth/auth-input"
 import { SubmitButton } from "@/components/auth/submit-button"
@@ -11,6 +11,7 @@ import { UserTypeSelector } from "@/components/auth/user-type-selector"
 import cameraIcon from "@/assets/images/ui/icons/camera.svg"
 import homeIcon from "@/assets/images/ui/icons/home.svg"
 import { useToast } from "@/hooks/use-toast"
+import { API_ENDPOINTS } from "@/lib/api"
 
 const createAccountSchema = z
   .object({
@@ -37,19 +38,20 @@ const CreateAccountForm: React.FC = () => {
   const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const { state } = useLocation()
+  const role = state?.role
 
   const {
     register,
     handleSubmit,
     control,
     formState: { errors, isValid },
-    setValue,
     watch,
   } = useForm<CreateAccountSchema>({
     resolver: zodResolver(createAccountSchema),
     mode: "onChange",
     defaultValues: {
-      type: undefined,
+      type: role === "renter" ? "renter" : role === "merchant" ? "merchant" : undefined,
       email: "",
       password: "",
       confirmPassword: "",
@@ -57,17 +59,41 @@ const CreateAccountForm: React.FC = () => {
     },
   })
 
-  const onSubmit = (data: CreateAccountSchema) => {
-    toast({
-      title: "Success!",
-      description: "Account created successfully!",
-    })
-    setTimeout(() => {
-      navigate("/email-verify")
-    }, 1000)
-  }
+  const onSubmit = async (data: CreateAccountSchema) => {
+    try {
+          const response = await fetch(API_ENDPOINTS.USER_CREATE, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          role: data.type,
+          email: data.email,
+          password: data.password,
+        }),
+      });
 
-  const selectedType = watch("type")
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error( errorData.email || errorData.message || "Failed to create account");
+      }
+
+      toast({
+        title: "Success!",
+        description: "Account created successfully!",
+      });
+      setTimeout(() => {
+        navigate("/email-verify", { state: { email: data.email } });
+      }, 1000);
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to create account.",
+        variant: "destructive",
+      });
+      console.log("error: ", error);
+    }
+  }
 
   return (
     <div className="mx-auto flex min-h-screen w-full max-w-screen-2xl flex-col items-center bg-transparent px-4 py-8 sm:py-12 lg:py-16">

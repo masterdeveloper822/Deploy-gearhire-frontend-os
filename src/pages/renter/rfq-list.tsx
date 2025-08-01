@@ -1,5 +1,5 @@
 import { CommonFooter } from "@/components/layout/footer/common"
-import { RenterHeader } from "@/components/layout/header/renter-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Plus } from "lucide-react"
@@ -12,52 +12,34 @@ import {
   SelectItem,
 } from "@/components/ui/select"
 import { useNavigate } from "react-router-dom"
-
-// Image and SVG asset URLs from Figma export
-const imgImg =
-  "http://localhost:3845/assets/f578f9c2a181ef669150341163e63e6e9da01878.png"
-const imgFrame =
-  "http://localhost:3845/assets/ed4e1169b638e2e838350960320b53c878e45615.svg"
-const imgFrame1 =
-  "http://localhost:3845/assets/9861a0b6e8bb9b630982f192343e0944f05f6199.svg"
-const imgFrame2 =
-  "http://localhost:3845/assets/1efdeed862e90b5b080da5ccaa63bb5c3a6cf0bc.svg"
-const imgFrame3 =
-  "http://localhost:3845/assets/5c4f3c36624f887fc5373fc1e63d35a103d60fc5.svg"
-const imgFrame4 =
-  "http://localhost:3845/assets/ad1c22367e0b32024bf9730eb544e1cb8a5c24ef.svg"
-const imgFrame5 =
-  "http://localhost:3845/assets/3fb4b81e046289a29f1daa8f4528d66d37ad2c91.svg"
-const imgFrame6 =
-  "http://localhost:3845/assets/727f04cc8f58d671183dfaa060d0f1ac8e8cc60b.svg"
-const imgFrame7 =
-  "http://localhost:3845/assets/bd628ea7169604b04f36c37e820b01d9a10adeac.svg"
-const imgFrame8 =
-  "http://localhost:3845/assets/742dc4d2e0b005dab66144a1b5f2f48333384737.svg"
-const imgFrame9 =
-  "http://localhost:3845/assets/3588a83f9f36a0c1f6cbcafbac38197ad4e6e29e.svg"
-const imgFrame10 =
-  "http://localhost:3845/assets/5bbb44768f1a0ead1240997498feeabff6796c8c.svg"
-const imgFrame11 =
-  "http://localhost:3845/assets/11e343858c87c43adf774bd449873b46df3be747.svg"
-const imgFrame12 =
-  "http://localhost:3845/assets/cf29938f88a961c33e43a7979fa07b5699596921.svg"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faAngleLeft, faAngleRight, faCalendar, faCircleCheck, faClock, faEnvelope, faLocationDot, faSearch } from "@fortawesome/free-solid-svg-icons"
+import { BackArrowIcon } from "@/components/ui/icon"
 
 const RfqList = () => {
   const navigate = useNavigate()
   return (
     <div className="min-h-screen bg-gray-50">
-      <RenterHeader />
+      <AuthHeader />
 
       <main className="mx-auto mb-12 max-w-[1440px] px-2 py-4 sm:px-4 sm:py-8">
         <div className="mx-auto max-w-[1152px]">
           {/* Header Section */}
           <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:justify-between">
-            <div className="flex flex-col justify-center">
-              <h1 className="text-3xl font-bold text-gray-800">My RFQs</h1>
+            <div className="flex relative flex-col justify-center">
+              <button
+                className="absolute left-0 top-1/2 -translate-y-1/2 rounded p-2 hover:bg-gray-100"
+                onClick={() => navigate(-1)}
+                aria-label="Back"
+              >
+                <BackArrowIcon />
+              </button>
+              <div className="pl-12">
+                <h1 className="text-3xl font-bold text-gray-800">My RFQs</h1>
               <p className="mt-4 text-base text-gray-600">
                 Manage your equipment requests and track quote responses
               </p>
+              </div>
             </div>
             <Button
               variant="tertiary"
@@ -80,7 +62,7 @@ const RfqList = () => {
                   type="text"
                 />
                 <span className="absolute left-3 top-1/2 -translate-y-1/2">
-                  <img src={imgFrame4} alt="search" className="h-4 w-4" />
+                  <FontAwesomeIcon icon={faSearch} alt="search" className="text-gray-400 h-4 w-4" />
                 </span>
               </div>
             </div>
@@ -139,23 +121,23 @@ const RfqList = () => {
                     </div>
                     <div className="mt-1 flex flex-wrap items-center gap-4 text-sm text-gray-600">
                       <span className="flex items-center gap-1">
-                        <img
-                          src={imgFrame6}
+                        <FontAwesomeIcon
+                          icon={faCalendar}
                           alt="calendar"
-                          className="h-3 w-3"
+                          className="h-3.5 w-3.5"
                         />{" "}
                         Dec 15-20, 2024
                       </span>
                       <span className="flex items-center gap-1">
-                        <img
-                          src={imgFrame7}
+                        <FontAwesomeIcon
+                          icon={faLocationDot}
                           alt="location"
-                          className="h-3 w-3"
+                          className="h-3.5 w-3.5"
                         />{" "}
                         London
                       </span>
                       <span className="flex items-center gap-1">
-                        <img src={imgFrame8} alt="clock" className="h-3 w-3" />{" "}
+                        <FontAwesomeIcon icon={faClock} alt="clock" className="h-3.5 w-3.5" />{" "}
                         Expires Jan 5, 2025
                       </span>
                     </div>
@@ -172,7 +154,7 @@ const RfqList = () => {
                     </div>
                     <div className="mt-2 flex flex-wrap items-center gap-2 text-sm text-gray-600">
                       <span className="flex items-center gap-1">
-                        <img src={imgFrame9} alt="quotes" className="h-3 w-3" />{" "}
+                        <FontAwesomeIcon icon={faEnvelope} alt="quotes" className="h-3.5 w-3.5" />{" "}
                         5 Quotes Received
                       </span>
                     </div>
@@ -218,23 +200,23 @@ const RfqList = () => {
                     </div>
                     <div className="mt-1 flex flex-wrap items-center gap-4 text-sm text-gray-600">
                       <span className="flex items-center gap-1">
-                        <img
-                          src={imgFrame6}
+                        <FontAwesomeIcon
+                          icon={faCalendar}
                           alt="calendar"
-                          className="h-3 w-3"
+                          className="h-3.5 w-3.5"
                         />{" "}
                         Jan 10-15, 2025
                       </span>
                       <span className="flex items-center gap-1">
-                        <img
-                          src={imgFrame7}
+                        <FontAwesomeIcon
+                          icon={faLocationDot}
                           alt="location"
-                          className="h-3 w-3"
+                          className="h-3.5 w-3.5"
                         />{" "}
                         Manchester
                       </span>
                       <span className="flex items-center gap-1">
-                        <img src={imgFrame8} alt="clock" className="h-3 w-3" />{" "}
+                        <FontAwesomeIcon icon={faClock} alt="clock" className="h-3.5 w-3.5" />{" "}
                         Expires Jan 8, 2025
                       </span>
                     </div>
@@ -248,14 +230,14 @@ const RfqList = () => {
                     </div>
                     <div className="mt-2 flex flex-wrap items-center gap-2 text-sm text-gray-600">
                       <span className="flex items-center gap-1">
-                        <img src={imgFrame9} alt="quotes" className="h-3 w-3" />{" "}
+                        <FontAwesomeIcon icon={faEnvelope} alt="quotes" className="h-3.5 w-3.5" />{" "}
                         3 Quotes Received
                       </span>
                       <span className="flex items-center gap-1 text-green-600">
-                        <img
-                          src={imgFrame10}
+                        <FontAwesomeIcon
+                          icon={faCircleCheck}
                           alt="accepted"
-                          className="h-3 w-3"
+                          className="h-3.5 w-3.5"
                         />{" "}
                         Quote Accepted
                       </span>
@@ -296,23 +278,23 @@ const RfqList = () => {
                     </div>
                     <div className="mt-1 flex flex-wrap items-center gap-4 text-sm text-gray-600">
                       <span className="flex items-center gap-1">
-                        <img
-                          src={imgFrame6}
+                        <FontAwesomeIcon
+                          icon={faCalendar}
                           alt="calendar"
-                          className="h-3 w-3"
+                          className="h-3.5 w-3.5"
                         />{" "}
                         Dec 5-8, 2024
                       </span>
                       <span className="flex items-center gap-1">
-                        <img
-                          src={imgFrame7}
+                        <FontAwesomeIcon
+                          icon={faLocationDot}
                           alt="location"
-                          className="h-3 w-3"
+                          className="h-3.5 w-3.5"
                         />{" "}
                         Birmingham
                       </span>
                       <span className="flex items-center gap-1">
-                        <img src={imgFrame8} alt="clock" className="h-3 w-3" />{" "}
+                        <FontAwesomeIcon icon={faClock} alt="clock" className="h-3.5 w-3.5" />{" "}
                         Expired Dec 3, 2024
                       </span>
                     </div>
@@ -323,7 +305,7 @@ const RfqList = () => {
                     </div>
                     <div className="mt-2 flex flex-wrap items-center gap-2 text-sm text-gray-600">
                       <span className="flex items-center gap-1">
-                        <img src={imgFrame9} alt="sent" className="h-3 w-3" />{" "}
+                        <FontAwesomeIcon icon={faEnvelope} alt="sent" className="h-3.5 w-3.5" />{" "}
                         Sent to ProGear Studios
                       </span>
                     </div>
@@ -354,7 +336,7 @@ const RfqList = () => {
           {/* Pagination */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
             <button className="flex h-10 w-9 items-center justify-center rounded-lg border border-gray-300 opacity-50">
-              <img src={imgFrame11} alt="prev" className="h-4 w-2.5" />
+              <FontAwesomeIcon icon={faAngleLeft} alt="prev" className="h-4 w-2.5" />
             </button>
             <button className="flex h-10 w-9 items-center justify-center rounded-lg bg-sky-600 font-normal text-white">
               1
@@ -363,7 +345,7 @@ const RfqList = () => {
               2
             </button>
             <button className="flex h-10 w-9 items-center justify-center rounded-lg border border-gray-300">
-              <img src={imgFrame12} alt="next" className="h-4 w-2.5" />
+              <FontAwesomeIcon icon={faAngleRight} alt="next" className="h-4 w-2.5" />
             </button>
           </div>
         </div>

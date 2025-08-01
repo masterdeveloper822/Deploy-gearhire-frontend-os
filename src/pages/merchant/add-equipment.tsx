@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useForm, Controller } from "react-hook-form"
 import { z } from "zod"
@@ -9,9 +9,8 @@ import backArrow from "@/assets/images/ui/icons/backArrow.svg"
 import infoIcon from "@/assets/images/ui/icons/info-black.svg"
 import saveIcon from "@/assets/images/ui/icons/file-manage/saveButton.svg"
 import cancelIcon from "@/assets/images/ui/icons/file-manage/cancel.svg"
-import merchantProfileDefaultIcon from "@/assets/images/ui/icons/merchantProfileDefault.svg"
 
-import { MerchantHeader } from "@/components/layout/header/merchant-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -27,14 +26,20 @@ import {
   SelectLabel,
 } from "@/components/ui/select"
 import { Card } from "@/components/ui/card"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCamera } from "@fortawesome/free-solid-svg-icons"
+import { useUser } from "@/context/user-context"
+import { useToast } from "@/hooks/use-toast"
+import { API_ENDPOINTS } from "@/lib/api"
 
 const categories = [
-  "Camera Body",
+  "Audio",
+  "Stabilizer",
   "Lens",
   "Lighting",
-  "Audio",
   "Grip",
   "Accessories",
+  "Camera",
 ]
 
 const equipmentSchema = z.object({
@@ -61,6 +66,9 @@ type EquipmentFormSchema = z.infer<typeof equipmentSchema>
 
 const MerchantAddEquipment: React.FC = () => {
   const navigate = useNavigate()
+  const [isLoading, setIsLoading] = useState(false)
+  const { user } = useUser()
+  const { toast } = useToast()
   const {
     register,
     handleSubmit,
@@ -89,15 +97,63 @@ const MerchantAddEquipment: React.FC = () => {
 
   const photos = watch("photos")
 
-  const onSubmit = (data: EquipmentFormSchema) => {
-    // handle save
-    navigate("/merchant-inventory-book")
+  const onSubmit = async (data: EquipmentFormSchema) => {
+    setIsLoading(true);
+    try {
+      const accessToken = localStorage.getItem("accessToken");
+      const formData = new FormData();
+      console.log("accessToken: ", accessToken);
+
+      
+      formData.append("equipment_name", data.equipmentName);
+      formData.append("equipment_category", data.category);
+      if (data.keySpecs) {
+        formData.append("key_specifications", data.keySpecs);
+      }
+      if (data.notes) {
+        formData.append("additional_notes", data.notes);
+      }
+      formData.append("is_public", String(data.isPublic));
+      formData.append("provider", String(user.name));
+      
+      // Append photos
+      data.photos.forEach((photo: File) => {
+        formData.append("gear_item_pictures", photo);
+      });
+
+      const response = await fetch(API_ENDPOINTS.EQUIPMENT_CREATE, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: formData,
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Failed to add equipment");
+      }
+
+      toast({
+        title: "Success!",
+        description: "Equipment added successfully!",
+      });
+      navigate("/merchant-inventory-book");
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to add equipment.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header*/}
-      <MerchantHeader />
+      <AuthHeader />
       {/* Form Card */}
       <main className="mx-auto max-w-[800px] p-6">
         <div className="relative w-full">
@@ -219,8 +275,8 @@ const MerchantAddEquipment: React.FC = () => {
                     className="flex cursor-pointer flex-col items-center"
                   >
                     <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-md bg-gray-200">
-                      <img
-                        src={merchantProfileDefaultIcon}
+                      <FontAwesomeIcon
+                        icon={faCamera}
                         alt="Upload"
                         className="h-6 w-6"
                       />
@@ -315,9 +371,10 @@ const MerchantAddEquipment: React.FC = () => {
               variant="tertiary"
               type="submit"
               className="h-12 flex-1 text-base"
+              disabled={isLoading}
             >
               <img src={saveIcon} alt="save" />
-              Save Equipment
+              {isLoading ? "Saving..." : "Save Equipment"}
             </Button>
             <Button
               type="button"

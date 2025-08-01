@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { MerchantHeader } from "@/components/layout/header/merchant-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Typography } from "@/components/ui/typography"
@@ -16,23 +16,8 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/select"
-
-const imgImg =
-  "http://localhost:3845/assets/410c340aa057242400c608368f918307cdd72438.png"
-const imgFrame =
-  "http://localhost:3845/assets/ed4e1169b638e2e838350960320b53c878e45615.svg"
-const imgFrame1 =
-  "http://localhost:3845/assets/e23f57a2af62e42bd83fb2f8760ed0b74b1af3c6.svg"
-const imgFrame2 =
-  "http://localhost:3845/assets/1efdeed862e90b5b080da5ccaa63bb5c3a6cf0bc.svg"
-const imgFrame3 =
-  "http://localhost:3845/assets/aa466758cde76b5a218860ec71500af7d0ad95a6.svg"
-const imgFrame4 =
-  "http://localhost:3845/assets/3fd0d7b64e2c64324bbb7fa48f1ac67994d7e0dc.svg"
-const imgFrame5 =
-  "http://localhost:3845/assets/be9738393f22ee35d14d6b5667879fc160ba90ca.svg"
-const imgFrame6 =
-  "http://localhost:3845/assets/b47c513615e83381206231731cfedd5c2740247b.svg"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCalendarDays, faLocationDot } from "@fortawesome/free-solid-svg-icons"
 
 const statusOptions = ["All Status", "Open", "Closed", "Accepted"]
 const sortOptions = ["Newest First", "Oldest First"]
@@ -44,7 +29,7 @@ const SubmittedQuotesPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <MerchantHeader />
+      <AuthHeader />
       <main className="mx-auto max-w-[1440px] px-4 py-8">
         {/* Page Title */}
         <div className="mx-auto max-w-[1280px]">
@@ -118,12 +103,12 @@ const SubmittedQuotesPage: React.FC = () => {
                   </Typography>
                 </div>
                 <div className="mt-2 flex flex-row gap-6">
-                  <div className="flex items-center gap-2 text-sm text-gray-500">
-                    <img src={imgFrame5} alt="Location" className="h-4 w-4" />
+                  <div className="flex items-center gap-1 text-sm text-gray-500">
+                    <FontAwesomeIcon icon={faLocationDot} alt="Location" className="text-tertiary h-4 w-4" />
                     {card.location}
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-500">
-                    <img src={imgFrame6} alt="Date" className="h-4 w-4" />
+                  <div className="flex items-center gap-1 text-sm text-gray-500">
+                    <FontAwesomeIcon icon={faCalendarDays} alt="Date" className="text-tertiary h-4 w-4" />
                     {card.dateRange}
                   </div>
                 </div>
@@ -145,7 +130,7 @@ const SubmittedQuotesPage: React.FC = () => {
 
               <div className="mt-3 flex flex-col gap-3 sm:flex-row md:ml-auto md:mt-0">
                 <span
-                  className={`mr-3 flex h-9 items-center gap-2 rounded-full px-3 py-1 text-sm font-medium ${statusColors[card.status]}`}
+                  className={`mr-3 flex h-9 items-center gap-1 rounded-full px-3 py-1 text-sm font-medium ${statusColors[card.status]}`}
                 >
                   {card.status === "Accepted" ? (
                     <AcceptedStateIcon />

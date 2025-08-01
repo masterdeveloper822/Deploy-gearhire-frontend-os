@@ -1,8 +1,8 @@
 import React, { useState, useMemo } from "react"
-import { MerchantHeader } from "@/components/layout/header/merchant-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { RFQSidebar } from "@/components/rfq-sidebar/sidebar"
 
-import { RespondIcon, RFQSaveIcon } from "@/components/ui/icon"
+import { BackArrowIcon, RespondIcon, RFQSaveIcon } from "@/components/ui/icon"
 import { RFQSavedIcon } from "@/components/ui/icon"
 import { LocationIcon } from "@/components/ui/icon"
 import { CalendarIcon } from "@/components/ui/icon"
@@ -90,19 +90,28 @@ export default function BrowseRFQ() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <MerchantHeader />
+      <AuthHeader />
       <div className="mx-auto flex max-w-[1440px] flex-col px-2 sm:px-4">
         {/* Main Content */}
         <main className="flex-1 p-4 sm:p-8">
           <div className="mb-8">
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:gap-6">
-              <div>
-                <h1 className="mb-2 text-2xl font-bold text-gray-800 sm:text-3xl">
-                  Browse RFQs
-                </h1>
-                <p className="text-sm text-gray-600 sm:text-base">
-                  Find and respond to equipment requests from filmmakers
-                </p>
+              <div className="relative">
+                <button
+                  className="absolute left-0 top-1/2 -translate-y-1/2 rounded p-2 hover:bg-gray-100"
+                  onClick={() => navigate(-1)}
+                  aria-label="Back"
+                >
+                  <BackArrowIcon />
+                </button>
+                <div className="pl-12">
+                  <h1 className="mb-2 text-2xl font-bold text-gray-800 sm:text-3xl">
+                    Browse RFQs
+                  </h1>
+                  <p className="text-sm text-gray-600 sm:text-base">
+                    Find and respond to equipment requests from filmmakers
+                  </p>
+                </div>
               </div>
               <div className="flex flex-1 items-center md:justify-end">
                 <Card className="relative flex h-[48px] min-w-[300px] flex-row items-center justify-start gap-4 rounded-lg px-4 py-2 sm:px-6">

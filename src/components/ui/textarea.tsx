@@ -45,7 +45,8 @@ export const AboutTextarea = React.forwardRef<
       onChange={onChange}
       maxLength={maxLength}
       placeholder={placeholder}
-      className={"resize-none" + (props.className || "")}
+      className={"resize-none " + (props.className || "")}
+      style={{ resize: "none", ...(props.style || {}) }}
       {...props}
     />
   ),

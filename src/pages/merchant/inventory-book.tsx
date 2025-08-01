@@ -1,7 +1,7 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 
 import { Typography } from "@/components/ui/typography"
-import { MerchantHeader } from "@/components/layout/header/merchant-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -13,6 +13,16 @@ import {
   SelectItem,
 } from "@/components/ui/select"
 import { Switch } from "@/components/ui/switch"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
+import { useToast } from "@/hooks/use-toast"
+import { API_ENDPOINTS } from "@/lib/api"
 
 // Figma image assets
 
@@ -24,83 +34,167 @@ import closedEyeIcon from "@/assets/images/ui/icons/eye_closed.svg"
 import editItemIcon from "@/assets/images/ui/icons/item_edit.svg"
 import deleteItemIcon from "@/assets/images/ui/icons/item_delete.svg"
 import { Link } from "react-router-dom"
-
-const imgFrame7 =
-  "http://localhost:3845/assets/d54698fc9332e5ff9ca9e07428b5b67d44bc45bf.svg"
-const imgFrame8 =
-  "http://localhost:3845/assets/440de8e3762c4f47d1c043b36fb1b4a8b6a362be.svg"
-const imgFrame9 =
-  "http://localhost:3845/assets/eca6c3134f7ecf7b6029cc0eed3f3d3ebbd12985.svg"
-const imgFrame10 =
-  "http://localhost:3845/assets/7baf41d57cf0024cc4acb9a85e6dc2407f49cf3b.svg"
-const imgFrame11 =
-  "http://localhost:3845/assets/28e9e88ed26136cc76e342f60b46b456f4c15c76.svg"
-const imgFrame12 =
-  "http://localhost:3845/assets/48efa9bfc9ff5af2a8f6e8a3cb119666c892ac2b.svg"
-const imgFrame13 =
-  "http://localhost:3845/assets/11e343858c87c43adf774bd449873b46df3be747.svg"
-const imgFrame14 =
-  "http://localhost:3845/assets/cf29938f88a961c33e43a7979fa07b5699596921.svg"
-const imgImg1 =
-  "http://localhost:3845/assets/59ac253f4cf01c58a461caa65b61532eb61ac9b2.png"
-const imgImg2 =
-  "http://localhost:3845/assets/3cef05ab9d99d1c2802e522d8be68eb1ac3447b2.png"
-const imgImg3 =
-  "http://localhost:3845/assets/19a62cb56a507b6e29c571f43e45a7c2894e49b3.png"
-const imgImg4 =
-  "http://localhost:3845/assets/0759ab605d5f69d4deeec6561a9405e2d5293b53.png"
-const imgImg5 =
-  "http://localhost:3845/assets/306bbe4098ac12ac4362f3aa19d7c251f9284e3e.png"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faAngleLeft, faAngleRight, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
+import { useNavigate } from "react-router-dom"
+import { BackArrowIcon } from "@/components/ui/icon"
 
 const MerchantInventoryBook: React.FC = () => {
-  // Example state for toggles (in real app, use item-specific state)
-  const [publicToggles, setPublicToggles] = React.useState([
-    true,
-    true,
-    false,
-    true,
-    false,
-  ])
-  const handleToggle = (idx: number) => {
-    setPublicToggles((toggles) => toggles.map((v, i) => (i === idx ? !v : v)))
+  const navigate = useNavigate()
+  const { toast } = useToast()
+  const [gearItems, setGearItems] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [searchTerm, setSearchTerm] = useState("")
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
+  const [itemToDelete, setItemToDelete] = useState<number | null>(null)
+  const itemsPerPage = 6
+
+  useEffect(() => {
+    const fetchGearItems = async () => {
+      try {
+        const accessToken = localStorage.getItem("accessToken")
+        const response = await fetch(API_ENDPOINTS.GEAR_ITEMS, {
+          headers: {
+            "Authorization": `Bearer ${accessToken}`
+          }
+        })
+        if (response.ok) {
+          const data = await response.json()
+          setGearItems(data.results || [])
+        } else {
+          console.error("Error fetching gear items: ", response.statusText)
+        }
+      } catch (error) {
+        console.error("Error fetching gear items: ", error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+    fetchGearItems()
+  }, [])
+
+  const handleToggle = async (itemId: number) => {
+    try {
+      const accessToken = localStorage.getItem("accessToken");
+      const response = await fetch(API_ENDPOINTS.GEAR_ITEM_TOGGLE(itemId), {
+        method: "PATCH",
+        headers: {
+          "Authorization": `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+        },
+      });
+      
+      if (response.ok) {
+        setGearItems(prevItems => 
+          prevItems.map(item => 
+            item.id === itemId 
+              ? { ...item, is_public: !item.is_public }
+              : item
+          )
+        );
+      }
+    } catch (error) {
+      console.error("Failed to toggle visibility:", error);
+    }
+  };
+
+  // Filter items based on search term
+  const filteredItems = gearItems.filter((item) => {
+    const searchLower = searchTerm.toLowerCase();
+    return (
+      item.equipment_name.toLowerCase().includes(searchLower) ||
+      item.equipment_category.category_name.toLowerCase().includes(searchLower) ||
+      (item.key_specifications && item.key_specifications.toLowerCase().includes(searchLower))
+    );
+  });
+
+  // Calculate pagination for filtered items
+  const totalPages = Math.ceil(filteredItems.length / itemsPerPage)
+  const startIndex = (currentPage - 1) * itemsPerPage
+  const endIndex = startIndex + itemsPerPage
+  const currentItems = filteredItems.slice(startIndex, endIndex)
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page)
   }
 
-  const groups = [
-    {
-      label: "Video",
-      options: [
-        { value: "lighting", label: "Lighting" },
-        { value: "media-servers", label: "Media Servers" },
-      ],
-    },
-    {
-      label: "Scenic",
-      options: [
-        { value: "pipe-drape", label: "Pipe & Drape" },
-        { value: "podiums", label: "Podiums" },
-      ],
-    },
-  ]
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value)
+    setCurrentPage(1) // Reset to first page when searching
+  }
+
+  const handleDeleteClick = (itemId: number) => {
+    setItemToDelete(itemId);
+    setDeleteDialogOpen(true);
+  };
+
+  const handleDeleteConfirm = async () => {
+    if (!itemToDelete) return;
+
+    try {
+      const accessToken = localStorage.getItem("accessToken");
+      const response = await fetch(API_ENDPOINTS.GEAR_ITEM_DELETE(itemToDelete), {
+        method: "DELETE",
+        headers: {
+          "Authorization": `Bearer ${accessToken}`,
+        },
+      });
+      
+      if (response.ok) {
+        // Remove item from local state
+        setGearItems(prevItems => prevItems.filter(item => item.id !== itemToDelete));
+        toast({
+          title: "Success!",
+          description: "Equipment deleted successfully!",
+        });
+      } else {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Failed to delete equipment");
+      }
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to delete equipment.",
+        variant: "destructive",
+      });
+    } finally {
+      setDeleteDialogOpen(false);
+      setItemToDelete(null);
+    }
+  };
+
+  const handleDeleteCancel = () => {
+    setDeleteDialogOpen(false);
+    setItemToDelete(null);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <MerchantHeader />
+      <AuthHeader />
 
       {/* Main Content */}
       <main className="mx-auto max-w-[1280px] px-4 py-6">
         {/* Title and Add Equipment Button */}
         <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
-            <div className="pb-4">
+            <div className="pb-4 relative">
+              <button
+                className="absolute left-0 top-1/2 -translate-y-1/2 rounded p-2 hover:bg-gray-100"
+                onClick={() => navigate(-1)}
+                aria-label="Back"
+              >
+                <BackArrowIcon />
+              </button>
               <Typography
                 variant="h1"
-                className="mb-1 text-[30px] text-gray-800"
+                className="mb-1 text-[30px] text-gray-800 pl-12"
               >
                 My Inventory Book
               </Typography>
             </div>
-            <div>
+            <div className="pl-12">
               <Typography variant="body" className="text-gray-600">
                 Manage your equipment listings and visibility
               </Typography>
@@ -124,6 +218,8 @@ const MerchantInventoryBook: React.FC = () => {
             <Input
               type="text"
               placeholder="Search equipment..."
+              value={searchTerm}
+              onChange={handleSearchChange}
               className="flex-1 border-none bg-transparent text-base text-gray-700 placeholder-gray-400 shadow-none outline-none"
             />
           </div>
@@ -146,7 +242,7 @@ const MerchantInventoryBook: React.FC = () => {
           <Card className="flex flex-row items-center justify-between rounded-lg p-6 shadow">
             <div>
               <div className="text-sm text-gray-600">Total Items</div>
-              <div className="text-2xl font-bold text-gray-800">24</div>
+              <div className="text-2xl font-bold text-gray-800">{gearItems.length}</div>
             </div>
             <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100">
               <img src={itemIcon} alt="Total" className="h-6 w-6" />
@@ -155,7 +251,7 @@ const MerchantInventoryBook: React.FC = () => {
           <Card className="flex flex-row items-center justify-between rounded-lg p-6 shadow">
             <div>
               <div className="text-sm text-gray-600">Public Listings</div>
-              <div className="text-2xl font-bold text-green-600">18</div>
+              <div className="text-2xl font-bold text-green-600">{gearItems.filter((item) => item.is_public).length}</div>
             </div>
             <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-green-100">
               <img src={greenEyeIcon} alt="Public" className="h-6 w-6" />
@@ -164,7 +260,7 @@ const MerchantInventoryBook: React.FC = () => {
           <Card className="flex flex-row items-center justify-between rounded-lg p-6 shadow">
             <div>
               <div className="text-sm text-gray-600">Private Items</div>
-              <div className="text-2xl font-bold text-gray-600">6</div>
+              <div className="text-2xl font-bold text-gray-600">{gearItems.filter((item) => !item.is_public).length}</div>
             </div>
             <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gray-100">
               <img src={closedEyeIcon} alt="Private" className="h-6 w-6" />
@@ -175,68 +271,35 @@ const MerchantInventoryBook: React.FC = () => {
         {/* Inventory List */}
         <div className="flex flex-col gap-6">
           {/* Inventory Card 1 */}
-          {[
-            {
-              img: imgImg1,
-              title: "RED Komodo 6K",
-              desc: "Camera • 6K Resolution, Global Shutter",
-              public: publicToggles[0],
-              status: "Public",
-            },
-            {
-              img: imgImg2,
-              title: "ARRI SkyPanel S60-C",
-              desc: "Lighting • LED Panel, Color Temperature Control",
-              public: publicToggles[1],
-              status: "Public",
-            },
-            {
-              img: imgImg3,
-              title: "Canon EF 24-70mm f/2.8L",
-              desc: "Lens • Zoom Lens, f/2.8 Aperture",
-              public: publicToggles[2],
-              status: "Private",
-            },
-            {
-              img: imgImg4,
-              title: "DJI Ronin 4D",
-              desc: "Stabilizer • 4-Axis Gimbal, LiDAR Focus",
-              public: publicToggles[3],
-              status: "Public",
-            },
-            {
-              img: imgImg5,
-              title: "Rode NTG4+ Shotgun Mic",
-              desc: "Audio • Directional Microphone, Phantom Power",
-              public: publicToggles[4],
-              status: "Private",
-            },
-          ].map((item, idx) => (
+          {isLoading ? (
+            <div>Loading...</div>
+          ) : (
+            currentItems.map((item) => (
             <Card
-              key={item.title}
+              key={item.id}
               className="flex flex-col items-start gap-6 rounded-lg p-6 shadow md:flex-row md:items-center"
             >
               <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-lg bg-gray-100">
                 <img
-                  src={item.img}
-                  alt={item.title}
+                  src={item.gear_item_pictures[0].image}
+                  alt={item.equipment_name}
                   className="h-full w-full object-cover"
                 />
               </div>
               <div className="w-full flex-1 items-center">
                 <Typography variant="h3" className="text-[18px] text-gray-800">
-                  {item.title}
+                    {item.equipment_name}
                 </Typography>
-                <div className="text-sm text-gray-600">{item.desc}</div>
+                <div className="text-sm text-gray-600">{item.equipment_category.category_name} • {item.key_specifications}</div>
                 <div className="mt-2 flex items-center gap-2">
-                  {item.status === "Public" ? (
+                  {item.is_public ? (
                     <span className="flex items-center gap-1 rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-800">
-                      <img src={imgFrame9} alt="Public" className="h-3 w-3" />{" "}
+                      <FontAwesomeIcon icon={faEye} alt="Public" className="text-green-800 h-3 w-3" />{" "}
                       Public
                     </span>
                   ) : (
                     <span className="flex items-center gap-1 rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600">
-                      <img src={imgFrame12} alt="Private" className="h-3 w-3" />{" "}
+                      <FontAwesomeIcon icon={faEyeSlash} alt="Private" className="text-gray-600 h-3 w-3" />{" "}
                       Private
                     </span>
                   )}
@@ -247,8 +310,8 @@ const MerchantInventoryBook: React.FC = () => {
                 {/* Toggle Switch */}
                 <Switch
                   className="data-[state=checked]:bg-tertiary"
-                  checked={item.public}
-                  onCheckedChange={() => handleToggle(idx)}
+                  checked={item.is_public}
+                  onCheckedChange={() => handleToggle(item.id)}
                   aria-label="Toggle public/private"
                 />
                 {/* Edit Icon */}
@@ -262,32 +325,69 @@ const MerchantInventoryBook: React.FC = () => {
                 <button
                   className="rounded p-1 hover:bg-gray-100"
                   aria-label="Delete"
+                  onClick={() => handleDeleteClick(item.id)}
                 >
                   <img src={deleteItemIcon} alt="Delete" className="h-5 w-5" />
                 </button>
               </div>
             </Card>
-          ))}
+          )))}
         </div>
 
         {/* Pagination */}
-        <div className="mt-8 flex items-center justify-center gap-2">
-          <button className="flex h-8 w-8 items-center justify-center rounded text-gray-500 hover:bg-gray-100">
-            &lt;
-          </button>
-          <button className="flex h-8 w-8 items-center justify-center rounded bg-sky-600 font-semibold text-white">
-            1
-          </button>
-          <button className="flex h-8 w-8 items-center justify-center rounded text-gray-700 hover:bg-gray-100">
-            2
-          </button>
-          <button className="flex h-8 w-8 items-center justify-center rounded text-gray-700 hover:bg-gray-100">
-            3
-          </button>
-          <button className="flex h-8 w-8 items-center justify-center rounded text-gray-500 hover:bg-gray-100">
-            &gt;
-          </button>
-        </div>
+        {totalPages > 1 && (
+          <div className="mt-8 flex items-center justify-center gap-2">
+            <button 
+              className="flex h-8 w-8 items-center justify-center rounded text-gray-500 hover:bg-gray-100 disabled:opacity-50"
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              <FontAwesomeIcon icon={faAngleLeft} />
+            </button>
+            
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <button
+                key={page}
+                className={`flex h-8 w-8 items-center justify-center rounded font-semibold ${
+                  page === currentPage
+                    ? "bg-sky-600 text-white"
+                    : "text-gray-700 hover:bg-gray-100"
+                }`}
+                onClick={() => handlePageChange(page)}
+              >
+                {page}
+              </button>
+            ))}
+            
+            <button 
+              className="flex h-8 w-8 items-center justify-center rounded text-gray-500 hover:bg-gray-100 disabled:opacity-50"
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
+              <FontAwesomeIcon icon={faAngleRight} />
+            </button>
+          </div>
+        )}
+
+        {/* Delete Confirmation Dialog */}
+        <Dialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Delete Equipment</DialogTitle>
+              <DialogDescription>
+                Are you sure you want to delete this equipment? This action cannot be undone.
+              </DialogDescription>
+            </DialogHeader>
+            <DialogFooter>
+              <Button variant="ghost" className="border border-gray-200 px-2 py-1" onClick={handleDeleteCancel}>
+                Cancel
+              </Button>
+              <Button variant="destructive" className="px-2 py-1" onClick={handleDeleteConfirm}>
+                Delete
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </main>
     </div>
   )

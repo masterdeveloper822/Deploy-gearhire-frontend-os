@@ -23,6 +23,7 @@ import { Typography } from "@/components/ui/typography"
 import { SaveChangesButton } from "@/components/ui/button"
 import { PreviewProfileButton } from "@/components/ui/button"
 import PfpUpload from "@/components/pfp-upload"
+import { API_ENDPOINTS } from "@/lib/api"
 
 const categoriesList = [
   "Cameras",
@@ -58,7 +59,7 @@ const schema = z.object({
 })
 type FormSchema = z.infer<typeof schema>
 
-export default function Body() {
+export default function MerchantProfileEditForm() {
   const navigate = useNavigate()
   const {
     register,
@@ -88,10 +89,39 @@ export default function Body() {
     }
   }, [isSubmitted, errors, setFocus])
 
-  const onSubmit = (data: FormSchema) => {
-    console.log("Validated data:", data)
-    // handle save
-    navigate("/merchant-dashboard")
+  const onSubmit = async (data: FormSchema) => {
+    try {
+      const accessToken = localStorage.getItem("accessToken");
+      const formData = new FormData();
+      formData.append("display_name", data.businessName);
+      formData.append("contact_email", data.email);
+      formData.append("location", data.location);
+      formData.append("website_url", data.website || "");
+      formData.append("about", data.about);
+      data.categories.forEach((cat) => formData.append("equipment_categories", cat));
+      if (data.photo) {
+        formData.append("profile_picture", data.photo);
+      }
+
+      const response = await fetch(API_ENDPOINTS.USER_MERCHANT_PROFILE, {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: formData,
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Failed to save profile");
+      }
+
+      // Optionally update user context here if needed
+      alert("Profile saved successfully!");
+      navigate("/merchant-dashboard");
+    } catch (error: any) {
+      alert(error.message || "Failed to save profile.");
+    }
   }
 
   return (

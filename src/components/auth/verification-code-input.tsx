@@ -5,6 +5,7 @@ interface VerificationCodeInputProps {
   onChange: (value: string[]) => void
   disabled?: boolean
   autoFocus?: boolean
+  onEnter?: () => void
 }
 
 const VerificationCodeInput: React.FC<VerificationCodeInputProps> = ({
@@ -12,6 +13,7 @@ const VerificationCodeInput: React.FC<VerificationCodeInputProps> = ({
   onChange,
   disabled = false,
   autoFocus = false,
+  onEnter
 }) => {
   const inputRefs = useRef<Array<HTMLInputElement | null>>([])
   const focusedIndex =
@@ -55,6 +57,8 @@ const VerificationCodeInput: React.FC<VerificationCodeInputProps> = ({
       inputRefs.current[i - 1]?.focus()
     } else if (e.key === "ArrowRight" && i < 5) {
       inputRefs.current[i + 1]?.focus()
+    } else if (e.key === "Enter" && value.every((v) => v !== "") && typeof onEnter === "function") {
+      onEnter();
     }
   }
 

@@ -69,6 +69,7 @@ button {
     --colored-orangeforeground: 17 88% 40%;
     --colored-blue: 221 83% 53%;
     --colored-green: 142 76% 36%;
+    --colored-purple: 271, 81%, 56%;
   }
   .dark {
     --background: 0 0% 3.9%;

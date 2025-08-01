@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react"
-import { MerchantHeader } from "@/components/layout/header/merchant-header"
+import { AuthHeader } from "@/components/layout/header/auth-header"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { BackArrowIcon, CloudUploadIcon } from "@/components/ui/icon"
@@ -10,19 +10,9 @@ import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Textarea } from "@/components/ui/textarea"
 
-// Image asset constants (replace with your actual asset paths if needed)
-const imgImg =
-  "http://localhost:3845/assets/410c340aa057242400c608368f918307cdd72438.png"
-const imgImg1 =
-  "http://localhost:3845/assets/f578f9c2a181ef669150341163e63e6e9da01878.png"
-const imgFrame4 =
-  "http://localhost:3845/assets/bd628ea7169604b04f36c37e820b01d9a10adeac.svg"
-const imgFrame5 =
-  "http://localhost:3845/assets/727f04cc8f58d671183dfaa060d0f1ac8e8cc60b.svg"
-const imgFrame6 =
-  "http://localhost:3845/assets/742dc4d2e0b005dab66144a1b5f2f48333384737.svg"
-const imgFrame8 =
-  "http://localhost:3845/assets/393b2c64082c1298f54496bda3e1b323df69b7a4.svg"
+import woman3 from "@/assets/images/avatars/woman3.png"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons"
 
 const addQuoteSchema = z.object({
   message: z.string().min(1, "Message is required"),
@@ -75,7 +65,7 @@ export default function AddQuote() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <MerchantHeader />
+      <AuthHeader />
       {/* Main Content */}
       <main className="flex w-full flex-col items-center px-4 py-4 sm:py-8">
         <div className="w-full max-w-[1248px] px-2 sm:px-0">
@@ -106,11 +96,8 @@ export default function AddQuote() {
             categories={["Camera", "Lens", "Stabilizer"]}
             description="Looking for a complete cinema camera package including RED or ARRI camera body, prime lens set, and professional stabilization system for independent feature production. Need reliable equipment with backup options available."
             posterName="Sarah Chen"
-            posterAvatar={imgImg1}
+            posterAvatar={woman3}
             postedAgo="Posted 2 days ago"
-            locationIcon={imgFrame4}
-            dateIcon={imgFrame5}
-            expiryIcon={imgFrame6}
           />
           {/* Right: Quote Form */}
           <Card className="w-full flex-1 rounded-lg p-4 sm:p-6">
@@ -216,7 +203,7 @@ export default function AddQuote() {
                   type="submit"
                   className="flex w-full items-center justify-center rounded-lg bg-sky-600 px-8 py-3 font-medium text-white transition hover:bg-sky-700 sm:w-1/2"
                 >
-                  <img src={imgFrame8} alt="" className="mr-2 h-5 w-5" />
+                  <FontAwesomeIcon icon={faPaperPlane} alt="" className="mr-2 h-5 w-5" />
                   Send Quote
                 </button>
                 <button
