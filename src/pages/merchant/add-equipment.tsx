@@ -29,11 +29,8 @@ import { Card } from "@/components/ui/card"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCamera } from "@fortawesome/free-solid-svg-icons"
 import { useUser } from "@/context/user-context"
-<<<<<<< HEAD
 import { useToast } from "@/hooks/use-toast"
 import { API_ENDPOINTS } from "@/lib/api"
-=======
->>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
 
 const categories = [
   "Audio",
@@ -71,10 +68,7 @@ const MerchantAddEquipment: React.FC = () => {
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(false)
   const { user } = useUser()
-<<<<<<< HEAD
   const { toast } = useToast()
-=======
->>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
   const {
     register,
     handleSubmit,
@@ -127,11 +121,7 @@ const MerchantAddEquipment: React.FC = () => {
         formData.append("gear_item_pictures", photo);
       });
 
-<<<<<<< HEAD
       const response = await fetch(API_ENDPOINTS.EQUIPMENT_CREATE, {
-=======
-      const response = await fetch("http://localhost:8000/api/gear-hub/gear-items/create", {
->>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
         method: "POST",
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -144,7 +134,6 @@ const MerchantAddEquipment: React.FC = () => {
         throw new Error(errorData.message || "Failed to add equipment");
       }
 
-<<<<<<< HEAD
       toast({
         title: "Success!",
         description: "Equipment added successfully!",
@@ -156,12 +145,6 @@ const MerchantAddEquipment: React.FC = () => {
         description: error.message || "Failed to add equipment.",
         variant: "destructive",
       });
-=======
-      alert("Equipment added successfully!");
-      navigate("/merchant-inventory-book");
-    } catch (error: any) {
-      alert(error.message || "Failed to add equipment.");
->>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
     } finally {
       setIsLoading(false);
     }

@@ -8,32 +8,8 @@ import { Button } from "@/components/ui/button"
 import { Typography } from "@/components/ui/typography"
 import { Separator } from "@/components/ui/separator"
 import { faInstagram, faLinkedin, faVimeo, faYoutube } from "@fortawesome/free-brands-svg-icons"
-<<<<<<< HEAD
 import { BackArrowIcon } from "@/components/ui/icon"
 import { useNavigate } from "react-router-dom"
-=======
-
-const imgImg =
-  "http://localhost:3845/assets/f578f9c2a181ef669150341163e63e6e9da01878.png"
-const imgFrame =
-  "http://localhost:3845/assets/ed4e1169b638e2e838350960320b53c878e45615.svg"
-const imgFrame1 =
-  "http://localhost:3845/assets/9861a0b6e8bb9b630982f192343e0944f05f6199.svg"
-const imgFrame2 =
-  "http://localhost:3845/assets/1efdeed862e90b5b080da5ccaa63bb5c3a6cf0bc.svg"
-const imgFrame3 =
-  "http://localhost:3845/assets/d5e1f2acabf7a13aa529e64eff9ec2319c679f6c.svg"
-const imgFrame4 =
-  "http://localhost:3845/assets/f3278cb2571441380b89c6688a804fea74ac5536.svg"
-const imgFrame5 =
-  "http://localhost:3845/assets/f203e9641a38ffd89d1d80a2d87f354391e772a4.svg"
-const imgFrame6 =
-  "http://localhost:3845/assets/5f0e7e2677feea934e02e9383f26af2ca7cb66d5.svg"
-const imgFrame7 =
-  "http://localhost:3845/assets/2d976e6dcbb12fab46b770b0673bc49f3d3e472e.svg"
-const imgFrame8 =
-  "http://localhost:3845/assets/b669991a58545bf6d7a81cc0467a73508daa4ffb.svg"
->>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
 
 const EditRenterProfile: React.FC = () => {
   const navigate = useNavigate()
@@ -41,7 +17,6 @@ const EditRenterProfile: React.FC = () => {
     <div className="min-h-screen bg-gray-50">
       <AuthHeader />
       <main className="mx-auto max-w-2xl px-2 sm:px-4 py-6 sm:py-8">
-<<<<<<< HEAD
         <div className="relative">
         <button
             className="absolute left-0 top-1/2 -translate-y-1/2 rounded p-2 hover:bg-gray-100"
@@ -59,14 +34,6 @@ const EditRenterProfile: React.FC = () => {
           </p>
           </div>
         </div>
-=======
-        <h1 className="mb-3 text-2xl sm:text-3xl font-bold text-gray-800">
-          Edit Your Profile
-        </h1>
-        <p className="mb-6 text-sm sm:text-base text-gray-600">
-          Update your information to help merchants get to know you
-        </p>
->>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
         <div className="mb-6 rounded-lg bg-white p-4 sm:p-6 shadow">
           {/* Profile Photo */}
           <div className="mb-8 flex flex-col sm:flex-row items-center gap-4 sm:gap-6">

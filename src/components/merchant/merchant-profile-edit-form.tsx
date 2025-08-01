@@ -103,11 +103,7 @@ export default function MerchantProfileEditForm() {
         formData.append("profile_picture", data.photo);
       }
 
-<<<<<<< HEAD
       const response = await fetch(API_ENDPOINTS.USER_MERCHANT_PROFILE, {
-=======
-      const response = await fetch("http://localhost:8000/api/user/merchant-profile/", {
->>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${accessToken}`,

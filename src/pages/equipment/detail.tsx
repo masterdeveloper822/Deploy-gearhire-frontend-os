@@ -5,20 +5,6 @@ import { BackArrowIcon, DottedQuestionIcon } from "@/components/ui/icon"
 import { useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-<<<<<<< HEAD
-=======
-
-import equip1 from "@/assets/images/equipment/equip1-2.png"
-import equip1_3 from "@/assets/images/equipment/equip1-3.png"
-import equip4 from "@/assets/images/equipment/equip4-2.png"
-import equip5 from "@/assets/images/equipment/equip5-2.png"
-import equip2 from "@/assets/images/equipment/equip2-2.png"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faHeart } from "@fortawesome/free-regular-svg-icons"
-
-import man2 from "@/assets/images/avatars/man2.png"
-import { faClock, faEye, faFileVideo, faMessage, faPalette, faPlug, faPlus, faVideo } from "@fortawesome/free-solid-svg-icons"
->>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
 
 import equip1 from "@/assets/images/equipment/equip1-2.png"
 import equip1_3 from "@/assets/images/equipment/equip1-3.png"

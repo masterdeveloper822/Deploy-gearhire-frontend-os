@@ -7,10 +7,7 @@ import { Eye, EyeOff } from "lucide-react"
 import { AuthInput } from "@/components/auth/auth-input"
 import { SubmitButton } from "@/components/auth/submit-button"
 import { useToast } from "@/hooks/use-toast"
-<<<<<<< HEAD
 import { API_ENDPOINTS } from "@/lib/api"
-=======
->>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
 import { useUser } from "@/context/user-context"
 
 const loginSchema = z.object({
@@ -42,11 +39,7 @@ const LogInForm: React.FC = () => {
   const onSubmit = async (data: LoginSchema) => {
     setIsLoading(true);
     try {
-<<<<<<< HEAD
               const response = await fetch(API_ENDPOINTS.USER_LOGIN, {
-=======
-      const response = await fetch("http://localhost:8000/api/token/", {
->>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

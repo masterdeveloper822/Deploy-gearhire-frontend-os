@@ -10,17 +10,13 @@ interface UserContextType {
     user: User | null;
     setUser: (user: User | null) => void;
     logout: () => void;
-<<<<<<< HEAD
     isLoading: boolean;
-=======
->>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [user, setUser] = useState<User | null>(null);
-<<<<<<< HEAD
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -37,14 +33,6 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
             }
         }
         setIsLoading(false);
-=======
-
-    useEffect(() => {
-        const stored = localStorage.getItem("user");
-        if (stored) {
-            setUser(JSON.parse(stored));
-        }
->>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
     }, []);
 
     useEffect(() => {
@@ -62,11 +50,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
         localStorage.removeItem("refreshToken");
     }
     return (
-<<<<<<< HEAD
         <UserContext.Provider value={{ user, setUser, logout, isLoading }}>
-=======
-        <UserContext.Provider value={{ user, setUser, logout }}>
->>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
             {children}
         </UserContext.Provider>
     );

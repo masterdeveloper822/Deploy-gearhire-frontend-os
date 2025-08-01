@@ -10,43 +10,8 @@ import man5 from "@/assets/images/avatars/man5.png"
 import woman3 from "@/assets/images/avatars/woman3.png"
 import { faFileLines, faFilePdf, faPaperclip, faPaperPlane, faSearch } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-<<<<<<< HEAD
 import { BackArrowIcon } from "@/components/ui/icon"
 import { useNavigate } from "react-router-dom"
-=======
-
-// Image and SVG asset URLs from Figma export
-const imgImg =
-  "http://localhost:3845/assets/f578f9c2a181ef669150341163e63e6e9da01878.png"
-const imgImg1 =
-  "http://localhost:3845/assets/410c340aa057242400c608368f918307cdd72438.png"
-const imgImg2 =
-  "http://localhost:3845/assets/1d5ad8aaf12fd61a75197f707f6ef40c7edd6e1f.png"
-const imgImg3 =
-  "http://localhost:3845/assets/1ecb12199697dd16c82152392c0b02a04bd85271.png"
-const imgImg4 =
-  "http://localhost:3845/assets/bec21fc75386a86210d32bec8ca98fcb2380d21e.png"
-const imgFrame =
-  "http://localhost:3845/assets/ed4e1169b638e2e838350960320b53c878e45615.svg"
-const imgFrame1 =
-  "http://localhost:3845/assets/9861a0b6e8bb9b630982f192343e0944f05f6199.svg"
-const imgFrame2 =
-  "http://localhost:3845/assets/1efdeed862e90b5b080da5ccaa63bb5c3a6cf0bc.svg"
-const imgFrame3 =
-  "http://localhost:3845/assets/ad1c22367e0b32024bf9730eb544e1cb8a5c24ef.svg"
-const imgFrame4 =
-  "http://localhost:3845/assets/1a64978febaad0f1b785c7e0ae8a7fab1223df37.svg"
-const imgFrame5 =
-  "http://localhost:3845/assets/6d022d49d140b64208c28086903fd55f253667a5.svg"
-const imgFrame6 =
-  "http://localhost:3845/assets/87571269c7ba2f50bea166c8eb43da50a8f48aa8.svg"
-const imgFrame7 =
-  "http://localhost:3845/assets/9421ac7b9341d210b910662c4fe7d9f28bf56477.svg"
-const imgFrame8 =
-  "http://localhost:3845/assets/e9cdbb22e9189dcdf7f5f003b85dc52945e480a4.svg"
-const imgFrame9 =
-  "http://localhost:3845/assets/393b2c64082c1298f54496bda3e1b323df69b7a4.svg"
->>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
 
 const RenterMessage = () => {
   const navigate = useNavigate()

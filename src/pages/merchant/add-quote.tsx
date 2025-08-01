@@ -12,21 +12,7 @@ import { Textarea } from "@/components/ui/textarea"
 
 import woman3 from "@/assets/images/avatars/woman3.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-<<<<<<< HEAD
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons"
-=======
-import { faLocationDot, faPaperPlane } from "@fortawesome/free-solid-svg-icons"
-const imgImg1 =
-  "http://localhost:3845/assets/f578f9c2a181ef669150341163e63e6e9da01878.png"
-const imgFrame4 =
-  "http://localhost:3845/assets/bd628ea7169604b04f36c37e820b01d9a10adeac.svg"
-const imgFrame5 =
-  "http://localhost:3845/assets/727f04cc8f58d671183dfaa060d0f1ac8e8cc60b.svg"
-const imgFrame6 =
-  "http://localhost:3845/assets/742dc4d2e0b005dab66144a1b5f2f48333384737.svg"
-const imgFrame8 =
-  "http://localhost:3845/assets/393b2c64082c1298f54496bda3e1b323df69b7a4.svg"
->>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
 
 const addQuoteSchema = z.object({
   message: z.string().min(1, "Message is required"),

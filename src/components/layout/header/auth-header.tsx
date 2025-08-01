@@ -10,10 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBell } from "@fortawesome/free-solid-svg-icons"
 import { LogOut } from "lucide-react"
 import defaultMerchantProfileIcon from "@/assets/images/ui/icons/defaultMerchantProfile.svg"
-<<<<<<< HEAD
 import { API_BASE_URL } from "@/lib/api"
-=======
->>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
 
 interface AuthHeaderProps {
   children?: React.ReactNode
@@ -22,19 +19,11 @@ interface AuthHeaderProps {
 const AuthHeader: React.FC = () => {
   const { user, logout } = useUser();
   const navigate = useNavigate();
-<<<<<<< HEAD
-=======
-  const BACKEND_URL = "http://localhost:8000";
->>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
 
   const getProfileImageUrl = (image: string) => {
     if (!image) return defaultMerchantProfileIcon;
     if (image.startsWith("http")) return image;
-<<<<<<< HEAD
     return `${API_BASE_URL}${image}`;
-=======
-    return `${BACKEND_URL}${image}`;
->>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
   }
 
   return (
@@ -47,7 +36,6 @@ const AuthHeader: React.FC = () => {
         >
           <img src={gearIcon} alt="Gear Icon" className="shrink-0 h-16 sm:block hidden" />
         </Link>
-<<<<<<< HEAD
         {user?.role === "renter" && (
           <div className="hidden items-center justify-center gap-8 lg:flex">
             <Link to="/browse-equipment">
@@ -81,8 +69,6 @@ const AuthHeader: React.FC = () => {
             </Link>
           </div>
         )}
-=======
->>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
         {user ? (
           <div className="flex items-center gap-1 px-2 sm:gap-2 sm:px-0 md:gap-4">
           <Popover>
@@ -98,7 +84,6 @@ const AuthHeader: React.FC = () => {
                 { user.name || "Profile" }
               </span>
             </PopoverTrigger>
-<<<<<<< HEAD
             <PopoverContent className="w-[120px] p-3">
               <Button
                 variant="link"
@@ -116,12 +101,6 @@ const AuthHeader: React.FC = () => {
               <Button
                 variant="link"
                 className="w-full justify-center p-1 text-base text-gray-700"
-=======
-            <PopoverContent className="w-30 p-3">
-              <Button
-                variant="link"
-                className="w-full justify-center px-2 text-base text-gray-700"
->>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
                 onClick={() => {
                   logout();
                   navigate("/");

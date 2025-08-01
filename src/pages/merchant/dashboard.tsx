@@ -11,23 +11,7 @@ import woman1 from "@/assets/images/avatars/woman1.png"
 import man3 from "@/assets/images/avatars/man3.png"
 import woman2 from "@/assets/images/avatars/woman2.png"
 import { AuthHeader } from "@/components/layout/header/auth-header"
-<<<<<<< HEAD
 import { API_BASE_URL } from "@/lib/api"
-=======
-
-const imgFrame6 =
-  "http://localhost:3845/assets/04a1414121a05ee827326ca429ad2c8b4e359e3f.svg"
-const imgFrame7 =
-  "http://localhost:3845/assets/3d1f1c94bc4cc3cb4c118e0be60cd438bd83c560.svg"
-const imgFrame8 =
-  "http://localhost:3845/assets/229ba2971361b2bf735f5e0cd6364707b77b9723.svg"
-const imgFrame9 =
-  "http://localhost:3845/assets/ca64e7fdf51fe8776e021df1937d9fa8931aee9d.svg"
-const imgImg1 =
-  "http://localhost:3845/assets/ec901f1c0d6bdc3abb3b7f2578c96a444ee001e2.png"
-const imgImg2 =
-  "http://localhost:3845/assets/bec21fc75386a86210d32bec8ca98fcb2380d21e.png"
->>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
 
 const MerchantDashboard: React.FC = () => {
   const navigate = useNavigate()

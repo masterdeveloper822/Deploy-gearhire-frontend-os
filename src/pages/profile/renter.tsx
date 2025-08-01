@@ -9,45 +9,6 @@ import { Button } from "@/components/ui/button"
 import { faLinkedin, faVimeo } from "@fortawesome/free-brands-svg-icons"
 import post1 from "@/assets/images/renter/post1.png"
 import { faComment, faHeart } from "@fortawesome/free-solid-svg-icons"
-<<<<<<< HEAD
-=======
-
-// Image and SVG asset URLs from Figma export
-const imgImg =
-  "http://localhost:3845/assets/410c340aa057242400c608368f918307cdd72438.png"
-const imgImg1 =
-  "http://localhost:3845/assets/f578f9c2a181ef669150341163e63e6e9da01878.png"
-const imgImg2 =
-  "http://localhost:3845/assets/d0451f4cdcb22056f951d1d62a8a4824b8b5be7c.png"
-const imgFrame =
-  "http://localhost:3845/assets/ed4e1169b638e2e838350960320b53c878e45615.svg"
-const imgFrame1 =
-  "http://localhost:3845/assets/9861a0b6e8bb9b630982f192343e0944f05f6199.svg"
-const imgFrame2 =
-  "http://localhost:3845/assets/1efdeed862e90b5b080da5ccaa63bb5c3a6cf0bc.svg"
-const imgFrame3 =
-  "http://localhost:3845/assets/3e37af258052bda7f0fa4f26b86313a9420fb018.svg"
-const imgFrame4 =
-  "http://localhost:3845/assets/5c4f3c36624f887fc5373fc1e63d35a103d60fc5.svg"
-const imgFrame5 =
-  "http://localhost:3845/assets/4e2e082d3de9515c05514fa14e3c98345c298554.svg"
-const imgFrame6 =
-  "http://localhost:3845/assets/5deee99566ad35df9bf06f194ab881aeefbd96e8.svg"
-const imgFrame7 =
-  "http://localhost:3845/assets/610bb0fb944b3bc8429aab321213d9bbd5b8b0aa.svg"
-const imgFrame8 =
-  "http://localhost:3845/assets/c9894f0754dae03c08dff199abb5a4e5904b46cb.svg"
-const imgFrame9 =
-  "http://localhost:3845/assets/7252c6af5313ef2f9f41a9994d732c32d0f3e746.svg"
-const imgFrame10 =
-  "http://localhost:3845/assets/7e060b66d954ee245e75378e0f7dc6dde9ecae85.svg"
-const imgFrame11 =
-  "http://localhost:3845/assets/229ba2971361b2bf735f5e0cd6364707b77b9723.svg"
-const imgFrame12 =
-  "http://localhost:3845/assets/ca64e7fdf51fe8776e021df1937d9fa8931aee9d.svg"
-const imgFrame13 =
-  "http://localhost:3845/assets/8eae22a2ca869ba9186e9fa29ef6259551a198f1.svg"
->>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
 
 const RenterProfile: React.FC = () => {
   return (

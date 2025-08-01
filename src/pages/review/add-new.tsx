@@ -5,29 +5,8 @@ import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import man1 from "@/assets/images/avatars/man1.png"
 import StarRating from "@/components/review/star-rating"
-<<<<<<< HEAD
 import { BackArrowIcon } from "@/components/ui/icon"
 import { useNavigate } from "react-router-dom"
-=======
-
-// Image and SVG asset URLs from Figma export
-const imgImg =
-  "http://localhost:3845/assets/f578f9c2a181ef669150341163e63e6e9da01878.png"
-const imgImg1 =
-  "http://localhost:3845/assets/410c340aa057242400c608368f918307cdd72438.png"
-const imgFrame =
-  "http://localhost:3845/assets/ed4e1169b638e2e838350960320b53c878e45615.svg"
-const imgFrame1 =
-  "http://localhost:3845/assets/9861a0b6e8bb9b630982f192343e0944f05f6199.svg"
-const imgFrame2 =
-  "http://localhost:3845/assets/1efdeed862e90b5b080da5ccaa63bb5c3a6cf0bc.svg"
-const imgFrame3 =
-  "http://localhost:3845/assets/1a64978febaad0f1b785c7e0ae8a7fab1223df37.svg"
-const imgFrame4 =
-  "http://localhost:3845/assets/0d10cbf1068ce7b4a0659b608b6a9deeb0758eab.svg"
-const imgFrame5 =
-  "http://localhost:3845/assets/d422ee48e0b2cc09c05797fedbedfeaf1a4ed50b.svg"
->>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
 
 const AddNewReview = () => {
   const navigate = useNavigate()
@@ -35,7 +14,6 @@ const AddNewReview = () => {
     <div className="min-h-screen bg-gray-50">
       <AuthHeader />
       <main className="mx-auto max-w-2xl px-2 sm:px-4 py-6 sm:py-8">
-<<<<<<< HEAD
         <div className="relative">
         <button
             className="absolute left-0 top-1/2 -translate-y-1/2 rounded p-2 hover:bg-gray-100"
@@ -53,14 +31,6 @@ const AddNewReview = () => {
             </p>
           </div>
         </div>
-=======
-        <h1 className="mb-3 text-2xl sm:text-3xl font-bold text-gray-800">
-          Leave a Review
-        </h1>
-        <p className="mb-6 text-sm sm:text-base text-gray-600">
-          Share your experience working with this merchant
-        </p>
->>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
         {/* Merchant Info */}
         <Card className="mb-6 rounded-lg bg-white p-4 sm:p-6 shadow">
           <div className="mb-4 flex flex-col sm:flex-row items-center gap-4 sm:gap-6">

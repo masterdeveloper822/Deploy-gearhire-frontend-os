@@ -14,29 +14,6 @@ import woman3 from "@/assets/images/avatars/woman3.png"
 import { faDownload, faFileImage, faFilePdf, faFlag, faPaperPlane } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBookmark } from "@fortawesome/free-regular-svg-icons"
-<<<<<<< HEAD
-=======
-const imgFrame6 =
-  "http://localhost:3845/assets/84a21b5522e90764105b42d00080ffd918b13743.svg"
-const imgFrame7 =
-  "http://localhost:3845/assets/5bae80b73ddaa48065d9895f5449eda33c84bf92.svg"
-const imgFrame8 =
-  "http://localhost:3845/assets/3e37af258052bda7f0fa4f26b86313a9420fb018.svg"
-const imgFrame9 =
-  "http://localhost:3845/assets/70b0413e7b2ddfae6a4410971d41808652cbc9e1.svg"
-const imgFrame10 =
-  "http://localhost:3845/assets/9421ac7b9341d210b910662c4fe7d9f28bf56477.svg"
-const imgFrame11 =
-  "http://localhost:3845/assets/cba9e88b03c5870708570303c8083d008fc40dec.svg"
-const imgFrame12 =
-  "http://localhost:3845/assets/eb6cba590cab38215da137ee00caa9eae1e3e6b4.svg"
-const imgFrame13 =
-  "http://localhost:3845/assets/393b2c64082c1298f54496bda3e1b323df69b7a4.svg"
-const imgFrame14 =
-  "http://localhost:3845/assets/c407408351cd5e908095876a7fc9f60c7cf46f2c.svg"
-const imgFrame15 =
-  "http://localhost:3845/assets/c52f7aeeefb472b09e2554420fc7263bb419498d.svg"
->>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
 
 const RFQDetails: React.FC = () => {
   const navigate = useNavigate()
