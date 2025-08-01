@@ -33,8 +33,12 @@ import man3 from "@/assets/images/avatars/man3.png"
 import man4 from "@/assets/images/avatars/man4.png"
 import man5 from "@/assets/images/avatars/man5.png"
 import woman2 from "@/assets/images/avatars/woman2.png"
+<<<<<<< HEAD
 import { BackArrowIcon, DottedQuestionIcon } from "@/components/ui/icon"
 import { useNavigate } from "react-router-dom"
+=======
+import { DottedQuestionIcon } from "@/components/ui/icon"
+>>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
 
 // Mock data for training courses
 const mockCourses = [

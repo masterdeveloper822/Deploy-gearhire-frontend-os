@@ -17,7 +17,42 @@ import woman1 from "@/assets/images/avatars/woman1.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClock, faFileLines, faMessage, faStar, faUserPlus } from "@fortawesome/free-solid-svg-icons"
 import { faCircleQuestion } from "@fortawesome/free-regular-svg-icons"
+<<<<<<< HEAD
 import { BackArrowIcon, DottedQuestionIcon } from "@/components/ui/icon"
+=======
+import { DottedQuestionIcon } from "@/components/ui/icon"
+
+const imgImg =
+  "http://localhost:3845/assets/410c340aa057242400c608368f918307cdd72438.png"
+const imgImg1 =
+  "http://localhost:3845/assets/f578f9c2a181ef669150341163e63e6e9da01878.png"
+const imgImg2 =
+  "http://localhost:3845/assets/1d5ad8aaf12fd61a75197f707f6ef40c7edd6e1f.png"
+const imgImg3 =
+  "http://localhost:3845/assets/ec901f1c0d6bdc3abb3b7f2578c96a444ee001e2.png"
+const imgImg4 =
+  "http://localhost:3845/assets/bec21fc75386a86210d32bec8ca98fcb2380d21e.png"
+const imgFrame =
+  "http://localhost:3845/assets/ed4e1169b638e2e838350960320b53c878e45615.svg"
+const imgFrame1 =
+  "http://localhost:3845/assets/9861a0b6e8bb9b630982f192343e0944f05f6199.svg"
+const imgFrame2 =
+  "http://localhost:3845/assets/1efdeed862e90b5b080da5ccaa63bb5c3a6cf0bc.svg"
+const imgFrame3 =
+  "http://localhost:3845/assets/3fb4b81e046289a29f1daa8f4528d66d37ad2c91.svg"
+const imgFrame4 =
+  "http://localhost:3845/assets/ef9bd8e8713223592c7771abec5a546c7974ea75.svg"
+const imgFrame5 =
+  "http://localhost:3845/assets/19f496b61aed63c57c2255809d8dbd6a29e69743.svg"
+const imgFrame6 =
+  "http://localhost:3845/assets/cc764d96982c8c1183db8ca0b40a4a05ba9d96a2.svg"
+const imgFrame7 =
+  "http://localhost:3845/assets/559a70f1bdd03787114705de7e3cef062e1371ec.svg"
+const imgGroup =
+  "http://localhost:3845/assets/8388300ddeb735a3f944dd7f91d6369b7dc61b4b.svg"
+const imgFrame8 =
+  "http://localhost:3845/assets/69e8eb0ecca56d162835ed9f57bf92dc38da6cb6.svg"
+>>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
 
 const Notification: React.FC = () => {
   const navigate = useNavigate()

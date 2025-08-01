@@ -61,10 +61,17 @@ const CreateAccountForm: React.FC = () => {
 
   const onSubmit = async (data: CreateAccountSchema) => {
     try {
+<<<<<<< HEAD
           const response = await fetch(API_ENDPOINTS.USER_CREATE, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+=======
+      const response = await fetch("http://localhost:8000/api/user/create/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+>>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
         },
         body: JSON.stringify({
           role: data.type,

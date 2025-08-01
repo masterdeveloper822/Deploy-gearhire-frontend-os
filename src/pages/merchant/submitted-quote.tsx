@@ -17,7 +17,28 @@ import {
   SelectItem,
 } from "@/components/ui/select"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+<<<<<<< HEAD
 import { faCalendarDays, faLocationDot } from "@fortawesome/free-solid-svg-icons"
+=======
+import { faCalendar, faCalendarDay, faCalendarDays, faLocationDot } from "@fortawesome/free-solid-svg-icons"
+
+const imgImg =
+  "http://localhost:3845/assets/410c340aa057242400c608368f918307cdd72438.png"
+const imgFrame =
+  "http://localhost:3845/assets/ed4e1169b638e2e838350960320b53c878e45615.svg"
+const imgFrame1 =
+  "http://localhost:3845/assets/e23f57a2af62e42bd83fb2f8760ed0b74b1af3c6.svg"
+const imgFrame2 =
+  "http://localhost:3845/assets/1efdeed862e90b5b080da5ccaa63bb5c3a6cf0bc.svg"
+const imgFrame3 =
+  "http://localhost:3845/assets/aa466758cde76b5a218860ec71500af7d0ad95a6.svg"
+const imgFrame4 =
+  "http://localhost:3845/assets/3fd0d7b64e2c64324bbb7fa48f1ac67994d7e0dc.svg"
+const imgFrame5 =
+  "http://localhost:3845/assets/be9738393f22ee35d14d6b5667879fc160ba90ca.svg"
+const imgFrame6 =
+  "http://localhost:3845/assets/b47c513615e83381206231731cfedd5c2740247b.svg"
+>>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
 
 const statusOptions = ["All Status", "Open", "Closed", "Accepted"]
 const sortOptions = ["Newest First", "Oldest First"]

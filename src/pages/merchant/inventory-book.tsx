@@ -35,9 +35,19 @@ import editItemIcon from "@/assets/images/ui/icons/item_edit.svg"
 import deleteItemIcon from "@/assets/images/ui/icons/item_delete.svg"
 import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+<<<<<<< HEAD
 import { faAngleLeft, faAngleRight, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate } from "react-router-dom"
 import { BackArrowIcon } from "@/components/ui/icon"
+=======
+import { faAngleLeft, faAngleRight, faEye } from "@fortawesome/free-solid-svg-icons"
+
+import gear1 from "@/assets/images/gear/gear1.png"
+import gear2 from "@/assets/images/gear/gear2.png"
+import gear3 from "@/assets/images/gear/gear3.png"
+import gear4 from "@/assets/images/gear/gear4.png"
+import gear5 from "@/assets/images/gear/gear5.png"
+>>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
 
 const MerchantInventoryBook: React.FC = () => {
   const navigate = useNavigate()
@@ -271,10 +281,50 @@ const MerchantInventoryBook: React.FC = () => {
         {/* Inventory List */}
         <div className="flex flex-col gap-6">
           {/* Inventory Card 1 */}
+<<<<<<< HEAD
           {isLoading ? (
             <div>Loading...</div>
           ) : (
             currentItems.map((item) => (
+=======
+          {[
+            {
+              img: gear1,
+              title: "RED Komodo 6K",
+              desc: "Camera • 6K Resolution, Global Shutter",
+              public: publicToggles[0],
+              status: "Public",
+            },
+            {
+              img: gear2,
+              title: "ARRI SkyPanel S60-C",
+              desc: "Lighting • LED Panel, Color Temperature Control",
+              public: publicToggles[1],
+              status: "Public",
+            },
+            {
+              img: gear3,
+              title: "Canon EF 24-70mm f/2.8L",
+              desc: "Lens • Zoom Lens, f/2.8 Aperture",
+              public: publicToggles[2],
+              status: "Private",
+            },
+            {
+              img: gear4,
+              title: "DJI Ronin 4D",
+              desc: "Stabilizer • 4-Axis Gimbal, LiDAR Focus",
+              public: publicToggles[3],
+              status: "Public",
+            },
+            {
+              img: gear5,
+              title: "Rode NTG4+ Shotgun Mic",
+              desc: "Audio • Directional Microphone, Phantom Power",
+              public: publicToggles[4],
+              status: "Private",
+            },
+          ].map((item, idx) => (
+>>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
             <Card
               key={item.id}
               className="flex flex-col items-start gap-6 rounded-lg p-6 shadow md:flex-row md:items-center"
@@ -299,7 +349,11 @@ const MerchantInventoryBook: React.FC = () => {
                     </span>
                   ) : (
                     <span className="flex items-center gap-1 rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600">
+<<<<<<< HEAD
                       <FontAwesomeIcon icon={faEyeSlash} alt="Private" className="text-gray-600 h-3 w-3" />{" "}
+=======
+                      <FontAwesomeIcon icon={faEye} alt="Private" className="text-gray-600 h-3 w-3" />{" "}
+>>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
                       Private
                     </span>
                   )}
@@ -335,6 +389,7 @@ const MerchantInventoryBook: React.FC = () => {
         </div>
 
         {/* Pagination */}
+<<<<<<< HEAD
         {totalPages > 1 && (
           <div className="mt-8 flex items-center justify-center gap-2">
             <button 
@@ -388,6 +443,25 @@ const MerchantInventoryBook: React.FC = () => {
             </DialogFooter>
           </DialogContent>
         </Dialog>
+=======
+        <div className="mt-8 flex items-center justify-center gap-2">
+          <button className="flex h-8 w-8 items-center justify-center rounded text-gray-500 hover:bg-gray-100">
+            <FontAwesomeIcon icon={faAngleLeft} />
+          </button>
+          <button className="flex h-8 w-8 items-center justify-center rounded bg-sky-600 font-semibold text-white">
+            1
+          </button>
+          <button className="flex h-8 w-8 items-center justify-center rounded text-gray-700 hover:bg-gray-100">
+            2
+          </button>
+          <button className="flex h-8 w-8 items-center justify-center rounded text-gray-700 hover:bg-gray-100">
+            3
+          </button>
+          <button className="flex h-8 w-8 items-center justify-center rounded text-gray-500 hover:bg-gray-100">
+            <FontAwesomeIcon icon={faAngleRight} />
+          </button>
+        </div>
+>>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
       </main>
     </div>
   )

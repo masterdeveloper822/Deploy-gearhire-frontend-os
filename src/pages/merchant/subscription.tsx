@@ -3,7 +3,11 @@ import { AuthHeader } from "@/components/layout/header/auth-header"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { BackArrowIcon } from "@/components/ui/icon"
+<<<<<<< HEAD
 import { faBox, faCircleCheck, faComments, faCreditCard, faEnvelope, faHeadset, faMagnifyingGlass, faPaperPlane, faStar } from "@fortawesome/free-solid-svg-icons"
+=======
+import { faBox, faComments, faCreditCard, faEnvelope, faHeadset, faMagnifyingGlass, faPaperPlane, faStar } from "@fortawesome/free-solid-svg-icons"
+>>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React from "react"
 import { useNavigate } from "react-router-dom"

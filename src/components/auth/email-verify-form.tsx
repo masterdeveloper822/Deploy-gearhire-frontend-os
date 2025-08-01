@@ -5,8 +5,12 @@ import { VerifyButton } from "@/components/auth/verify-button";
 import { ResendCodeLink } from "@/components/auth/resend-code-link";
 import { BackToSignUp } from "@/components/auth/back-to-signup";
 import verifyMessageIcon from "@/assets/images/ui/icons/verifyMessage.svg";
+<<<<<<< HEAD
 import { useToast } from "@/hooks/use-toast"
 import { API_ENDPOINTS } from "@/lib/api";
+=======
+import { useToast } from "@/hooks/use-toast";
+>>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
 
 export default function EmailVerifyForm() {
   const navigate = useNavigate();
@@ -35,7 +39,11 @@ export default function EmailVerifyForm() {
     const code = verificationCode.join("");
 
     try {
+<<<<<<< HEAD
               const response = await fetch(API_ENDPOINTS.USER_VERIFY_EMAIL, {
+=======
+      const response = await fetch("http://localhost:8000/api/user/verify-email/", {
+>>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, code }),
@@ -78,7 +86,11 @@ export default function EmailVerifyForm() {
     setIsResending(true);
 
     try {
+<<<<<<< HEAD
       const response = await fetch(API_ENDPOINTS.USER_RESEND_VERIFICATION, {
+=======
+      const response = await fetch("http://localhost:8000/api/user/resend-verification-code/", {
+>>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),

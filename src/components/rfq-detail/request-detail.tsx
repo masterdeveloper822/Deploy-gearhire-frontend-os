@@ -3,6 +3,15 @@ import { Card } from "@/components/ui/card"
 import { Typography } from "@/components/ui/typography"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCalendarDays, faFilePdf, faLocationDot } from "@fortawesome/free-solid-svg-icons"
+<<<<<<< HEAD
+=======
+
+// Figma image assets (should be passed as props ideally, but keep as fallback)
+const imgFrame8 =
+  "http://localhost:3845/assets/3e37af258052bda7f0fa4f26b86313a9420fb018.svg"
+const imgFrame9 =
+  "http://localhost:3845/assets/70b0413e7b2ddfae6a4410971d41808652cbc9e1.svg"
+>>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
 
 export interface AttachedFile {
   name: string

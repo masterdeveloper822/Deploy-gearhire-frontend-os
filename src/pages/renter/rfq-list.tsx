@@ -14,7 +14,10 @@ import {
 import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleLeft, faAngleRight, faCalendar, faCircleCheck, faClock, faEnvelope, faLocationDot, faSearch } from "@fortawesome/free-solid-svg-icons"
+<<<<<<< HEAD
 import { BackArrowIcon } from "@/components/ui/icon"
+=======
+>>>>>>> 9cffc688373a8ac2a944d440877a008dd0dd5c08
 
 const RfqList = () => {
   const navigate = useNavigate()
