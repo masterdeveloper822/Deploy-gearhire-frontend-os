@@ -35,37 +35,37 @@ import { ResetPassword } from "@/pages/auth/reset-password"
 
 const AppRoutes: React.FC = () => {
   const { user, isLoading } = useUser()
-  
-  console.log("AppRoutes - Current user:", user);
-  console.log("AppRoutes - User role:", user?.role);
-  console.log("AppRoutes - Is loading:", isLoading);
+
+  console.log("AppRoutes - Current user:", user)
+  console.log("AppRoutes - User role:", user?.role)
+  console.log("AppRoutes - Is loading:", isLoading)
 
   // Protected route component
   const ProtectedRoute = ({ children }: { children?: React.ReactNode }) => {
-    console.log("ProtectedRoute - User:", user);
-    console.log("ProtectedRoute - Is loading:", isLoading);
-    
+    console.log("ProtectedRoute - User:", user)
+    console.log("ProtectedRoute - Is loading:", isLoading)
+
     if (isLoading) {
-      return <div>Loading...</div>; // or a proper loading spinner
+      return <div>Loading...</div> // or a proper loading spinner
     }
-    
-    if (!user) {
-      console.log("ProtectedRoute - Redirecting to login");
-      return <Navigate to="/login" replace />
-    }
+
+    // if (!user) {
+    //   console.log("ProtectedRoute - Redirecting to login");
+    //   return <Navigate to="/login" replace />
+    // }
     return <>{children}</>
   }
 
   // Dashboard redirect component
   const DashboardRedirect = () => {
     if (isLoading) {
-      return <div>Loading...</div>; // or a proper loading spinner
+      return <div>Loading...</div> // or a proper loading spinner
     }
-    
+
     if (!user) {
       return <LandingPage />
     }
-    
+
     // Redirect based on user role
     if (user.role === "merchant") {
       return <Navigate to="/merchant-dashboard" />
@@ -74,209 +74,239 @@ const AppRoutes: React.FC = () => {
     }
   }
 
-    return (
-      <Routes>
-        {/* Root path - redirect logged in users to dashboard */}
-        <Route path="/" element={<DashboardRedirect />} />
-      
-        {/* Public routes */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<CreateAccount />} />
-        <Route path="/email-verify" element={<EmailVerify />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-      
-        {/* Protected merchant routes */}
-        <Route
-          path="/edit-merchant-profile"
-          element={
-            <ProtectedRoute>
-              <EditMerchantProfile />
-            </ProtectedRoute>}
-        />
-        <Route
-          path="/merchant-next-step"
-          element={
-            <ProtectedRoute>
-              <MerchantNextStep />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="/merchant-dashboard" element={
+  return (
+    <Routes>
+      {/* Root path - redirect logged in users to dashboard */}
+      <Route path="/" element={<DashboardRedirect />} />
+
+      {/* Public routes */}
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<CreateAccount />} />
+      <Route path="/email-verify" element={<EmailVerify />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
+
+      {/* Protected merchant routes */}
+      <Route
+        path="/edit-merchant-profile"
+        element={
+          <ProtectedRoute>
+            <EditMerchantProfile />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/merchant-next-step"
+        element={
+          <ProtectedRoute>
+            <MerchantNextStep />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/merchant-dashboard"
+        element={
           <ProtectedRoute>
             <MerchantDashboard />
           </ProtectedRoute>
-        } />
-        <Route path="/merchant-inventory-book" element={
+        }
+      />
+      <Route
+        path="/merchant-inventory-book"
+        element={
           <ProtectedRoute>
             <MerchantInventoryBook />
           </ProtectedRoute>
-        } />
-        <Route
-          path="/merchant-add-equipment"
-          element={
-            <ProtectedRoute>
-              <MerchantAddEquipment />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/training-course-list"
-          element={
-            <ProtectedRoute>
-              <TrainingCourseList />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/add-training-course"
-          element={
-            <ProtectedRoute>
-              <AddTrainingCourse />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="/browse-RFQs" element={
+        }
+      />
+      <Route
+        path="/merchant-add-equipment"
+        element={
+          <ProtectedRoute>
+            <MerchantAddEquipment />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/training-course-list"
+        element={
+          <ProtectedRoute>
+            <TrainingCourseList />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/add-training-course"
+        element={
+          <ProtectedRoute>
+            <AddTrainingCourse />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/browse-RFQs"
+        element={
           <ProtectedRoute>
             <BrowseRFQ />
           </ProtectedRoute>
-        } />
-        <Route path="/add-quote" element={
+        }
+      />
+      <Route
+        path="/add-quote"
+        element={
           <ProtectedRoute>
             <AddQuote />
           </ProtectedRoute>
-        } />
-        <Route path="/rfq-detail" element={
+        }
+      />
+      <Route
+        path="/rfq-detail"
+        element={
           <ProtectedRoute>
             <RFQDetails />
           </ProtectedRoute>
-        } />
-        <Route
-          path="/submitted-quote"
-          element={
-            <ProtectedRoute>
-              <SubmittedQuotesPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/subscription"
-          element={
-            <ProtectedRoute>
-              <SubscriptionPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="/merchant-review" element={
+        }
+      />
+      <Route
+        path="/submitted-quote"
+        element={
+          <ProtectedRoute>
+            <SubmittedQuotesPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/subscription"
+        element={
+          <ProtectedRoute>
+            <SubscriptionPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/merchant-review"
+        element={
           <ProtectedRoute>
             <Review />
           </ProtectedRoute>
-        } />
-        <Route
-          path="/merchant-notification"
-          element={
-            <ProtectedRoute>
-              <Notification />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/merchant-message"
-          element={
-            <ProtectedRoute>
-              <MerchantMessage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/merchant-profile"
-          element={
-            <ProtectedRoute>
-              <MerchantProfile />
-            </ProtectedRoute>
-          }
-        />
+        }
+      />
+      <Route
+        path="/merchant-notification"
+        element={
+          <ProtectedRoute>
+            <Notification />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/merchant-message"
+        element={
+          <ProtectedRoute>
+            <MerchantMessage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/merchant-profile"
+        element={
+          <ProtectedRoute>
+            <MerchantProfile />
+          </ProtectedRoute>
+        }
+      />
 
-
-        {/* Protected renter routes */}
-        <Route path="/renter-dashboard" element={
+      {/* Protected renter routes */}
+      <Route
+        path="/renter-dashboard"
+        element={
           <ProtectedRoute>
             <RenterDashboard />
           </ProtectedRoute>
-        } />
-        <Route
-          path="/browse-training-course"
-          element={
-            <ProtectedRoute>
-              <BrowseTrainingCourse />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="/rfq-list" element={
+        }
+      />
+      <Route
+        path="/browse-training-course"
+        element={
+          <ProtectedRoute>
+            <BrowseTrainingCourse />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/rfq-list"
+        element={
           <ProtectedRoute>
             <RfqList />
           </ProtectedRoute>
-        } />
-        <Route path="/edit-rfq" element={
+        }
+      />
+      <Route
+        path="/edit-rfq"
+        element={
           <ProtectedRoute>
             <EditRfq />
           </ProtectedRoute>
-        } />
-        <Route
-          path="/renter-notification"
-          element={
-            <ProtectedRoute>
-              <Notification />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/renter-message"
-          element={
-            <ProtectedRoute>
-              <RenterMessage />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="/add-review" element={
+        }
+      />
+      <Route
+        path="/renter-notification"
+        element={
+          <ProtectedRoute>
+            <Notification />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/renter-message"
+        element={
+          <ProtectedRoute>
+            <RenterMessage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/add-review"
+        element={
           <ProtectedRoute>
             <AddNewReview />
           </ProtectedRoute>
-        } />
-        <Route
-          path="/renter-edit-profile"
-          element={
-            <ProtectedRoute>
-              <EditRenterProfile />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/renter-profile"
-          element={
-            <ProtectedRoute>
-              <RenterProfile />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/browse-equipment"
-          element={
-            <ProtectedRoute>
-              <BrowseEquipment />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/equipment-detail"
-          element={
-            <ProtectedRoute>
-              <EquipmentDetail />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    )
+        }
+      />
+      <Route
+        path="/renter-edit-profile"
+        element={
+          <ProtectedRoute>
+            <EditRenterProfile />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/renter-profile"
+        element={
+          <ProtectedRoute>
+            <RenterProfile />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/browse-equipment"
+        element={
+          <ProtectedRoute>
+            <BrowseEquipment />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/equipment-detail"
+        element={
+          <ProtectedRoute>
+            <EquipmentDetail />
+          </ProtectedRoute>
+        }
+      />
+      {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
+    </Routes>
+  )
 }
 
-  export default AppRoutes
+export default AppRoutes
